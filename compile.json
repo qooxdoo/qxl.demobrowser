@@ -1,0 +1,34 @@
+{
+	"applications": [
+		{
+			"class": "demobrowser.Application",
+			"theme": "demobrowser.Theme",
+			"name": "demobrowser",
+			"title": "DemoBrowser"
+		}
+	],
+    "include": [
+        "qx.*"
+    ],
+    "exclude": [
+        "qx.test.*",
+        "qx.module.Blocker",
+        "qx.module.Placement"
+    ],
+	/** Targets */
+	"targets": [
+		{
+			"type": "source",
+			"outputPath": "source-output"
+		}
+	],
+	
+	"defaultTarget": "source",
+	
+	"locales": [
+		"en"
+	],
+	"serve": {
+	   "listenPort": 8080
+	}
+}

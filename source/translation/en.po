@@ -1,0 +1,361 @@
+#
+msgid ""
+msgstr ""
+
+#
+msgid "A date:"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:490
+msgid "API Viewer"
+msgstr ""
+
+#
+msgid "Choose a locale:"
+msgstr ""
+
+#
+msgid "Command Menu (keyboard shortcuts)"
+msgstr ""
+
+#
+msgid "Copy"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:367
+msgid "Could not open the Playground."
+msgstr ""
+
+#
+msgid "Cut"
+msgstr ""
+
+#
+msgid "Date format full:"
+msgstr ""
+
+#
+msgid "Date format long:"
+msgstr ""
+
+#
+msgid "Date format medium:"
+msgstr ""
+
+#
+msgid "Date format short:"
+msgstr ""
+
+#
+msgid "Date full:"
+msgstr ""
+
+#
+msgid "Date long:"
+msgstr ""
+
+#
+msgid "Date medium:"
+msgstr ""
+
+#
+msgid "Date short:"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:565
+msgid "Debug"
+msgstr ""
+
+#
+msgid "Delete"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:876
+msgid "Demo Link"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:406
+msgid "Demo has been disposed."
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:560
+msgid "Dispose Demo"
+msgstr ""
+
+#
+msgid "Form Elements"
+msgstr ""
+
+#
+msgid "Format of %1:"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:897
+msgid "Get Demo Link"
+msgstr ""
+
+#
+msgid "Hello World"
+msgstr ""
+
+#
+msgid "Hide/Show Tests Demos"
+msgstr ""
+
+#
+msgid "I have an apple"
+msgid_plural "I have %1 apples"
+msgstr[0] ""
+msgstr[1] ""
+
+#: demobrowser/DemoBrowser.js:195
+msgid "Info"
+msgstr ""
+
+#
+msgid "Locale information"
+msgstr ""
+
+#
+msgid "Locale:"
+msgstr ""
+
+#
+msgid "Localized ComboBox:"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:498
+msgid "Manual"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:446
+msgid "Next"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:180 demobrowser/InfoWindow.js:94
+msgid "OK"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:554
+msgid "Object Summary"
+msgstr ""
+
+#
+msgid "Open Color Popup"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:493
+msgid "Open the qooxdoo API Viewer"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:501
+msgid "Open the qooxdoo Manual"
+msgstr ""
+
+#
+msgid "Orange"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:463
+msgid "Own Window"
+msgstr ""
+
+#
+msgid "Paste"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:439
+msgid "Previous"
+msgstr ""
+
+#
+msgid "Redo"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:431
+msgid "Run"
+msgstr ""
+
+#
+msgid "Search"
+msgstr ""
+
+#
+msgid "Search Again"
+msgstr ""
+
+#
+msgid "Select All"
+msgstr ""
+
+#
+msgid "Territory code:"
+msgstr ""
+
+#. The mammal fox that is.
+msgid "The quick brown fox"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:539
+msgid "Theme"
+msgstr ""
+
+#
+msgid "Time format long:"
+msgstr ""
+
+#
+msgid "Time format short:"
+msgstr ""
+
+#
+msgid "Time long:"
+msgstr ""
+
+#
+msgid "Time short:"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:471
+msgid "To Playground"
+msgstr ""
+
+#: demobrowser/DemoBrowser.js:410
+msgid "Unable to access application."
+msgstr ""
+
+#
+msgid "Undo"
+msgstr ""
+
+#
+msgid "Week start:"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:147
+msgid "Automatic"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:155
+msgid "Open ColorSelector"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:162 qx/ui/control/ColorSelector.js:357
+msgid "Preview (Old/New)"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:185
+msgid "Cancel"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:242
+msgid "Color Selector"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:481
+msgid "Basic Colors"
+msgstr ""
+
+#: qx/ui/control/ColorPopup.js:487
+msgid "Recent Colors"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:255
+msgid "Visual"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:315
+msgid "Presets"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:346
+msgid "Details"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:375
+msgid "Hex"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:398
+msgid "RGB"
+msgstr ""
+
+#: qx/ui/control/ColorSelector.js:430
+msgid "HSB"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:258
+msgid "Last year"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:270
+msgid "Last month"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:282
+msgid "Next month"
+msgstr ""
+
+#: qx/ui/control/DateChooser.js:294
+msgid "Next year"
+msgstr ""
+
+#: qx/ui/form/validation/Manager.js:37
+msgid "This field is required"
+msgstr ""
+
+#: qx/ui/table/Table.js:1987
+msgid "one row"
+msgid_plural "%1 rows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: qx/ui/table/Table.js:1989
+msgid "one of one row"
+msgid_plural "%1 of %2 rows"
+msgstr[0] ""
+msgstr[1] ""
+
+#: qx/ui/table/columnmodel/Resize.js:197
+msgid "Reset column widths"
+msgstr ""
+
+#: qx/util/Validate.js:90
+msgid "%1 is not a number."
+msgstr ""
+
+#: qx/util/Validate.js:129
+msgid "'%1' is not an email address."
+msgstr ""
+
+#: qx/util/Validate.js:166
+msgid "%1 is not a string."
+msgstr ""
+
+#: qx/util/Validate.js:202
+msgid "%1 is not an url."
+msgstr ""
+
+#: qx/util/Validate.js:243
+msgid "%1 is not a color! %2"
+msgstr ""
+
+#: qx/util/Validate.js:267
+msgid "%1 is not in the range from [%2, %3]."
+msgstr ""
+
+#: qx/util/Validate.js:290
+msgid "%1 is not in %2"
+msgstr ""
+
+#: qx/util/Validate.js:314
+msgid "%1 does not fit %2."
+msgstr ""
+
+#: qx/contrib/logpane/LogView.js:51
+msgid "Log"
+msgstr ""
+
+#: qx/contrib/logpane/LogView.js:66
+msgid "Clear"
+msgstr ""
