@@ -3,11 +3,11 @@
   'use strict';
 
   // core libraries
-  var fs = require('graceful-fs');
+  const fs = qx.tool.compiler.utils.Promisify.fs;
   var util = require('util');
 
   // 3rd party packages
-  var path = require('path');
+  var path = require('upath');
   var walker = require('walker');
   var mkdirp = require('mkdirp');
 
@@ -71,10 +71,10 @@
 
       walker(demoPath)
         .on('file', function (entry, stat) {
+          entry = path.normalize(entry);
           if (dataGenerator.config.verbose) {
             console.log('read file %s (total amount (%s)', entry, dataGenerator.entries.length);
           }
-
           var filePath = entry.replace(demoPath, '');
           dataGenerator.entries.push({
             entry: entry,
@@ -85,6 +85,7 @@
           });
         })
         .on('dir', function (entry, stat) {
+          entry = path.normalize(entry);
           if (dataGenerator.config.verbose) {
             console.log('read directory %s (total amount (%s)', entry, dataGenerator.entries.length);
           }

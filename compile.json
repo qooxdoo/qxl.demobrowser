@@ -1,25 +1,31 @@
 {
+   "environment": {
+    "qx.allowUrlVariants" : true,
+	"qx.allowUrlSettings" : true,
+	"qx.contrib": false,
+    "qx.icontheme": ["Tango", "Oxygen"]
+   },
 	"applications": [
 		{
 			"class": "demobrowser.Application",
 			"theme": "demobrowser.Theme",
 			"name": "demobrowser",
-			"title": "DemoBrowser"
+			"title": "DemoBrowser",
+			"default": false
 		}
 	],
     "include": [
-        "qx.*"
-    ],
-    "exclude": [
-        "qx.test.*",
-        "qx.module.Blocker",
-        "qx.module.Placement"
+		"demobrowser.*"
     ],
 	/** Targets */
 	"targets": [
 		{
 			"type": "source",
 			"outputPath": "source-output"
+		},
+		{
+			"type": "build",
+			"outputPath": "source-build"
 		}
 	],
 	

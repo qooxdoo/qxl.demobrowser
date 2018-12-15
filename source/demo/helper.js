@@ -62,7 +62,7 @@
     var category = directory[directory.length-2];
 
     // create the URI to the source script
-    jsFileURL = "../../script/demobrowser.demo." + category + "." + base + ".js";
+    jsFileURL = "../../script/demobrowser.demo." + category + "." + base + "-boot.js";
     jsSourceURL = "../../script/demobrowser.demo." + category + "." + base + ".src.js";
 
     // Apply document title
@@ -95,6 +95,10 @@
     script.src = jsFileURL;
     head.appendChild(script);
   }
+  
+  if (!window.qx) 
+    window.qx = {};
+  qx.$$appRoot = "../../script/";
 
   getDataFromLocation();
   loadScript();

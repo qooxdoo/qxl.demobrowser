@@ -25,9 +25,8 @@
         "email" : "martin DOT wittemann AT 1und1 DOT de"
       }
     ],
-
-    "version" : "trunk",
-    "qooxdoo-versions": ["trunk"]
+    "version": "0.1.0",
+    "qooxdoo-range": "^6.0.0-alpha"
   },
   
   "provides" : 

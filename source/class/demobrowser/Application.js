@@ -73,7 +73,6 @@ qx.Class.define("demobrowser.Application",
     finalize : function()
     {
       this.base(arguments);
-
       this.viewer.dataLoader("script/demodata.json");
     }
   },
