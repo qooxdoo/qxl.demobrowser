@@ -1,46 +1,41 @@
 {
-  "info" : 
-  {
-    "name" : "DemoBrowser",
-
-    "summary" : "A GUI framework application for qooxdoo demos",
-    "description" : "The DemoBrowser provides a run environment for qooxdoo samples and demo apps that features tree and forward/backward navigation, profiling and code inspection.",
-    
-    "keywords" : ["demos", "run frame"],
-    "homepage" : "http://demo.qooxdoo.org/current/demobrowser",
-
-    "license" : "MIT",
-    "authors" : 
-    [
+  "info": {
+    "name": "DemoBrowser",
+    "summary": "A GUI framework application for qooxdoo demos",
+    "description": "The DemoBrowser provides a run environment for qooxdoo samples and demo apps that features tree and forward/backward navigation, profiling and code inspection.",
+    "keywords": [
+      "demos",
+      "run frame"
+    ],
+    "homepage": "http://demo.qooxdoo.org/current/demobrowser",
+    "license": "MIT",
+    "authors": [
       {
-        "name" : "Thomas Herchenroeder (thron7)",
-        "email" : "thron7 AT users DOT sourceforge DOT net"
+        "name": "Thomas Herchenroeder (thron7)",
+        "email": "thron7 AT users DOT sourceforge DOT net"
       },
       {
-        "name" : "Daniel Wagner (d_wagner)",
-        "email" : "daniel DOT wagner AT 1und1 DOT de"
+        "name": "Daniel Wagner (d_wagner)",
+        "email": "daniel DOT wagner AT 1und1 DOT de"
       },
       {
-        "name" : "Martin Wittemann (martinwittemann)",
-        "email" : "martin DOT wittemann AT 1und1 DOT de"
+        "name": "Martin Wittemann (martinwittemann)",
+        "email": "martin DOT wittemann AT 1und1 DOT de"
       },
       {
-        "name" : "Henner Kollmann (hkollmann)",
-        "email" : "Henner DOT Kollmann AT gmx DOT de"
-      }    
-	],
-    "version": "0.1.0",
+        "name": "Henner Kollmann (hkollmann)",
+        "email": "Henner DOT Kollmann AT gmx DOT de"
+      }
+    ],
+    "version": "0.1.1",
     "qooxdoo-range": "^6.0.0-alpha"
   },
-  
-  "provides" : 
-  {
-    "namespace"   : "qxl.demobrowser",
-    "encoding"    : "utf-8",
-    "class"       : "source/class",
-    "resource"    : "source/resource",
-    "translation" : "source/translation",
-    "type"        : "add-in"
+  "provides": {
+    "namespace": "qxl.demobrowser",
+    "encoding": "utf-8",
+    "class": "source/class",
+    "resource": "source/resource",
+    "translation": "source/translation",
+    "type": "add-in"
   }
 }
-
