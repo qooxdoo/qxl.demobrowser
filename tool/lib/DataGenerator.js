@@ -311,6 +311,7 @@
           var demoDataJsonFilePath = path.dirname(dataGenerator.config.demoDataJsonFile);
           var demoCategory = dataGenerator.getDemoCategoryFromFile(file.path);
           var className = path.join(
+            'qxl',
             'demobrowser',
             'demo',
             demoCategory.category,

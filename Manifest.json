@@ -35,7 +35,7 @@
   
   "provides" : 
   {
-    "namespace"   : "demobrowser",
+    "namespace"   : "qxl.demobrowser",
     "encoding"    : "utf-8",
     "class"       : "source/class",
     "resource"    : "source/resource",

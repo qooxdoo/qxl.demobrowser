@@ -13,13 +13,17 @@ function compile(data, callback) {
         demoPath: "source/demo/",
         demoDataJsonFile: path.join(output, name, "script/demodata.json"),
         classPath: "source/class",
-        jsSourcePath: "source/class/demobrowser/demo",
+        jsSourcePath: "source/class/qxl/demobrowser/demo",
         demoConfigJsonFile: path.join(output, name, "config.demo.json"),
         verbose: this.argv.verbose
       };
       let appInfos = [];
       let dataGenerator = new DataGenerator(config);
       async.series([
+        (cb) => {
+          console.info("\nStart build demo");
+          cb();
+        },
         // catches all the demos from config.demoPath
         dataGenerator.catchEntries.bind(dataGenerator),
         // Creates json file with all demos
@@ -39,7 +43,7 @@ function compile(data, callback) {
           files.forEach(file => {
             if (file.level === 2) {
               let demoCategory = dataGenerator.getDemoCategoryFromFile(file.path);
-              let className = 'demobrowser.demo.' +  demoCategory.category + '.' + demoCategory.name;
+              let className = 'qxl.demobrowser.demo.' +  demoCategory.category + '.' + demoCategory.name;
               let library = analyser.getLibraryFromClassname(className);
               if (!library) {
                console.info("no class found for " + file.path);
@@ -101,6 +105,10 @@ function compile(data, callback) {
           qx.tool.compiler.files.Utils.sync("source/demo", path.join(output, name, "demo"))
              .then(() => cb())
              .catch((err) => cb(err));
+        },
+        (cb) => {
+          console.info("\nDONE");
+          cb();
         }
       ]);
     });

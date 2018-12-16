@@ -7,15 +7,15 @@
    },
 	"applications": [
 		{
-			"class": "demobrowser.Application",
-			"theme": "demobrowser.Theme",
+			"class": "qxl.demobrowser.Application",
+			"theme": "qxl.demobrowser.Theme",
 			"name": "demobrowser",
 			"title": "DemoBrowser",
 			"default": false
 		}
 	],
     "include": [
-		"demobrowser.*"
+		"qxl.demobrowser.*"
     ],
 	/** Targets */
 	"targets": [
@@ -29,7 +29,7 @@
 		}
 	],
 	
-	"defaultTarget": "source",
+	"defaultTarget": "build",
 	
 	"locales": [
 		"en"
