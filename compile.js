@@ -1,16 +1,12 @@
 function compile(data, callback) {
-    let inWork = false;
-    this.addListener("writtenApplications",  (e) => {
-      if (inWork) {
-        return;
-      }
-      inWork = true;
+    this.addListenerOnce("writtenApplications",  (e) => {
+      debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
       const async = require("async");
-      const name = "demobrowser";//e.getData();
+      const name = data.applications[0].name;
       const output = data.target.outputPath;
       let target = this._getMaker().getTarget();
-      let analyser = target.getAnalyser();
+      let analyser = this._getMaker().getAnalyser();
 
       // global vars
       const config = {
@@ -79,12 +75,12 @@ function compile(data, callback) {
              target.set({
                       scriptPrefix: appInfo.className + "-"
                       , targetUri: path.join(appInfo.app.getName(), "script")
-
+                      , generateIndexHtml: false
               });
-              debugger;
               if (data.target.type === "build") {
                 target.setMinify("off");
               }
+              target.addPathMapping("build-output/demobrowser/script/build-output/resource", "../../resource");
               // Calculate dependencies and write it out
               appInfo.app.setAnalyser(analyser);
               appInfo.app.calcDependencies();

@@ -1,7 +1,3 @@
-#: demobrowser/InfoWindow.js:94 qx/ui/control/ColorPopup.js:180
-msgid "OK"
-msgstr ""
-
 #: demobrowser/DemoBrowser.js:195
 msgid "Info"
 msgstr ""
@@ -76,6 +72,10 @@ msgstr ""
 
 #: demobrowser/DemoBrowser.js:897
 msgid "Get Demo Link"
+msgstr ""
+
+#: demobrowser/InfoWindow.js:94 qx/ui/control/ColorPopup.js:180
+msgid "OK"
 msgstr ""
 
 #: demobrowser/demo/showcase/Localization.js:69
