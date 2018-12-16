@@ -148,7 +148,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
     var htmlView = this.__htmlView = this.__makeHtmlCodeView();
     var jsView = this.__jsView = this.__makeJsCodeView();
-    var logView = this.__logView = new qx.contrib.logpane.LogView();
+    var logView = this.__logView = new qxl.logpane.LogView();
     logView.setDecorator(null);
 
     var stack = this.__stack = new qx.ui.container.Stack();
