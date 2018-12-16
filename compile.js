@@ -80,6 +80,7 @@ function compile(data, callback) {
               if (data.target.type === "build") {
                 target.setMinify("off");
               }
+              target.addPathMapping("source-output/demobrowser/script/source-output", "../..");
               target.addPathMapping("build-output/demobrowser/script/build-output/resource", "../../resource");
               // Calculate dependencies and write it out
               appInfo.app.setAnalyser(analyser);
