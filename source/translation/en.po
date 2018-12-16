@@ -275,11 +275,11 @@ msgstr ""
 msgid "Orange"
 msgstr ""
 
-#: qx/contrib/logpane/LogView.js:51
+#: qx/contrib/logpane/LogView.js:51 qxl/logpane/LogPane.js:51
 msgid "Log"
 msgstr ""
 
-#: qx/contrib/logpane/LogView.js:66
+#: qx/contrib/logpane/LogView.js:66 qxl/logpane/LogPane.js:66
 msgid "Clear"
 msgstr ""
 

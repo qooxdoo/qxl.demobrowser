@@ -1,2 +1,14 @@
-# qx-contrib-demobrowser
+# qooxdoo/demobrowser
 A GUI framework application for qooxdoo demos
+
+## Developing DemoBrowser
+Clone this repo and compile it:
+
+```
+    $ git clone https://github.com/qooxdoo/demobrowser
+    $ cd demobrowser
+	$ npm install
+    $ qx serve
+```
+Then open [http://localhost:8080](http://localhost:8080)
+
