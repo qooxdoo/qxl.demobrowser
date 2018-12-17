@@ -1,5 +1,8 @@
 function compile(data, callback) {
-    this.addListenerOnce("writtenApplications",  (e) => {
+  debugger;
+  const { execSync } = require('child_process');
+  execSync('npm install');
+  this.addListenerOnce("writtenApplications",  (e) => {
       debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
       const async = require("async");
