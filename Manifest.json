@@ -36,6 +36,6 @@
     "class": "source/class",
     "resource": "source/resource",
     "translation": "source/translation",
-    "type": "add-in"
+    "type": "application"
   }
 }
