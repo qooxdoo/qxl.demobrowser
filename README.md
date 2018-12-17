@@ -5,9 +5,9 @@ A GUI framework application for qooxdoo demos
 Clone this repo and compile it:
 
 ```
-    $ git clone https://github.com/qooxdoo/demobrowser
-    $ cd demobrowser
-	$ npm install
+    $ git clone https://github.com/qooxdoo/qxl.demobrowser
+    $ cd qxl.demobrowser
+    $ npm install
     $ qx serve
 ```
 Then open [http://localhost:8080](http://localhost:8080)
