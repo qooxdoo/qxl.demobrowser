@@ -7,6 +7,7 @@ Clone this repo and compile it:
 ```
     $ git clone https://github.com/qooxdoo/qxl.demobrowser
     $ cd qxl.demobrowser
+    $ qx contrib install
     $ npm install
     $ qx serve
 ```
