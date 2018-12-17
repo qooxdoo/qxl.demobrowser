@@ -1,7 +1,10 @@
 function compile(data, callback) {
   debugger;
   const { execSync } = require('child_process');
-  execSync('npm install');
+  console.info("run npm install");
+  execSync('npm install',  {stdio: 'inherit'});
+  console.info("run qx contrib install");
+  execSync('qx contrib install',  {stdio: 'inherit'});
   this.addListenerOnce("writtenApplications",  (e) => {
       debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
