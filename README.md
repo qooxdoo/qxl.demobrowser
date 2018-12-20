@@ -1,4 +1,5 @@
-# qooxdoo/demobrowser
+# Qooxdoo Demobrowser
+
 A GUI framework application for qooxdoo demos
 
 ## Developing DemoBrowser
