@@ -37,9 +37,9 @@ qx.Class.define("qxl.demobrowser.Application",
     this.base(arguments);
 
     // Include CSS files
-    var uri = qx.util.ResourceManager.getInstance().toUri("demobrowser/css/style.css");
+    var uri = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/css/style.css");
     qx.bom.Stylesheet.includeFile(uri);
-    uri = qx.util.ResourceManager.getInstance().toUri("demobrowser/css/sourceview.css");
+    uri = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/css/sourceview.css");
     qx.bom.Stylesheet.includeFile(uri);
   },
 
@@ -73,7 +73,8 @@ qx.Class.define("qxl.demobrowser.Application",
     finalize : function()
     {
       this.base(arguments);
-      this.viewer.dataLoader("script/demodata.json");
+      let uri = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/script/demodata.json");
+      this.viewer.dataLoader(uri);
     }
   },
 

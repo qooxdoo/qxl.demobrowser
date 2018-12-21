@@ -43,6 +43,8 @@
  * @asset(qx/icon/Tango/22/actions/help-about.png)
  * @asset(qx/icon/Tango/22/actions/media-seek-forward.png)
  * @asset(qx/icon/Tango/22/mimetypes/text-html.png)
+ *
+ * @ignore(location.*)
  */
 qx.Class.define("qxl.demobrowser.DemoBrowser",
 {
@@ -1695,7 +1697,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       header.setAppearance("app-header");
 
       var title = new qx.ui.basic.Label("Demo Browser");
-      var version = new qxl.demobrowser.VersionLabel();
+      var version = new qxl.versionlabel.VersionLabel();
       version.setFont("default");
 
       header.add(title);
