@@ -11,12 +11,14 @@
 			"theme": "qxl.demobrowser.Theme",
 			"name": "demobrowser",
 			"title": "DemoBrowser",
-			"default": false
+			"include": [
+				"qxl.demobrowser.*",
+				"qx.theme.Modern",
+				"qx.theme.Simple",
+				"qx.theme.Classic"
+			]
 		}
 	],
-    "include": [
-		"qxl.demobrowser.*"
-    ],
 	/** Targets */
 	"targets": [
 		{

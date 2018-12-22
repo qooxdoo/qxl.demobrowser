@@ -1106,7 +1106,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         this.__logDone = false;
         this.__themePart.getChildren()[0].setEnabled(false);
         this.__themePart.getChildren()[1].setEnabled(false);
-        this._iframe.setSource(url);
+        this._iframe.setSource(qx.$$appRoot + url);
         this._iframe.addListener("load", function () {
           window.setTimeout(function() {
             var cw = this._iframe.getWindow();
