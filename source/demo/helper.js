@@ -98,7 +98,7 @@
   
   if (!window.qx) 
     window.qx = {};
-  qx.$$appRoot = parent.qx.$$appRoot + "script/";
+  qx.$$appRoot = "../../script/";
 
   getDataFromLocation();
   loadScript();

@@ -43,6 +43,8 @@
  * @asset(qx/icon/Tango/22/actions/help-about.png)
  * @asset(qx/icon/Tango/22/actions/media-seek-forward.png)
  * @asset(qx/icon/Tango/22/mimetypes/text-html.png)
+ *
+ * @ignore(location.*)
  */
 qx.Class.define("qxl.demobrowser.DemoBrowser",
 {
@@ -1096,7 +1098,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       {
         url = this.defaultUrl;
       }
-
+	  
+      url = qx.$$appRoot + url;
+	  
       if (this._iframe.getSource() == url)
       {
         this._iframe.reload();
@@ -1106,7 +1110,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         this.__logDone = false;
         this.__themePart.getChildren()[0].setEnabled(false);
         this.__themePart.getChildren()[1].setEnabled(false);
-        this._iframe.setSource(qx.$$appRoot + url);
+        this._iframe.setSource(url);
         this._iframe.addListener("load", function () {
           window.setTimeout(function() {
             var cw = this._iframe.getWindow();
@@ -1695,7 +1699,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       header.setAppearance("app-header");
 
       var title = new qx.ui.basic.Label("Demo Browser");
-      var version = new qxl.demobrowser.VersionLabel();
+      var version = new qxl.versionlabel.VersionLabel();
       version.setFont("default");
 
       header.add(title);

@@ -27,7 +27,8 @@
 		},
 		{
 			"type": "build",
-			"outputPath": "build-output"
+			"outputPath": "build-output",
+			"minify": "off"
 		}
 	],
 	

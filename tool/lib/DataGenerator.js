@@ -331,7 +331,7 @@
               path.join(
                 demoDataJsonFilePath,
                 util.format(
-                  'demobrowser.demo.%s.%s.src.js',
+                  'qxl.demobrowser.demo.%s.%s.src.js',
                   demoCategory.category,
                   demoCategory.name
                 )

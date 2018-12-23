@@ -3,15 +3,12 @@ function compile(data, callback) {
   const { execSync } = require('child_process');
   console.info("run npm install");
   execSync('npm install',  {stdio: 'inherit'});
-  console.info("run qx contrib install");
-  execSync('qx contrib install',  {stdio: 'inherit'});
   this.addListenerOnce("writtenApplications",  (e) => {
       debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
       const async = require("async");
       const name = data.applications[0].name;
       const output = data.target.outputPath;
-      let target = this._getMaker().getTarget();
       let analyser = this._getMaker().getAnalyser();
 
       // global vars
@@ -27,7 +24,7 @@ function compile(data, callback) {
       let dataGenerator = new DataGenerator(config);
       async.series([
         (cb) => {
-          console.info("\nStart build demo");
+          console.info("\nDEMO BUILD STARTED");
           cb();
         },
         // catches all the demos from config.demoPath
@@ -58,19 +55,24 @@ function compile(data, callback) {
               appInfos.push({
                 app: new qx.tool.compiler.app.Application(className, [
                   "qx.theme.Indigo",
-                  "qx.theme.Simple",
                   "qx.theme.Modern",
+                  "qx.theme.Simple",
                   "qx.theme.Classic",
                   "qx.log.appender.Native",
-                  "qx.log.appender.Console",
-                  "qx.dev.ObjectSummary"
+                  "qx.log.appender.Console"
                 ]).set({
                   theme: "qx.theme.Indigo",
                   analyser: analyser,
                   environment: environment,
                   name: className,
                   outputPath: path.join(name, "/script"),
-                  writeIndexHtmlToRoot: false                  
+                  writeIndexHtmlToRoot: false,
+                  include: [
+                    "qx.theme.Indigo",
+                    "qx.theme.Modern",
+                    "qx.theme.Simple",
+                    "qx.theme.Classic"
+                  ]
                 }),
                 className: className
               });
@@ -79,25 +81,31 @@ function compile(data, callback) {
           cb();
         },
         (cb) => {
-           console.info("Writing " + target);          
+           console.info("DEMO BUILD START COMPILE");          
+           // clone target - it is still used in appMaker!
+           let clazz = this._getMaker().getTarget().constructor;
+           let target = new clazz(output);
+           if (data.target.type === "build") {
+            target.setMinify("off");
+          }
+           target.set({
+           generateIndexHtml: false
+           , analyser: analyser
+
+          });
+          target.addPathMapping("source-output/demobrowser/script/source-output", "../..");
+          target.addPathMapping("build-output/demobrowser/script/build-output/resource", "../../resource");
+
            async.eachSeries(appInfos,
             (appInfo, cb) => {
-             target.set({
-                      scriptPrefix: appInfo.className + "-"
-                      , targetUri: path.join(appInfo.app.getName(), "script")
-                      , generateIndexHtml: false
-              });
-              if (data.target.type === "build") {
-                target.setMinify("off");
-              }
-              target.addPathMapping("source-output/demobrowser/script/source-output", "../..");
-              target.addPathMapping("build-output/demobrowser/script/build-output/resource", "../../resource");
-              // Calculate dependencies and write it out
+              target.set({
+                scriptPrefix: appInfo.className + "-"
+               });
+                  // Calculate dependencies and write it out
               appInfo.app.setAnalyser(analyser);
               appInfo.app.calcDependencies();
-              target.setAnalyser(analyser);
               if (this.argv.verbose) {
-                console.info("Writing class " + appInfo.app.getClassName());
+                console.info("Writing class " + appInfo.app.getClassName() + " into " + appInfo.app.getOutputPath());
              }   
              target.generateApplication(appInfo.app,  appInfo.app.getEnvironment(), function(err) {
                 if (err)
@@ -113,7 +121,7 @@ function compile(data, callback) {
              .catch((err) => cb(err));
         },
         (cb) => {
-          console.info("\nDONE");
+          console.info("\nDEMO BUILD FINISHED");
           cb();
         }
       ]);

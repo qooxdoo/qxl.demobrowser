@@ -1,76 +1,95 @@
 #: demobrowser/DemoBrowser.js:195 qxl/demobrowser/DemoBrowser.js:195
+#: qxl/demobrowser/DemoBrowser.js:197
 msgid "Info"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:367 qxl/demobrowser/DemoBrowser.js:367
+#: qxl/demobrowser/DemoBrowser.js:369
 msgid "Could not open the Playground."
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:406 qxl/demobrowser/DemoBrowser.js:406
+#: qxl/demobrowser/DemoBrowser.js:408
 msgid "Demo has been disposed."
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:410 qxl/demobrowser/DemoBrowser.js:410
+#: qxl/demobrowser/DemoBrowser.js:412
 msgid "Unable to access application."
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:431 qxl/demobrowser/DemoBrowser.js:431
+#: qxl/demobrowser/DemoBrowser.js:433
 msgid "Run"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:439 qxl/demobrowser/DemoBrowser.js:439
+#: qxl/demobrowser/DemoBrowser.js:441
 msgid "Previous"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:446 qxl/demobrowser/DemoBrowser.js:446
+#: qxl/demobrowser/DemoBrowser.js:448
 msgid "Next"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:463 qxl/demobrowser/DemoBrowser.js:463
+#: qxl/demobrowser/DemoBrowser.js:465
 msgid "Own Window"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:471 qxl/demobrowser/DemoBrowser.js:471
+#: qxl/demobrowser/DemoBrowser.js:473
 msgid "To Playground"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:490 qxl/demobrowser/DemoBrowser.js:490
+#: qxl/demobrowser/DemoBrowser.js:492
 msgid "API Viewer"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:493 qxl/demobrowser/DemoBrowser.js:493
+#: qxl/demobrowser/DemoBrowser.js:495
 msgid "Open the qooxdoo API Viewer"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:498 qxl/demobrowser/DemoBrowser.js:498
+#: qxl/demobrowser/DemoBrowser.js:500
 msgid "Manual"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:501 qxl/demobrowser/DemoBrowser.js:501
+#: qxl/demobrowser/DemoBrowser.js:503
 msgid "Open the qooxdoo Manual"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:539 qxl/demobrowser/DemoBrowser.js:539
+#: qxl/demobrowser/DemoBrowser.js:541
 msgid "Theme"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:554 qxl/demobrowser/DemoBrowser.js:554
+#: qxl/demobrowser/DemoBrowser.js:556
 msgid "Object Summary"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:560 qxl/demobrowser/DemoBrowser.js:560
+#: qxl/demobrowser/DemoBrowser.js:562
 msgid "Dispose Demo"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:565 qxl/demobrowser/DemoBrowser.js:565
+#: qxl/demobrowser/DemoBrowser.js:567
 msgid "Debug"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:876 qxl/demobrowser/DemoBrowser.js:876
+#: qxl/demobrowser/DemoBrowser.js:878
 msgid "Demo Link"
 msgstr ""
 
 #: demobrowser/DemoBrowser.js:897 qxl/demobrowser/DemoBrowser.js:897
+#: qxl/demobrowser/DemoBrowser.js:899
 msgid "Get Demo Link"
 msgstr ""
 
