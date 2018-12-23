@@ -2,7 +2,7 @@
    "environment": {
     "qx.allowUrlVariants" : true,
 	"qx.allowUrlSettings" : true,
-	"qx.contrib": false,
+	"qx.contrib": true,
     "qx.icontheme": ["Tango", "Oxygen"]
    },
 	"applications": [
@@ -27,8 +27,7 @@
 		},
 		{
 			"type": "build",
-			"outputPath": "build-output",
-			"minify": "off"
+			"outputPath": "build-output"
 		}
 	],
 	

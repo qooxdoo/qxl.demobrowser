@@ -2,6 +2,10 @@
 
 A GUI framework application for qooxdoo demos
 
+## Online version
+
+http://www.qooxdoo.org/qxl.demobrowser/ 
+
 ## Developing DemoBrowser
 Clone this repo and compile it:
 
