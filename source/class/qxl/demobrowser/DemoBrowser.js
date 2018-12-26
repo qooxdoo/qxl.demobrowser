@@ -175,16 +175,12 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     this.__menuElements =
     [
       this.__sobutt,
-      this.__viewPart,
-      this.__disposeBtn
+      this.__viewPart
     ];
 
     if (qx.core.Environment.get("qx.contrib") == false) {
       this.__menuElements.push(this.__playgroundButton);
       this.__menuElements.push(this.__themePart);
-      this.__menuElements.push(this.__summaryBtn);
-    } else {
-      this.__menuElements.push(this.__debugButton);
     }
 
     this.__logSync = new qx.event.Timer(250);
@@ -224,9 +220,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     __viewPart : null,
     __themePart : null,
     __themeMenu : null,
-    __disposeBtn : null,
-    __debugButton : null,
-    __summaryBtn : null,
     __menuBar : null,
     _leftComposite : null,
     _infosplit : null,
@@ -263,8 +256,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       this._cmdSampleInOwnWindow = new qx.ui.command.Command("Ctrl+N");
       this._cmdSampleInOwnWindow.addListener("execute", this.__openWindow, this);
 
-      this._cmdDisposeSample = new qx.ui.command.Command("Ctrl+D");
-      this._cmdDisposeSample.addListener("execute", this.__disposeSample, this);
     },
 
 
@@ -374,11 +365,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the api viewer.
      */
     __onApiOpen : function() {
-      window.open(
-        "http://demo.qooxdoo.org/" +
-        qx.core.Environment.get("qx.version") +
-        "/apiviewer/"
-      );
+      window.open("http://www.qooxdoo.org/qxl.apiviewer/");
     },
 
 
@@ -386,36 +373,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the manual.
      */
     __onManualOpen : function() {
-      var vers = (qx.core.Environment.get("qx.version").split("-")[0]);
-      window.open("http://manual.qooxdoo.org/" + vers);
+      window.open("http://www.qooxdoo.org/devel/");
     },
 
-
-    /**
-     * TODOC
-     * @param e {Event} TODOC
-     */
-    __disposeSample : function(e)
-    {
-      var cw = this._iframe.getWindow();
-      var msg;
-      if (cw && cw.qx)
-      {
-        cw.qx.core.ObjectRegistry.shutdown();
-        msg = this.tr("Demo has been disposed.");
-      }
-      else
-      {
-        msg = this.tr("Unable to access application.");
-      }
-
-      var label = new qx.ui.basic.Label(msg);
-      label.setRich(true);
-      label.setWrap(true);
-      this.__infoWindow.setContent(label);
-      this.__infoWindow.setWidth(350);
-      this.__infoWindow.show();
-    },
 
     __makeToolBar : function()
     {
@@ -538,30 +498,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         menuPart.add(themeButton);
       }
 
-
-
-      // DEBUG MENU
-      // -----------------------------------------------------
-
-      var menu = new qx.ui.menu.Menu;
-
-      if (qx.core.Environment.get("qx.contrib") == false)
-      {
-        var summaryBtn = new qx.ui.menu.Button(this.tr("Object Summary"));
-        this.__summaryBtn = summaryBtn;
-        summaryBtn.setCommand(this._cmdObjectSummary);
-        menu.add(summaryBtn);
-      }
-
-      var disposeBtn = new qx.ui.menu.Button(this.tr("Dispose Demo"));
-      this.__disposeBtn = disposeBtn;
-      disposeBtn.setCommand(this._cmdDisposeSample);
-      menu.add(disposeBtn);
-
-      var debugButton = new qx.ui.toolbar.MenuButton(this.tr("Debug"), "icon/22/apps/office-spreadsheet.png", menu);
-      this.__debugButton = debugButton;
-      debugButton.setToolTipText("Debugging options");
-      menuPart.add(debugButton);
 
       // VIEWS
       // -----------------------------------------------------
@@ -1101,14 +1037,12 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       {
         this.__logDone = false;
         this.__themePart.getChildren()[0].setEnabled(false);
-        this.__themePart.getChildren()[1].setEnabled(false);
         this._iframe.setSource(url);
         this._iframe.addListener("load", function () {
           window.setTimeout(function() {
             var cw = this._iframe.getWindow();
             if (cw && cw.qx && cw.qx.theme && cw.qx.theme.manager && cw.qx.theme.manager.Meta) {
               this.__themePart.getChildren()[0].setEnabled(true);
-              this.__themePart.getChildren()[1].setEnabled(true);
             }
           }.bind(this), 333);
         }, this);
@@ -1718,10 +1652,10 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     this._disposeObjects("mainsplit", "tree1", "left", "runbutton", "toolbar",
       "f1", "f2", "_history", "logappender", '_cmdObjectSummary',
       '_cmdRunSample', '_cmdPrevSample', '_cmdNextSample',
-      '_cmdSampleInOwnWindow', '_cmdDisposeSample', "__disposeBtn", "__debugButton",
+      '_cmdSampleInOwnWindow', 
       "_navPart", "_runbutton", "__sobutt", "__themePart", "__themeMenu",
       "__viewPart", "__viewGroup", "__menuBar", "_infosplit", "_searchTextField",
-      "_status", "_tree", "_iframe", "_demoView", "__menuElements", "__summaryBtn",
+      "_status", "_tree", "_iframe", "_demoView", "__menuElements", 
       "__logSync", "_leftComposite", "_urlWindow", "_nextButton", "_prevButton",
       "__menuItemStore", "__overflowMenu");
   }

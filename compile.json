@@ -2,7 +2,7 @@
    "environment": {
     "qx.allowUrlVariants" : true,
 	"qx.allowUrlSettings" : true,
-	"qx.contrib": true,
+	"qx.contrib": false,
     "qx.icontheme": ["Tango", "Oxygen"]
    },
 	"applications": [
