@@ -999,7 +999,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
             if (currNode.tags) {
               t.setUserData("tags", currNode.tags);
               if (qx.core.Environment.get("qx.contrib") == true) {
-                that._getVersionTags(currNode.tags);
                 for (var j=0,m=currNode.tags.length; j<m; j++) {
                   var tag = currNode.tags[j];
                   if (tag.indexOf("qxVersion") == 0) {
@@ -1029,9 +1028,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       this.tree.getRoot().setOpen(true)
       buildSubTree(this.tree.getRoot(), ttree);
 
-      if (qx.core.Environment.get("qx.contrib") == true) {
-        this._getVersionItems();
-      }
 
       if (_initialNode != null) {
         this.tree.setSelection([_initialNode]);
