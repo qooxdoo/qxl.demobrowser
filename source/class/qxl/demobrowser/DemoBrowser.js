@@ -504,9 +504,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         helpButton.addListener("execute", this.__onManualOpen, this);
 
       }
-
-
-
       // THEME MENU
       // -----------------------------------------------------
 
@@ -623,7 +620,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       // set priorities for overflow handling
       bar.setRemovePriority(viewPart, 6);
       bar.setRemovePriority(menuPart, 5);
-      bar.setRemovePriority(externLinksPart2, 4);
+      if (qx.core.Environment.get("qx.contrib") == false) {
+         bar.setRemovePriority(externLinksPart2, 4);
+      }   
       bar.setRemovePriority(externLinksPart1, 3);
       bar.setRemovePriority(prevNextPart, 2);
       bar.setRemovePriority(this._navPart, 1);
