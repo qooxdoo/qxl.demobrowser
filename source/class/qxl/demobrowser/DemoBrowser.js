@@ -45,6 +45,7 @@
  * @asset(qx/icon/Tango/22/mimetypes/text-html.png)
  *
  * @ignore(location.*)
+ * @ignore(qx.$$appRoot)
  */
 qx.Class.define("qxl.demobrowser.DemoBrowser",
 {
@@ -99,10 +100,6 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     var leftComposite = this._leftComposite = new qx.ui.container.Composite();
     leftComposite.setLayout(new qx.ui.layout.VBox(3));
     mainsplit.add(leftComposite, 0);
-
-    if (qx.core.Environment.get("qx.contrib")) {
-      this._makeVersionSelect();
-    }
 
     // search
     var searchComposlite = new qx.ui.container.Composite();
