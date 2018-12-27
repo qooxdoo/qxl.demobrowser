@@ -1,9 +1,11 @@
 language: node_js
 node_js: "node"
 
-before_install:
-  - npm install qxcompiler -g 
+before_script:
+  - npm install qxcompiler 
+  - pushd node_modules/qxcompiler
   - npm update qooxdoo-sdk
+  - popd 
 
 script:
   - qx compile --target=build -v
