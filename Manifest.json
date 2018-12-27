@@ -27,7 +27,7 @@
         "email": "Henner DOT Kollmann AT gmx DOT de"
       }
     ],
-    "version": "0.1.1",
+    "version": "0.1.2",
     "qooxdoo-range": "^6.0.0-alpha"
   },
   "provides": {
