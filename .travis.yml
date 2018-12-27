@@ -3,6 +3,7 @@ node_js: "node"
 
 before_install:
   - npm install qxcompiler -g 
+  - npm update qooxdoo-sdk
 
 script:
   - qx compile --target=build -v
