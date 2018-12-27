@@ -86,7 +86,7 @@ function compile(data, callback) {
            let clazz = this._getMaker().getTarget().constructor;
            let target = new clazz(output);
            if (data.target.type === "build") {
-//            target.setMinify("off");
+            target.setMinify("off");
           }
            target.set({
            generateIndexHtml: false
