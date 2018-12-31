@@ -3,7 +3,7 @@ function compile(data, callback) {
   const { execSync } = require('child_process');
   console.info("run npm install");
   execSync('npm install',  {stdio: 'inherit'});
-  this.addListenerOnce("writtenApplications",  (e) => {
+  this.addListener("made",  (e) => new qx.Promise((fullfiled) => {
       debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
       const async = require("async");
@@ -124,8 +124,7 @@ function compile(data, callback) {
           console.info("\nDEMO BUILD FINISHED");
           cb();
         }
-      ]);
-    });
+      ], fullfiled);
+    }));
     callback(null, data);
-
 }

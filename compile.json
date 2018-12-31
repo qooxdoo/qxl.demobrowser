@@ -31,7 +31,7 @@
 		}
 	],
 	
-	"defaultTarget": "build",
+	"defaultTarget": "source",
 	
 	"locales": [
 		"en"
