@@ -1,27 +1,24 @@
 {
-   "environment": {
-    "qx.allowUrlVariants" : true,
-	"qx.allowUrlSettings" : true,
-	"qx.contrib": false,
-    "qx.icontheme": ["Tango", "Oxygen"]
-   },
-	"applications": [
-		{
-			"class": "qxl.demobrowser.Application",
-			"theme": "qxl.demobrowser.Theme",
-			"name": "demobrowser",
-			"title": "DemoBrowser",
-			"include": [
-				"qxl.demobrowser.*",
-				"qx.theme.Modern",
-				"qx.theme.Simple",
-				"qx.theme.Classic"
-			]
-		}
-	],
+	"environment": {
+		"qx.allowUrlVariants": true,
+		"qx.allowUrlSettings": true,
+		"qx.contrib": false,
+		"qx.icontheme": ["Tango", "Oxygen"]
+	},
+	"applications": [{
+		"class": "qxl.demobrowser.Application",
+		"theme": "qxl.demobrowser.Theme",
+		"name": "demobrowser",
+		"title": "DemoBrowser",
+		"include": [
+			"qxl.demobrowser.*",
+			"qx.theme.Modern",
+			"qx.theme.Simple",
+			"qx.theme.Classic"
+		]
+	}],
 	/** Targets */
-	"targets": [
-		{
+	"targets": [{
 			"type": "source",
 			"outputPath": "source-output"
 		},
@@ -30,13 +27,13 @@
 			"outputPath": "build-output"
 		}
 	],
-	
+
 	"defaultTarget": "source",
-	
+
 	"locales": [
 		"en"
 	],
 	"serve": {
-	   "listenPort": 8080
+		"listenPort": 8080
 	}
 }
