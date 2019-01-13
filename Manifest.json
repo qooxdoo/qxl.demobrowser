@@ -27,7 +27,7 @@
         "email": "Henner DOT Kollmann AT gmx DOT de"
       }
     ],
-    "version": "0.1.2"
+    "version": "0.1.3"
   },
   "provides": {
     "namespace": "qxl.demobrowser",
