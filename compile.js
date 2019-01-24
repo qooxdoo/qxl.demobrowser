@@ -107,11 +107,9 @@ function compile(data, callback) {
               if (this.argv.verbose) {
                 console.info("Writing class " + appInfo.app.getClassName() + " into " + appInfo.app.getOutputPath());
              }   
-             target.generateApplication(appInfo.app,  appInfo.app.getEnvironment(), function(err) {
-                if (err)
-                  return cb(err);
-                cb();
-              });
+             target.generateApplication(appInfo.app,  appInfo.app.getEnvironment())
+               .then(() => cb())
+               .catch(cb);
             },
             cb)           
         },
