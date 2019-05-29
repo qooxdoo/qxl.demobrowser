@@ -35,8 +35,7 @@
     "encoding": "utf-8",
     "class": "source/class",
     "resource": "source/resource",
-    "translation": "source/translation",
-    "type": "application"
+    "translation": "source/translation"
   },
   "requires": {
     "qooxdoo/qxl.logpane": "^0.1.3",

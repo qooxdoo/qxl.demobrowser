@@ -1,9 +1,8 @@
 /*global module*/
 (function () {
   'use strict';
-
   // core libraries
-  const fs = qx.tool.compiler.utils.Promisify.fs;
+  const fs = qx.tool.utils.Promisify.fs;
   var util = require('util');
 
   // 3rd party packages

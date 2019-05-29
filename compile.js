@@ -1,15 +1,11 @@
-const path = require("path");
-const async = require("async");
-
 module.exports = function(compiler) {
-  debugger;
   const { execSync } = require('child_process');
   console.info("run npm install");
   execSync('npm install',  {stdio: 'inherit'});
+  const path = require("path");
+  const async = require("async");
   compiler.command.addListener("made",  (e) => new qx.Promise((fullfiled) => {
-      debugger;
       const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
-      const async = require("async");
       const name = compiler.inputData.applications[0].name;
       const output = compiler.inputData.target.outputPath;
       let analyser = compiler.command._getMaker().getAnalyser();
