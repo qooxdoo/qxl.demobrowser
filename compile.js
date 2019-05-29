@@ -9,6 +9,7 @@ module.exports = function(compiler) {
       const name = compiler.inputData.applications[0].name;
       const output = compiler.inputData.target.outputPath;
       let analyser = compiler.command._getMaker().getAnalyser();
+      var templateDir = compiler.command.getTemplateDir();
   
       // global vars
       const config = {
@@ -71,7 +72,8 @@ module.exports = function(compiler) {
                     "qx.theme.Modern",
                     "qx.theme.Simple",
                     "qx.theme.Classic"
-                  ]
+                  ],
+                  templatePath: templateDir
                 }),
                 className: className
               });
