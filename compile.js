@@ -108,14 +108,20 @@ module.exports = function(compiler) {
              }   
              target.generateApplication(appInfo.app,  appInfo.app.getEnvironment())
                .then(() => cb())
-               .catch(cb);
+               .catch((err) => {
+                  console.error(err.message);
+                  cb(err);
+               });
             },
             cb)           
         },
         (cb) => {
-          qx.tool.compiler.files.Utils.sync("source/demo", path.join(output, name, "demo"))
+          qx.tool.utils.files.Utils.sync("source/demo", path.join(output, name, "demo"))
              .then(() => cb())
-             .catch((err) => cb(err));
+             .catch((err) => {
+              console.error(err.message);
+              cb(err);
+             });
         },
         (cb) => {
           console.info("\nDEMO BUILD FINISHED");
