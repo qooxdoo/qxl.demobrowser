@@ -46,6 +46,8 @@
 			"qx.theme.Modern",
 			"qx.theme.Simple",
 			"qx.theme.Classic"
+		]
+	}
   },
   "requires": {
     "qooxdoo/qxl.logpane": "^0.1.3",
