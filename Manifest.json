@@ -35,7 +35,17 @@
     "encoding": "utf-8",
     "class": "source/class",
     "resource": "source/resource",
-    "translation": "source/translation"
+    "translation": "source/translation",
+    "application": {
+		"class": "qxl.demobrowser.Application",
+		"theme": "qxl.demobrowser.Theme",
+		"name": "demobrowser",
+		"title": "DemoBrowser",
+		"include": [
+			"qxl.demobrowser.*",
+			"qx.theme.Modern",
+			"qx.theme.Simple",
+			"qx.theme.Classic"
   },
   "requires": {
     "qooxdoo/qxl.logpane": "^0.1.3",
