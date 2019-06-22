@@ -28,7 +28,7 @@
         "email": "Henner DOT Kollmann AT gmx DOT de"
       }
     ],
-    "version": "1.0.0-beta.0"
+    "version": "1.0.0-beta.1"
   },
   "provides": {
     "namespace": "qxl.demobrowser",
@@ -37,17 +37,17 @@
     "resource": "source/resource",
     "translation": "source/translation",
     "application": {
-		"class": "qxl.demobrowser.Application",
-		"theme": "qxl.demobrowser.Theme",
-		"name": "demobrowser",
-		"title": "DemoBrowser",
-		"include": [
-			"qxl.demobrowser.*",
-			"qx.theme.Modern",
-			"qx.theme.Simple",
-			"qx.theme.Classic"
-		]
-	}
+      "class": "qxl.demobrowser.Application",
+      "theme": "qxl.demobrowser.Theme",
+      "name": "demobrowser",
+      "title": "DemoBrowser",
+      "include": [
+        "qxl.demobrowser.*",
+        "qx.theme.Modern",
+        "qx.theme.Simple",
+        "qx.theme.Classic"
+      ]
+    }
   },
   "requires": {
     "qooxdoo/qxl.logpane": "^0.1.3",
