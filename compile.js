@@ -7,36 +7,39 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       command.addListener("writtenApplication", (e) => this.__appCompiling(e.getData()));
     },
     __appCompiling(application) {
+      let className = application.getClassName();
+      if (className !== "qxl.demobrowser.Application") {
+        return;
+      }
+
       let command = this.getCompilerApi().getCommand();
       let maker = command.getMaker();
       let analyser = maker.getAnalyser();
-      var templateDir = command.getTemplateDir();
-      const output = maker.getTarget().getOutputDir();
+      const templateDir = command.getTemplateDir();
+      const outputDir = maker.getTarget().getOutputDir();
+      const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
+
 
 
       return new qx.Promise((fullfiled) => {
         let app = application.getName();
-        let className = application.getClassName();
-        if (className !== "qxl.demobrowser.Application") {
-          fullfiled();
-          return;
-        }
         const {execSync} = require('child_process');
-        console.info("run npm install");
-        execSync('npm install', {
+		    let s = 'npm install --no-save async walker upath mkdirp';
+        console.info(s);
+        execSync(s, {
           stdio: 'inherit'
         });
-        const path = require("path");
+        const path = require("upath");
         const async = require("async");
-        const DataGenerator = require(path.join(process.cwd(), "tool/lib/DataGenerator"));
-
+        const DataGenerator = require(path.join(sourceDir, "tool/lib/DataGenerator"));
+debugger;
         // global vars
         const config = {
-          demoPath: "source/demo/",
-          demoDataJsonFile: path.join(output, app, "script/demodata.json"),
-          classPath: "source/class",
-          jsSourcePath: "source/class/qxl/demobrowser/demo",
-          demoConfigJsonFile: path.join(output, app, "config.demo.json"),
+          demoPath: path.join(sourceDir,"source/demo/"),
+          demoDataJsonFile: path.join(outputDir, app, "script/demodata.json"),
+          classPath: path.join(sourceDir,"source/class"),
+          jsSourcePath: path.join(sourceDir,"source/class/qxl/demobrowser/demo"),
+          demoConfigJsonFile: path.join(outputDir, app, "config.demo.json"),
           verbose: command.argv.verbose
         };
         let appInfos = [];
@@ -104,7 +107,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
             console.info("DEMO BUILD START COMPILE");
             // clone target - it is still used in appMaker!
             let clazz = maker.getTarget().constructor;
-            let target = new clazz(output);
+            let target = new clazz(outputDir);
             if (target.setMinify) {
               target.setMinify("off");
             }
@@ -113,8 +116,8 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
               analyser: analyser
 
             });
-            target.addPathMapping("source-output/demobrowser/script/source-output", "../..");
-            target.addPathMapping("build-output/demobrowser/script/build-output/resource", "../../resource");
+            target.addPathMapping("source-outputDir/demobrowser/script/source-outputDir", "../..");
+            target.addPathMapping("build-outputDir/demobrowser/script/build-outputDir/resource", "../../resource");
 
             async.eachSeries(appInfos,
               (appInfo, cb) => {
@@ -137,7 +140,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
               cb)
           },
           (cb) => {
-            qx.tool.utils.files.Utils.sync("source/demo", path.join(output, app, "demo"))
+            qx.tool.utils.files.Utils.sync("source/demo", path.join(outputDir, app, "demo"))
               .then(() => cb())
               .catch((err) => {
                 console.error(err.message);

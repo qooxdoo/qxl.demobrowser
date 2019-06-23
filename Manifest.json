@@ -50,9 +50,9 @@
     }
   },
   "requires": {
-    "qooxdoo/qxl.logpane": "^0.1.3",
-    "qooxdoo/qxl.versionlabel": "^0.1.1",
     "@qooxdoo/compiler": "^1.0.0-beta",
-    "@qooxdoo/framework": "^6.0.0-alpha"
+    "@qooxdoo/framework": "^6.0.0-alpha",
+    "qooxdoo/qxl.logpane": "^1.0.0-beta.0",
+    "qooxdoo/qxl.versionlabel": "^1.0.0-beta.0"
   }
 }
