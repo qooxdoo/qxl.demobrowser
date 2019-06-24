@@ -32,7 +32,6 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
         const path = require("upath");
         const async = require("async");
         const DataGenerator = require(path.join(sourceDir, "tool/lib/DataGenerator"));
-debugger;
         // global vars
         const config = {
           demoPath: path.join(sourceDir,"source/demo/"),
@@ -140,7 +139,7 @@ debugger;
               cb)
           },
           (cb) => {
-            qx.tool.utils.files.Utils.sync("source/demo", path.join(outputDir, app, "demo"))
+            qx.tool.utils.files.Utils.sync(path.join(sourceDir,"source/demo/"), path.join(outputDir, app, "demo"))
               .then(() => cb())
               .catch((err) => {
                 console.error(err.message);
