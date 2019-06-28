@@ -24,7 +24,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       return new qx.Promise((fullfiled) => {
         let app = application.getName();
         const {execSync} = require('child_process');
-		    let s = 'npm install --no-save async walker upath mkdirp';
+		    let s = 'npm install --no-save --no-package-lock async walker upath mkdirp';
         console.info(s);
         execSync(s, {
           stdio: 'inherit'
