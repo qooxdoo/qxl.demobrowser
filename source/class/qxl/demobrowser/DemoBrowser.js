@@ -373,7 +373,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the manual.
      */
     __onManualOpen : function() {
-      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") +  "docstarget="github"/");
+      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") +  "docs/");
     },
 
 
