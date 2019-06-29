@@ -14,6 +14,7 @@
    Authors:
      * Thomas Herchenroeder (thron7)
      * Fabian Jakobs (fjakobs)
+     * Fabian Jakobs (fjakobs)
      * Martin Wittemann (martinwittemann)
      * Jonathan Weiß (jonathan_rass)
 
@@ -237,7 +238,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
 
     defaultUrl : "demo/welcome.html",
-    playgroundUrl : (qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "playground/",
+    playgroundUrl : (qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "apps/playground/",
 
     __makeCommands : function()
     {
@@ -365,7 +366,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the api viewer.
      */
     __onApiOpen : function() {
-      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "apiviewer/");
+      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "apps/apiviewer/");
     },
 
 
