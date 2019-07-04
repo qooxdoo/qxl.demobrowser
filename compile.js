@@ -104,12 +104,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
           },
           (cb) => {
             console.info("DEMO BUILD START COMPILE");
-            // clone target - it is still used in appMaker!
-            let clazz = maker.getTarget().constructor;
-            let target = new clazz(outputDir);
-            if (target.setMinify) {
-              target.setMinify("off");
-            }
+            let target = new qx.tool.compiler.targets.SourceTarget(outputDir);
             target.set({
               generateIndexHtml: false,
               analyser: analyser
