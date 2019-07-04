@@ -13,6 +13,7 @@
 		"title": "DemoBrowser",
 		"include": [
 			"qxl.demobrowser.*",
+			"qx.theme.Indigo",
 			"qx.theme.Modern",
 			"qx.theme.Simple",
 			"qx.theme.Classic"
