@@ -1,6 +1,6 @@
 {
   "name": "demobrowser",
-  "version": "1.0.0-beta.10",
+  "version": "1.0.0-beta.11",
   "private": true,
   "description": "Contains small samples and tests for most widgets and GUI features",
   "repository": {
