@@ -1253,23 +1253,16 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         // if there is a content
         if (content) {
           if (qx.core.Environment.get("qx.contrib") == false) {
-            // extract the name of the js file
-            var secondSrcTagPosition = content.indexOf("<script", content.indexOf("<script")+7);
-            var srcAttributeStart = content.indexOf("src", secondSrcTagPosition);
-            var srcAttributeEnd = content.indexOf("\"", srcAttributeStart + 5);
-            var jsFileName = content.substring(srcAttributeStart + 5, srcAttributeEnd);
-            var jsSourceFileName = jsFileName.substring(4, jsFileName.length - 3) + ".src.js";
-
-
+    
             // construct url to demo script source
             var u = "script/qxl.demobrowser.demo";
             var parts = url.split('/');
-            var cat = parts[1];
-            var base = parts[2];
+            var cat = parts[parts.length - 2];
+            var base = parts[parts.length - 1];
             base = base.substr(0, base.indexOf('.html'))
             u += "." + cat + "." + base + ".src.js";
-            jsSourceFileName = u;
-
+            jsSourceFileName = qx.$$appRoot + u;
+               
             // get the javascript code
             var reqJSFile = new qx.io.request.Xhr(jsSourceFileName);
             reqJSFile.setTimeout(18000);
