@@ -238,7 +238,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
 
     defaultUrl : "demo/welcome.html",
-    playgroundUrl : (qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "apps/playground/",
+    playgroundUrl : (qx.core.Environment.get("qx.serve.appspath") || "https://www.qooxdoo.org/qxl.") + "playground/",
 
     __makeCommands : function()
     {
