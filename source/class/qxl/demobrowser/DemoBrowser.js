@@ -366,7 +366,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the api viewer.
      */
     __onApiOpen : function() {
-      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") + "apps/apiviewer/");
+      window.open((qx.core.Environment.get("qx.serve.appspath") || "https://www.qooxdoo.org/qxl.") + "apiviewer/");
     },
 
 
@@ -374,7 +374,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the manual.
      */
     __onManualOpen : function() {
-      window.open((qx.core.Environment.get("qx.serve.localpath") || "https://www.qooxdoo.org/") +  "docs/");
+      window.open((qx.core.Environment.get("qx.serve.docspath") || "https://www.qooxdoo.org/") +  "docs");
     },
 
 
