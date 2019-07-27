@@ -90,7 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
       part = new qx.ui.toolbar.Part();
       bar.add(part);
 
-      checkbox = new qx.ui.toolbar.CheckBox("Show ID column");
+      let checkbox = new qx.ui.toolbar.CheckBox("Show ID column");
       checkbox.setValue(true);
       checkbox.addListener("execute", function() {
           table.getTableColumnModel().setColumnVisible(0, this.getValue());

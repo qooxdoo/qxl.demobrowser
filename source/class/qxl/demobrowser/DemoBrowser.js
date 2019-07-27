@@ -1261,7 +1261,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
             var base = parts[parts.length - 1];
             base = base.substr(0, base.indexOf('.html'))
             u += "." + cat + "." + base + ".src.js";
-            jsSourceFileName = qx.$$appRoot + u;
+            let jsSourceFileName = qx.$$appRoot + u;
                
             // get the javascript code
             var reqJSFile = new qx.io.request.Xhr(jsSourceFileName);

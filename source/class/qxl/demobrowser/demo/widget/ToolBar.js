@@ -52,7 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       ///////////////////////////////////////////////////////////////
 
       // create the toolbar
-      toolbar = new qx.ui.toolbar.ToolBar();
+      let toolbar = new qx.ui.toolbar.ToolBar();
       toolbar.setSpacing(5);
       mainContainer.add(toolbar);
 

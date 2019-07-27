@@ -118,7 +118,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
       };
 
       qx.Theme.define("qxl.demobrowser.theme.icon.Font", config);
-      qx.Theme.include(currentFont, qxl.demobrowser.theme.icon.Font);
     }
   }
 });

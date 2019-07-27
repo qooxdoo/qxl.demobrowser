@@ -27,6 +27,9 @@
  * The main application class.
  *
  * @asset(qxl/demobrowser/*)
+ *
+ * @ignore (qx.$$appRoot)
+ * 
  */
 qx.Class.define("qxl.demobrowser.Application",
 {

@@ -31,7 +31,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Form",
     {
       this.base(arguments);
 
-      this.getRoot().add(new qxc.application.formdemo.FormItems());
+      this.getRoot().add(new qxl.formdemo.FormItems());
     }
   }
 });

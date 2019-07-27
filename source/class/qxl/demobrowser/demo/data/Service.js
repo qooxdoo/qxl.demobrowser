@@ -31,7 +31,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Service",
     {
       this.base(arguments);
 
-      this.getRoot().add(new qxc.application.datademo.Demo());
+      this.getRoot().add(new qxl.datademo.Demo());
     }
   }
 });
