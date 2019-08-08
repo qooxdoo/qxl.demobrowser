@@ -44,6 +44,15 @@
  * @asset(qx/icon/Tango/22/actions/help-about.png)
  * @asset(qx/icon/Tango/22/actions/media-seek-forward.png)
  * @asset(qx/icon/Tango/22/mimetypes/text-html.png)
+ * @asset(qx/icon/Tango/22/actions/dialog-ok.png)
+ * @asset(qx/icon/Tango/22/places/folder-open.png)
+ * @asset(qx/icon/Tango/22/actions/help-about.png)
+ * @asset(qx/icon/Tango/22/actions/view-refresh.png)
+ * @asset(qx/icon/Tango/22/actions/process-stop.png)
+ * @asset(qx/icon/Tango/22/apps/internet-feed-reader.png)
+ * @asset(qx/icon/Tango/22/actions/dialog-cancel.png)
+ * @asset(qx/icon/Tango/22/places/folder.png)
+
  *
  * @ignore(location.*)
  * @ignore(qx.$$appRoot)

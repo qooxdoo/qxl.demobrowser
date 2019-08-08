@@ -47,7 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
       var container = new qx.ui.container.Composite(layout);
       this.getRoot().add(container, {left:20,top:20});
 
-      container.add(new qx.ui.basic.Image("demobrowser/demo/icons/multimedia-player.png"));
+      container.add(new qx.ui.basic.Image("qxl/demobrowser/demo/icons/multimedia-player.png"));
 
       var ileft = new qx.ui.basic.Image("icon/32/actions/format-justify-left.png");
       container.add(ileft);
@@ -109,7 +109,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
               {
                 family: "FontAwesome",
                 source: [
-                  "demobrowser/demo/fonts/fontawesome-webfont.ttf" , "demobrowser/demo/fonts/fontawesome-webfont.woff", "demobrowser/demo/fonts/fontawesome-webfont.woff2", "demobrowser/demo/fonts/fontawesome-webfont.eot"
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf" , "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
                 ]
               }
             ]
