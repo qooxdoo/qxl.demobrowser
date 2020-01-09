@@ -6,6 +6,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       let command = this.getCompilerApi().getCommand();
       command.addListener("writtenApplication", (e) => this.__appCompiling(e.getData()));
     },
+	
     __appCompiling(application) {
       let className = application.getClassName();
       if (className !== "qxl.demobrowser.Application") {
@@ -13,24 +14,22 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       }
 
       let command = this.getCompilerApi().getCommand();
-      let maker = command.getMaker();
+      let maker = command.getMakersForApp(application.getName())[0];
       let analyser = maker.getAnalyser();
       const templateDir = command.getTemplateDir();
       const outputDir = maker.getTarget().getOutputDir();
       const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
 
-
-
       return new qx.Promise((fullfiled) => {
         let app = application.getName();
-        const {execSync} = require('child_process');
-		    let s = 'npm install --no-save --no-package-lock async walker upath mkdirp';
-        console.info(s);
-        execSync(s, {
-          stdio: 'inherit'
-        });
-        const path = require("upath");
-        const async = require("async");
+        
+		const path = this.require("upath");
+        const async = this.require("async");
+		
+		// needed by DataGenerator
+		this.require('walker');
+        this.require('mkdirp');
+
         const DataGenerator = require(path.join(sourceDir, "tool/lib/DataGenerator"));
         // global vars
         const config = {
