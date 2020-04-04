@@ -3,35 +3,35 @@
   "libraries": [
     {
       "library_name": "logpane",
-      "library_version": "1.0.0-beta.3",
-      "path": "qx_packages/qooxdoo_qxl_logpane_v1_0_0-beta_3",
+      "library_version": "1.0.0",
+      "path": "qx_packages/qooxdoo_qxl_logpane_v1_0_0",
       "uri": "qooxdoo/qxl.logpane",
       "repo_name": "qooxdoo/qxl.logpane",
-      "repo_tag": "v1.0.0-beta.3"
+      "repo_tag": "v1.0.0"
     },
     {
       "library_name": "versionlabel",
-      "library_version": "1.0.0-beta.3",
-      "path": "qx_packages/qooxdoo_qxl_versionlabel_v1_0_0-beta_3",
+      "library_version": "1.0.0",
+      "path": "qx_packages/qooxdoo_qxl_versionlabel_v1_0_0",
       "uri": "qooxdoo/qxl.versionlabel",
       "repo_name": "qooxdoo/qxl.versionlabel",
-      "repo_tag": "v1.0.0-beta.3"
+      "repo_tag": "v1.0.0"
     },
     {
       "library_name": "datademo",
-      "library_version": "1.0.0-beta.2",
-      "path": "qx_packages/qooxdoo_qxl_datademo_v1_0_0-beta_2",
+      "library_version": "1.0.0",
+      "path": "qx_packages/qooxdoo_qxl_datademo_v1_0_0",
       "uri": "qooxdoo/qxl.datademo",
       "repo_name": "qooxdoo/qxl.datademo",
-      "repo_tag": "v1.0.0-beta.2"
+      "repo_tag": "v1.0.0"
     },
     {
       "library_name": "formdemo",
-      "library_version": "1.0.0-beta.1",
-      "path": "qx_packages/qooxdoo_qxl_formdemo_v1_0_0-beta_1",
+      "library_version": "1.0.0",
+      "path": "qx_packages/qooxdoo_qxl_formdemo_v1_0_0",
       "uri": "qooxdoo/qxl.formdemo",
       "repo_name": "qooxdoo/qxl.formdemo",
-      "repo_tag": "v1.0.0-beta.1"
+      "repo_tag": "v1.0.0"
     }
   ]
 }
