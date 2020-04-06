@@ -4,7 +4,9 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
   members: {
     async load() {
       let command = this.getCompilerApi().getCommand();
-      command.addListener("writtenApplication", (e) => this.__appCompiling(e.getData()));
+      if (command instanceof qx.tool.cli.commands.Compile) {
+        command.addListener("writtenApplication", (e) => this.__appCompiling(e.getData()));
+      }
     },
 	
     __appCompiling(application) {
