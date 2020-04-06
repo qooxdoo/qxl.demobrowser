@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/virtual/Pane_GridLines.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "layout",
+    "ui",
+    "Grid",
+    "setRowFlex",
+    "setColumnFlex",
+    "container",
+    "Composite",
+    "getRoot",
+    "add",
+    "edge",
+    "scroller",
+    "virtual",
+    "core",
+    "Scroller",
+    "gl1",
+    "layer",
+    "GridLines",
+    "setLineSize",
+    "setLineColor",
+    "gl2",
+    "getPane",
+    "addLayer",
+    "row",
+    "column",
+    "gl3",
+    "gl4",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "Pane_GridLines"
+  ],
+  "mappings": "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",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n   * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag test\n */\nqx.Class.define(\"qxl.demobrowser.demo.virtual.Pane_GridLines\",\n{\n  extend : qx.application.Standalone,\n\n\n\n  /*\n  *****************************************************************************\n     MEMBERS\n  *****************************************************************************\n  */\n\n  members :\n  {\n    /**\n     * This method contains the initial application code and gets called\n     * during startup of the application\n     */\n    main : function()\n    {\n      // Call super class\n      this.base(arguments);\n\n      var layout = new qx.ui.layout.Grid(5, 5);\n      layout.setRowFlex(0, 1);\n      layout.setColumnFlex(0, 1);\n      layout.setColumnFlex(1, 1);\n      layout.setColumnFlex(2, 1);\n\n      var container = new qx.ui.container.Composite(layout);\n      this.getRoot().add(container, {edge: 5});\n\n      var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);\n\n      var gl1 = new qx.ui.virtual.layer.GridLines(\"horizontal\");\n\n      gl1.setLineSize(1, 3);\n      gl1.setLineColor(2, \"red\");\n\n      var gl2 = new qx.ui.virtual.layer.GridLines(\"vertical\");\n\n      scroller.getPane().addLayer(gl1);\n      scroller.getPane().addLayer(gl2);\n      container.add(scroller, {row: 0, column: 0});\n\n      var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);\n      var gl3 = new qx.ui.virtual.layer.GridLines(\"vertical\");\n\n      gl3.setLineSize(1, 5);\n      gl3.setLineColor(1, \"blue\");\n\n\n      scroller.getPane().addLayer(gl3);\n      container.add(scroller, {row: 0, column: 1});\n\n      var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);\n      var gl4 = new qx.ui.virtual.layer.GridLines(\"horizontal\");\n\n      scroller.getPane().addLayer(gl4);\n      container.add(scroller, {row: 0, column: 2});\n    }\n  }\n});\n"
+  ]
+}

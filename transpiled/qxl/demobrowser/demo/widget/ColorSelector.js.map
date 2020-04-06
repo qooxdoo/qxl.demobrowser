@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/widget/ColorSelector.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "locale",
+    "Manager",
+    "getInstance",
+    "setLocale",
+    "selector",
+    "ui",
+    "control",
+    "ColorSelector",
+    "getRoot",
+    "add",
+    "left",
+    "top",
+    "label",
+    "basic",
+    "Label",
+    "setRich",
+    "valueLabel",
+    "bind",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "widget"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAkBA;;;AAIAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,2CAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,UAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA;;;AAEAV,QAAAA,EAAE,CAACW,MAAH,CAAUC,OAAV,CAAkBC,WAAlB,GAAgCC,SAAhC,CAA0C,IAA1C;AAEA,YAAIC,QAAQ,GAAG,IAAIf,EAAE,CAACgB,EAAH,CAAMC,OAAN,CAAcC,aAAlB,EAAf;AACA,aAAKC,OAAL,GAAeC,GAAf,CAAmBL,QAAnB,EAA6B;AAACM,UAAAA,IAAI,EAAE,EAAP;AAAWC,UAAAA,GAAG,EAAE;AAAhB,SAA7B,EARF,CAWE;;AACA,YAAIC,KAAK,GAAG,IAAIvB,EAAE,CAACgB,EAAH,CAAMQ,KAAN,CAAYC,KAAhB,CAAsB,eAAtB,CAAZ;AACAF,QAAAA,KAAK,CAACG,OAAN,CAAc,IAAd;AACA,aAAKP,OAAL,GAAeC,GAAf,CAAmBG,KAAnB,EAA0B;AAACF,UAAAA,IAAI,EAAE,EAAP;AAAWC,UAAAA,GAAG,EAAE;AAAhB,SAA1B;AAEA,YAAIK,UAAU,GAAG,IAAI3B,EAAE,CAACgB,EAAH,CAAMQ,KAAN,CAAYC,KAAhB,EAAjB;AACA,aAAKN,OAAL,GAAeC,GAAf,CAAmBO,UAAnB,EAA+B;AAACN,UAAAA,IAAI,EAAE,EAAP;AAAWC,UAAAA,GAAG,EAAE;AAAhB,SAA/B;AAEAP,QAAAA,QAAQ,CAACa,IAAT,CAAc,OAAd,EAAuBD,UAAvB,EAAmC,OAAnC;AAED;AAvBH;AAJF,GADA;AAtBAE,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,MAArB,CAA4Bd,aAA5B,CAA0Cf,aAA1C,GAA0DA,aAA1D",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Martin Wittemann (martinwittemann)\n\n************************************************************************ */\n\n/* ************************************************************************\n\n************************************************************************ */\n\nqx.Class.define(\"qxl.demobrowser.demo.widget.ColorSelector\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      /* Set locale to english to avoid language mix if browser locale is\n       * non-english. */\n      qx.locale.Manager.getInstance().setLocale(\"en\");\n\n      var selector = new qx.ui.control.ColorSelector();\n      this.getRoot().add(selector, {left: 20, top: 20});\n\n\n      // value property\n      var label = new qx.ui.basic.Label(\"<b>value:</b>\");\n      label.setRich(true);\n      this.getRoot().add(label, {left: 20, top: 340});\n\n      var valueLabel = new qx.ui.basic.Label();\n      this.getRoot().add(valueLabel, {left: 60, top: 340});\n\n      selector.bind(\"value\", valueLabel, \"value\");\n\n    }\n  }\n});\n"
+  ]
+}

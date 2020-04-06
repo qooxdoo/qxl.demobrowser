@@ -1,0 +1,47 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/ui/NativeContextMenu.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "container",
+    "ui",
+    "Composite",
+    "set",
+    "padding",
+    "getRoot",
+    "add",
+    "layout",
+    "Grid",
+    "setLayout",
+    "basic",
+    "Label",
+    "font",
+    "row",
+    "column",
+    "nativeContextMenu",
+    "selectable",
+    "rich",
+    "form",
+    "TextField",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "NativeContextMenu"
+  ],
+  "mappings": "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",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2009 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Fabian Jakobs (fjakobs)\n     * Tino Butz (tbtz)\n\n************************************************************************ */\n\nqx.Class.define(\"qxl.demobrowser.demo.ui.NativeContextMenu\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main : function()\n    {\n      this.base(arguments);\n\n      // disable globally\n      //this.getRoot().setNativeContextMenu(false);\n\n      var container = new qx.ui.container.Composite().set({\n        padding: 20\n      });\n      this.getRoot().add(container);\n\n      var layout = new qx.ui.layout.Grid(10, 10);\n      container.setLayout(layout);\n\n\n      // menu allowed\n      container.add(new qx.ui.basic.Label(\"Native context menu allowed\").set({\n        font: \"bold\"}\n      ), {row: 0, column: 0});\n\n      container.add(new qx.ui.basic.Label(\"plain label\").set({\n        nativeContextMenu: true,\n        selectable: true\n      }), {row: 1, column: 0});\n\n      container.add(new qx.ui.basic.Label(\"<b>rich</b> label\").set({\n        nativeContextMenu: true,\n        selectable: true,\n        rich: true\n      }), {row: 2, column: 0});\n\n      container.add(new qx.ui.form.TextField(\"text field\").set({\n        nativeContextMenu: true\n      }), {row: 3, column: 0});\n\n\n      // menu not allowed\n      container.add(new qx.ui.basic.Label(\"No native context menu\").set({\n        font: \"bold\"}\n      ), {row: 0, column: 1});\n\n      container.add(new qx.ui.basic.Label(\"plain label\").set({\n        selectable: true\n      }), {row: 1, column: 1});\n\n      container.add(new qx.ui.basic.Label(\"<b>rich</b> label\").set({\n        rich: true,\n        selectable: true\n      }), {row: 2, column: 1});\n\n      container.add(new qx.ui.form.TextField(\"text field\"), {row: 3, column: 1});\n    }\n  }\n});\n"
+  ]
+}

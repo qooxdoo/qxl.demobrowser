@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/root/Inline_Dynamic_Resize.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Inline",
+    "members",
+    "main",
+    "isle1",
+    "ui",
+    "root",
+    "document",
+    "getElementById",
+    "setLayout",
+    "layout",
+    "Canvas",
+    "add",
+    "form",
+    "Button",
+    "edge",
+    "isle2",
+    "set",
+    "padding",
+    "decorator",
+    "appearance",
+    "slideBar",
+    "container",
+    "SlideBar",
+    "HBox",
+    "icons",
+    "i",
+    "length",
+    "basic",
+    "Image",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "Inline_Dynamic_Resize"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;;AAIAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,iDAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,KAAK,GAAG,IAAIX,EAAE,CAACY,EAAH,CAAMC,IAAN,CAAWL,MAAf,CAAsBM,QAAQ,CAACC,cAAT,CAAwB,OAAxB,CAAtB,EAAwD,KAAxD,EAA+D,IAA/D,CAAZ;AACAJ,QAAAA,KAAK,CAACK,SAAN,CAAgB,IAAIhB,EAAE,CAACY,EAAH,CAAMK,MAAN,CAAaC,MAAjB,EAAhB;AACAP,QAAAA,KAAK,CAACQ,GAAN,CAAU,IAAInB,EAAE,CAACY,EAAH,CAAMQ,IAAN,CAAWC,MAAf,CAAsB,IAAtB,EAA4B,8BAA5B,CAAV,EAAuE;AAACC,UAAAA,IAAI,EAAE;AAAP,SAAvE;AAGA,YAAIC,KAAK,GAAG,IAAIvB,EAAE,CAACY,EAAH,CAAMC,IAAN,CAAWL,MAAf,CAAsBM,QAAQ,CAACC,cAAT,CAAwB,OAAxB,CAAtB,EAAwD,IAAxD,EAA8D,KAA9D,EAAqES,GAArE,CAAyE;AACnFC,UAAAA,OAAO,EAAE,CAAC,EAAD,EAAK,CAAL,CAD0E;AAEnFC,UAAAA,SAAS,EAAE,IAFwE;AAGnFC,UAAAA,UAAU,EAAE;AAHuE,SAAzE,CAAZ;AAKAJ,QAAAA,KAAK,CAACP,SAAN,CAAgB,IAAIhB,EAAE,CAACY,EAAH,CAAMK,MAAN,CAAaC,MAAjB,EAAhB;AAEA,YAAIU,QAAQ,GAAG,IAAI5B,EAAE,CAACY,EAAH,CAAMiB,SAAN,CAAgBC,QAApB,EAAf;AACAF,QAAAA,QAAQ,CAACZ,SAAT,CAAmB,IAAIhB,EAAE,CAACY,EAAH,CAAMK,MAAN,CAAac,IAAjB,CAAsB,CAAtB,CAAnB;AACAR,QAAAA,KAAK,CAACJ,GAAN,CAAUS,QAAV,EAAoB;AAACN,UAAAA,IAAI,EAAE;AAAP,SAApB;AAEA,YAAIU,KAAK,GAAG,CACV,gBADU,EACO,4BADP,EACoC,aADpC,EAEV,kBAFU,EAES,gBAFT,EAE0B,cAF1B,EAEyC,aAFzC,EAGV,oBAHU,EAGW,mBAHX,EAG+B,oBAH/B,EAIV,mBAJU,EAIU,sBAJV,CAAZ;;AAOA,aAAK,IAAIC,CAAC,GAAC,CAAX,EAAcA,CAAC,GAACD,KAAK,CAACE,MAAtB,EAA8BD,CAAC,EAA/B,EACA;AACEL,UAAAA,QAAQ,CAACT,GAAT,CAAc,IAAInB,EAAE,CAACY,EAAH,CAAMuB,KAAN,CAAYC,KAAhB,CAAsB,qBAAqBJ,KAAK,CAACC,CAAD,CAAhD,CAAD,CAAuDT,GAAvD,CAA2D;AACtEE,YAAAA,SAAS,EAAE,MAD2D;AAEtED,YAAAA,OAAO,EAAE;AAF6D,WAA3D,CAAb;AAID;AACF;AAnCH;AAJF,GADA;AAvBAY,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqB1B,IAArB,CAA0B2B,qBAA1B,CAAgDrC,aAAhD,GAAgEA,aAAhE",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @asset(qx/icon/${qx.icontheme}/48/devices/*)\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.root.Inline_Dynamic_Resize\",\n{\n  extend : qx.application.Inline,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var isle1 = new qx.ui.root.Inline(document.getElementById(\"isle1\"), false, true);\n      isle1.setLayout(new qx.ui.layout.Canvas());\n      isle1.add(new qx.ui.form.Button(null, \"icon/48/devices/computer.png\"), {edge: 0});\n\n\n      var isle2 = new qx.ui.root.Inline(document.getElementById(\"isle2\"), true, false).set({\n        padding: [10, 0],\n        decorator: null,\n        appearance: \"widget\"\n      });\n      isle2.setLayout(new qx.ui.layout.Canvas());\n\n      var slideBar = new qx.ui.container.SlideBar();\n      slideBar.setLayout(new qx.ui.layout.HBox(3));\n      isle2.add(slideBar, {edge: 0});\n\n      var icons = [\n        \"audio-card.png\",\"audio-input-microphone.png\",\"battery.png\",\n        \"camera-photo.png\",\"camera-web.png\",\"computer.png\",\"display.png\",\n        \"drive-harddisk.png\",\"drive-optical.png\",\"input-keyboard.png\",\n        \"network-wired.png\",\"network-wireless.png\"\n      ];\n\n      for (var i=0; i<icons.length; i++)\n      {\n        slideBar.add((new qx.ui.basic.Image(\"icon/48/devices/\" + icons[i])).set({\n          decorator: \"main\",\n          padding: 4\n        }));\n      }\n    }\n  }\n});\n"
+  ]
+}

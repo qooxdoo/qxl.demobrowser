@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/widget/HtmlEmbed.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "box",
+    "ui",
+    "layout",
+    "VBox",
+    "setSpacing",
+    "container",
+    "Composite",
+    "setPadding",
+    "getRoot",
+    "add",
+    "html1",
+    "embed1",
+    "embed",
+    "Html",
+    "setWidth",
+    "setHeight",
+    "setDecorator",
+    "html2",
+    "embed2",
+    "setFont",
+    "rich",
+    "richWidget",
+    "setOverflow",
+    "setBackgroundColor",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "widget",
+    "HtmlEmbed"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;AAIAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,uCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,UAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,GAAG,GAAG,IAAIX,EAAE,CAACY,EAAH,CAAMC,MAAN,CAAaC,IAAjB,EAAV;AACAH,QAAAA,GAAG,CAACI,UAAJ,CAAe,EAAf;AAEA,YAAIC,SAAS,GAAG,IAAIhB,EAAE,CAACY,EAAH,CAAMI,SAAN,CAAgBC,SAApB,CAA8BN,GAA9B,CAAhB;AACAK,QAAAA,SAAS,CAACE,UAAV,CAAqB,EAArB;AAEA,aAAKC,OAAL,GAAeC,GAAf,CAAmBJ,SAAnB,EATF,CAYE;;AACA,YAAIK,KAAK,qIAAT;AAOA,YAAIC,MAAM,GAAG,IAAItB,EAAE,CAACY,EAAH,CAAMW,KAAN,CAAYC,IAAhB,CAAqBH,KAArB,CAAb;AACAC,QAAAA,MAAM,CAACG,QAAP,CAAgB,GAAhB;AACAH,QAAAA,MAAM,CAACI,SAAP,CAAiB,EAAjB;AACAJ,QAAAA,MAAM,CAACK,YAAP,CAAoB,MAApB;AACAX,QAAAA,SAAS,CAACI,GAAV,CAAcE,MAAd,EAxBF,CA2BE;;AACA,YAAIM,KAAK,GAAG,4BAAZ;AACA,YAAIC,MAAM,GAAG,IAAI7B,EAAE,CAACY,EAAH,CAAMW,KAAN,CAAYC,IAAhB,CAAqBI,KAArB,CAAb;AACAC,QAAAA,MAAM,CAACC,OAAP,CAAe,MAAf;AACAD,QAAAA,MAAM,CAACH,SAAP,CAAiB,EAAjB;AACAG,QAAAA,MAAM,CAACF,YAAP,CAAoB,MAApB;AACAX,QAAAA,SAAS,CAACI,GAAV,CAAcS,MAAd,EAjCF,CAoCE;;AACA,YAAIE,IAAI,GAAG,k6HAAX;AACA,YAAIC,UAAU,GAAG,IAAIhC,EAAE,CAACY,EAAH,CAAMW,KAAN,CAAYC,IAAhB,CAAqBO,IAArB,CAAjB;AACAC,QAAAA,UAAU,CAACC,WAAX,CAAuB,MAAvB,EAA+B,MAA/B;AACAD,QAAAA,UAAU,CAACL,YAAX,CAAwB,MAAxB;AACAK,QAAAA,UAAU,CAACE,kBAAX,CAA8B,OAA9B;AACAF,QAAAA,UAAU,CAACP,QAAX,CAAoB,GAApB;AACAO,QAAAA,UAAU,CAACN,SAAX,CAAqB,GAArB;AACAV,QAAAA,SAAS,CAACI,GAAV,CAAcY,UAAd;AACD;AA/CH;AAJF,GADA;AAvBAG,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,MAArB,CAA4BC,SAA5B,CAAsCpC,aAAtC,GAAsDA,aAAtD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/* ************************************************************************\n\n************************************************************************ */\n\nqx.Class.define(\"qxl.demobrowser.demo.widget.HtmlEmbed\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var box = new qx.ui.layout.VBox();\n      box.setSpacing(10);\n\n      var container = new qx.ui.container.Composite(box);\n      container.setPadding(20);\n\n      this.getRoot().add(container);\n\n\n      // Example HTML embed\n      var html1 = \"<div style='background-color: white; text-align: center;'>\" +\n                    \"<i style='color: red;'><b>H</b></i>\" +\n                    \"<b>T</b>\" +\n                    \"<u>M</u>\" +\n                    \"<i>L</i>\" +\n                    \" Text\" +\n                  \"</div>\";\n      var embed1 = new qx.ui.embed.Html(html1);\n      embed1.setWidth(300);\n      embed1.setHeight(20);\n      embed1.setDecorator(\"main\");\n      container.add(embed1);\n\n\n      // Example HTML embed with set font\n      var html2 = \"Text with set font (bold)!\";\n      var embed2 = new qx.ui.embed.Html(html2);\n      embed2.setFont(\"bold\");\n      embed2.setHeight(20);\n      embed2.setDecorator(\"main\");\n      container.add(embed2);\n\n\n      // Rich content\n      var rich = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla f';\n      var richWidget = new qx.ui.embed.Html(rich);\n      richWidget.setOverflow(\"auto\", \"auto\");\n      richWidget.setDecorator(\"main\");\n      richWidget.setBackgroundColor(\"white\");\n      richWidget.setWidth(200);\n      richWidget.setHeight(200);\n      container.add(richWidget);\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,93 @@
+(function () {
+  var $$dbClassInfo = {
+    "dependsOn": {
+      "qx.Class": {
+        "usage": "dynamic",
+        "require": true
+      },
+      "qxl.demobrowser.demo.table.TableDemo": {
+        "require": true
+      },
+      "qx.ui.table.model.Simple": {},
+      "qx.ui.table.Table": {}
+    }
+  };
+  qx.Bootstrap.executePendingDefers($$dbClassInfo);
+
+  /* ************************************************************************
+  
+     qooxdoo - the new era of web development
+  
+     http://qooxdoo.org
+  
+     Copyright:
+       2004-2008 1&1 Internet AG, Germany, http://www.1und1.de
+  
+     License:
+       MIT: https://opensource.org/licenses/MIT
+       See the LICENSE file in the project's top-level directory for details.
+  
+     Authors:
+       * Fabian Jakobs (fjakobs)
+  
+  ************************************************************************ */
+
+  /**
+   * A really huge table
+   * @tag noPlayground
+   */
+  qx.Class.define("qxl.demobrowser.demo.table.Table_Huge", {
+    extend: qxl.demobrowser.demo.table.TableDemo,
+    members: {
+      getCaption: function getCaption() {
+        return "Table";
+      },
+      COL_COUNT: 50,
+      ROW_COUNT: 10000,
+      createRandomRows: function createRandomRows(rowCount) {
+        var rowData = [];
+
+        for (var row = 0; row < rowCount; row++) {
+          var row1 = [];
+
+          for (var i = 0; i < this.COL_COUNT; i++) {
+            row1.push("Cell " + i + "x" + row);
+          }
+
+          rowData.push(row1);
+        }
+
+        return rowData;
+      },
+      createTable: function createTable() {
+        // Create the initial data
+        var rowData = this.createRandomRows(this.ROW_COUNT); // table model
+
+        var tableModel = this._tableModel = new qx.ui.table.model.Simple();
+        var headers = [];
+
+        for (var i = 0; i < this.COL_COUNT; i++) {
+          headers.push("Column " + i);
+        }
+
+        tableModel.setColumns(headers);
+        tableModel.setData(rowData); // table
+
+        var table = new qx.ui.table.Table(tableModel);
+        return table;
+      }
+    },
+
+    /*
+     *****************************************************************************
+        DESTRUCT
+     *****************************************************************************
+     */
+    destruct: function destruct() {
+      this._disposeObjects("_tableModel");
+    }
+  });
+  qxl.demobrowser.demo.table.Table_Huge.$$dbClassInfo = $$dbClassInfo;
+})();
+
+//# sourceMappingURL=Table_Huge.js.map?dt=1586199389708

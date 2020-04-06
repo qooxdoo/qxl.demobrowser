@@ -1,0 +1,77 @@
+(function () {
+  var $$dbClassInfo = {
+    "dependsOn": {
+      "qx.Class": {
+        "usage": "dynamic",
+        "require": true
+      },
+      "qxl.demobrowser.demo.table.TableDemo": {
+        "require": true
+      },
+      "qx.ui.table.model.Simple": {},
+      "qx.ui.table.Table": {},
+      "qx.ui.table.selection.Model": {},
+      "qx.ui.table.cellrenderer.Boolean": {}
+    }
+  };
+  qx.Bootstrap.executePendingDefers($$dbClassInfo);
+
+  /* ************************************************************************
+  
+     qooxdoo - the new era of web development
+  
+     http://qooxdoo.org
+  
+     Copyright:
+       2004-2008 1&1 Internet AG, Germany, http://www.1und1.de
+  
+     License:
+       MIT: https://opensource.org/licenses/MIT
+       See the LICENSE file in the project's top-level directory for details.
+  
+     Authors:
+       * Fabian Jakobs (fjakobs)
+  
+  ************************************************************************ */
+
+  /**
+   * A Table with meta columns
+   * @tag noPlayground
+   */
+  qx.Class.define("qxl.demobrowser.demo.table.Table_Meta_Columns", {
+    extend: qxl.demobrowser.demo.table.TableDemo,
+    members: {
+      getCaption: function getCaption() {
+        return "Table with meta columns";
+      },
+      createTable: function createTable() {
+        // table model
+        var tableModel = new qx.ui.table.model.Simple();
+        tableModel.setColumns(["ID", "A number", "A date", "Boolean test"]);
+        var rowData = [];
+        var now = new Date().getTime();
+        var dateRange = 34560000000; // 400 days
+
+        for (var row = 0; row < 100; row++) {
+          var date = new Date(now + Math.random() * dateRange - dateRange / 2);
+          rowData.push([row, Math.random() * 10000, date, Math.random() > 0.5]);
+        }
+
+        tableModel.setData(rowData);
+        tableModel.setColumnEditable(1, true);
+        tableModel.setColumnEditable(2, true); // table
+
+        var table = new qx.ui.table.Table(tableModel);
+        table.setMetaColumnCounts([1, -1]);
+        table.getSelectionModel().setSelectionMode(qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION);
+        table.getTableColumnModel().setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
+        table.getTableColumnModel().setColumnWidth(1, 250);
+        table.getTableColumnModel().setColumnWidth(2, 200);
+        return table;
+      }
+    }
+  });
+  qxl.demobrowser.demo.table.Table_Meta_Columns.$$dbClassInfo = $$dbClassInfo;
+})();
+
+//# sourceMappingURL=Table_Meta_Columns.js.map?dt=1586199389724

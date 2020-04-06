@@ -1,0 +1,46 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/root/Inline.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Inline",
+    "members",
+    "main",
+    "isle",
+    "ui",
+    "root",
+    "document",
+    "getElementById",
+    "set",
+    "decorator",
+    "padding",
+    "textColor",
+    "backgroundColor",
+    "w1",
+    "core",
+    "Widget",
+    "w2",
+    "w3",
+    "w4",
+    "add",
+    "setLayout",
+    "layout",
+    "HBox",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAkBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,kCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,IAAI,GAAG,IAAIX,EAAE,CAACY,EAAH,CAAMC,IAAN,CAAWL,MAAf,CAAsBM,QAAQ,CAACC,cAAT,CAAwB,MAAxB,CAAtB,EAAuDC,GAAvD,CAA2D;AACpEC,UAAAA,SAAS,EAAE,MADyD;AAEpEC,UAAAA,OAAO,EAAE,EAF2D;AAGpEC,UAAAA,SAAS,EAAE,OAHyD;AAIpEC,UAAAA,eAAe,EAAE;AAJmD,SAA3D,CAAX;AAOA,YAAIC,EAAE,GAAG,IAAIrB,EAAE,CAACY,EAAH,CAAMU,IAAN,CAAWC,MAAf,GAAwBP,GAAxB,CAA4B;AACnCI,UAAAA,eAAe,EAAE,KADkB;AAEnCH,UAAAA,SAAS,EAAE,MAFwB;AAGnCC,UAAAA,OAAO,EAAE;AAH0B,SAA5B,CAAT;AAMA,YAAIM,EAAE,GAAG,IAAIxB,EAAE,CAACY,EAAH,CAAMU,IAAN,CAAWC,MAAf,GAAwBP,GAAxB,CAA4B;AACnCI,UAAAA,eAAe,EAAE,MADkB;AAEnCH,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKA,YAAIQ,EAAE,GAAG,IAAIzB,EAAE,CAACY,EAAH,CAAMU,IAAN,CAAWC,MAAf,GAAwBP,GAAxB,CAA4B;AACnCI,UAAAA,eAAe,EAAE,OADkB;AAEnCH,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKA,YAAIS,EAAE,GAAG,IAAI1B,EAAE,CAACY,EAAH,CAAMU,IAAN,CAAWC,MAAf,GAAwBP,GAAxB,CAA4B;AACnCI,UAAAA,eAAe,EAAE,QADkB;AAEnCH,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKAN,QAAAA,IAAI,CAACgB,GAAL,CAASN,EAAT;AACAV,QAAAA,IAAI,CAACgB,GAAL,CAASH,EAAT;AACAb,QAAAA,IAAI,CAACgB,GAAL,CAASF,EAAT;AACAd,QAAAA,IAAI,CAACgB,GAAL,CAASD,EAAT;AAEAf,QAAAA,IAAI,CAACiB,SAAL,CAAe,IAAI5B,EAAE,CAACY,EAAH,CAAMiB,MAAN,CAAaC,IAAjB,EAAf;AACD;AAvCH;AAJF,GADA;AArBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBpB,IAArB,CAA0BL,MAA1B,CAAiCL,aAAjC,GAAiDA,aAAjD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.root.Inline\",\n{\n  extend : qx.application.Inline,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var isle = new qx.ui.root.Inline(document.getElementById(\"isle\")).set({\n        decorator: \"main\",\n        padding: 10,\n        textColor: \"black\",\n        backgroundColor: \"white\"\n      });\n\n      var w1 = new qx.ui.core.Widget().set({\n        backgroundColor: \"red\",\n        decorator: \"main\",\n        padding: 10\n      });\n\n      var w2 = new qx.ui.core.Widget().set({\n        backgroundColor: \"blue\",\n        decorator: \"main\"\n      });\n\n      var w3 = new qx.ui.core.Widget().set({\n        backgroundColor: \"green\",\n        decorator: \"main\"\n      });\n\n      var w4 = new qx.ui.core.Widget().set({\n        backgroundColor: \"yellow\",\n        decorator: \"main\"\n      });\n\n      isle.add(w1);\n      isle.add(w2);\n      isle.add(w3);\n      isle.add(w4);\n\n      isle.setLayout(new qx.ui.layout.HBox());\n    }\n  }\n});\n"
+  ]
+}

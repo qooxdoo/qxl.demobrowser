@@ -1,0 +1,41 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/Dimension.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "i",
+    "el",
+    "document",
+    "getElementById",
+    "msg",
+    "boxSize",
+    "contentSize",
+    "debug",
+    "Dimension",
+    "bom",
+    "element",
+    "getWidth",
+    "getHeight",
+    "getContentWidth",
+    "getContentHeight",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,oCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAG,gBACP;AACE;;AAEA,aAAK,IAAIC,CAAC,GAAC,CAAX,EAAcA,CAAC,GAAC,IAAhB,EAAsBA,CAAC,EAAvB,EACA;AACE,cAAIC,EAAE,GAAGC,QAAQ,CAACC,cAAT,CAAwB,UAAUH,CAAlC,CAAT;;AACA,cAAI,CAACC,EAAL,EAAS;AACP;AACD;;AAED,cAAIG,GAAG,GAAG,WAAWJ,CAAX,GAAe,QAAf,GAA0BK,OAAO,CAACJ,EAAD,CAAjC,GAAwC,YAAxC,GAAuDK,WAAW,CAACL,EAAD,CAA5E;AACA,eAAKM,KAAL,CAAWH,GAAX;AACD;;AAED,iBAASC,OAAT,CAAiBJ,EAAjB,EACA;AACE,cAAIO,SAAS,GAAGnB,EAAE,CAACoB,GAAH,CAAOC,OAAP,CAAeF,SAA/B;AACA,iBAAOA,SAAS,CAACG,QAAV,CAAmBV,EAAnB,IAAyB,GAAzB,GAA+BO,SAAS,CAACI,SAAV,CAAoBX,EAApB,CAAtC;AACD;;AAED,iBAASK,WAAT,CAAqBL,EAArB,EACA;AACE,cAAIO,SAAS,GAAGnB,EAAE,CAACoB,GAAH,CAAOC,OAAP,CAAeF,SAA/B;AACA,iBAAOA,SAAS,CAACK,eAAV,CAA0BZ,EAA1B,IAAgC,GAAhC,GAAsCO,SAAS,CAACM,gBAAV,CAA2Bb,EAA3B,CAA7C;AACD;AACF;AA3BH;AAJF,GADA;AAtBAc,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBR,GAArB,CAAyBD,SAAzB,CAAmChB,aAAnC,GAAmDA,aAAnD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.Dimension\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main : function()\n    {\n      this.base(arguments);\n\n      for (var i=1; i<1000; i++)\n      {\n        var el = document.getElementById(\"block\" + i);\n        if (!el) {\n          break;\n        }\n\n        var msg = \"Block \" + i + \": Box=\" + boxSize(el) + \"; Content=\" + contentSize(el);\n        this.debug(msg);\n      }\n\n      function boxSize(el)\n      {\n        var Dimension = qx.bom.element.Dimension;\n        return Dimension.getWidth(el) + \"x\" + Dimension.getHeight(el);\n      }\n\n      function contentSize(el)\n      {\n        var Dimension = qx.bom.element.Dimension;\n        return Dimension.getContentWidth(el) + \"x\" + Dimension.getContentHeight(el);\n      }\n    }\n  }\n});\n"
+  ]
+}

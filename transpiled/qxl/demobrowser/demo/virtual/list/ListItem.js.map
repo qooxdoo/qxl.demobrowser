@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/virtual/list/ListItem.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "core",
+    "Object",
+    "construct",
+    "label",
+    "icon",
+    "value",
+    "setLabel",
+    "setIcon",
+    "setValue",
+    "events",
+    "properties",
+    "nullable",
+    "dereference",
+    "check",
+    "manager",
+    "apply",
+    "event",
+    "width",
+    "init",
+    "height",
+    "members",
+    "_applyManager",
+    "old",
+    "remove",
+    "add",
+    "getFormValue",
+    "getValue",
+    "getLabel",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "virtual",
+    "list",
+    "ListItem"
+  ],
+  "mappings": ";;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAmBAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,4CAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,IAAH,CAAQC,MADnB;;AAGE;;;;;AAKAC,IAAAA,SAAS,EAAG,mBAASC,KAAT,EAAgBC,IAAhB,EAAsBC,KAAtB,EACZ;AACE;;AAEA,UAAIF,KAAK,IAAI,IAAb,EAAmB;AACjB,aAAKG,QAAL,CAAcH,KAAd;AACD;;AAED,UAAIC,IAAI,IAAI,IAAZ,EAAkB;AAChB,aAAKG,OAAL,CAAaH,IAAb;AACD;;AAED,UAAIC,KAAK,IAAI,IAAb,EAAmB;AACjB,aAAKG,QAAL,CAAcH,KAAd;AACD;AACF,KAvBH;;AAyBE;;;;;AAMAI,IAAAA,MAAM,EACN;AACE;AACA,gBAAW;AAFb,KAhCF;;AAuCE;;;;;AAMAC,IAAAA,UAAU,EACV;AACE;AACAP,MAAAA,KAAK,EACL;AACEQ,QAAAA,QAAQ,EAAG,IADb;AAEEC,QAAAA,WAAW,EAAG,IAFhB;AAGEC,QAAAA,KAAK,EAAG;AAHV,OAHF;;AASE;AACAT,MAAAA,IAAI,EACJ;AACES,QAAAA,KAAK,EAAG,QADV;AAEEF,QAAAA,QAAQ,EAAG;AAFb,OAXF;;AAgBE;AACAG,MAAAA,OAAO,EACP;AACED,QAAAA,KAAK,EAAI,uBADX;AAEEF,QAAAA,QAAQ,EAAG,IAFb;AAGEI,QAAAA,KAAK,EAAG;AAHV,OAlBF;;AAwBE;AACAV,MAAAA,KAAK,EACL;AACEQ,QAAAA,KAAK,EAAG,QADV;AAEEF,QAAAA,QAAQ,EAAG,IAFb;AAGEK,QAAAA,KAAK,EAAG;AAHV,OA1BF;;AAgCE;AACAC,MAAAA,KAAK,EACL;AACEJ,QAAAA,KAAK,EAAG,SADV;AAEEF,QAAAA,QAAQ,EAAG,IAFb;AAGEK,QAAAA,KAAK,EAAG,aAHV;AAIEE,QAAAA,IAAI,EAAG;AAJT,OAlCF;;AAyCE;AACAC,MAAAA,MAAM,EACN;AACEN,QAAAA,KAAK,EAAG,SADV;AAEEF,QAAAA,QAAQ,EAAG,IAFb;AAGEK,QAAAA,KAAK,EAAG,cAHV;AAIEE,QAAAA,IAAI,EAAG;AAJT;AA3CF,KA9CF;AAiGEE,IAAAA,OAAO,EACP;AACE;;;;;AAMA;AACAC,MAAAA,aAAa,EAAG,uBAAShB,KAAT,EAAgBiB,GAAhB,EAChB;AACE,YAAIA,GAAJ,EAAS;AACPA,UAAAA,GAAG,CAACC,MAAJ,CAAW,IAAX;AACD;;AAED,YAAIlB,KAAJ,EAAW;AACTA,UAAAA,KAAK,CAACmB,GAAN,CAAU,IAAV;AACD;AACF,OAjBH;;AAoBE;;;;;;AAMA;;;;;;AAMAC,MAAAA,YAAY,EAAG,wBACf;AACE,YAAIpB,KAAK,GAAG,KAAKqB,QAAL,EAAZ;;AACA,YAAIrB,KAAK,IAAI,IAAb,EAAmB;AACjBA,UAAAA,KAAK,GAAG,KAAKsB,QAAL,EAAR;AACD;;AAED,eAAOtB,KAAP;AACD;AAxCH;AAlGF,GADA;AAnBAuB,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,OAArB,CAA6BC,IAA7B,CAAkCC,QAAlC,CAA2CrC,aAA3C,GAA2DA,aAA3D",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2009 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Fabian Jakobs (fjakobs)\n     * Jonathan Weiß (jonathan_rass)\n\n************************************************************************ */\n\nqx.Class.define(\"qxl.demobrowser.demo.virtual.list.ListItem\",\n{\n  extend : qx.core.Object,\n\n  /**\n   * @param label {String} Label to use\n   * @param icon {String?null} Icon to use\n   * @param value {String?null} The items string value\n   */\n  construct : function(label, icon, value)\n  {\n    this.base(arguments);\n\n    if (label != null) {\n      this.setLabel(label);\n    }\n\n    if (icon != null) {\n      this.setIcon(icon);\n    }\n\n    if (value != null) {\n      this.setValue(value);\n    }\n  },\n\n  /*\n  *****************************************************************************\n     EVENTS\n  *****************************************************************************\n  */\n\n  events:\n  {\n    /** (Fired by {@link qx.ui.form.List}) */\n    \"action\" : \"qx.event.type.Event\"\n  },\n\n\n\n  /*\n  *****************************************************************************\n     PROPERTIES\n  *****************************************************************************\n  */\n\n  properties :\n  {\n    /** The label/caption/text of the qx.ui.basic.Atom instance */\n    label :\n    {\n      nullable : true,\n      dereference : true,\n      check : \"String\"\n    },\n\n    /** Any URI String supported by qx.ui.basic.Image to display a icon */\n    icon :\n    {\n      check : \"String\",\n      nullable : true\n    },\n\n    /** The assigned qx.ui.form.RadioGroup which handles the switching between registered buttons */\n    manager :\n    {\n      check  : \"qx.ui.form.RadioGroup\",\n      nullable : true,\n      apply : \"_applyManager\"\n    },\n\n    /** Fires a \"changeValue\" (qx.event.type.Data) event */\n    value :\n    {\n      check : \"String\",\n      nullable : true,\n      event : \"changeValue\"\n    },\n\n    /** The item's width. */\n    width :\n    {\n      check : \"Integer\",\n      nullable : true,\n      event : \"changeWidth\",\n      init : null\n    },\n\n    /** The item's height. */\n    height :\n    {\n      check : \"Integer\",\n      nullable : true,\n      event : \"changeHeight\",\n      init : null\n    }\n  },\n\n  members :\n  {\n    /*\n    ---------------------------------------------------------------------------\n      PROPERTY APPLY ROUTINES\n    ---------------------------------------------------------------------------\n    */\n\n    // property apply\n    _applyManager : function(value, old)\n    {\n      if (old) {\n        old.remove(this);\n      }\n\n      if (value) {\n        value.add(this);\n      }\n    },\n\n\n    /*\n    ---------------------------------------------------------------------------\n      SEARCH VALUE\n    ---------------------------------------------------------------------------\n    */\n\n    /**\n     * Returns the searchable value of the list item.\n     *\n     * This is normally the real value with a fallback to the label like in HTML\n     * select boxes.\n     */\n    getFormValue : function()\n    {\n      var value = this.getValue();\n      if (value == null) {\n        value = this.getLabel();\n      }\n\n      return value;\n    }\n\n  }\n});\n"
+  ]
+}

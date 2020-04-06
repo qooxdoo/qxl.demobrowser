@@ -1,0 +1,23 @@
+{
+  "className": "qxl.demobrowser.Appearance",
+  "packageName": "qxl.demobrowser",
+  "name": "Appearance",
+  "superClass": "qx.theme.indigo.Appearance",
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 23,
+        "column": 3
+      }
+    }
+  },
+  "type": "theme",
+  "descendants": []
+}

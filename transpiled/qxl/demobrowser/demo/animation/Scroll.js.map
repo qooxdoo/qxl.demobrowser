@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/animation/Scroll.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "data",
+    "items",
+    "i",
+    "push",
+    "j",
+    "q",
+    "template",
+    "get",
+    "appendTo",
+    "document",
+    "body",
+    "reset",
+    "on",
+    "addClass",
+    "setScrollTop",
+    "once",
+    "removeClass",
+    "forEach",
+    "item",
+    "scrollTop",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "animation",
+    "Scroll"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAkBA;;;;;;;;;AASAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,uCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE,6EADF,CAGE;;AACA,YAAIC,IAAI,GAAG;AAACC,UAAAA,KAAK,EAAG;AAAT,SAAX;;AACA,aAAK,IAAIC,CAAC,GAAC,CAAX,EAAcA,CAAC,GAAG,EAAlB,EAAsBA,CAAC,EAAvB,EAA2B;AACzBF,UAAAA,IAAI,CAACC,KAAL,CAAWE,IAAX,CAAgBD,CAAhB;AACD,SAPH,CASE;;;AACA,aAAK,IAAIE,CAAC,GAAC,CAAX,EAAcA,CAAC,GAAG,CAAlB,EAAqBA,CAAC,EAAtB,EAA0B;AACxBC,UAAAA,CAAC,CAACC,QAAF,CAAWC,GAAX,CAAe,eAAf,EAAgCP,IAAhC,EAAsCQ,QAAtC,CAA+CC,QAAQ,CAACC,IAAxD;AACD,SAZH,CAcE;;;AACA,aAAKC,KAAL;AACAN,QAAAA,CAAC,CAAC,cAAD,CAAD,CAAkBO,EAAlB,CAAqB,KAArB,EAA4B,KAAKD,KAAjC,EAAwC,IAAxC;AAEAN,QAAAA,CAAC,CAAC,cAAD,CAAD,CAAkBO,EAAlB,CAAqB,KAArB,EAA4B,YAAW;AACrCP,UAAAA,CAAC,CAAC,OAAD,CAAD,CAAWQ,QAAX,CAAoB,WAApB,EAAiCC,YAAjC,CAA8C,GAA9C,EAAmD,IAAnD,EAAyDC,IAAzD,CAA8D,cAA9D,EAA8E,YAAW;AACvFV,YAAAA,CAAC,CAAC,OAAD,CAAD,CAAWW,WAAX,CAAuB,WAAvB;AACD,WAFD;AAGD,SAJD;AAMD,OA1BH;AA6BEL,MAAAA,KAAK,EAAG,iBAAW;AACjBN,QAAAA,CAAC,CAAC,OAAD,CAAD,CAAWY,OAAX,CAAmB,UAASC,IAAT,EAAehB,CAAf,EAAkB;AACnCgB,UAAAA,IAAI,CAACC,SAAL,GAAiBjB,CAAC,GAAG,GAArB;AACD,SAFD;AAGD;AAjCH;AAJF,GADA;AA3BAkB,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,SAArB,CAA+BC,MAA/B,CAAsChC,aAAtC,GAAsDA,aAAtD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2011 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Martin Wittemann (martinwittemann)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n *\n * @require(qx.module.Animation)\n * @require(qx.module.Manipulating)\n * @require(qx.module.Traversing)\n * @require(qx.module.Template)\n * @require(qx.module.event.GestureHandler)\n */\nqx.Class.define(\"qxl.demobrowser.demo.animation.Scroll\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      // create an array with 30 numbers in it\n      var data = {items : []};\n      for (var i=0; i < 30; i++) {\n        data.items.push(i);\n      }\n\n      // add 5 lists to the body\n      for (var j=0; j < 5; j++) {\n        q.template.get(\"list-template\", data).appendTo(document.body);\n      }\n\n      // set a default scroll top\n      this.reset();\n      q(\"#resetbutton\").on(\"tap\", this.reset, this);\n\n      q(\"#startbutton\").on(\"tap\", function() {\n        q(\".list\").addClass(\"scrolling\").setScrollTop(250, 2000).once(\"animationEnd\", function() {\n          q(\".list\").removeClass(\"scrolling\");\n        });\n      });\n\n    },\n\n\n    reset : function() {\n      q(\".list\").forEach(function(item, i) {\n        item.scrollTop = i * 100;\n      });\n    }\n  }\n});\n"
+  ]
+}

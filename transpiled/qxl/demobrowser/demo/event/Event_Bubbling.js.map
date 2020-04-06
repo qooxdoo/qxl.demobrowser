@@ -1,0 +1,43 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/event/Event_Bubbling.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "event",
+    "EventDemo",
+    "members",
+    "main",
+    "_initLogger",
+    "document",
+    "getElementById",
+    "i",
+    "div",
+    "Registration",
+    "addListener",
+    "_cascadeCapture",
+    "_cascadeBubble",
+    "e",
+    "_log",
+    "getType",
+    "getTarget",
+    "id",
+    "getCurrentTarget",
+    "getEventPhase",
+    "Event_Bubbling"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;;;AAKA;;;;;;;;AAQAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,2CAAhB,EACA;AACEC,IAAAA,MAAM,EAAGC,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,KAArB,CAA2BC,SADtC;AAIEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAG,gBACP;AACE;;AAEA,aAAKC,WAAL,CACE,CAAC,OAAD,EAAU,QAAV,EAAoB,gBAApB,EAAsC,aAAtC,CADF,EAEEC,QAAQ,CAACC,cAAT,CAAwB,QAAxB,CAFF,EAGE,EAHF;;AAMA,aAAK,IAAIC,CAAC,GAAC,CAAX,EAAcA,CAAC,GAAC,EAAhB,EAAoBA,CAAC,EAArB,EAAyB;AACvB,cAAIC,GAAG,GAAGH,QAAQ,CAACC,cAAT,CAAwB,QAAMC,CAA9B,CAAV;AACAjB,UAAAA,EAAE,CAACU,KAAH,CAASS,YAAT,CAAsBC,WAAtB,CAAkCF,GAAlC,EAAuC,KAAvC,EAA8C,KAAKG,eAAnD,EAAoE,IAApE,EAA0E,IAA1E;AACArB,UAAAA,EAAE,CAACU,KAAH,CAASS,YAAT,CAAsBC,WAAtB,CAAkCF,GAAlC,EAAuC,KAAvC,EAA8C,KAAKI,cAAnD,EAAmE,IAAnE,EAAyE,KAAzE;AACD;AACF,OAhBH;AAkBED,MAAAA,eAAe,EAAG,yBAASE,CAAT,EAClB;AACE,aAAKC,IAAL,CAAU,CACRD,CAAC,CAACE,OAAF,EADQ,EAERF,CAAC,CAACG,SAAF,GAAcC,EAFN,EAGRJ,CAAC,CAACK,gBAAF,GAAqBD,EAHb,EAIRJ,CAAC,CAACM,aAAF,MAAqB,CAArB,GAAyB,WAAzB,GAAuC,SAJ/B,CAAV;AAMD,OA1BH;AA4BEP,MAAAA,cAAc,EAAG,wBAASC,CAAT,EACjB;AACE,aAAKC,IAAL,CAAU,CACTD,CAAC,CAACE,OAAF,EADS,EAETF,CAAC,CAACG,SAAF,GAAcC,EAFL,EAGTJ,CAAC,CAACK,gBAAF,GAAqBD,EAHZ,EAITJ,CAAC,CAACM,aAAF,MAAqB,CAArB,GAAyB,WAAzB,GAAuC,QAJ9B,CAAV;AAMD;AApCH;AALF,GADA;AAhCAtB,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,KAArB,CAA2BoB,cAA3B,CAA0C3B,aAA1C,GAA0DA,aAA1D",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/* ************************************************************************\n\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n *\n * @use(qx.event.dispatch.DomBubbling)\n * @use(qx.event.handler.Keyboard)\n * @use(qx.event.handler.Pointer)\n * @use(qx.event.handler.Element)\n */\nqx.Class.define(\"qxl.demobrowser.demo.event.Event_Bubbling\",\n{\n  extend : qxl.demobrowser.demo.event.EventDemo,\n\n\n  members :\n  {\n    main : function()\n    {\n      this.base(arguments);\n\n      this._initLogger(\n        [\"Event\", \"Target\", \"Current target\", \"Event phase\"],\n        document.getElementById(\"logger\"),\n        50\n      );\n\n      for (var i=1; i<10; i++) {\n        var div = document.getElementById(\"div\"+i);\n        qx.event.Registration.addListener(div, \"tap\", this._cascadeCapture, this, true);\n        qx.event.Registration.addListener(div, \"tap\", this._cascadeBubble, this, false);\n      }\n    },\n\n    _cascadeCapture : function(e)\n    {\n      this._log([\n        e.getType(),\n        e.getTarget().id,\n        e.getCurrentTarget().id,\n        e.getEventPhase() == 2 ? \"at target\" : \"capture\"\n      ]);\n    },\n\n    _cascadeBubble : function(e)\n    {\n      this._log([\n       e.getType(),\n       e.getTarget().id,\n       e.getCurrentTarget().id,\n       e.getEventPhase() == 2 ? \"at target\" : \"bubble\"\n     ]);\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/event/Focus.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "event",
+    "Registration",
+    "addListener",
+    "document",
+    "documentElement",
+    "_onActivate",
+    "_onDeactivate",
+    "_onFocusIn",
+    "_onFocusOut",
+    "window",
+    "_onWindowFocus",
+    "_onWindowBlur",
+    "e",
+    "debug",
+    "getTarget",
+    "style",
+    "background",
+    "core",
+    "Environment",
+    "get",
+    "border",
+    "outline",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "Focus"
+  ],
+  "mappings": "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",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.event.Focus\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      qx.event.Registration.addListener(document.documentElement, \"activate\", this._onActivate, this, true);\n      qx.event.Registration.addListener(document.documentElement, \"deactivate\", this._onDeactivate, this, true);\n      qx.event.Registration.addListener(document.documentElement, \"focusin\", this._onFocusIn, this);\n      qx.event.Registration.addListener(document.documentElement, \"focusout\", this._onFocusOut, this);\n\n      qx.event.Registration.addListener(window, \"focus\", this._onWindowFocus, this);\n      qx.event.Registration.addListener(window, \"blur\", this._onWindowBlur, this);\n    },\n\n    _onWindowFocus : function(e)\n    {\n      this.debug(\"Window focussed\");\n    },\n\n    _onWindowBlur : function(e)\n    {\n      this.debug(\"Window blurred\");\n    },\n\n    _onActivate : function(e)\n    {\n      this.debug(\"Activate: \" + e.getTarget());\n      e.getTarget().style.background = \"#E8ECF6\";\n    },\n\n    _onDeactivate : function(e)\n    {\n      this.debug(\"Deactivate: \" + e.getTarget());\n      e.getTarget().style.background = \"\";\n    },\n\n    _onFocusIn : function(e)\n    {\n      this.debug(\"FocusIn: \" + e.getTarget());\n\n      if (qx.core.Environment.get(\"engine.name\") == \"webkit\")\n      {\n        e.getTarget().style.border = \"1px dotted red\";\n      }\n      else\n      {\n        e.getTarget().style.outline = \"1px dotted red\";\n      }\n    },\n\n    _onFocusOut : function(e)\n    {\n      this.debug(\"FocusOut: \" + e.getTarget());\n\n      if (qx.core.Environment.get(\"engine.name\") == \"mshtml\") {\n        e.getTarget().style.border = \"1px solid black\";\n      } else {\n        e.getTarget().style.outline = \"\";\n      }\n    }\n  }\n});\n"
+  ]
+}

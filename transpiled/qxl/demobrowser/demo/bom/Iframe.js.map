@@ -1,0 +1,41 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/Iframe.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "iframe",
+    "bom",
+    "Iframe",
+    "create",
+    "name",
+    "src",
+    "Element",
+    "addListener",
+    "e",
+    "debug",
+    "document",
+    "body",
+    "appendChild",
+    "getElementById",
+    "innerHTML",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,iCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,MAAM,GAAGX,EAAE,CAACY,GAAH,CAAOC,MAAP,CAAcC,MAAd,CAAqB;AAChCC,UAAAA,IAAI,EAAG,WADyB;AAEhCC,UAAAA,GAAG,EAAG;AAF0B,SAArB,CAAb;AAKAhB,QAAAA,EAAE,CAACY,GAAH,CAAOK,OAAP,CAAeC,WAAf,CAA2BP,MAA3B,EAAmC,MAAnC,EAA2C,UAASQ,CAAT,EAAY;AACrD,eAAKC,KAAL,CAAW,iBAAX;AACD,SAFD,EAEG,IAFH;AAIAC,QAAAA,QAAQ,CAACC,IAAT,CAAcC,WAAd,CAA0BZ,MAA1B;AAEA;;;;;;;AAMAU,QAAAA,QAAQ,CAACG,cAAT,CAAwB,OAAxB,EAAiCC,SAAjC,GAA6C,EAA7C;AACD;AAvBH;AAJF,GADA;AAtBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBhB,GAArB,CAAyBC,MAAzB,CAAgCV,aAAhC,GAAgDA,aAAhD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.Iframe\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var iframe = qx.bom.Iframe.create({\n        name : \"testFrame\",\n        src : \"http://www.qooxdoo.org\"\n      });\n\n      qx.bom.Element.addListener(iframe, \"load\", function(e) {\n        this.debug(\"Content loaded.\");\n      }, this);\n\n      document.body.appendChild(iframe);\n\n      /*\n       * Due to a very strange bug in Opera 9.6 and higher, iframes are not\n       * rendered if they have no width and height and the HTML page does not\n       * get rendered again after inserting the iframe.\n       * So we just change a small piece of content on this page:\n       */\n      document.getElementById(\"dummy\").innerHTML = \"\";\n    }\n  }\n});\n"
+  ]
+}
