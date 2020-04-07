@@ -21,15 +21,16 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       const templateDir = command.getTemplateDir();
       const outputDir = maker.getTarget().getOutputDir();
       const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
+      let targetClass = command.resolveTargetClass(command._getConfig().targetType);
 
       return new qx.Promise((fullfiled) => {
         let app = application.getName();
         
-		const path = this.require("upath");
+		    const path = this.require("upath");
         const async = this.require("async");
 		
-		// needed by DataGenerator
-		this.require('walker');
+		    // needed by DataGenerator
+		    this.require('walker');
         this.require('mkdirp');
 
         const DataGenerator = require(path.join(sourceDir, "tool/lib/DataGenerator"));
@@ -105,11 +106,10 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
           },
           (cb) => {
             console.info("DEMO BUILD START COMPILE");
-            let target = new qx.tool.compiler.targets.SourceTarget(outputDir);
+            let target = new targetClass(outputDir);
             target.set({
               generateIndexHtml: false,
               analyser: analyser
-
             });
             target.addPathMapping("source-outputDir/demobrowser/script/source-outputDir", "../..");
             target.addPathMapping("build-outputDir/demobrowser/script/build-outputDir/resource", "../../resource");
