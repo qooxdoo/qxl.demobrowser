@@ -137,4 +137,4 @@
   qxl.demobrowser.demo.virtual.ExtendedList.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ExtendedList.js.map?dt=1586199391286
+//# sourceMappingURL=ExtendedList.js.map?dt=1586350629613

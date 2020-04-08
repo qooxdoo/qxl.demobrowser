@@ -187,4 +187,4 @@
   qx.ui.decoration.MBoxShadow.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MBoxShadow.js.map?dt=1586199415740
+//# sourceMappingURL=MBoxShadow.js.map?dt=1586350661338

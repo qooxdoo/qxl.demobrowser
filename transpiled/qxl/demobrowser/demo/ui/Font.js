@@ -90,4 +90,4 @@
   qxl.demobrowser.demo.ui.Font.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Font.js.map?dt=1586199390221
+//# sourceMappingURL=Font.js.map?dt=1586350628377

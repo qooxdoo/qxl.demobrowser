@@ -56,4 +56,4 @@
   qxl.demobrowser.demo.data.model.Person.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Person.js.map?dt=1586199387211
+//# sourceMappingURL=Person.js.map?dt=1586350624737

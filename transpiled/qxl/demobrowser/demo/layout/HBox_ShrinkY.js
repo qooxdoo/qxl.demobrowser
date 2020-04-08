@@ -78,4 +78,4 @@
   qxl.demobrowser.demo.layout.HBox_ShrinkY.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=HBox_ShrinkY.js.map?dt=1586199388351
+//# sourceMappingURL=HBox_ShrinkY.js.map?dt=1586350626054

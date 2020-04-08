@@ -416,4 +416,4 @@
   qxl.demobrowser.demo.virtual.Gallery.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Gallery.js.map?dt=1586199391360
+//# sourceMappingURL=Gallery.js.map?dt=1586350629719

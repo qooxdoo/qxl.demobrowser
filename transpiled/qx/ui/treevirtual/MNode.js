@@ -420,4 +420,4 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   qx.ui.treevirtual.MNode.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MNode.js.map?dt=1586199405317
+//# sourceMappingURL=MNode.js.map?dt=1586350647853

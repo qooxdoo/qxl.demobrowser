@@ -144,4 +144,4 @@
   qxl.demobrowser.demo.table.Table_Drag_And_Drop.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Table_Drag_And_Drop.js.map?dt=1586199389609
+//# sourceMappingURL=Table_Drag_And_Drop.js.map?dt=1586350627552

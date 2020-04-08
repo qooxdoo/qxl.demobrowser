@@ -271,4 +271,4 @@
   qxl.demobrowser.demo.layout.VBox_Percent.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=VBox_Percent.js.map?dt=1586199388679
+//# sourceMappingURL=VBox_Percent.js.map?dt=1586350626449

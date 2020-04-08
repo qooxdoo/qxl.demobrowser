@@ -1020,4 +1020,4 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
   qx.bom.rest.Resource.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Resource.js.map?dt=1586199415304
+//# sourceMappingURL=Resource.js.map?dt=1586350660735

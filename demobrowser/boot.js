@@ -90,7 +90,7 @@ var envinfo = {
           "email": "Henner DOT Kollmann AT gmx DOT de"
         }
       ],
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     "qx": {
       "name": "qooxdoo framework",
@@ -268,7 +268,7 @@ var envinfo = {
   "qx.promise": true,
   "qx.promise.warnings": true,
   "qx.promise.longStackTraces": true,
-  "qx.compilerVersion": "1.0.0-beta.20200406-1111",
+  "qx.compilerVersion": "1.0.0-beta.20200407-1351",
   "qx.contrib": false,
   "qx.icontheme": [
     "Tango",
@@ -293,7 +293,7 @@ var libinfo = {
     "sourceUri": qx.$$appRoot + ".",
     "resourceUri": qx.$$appRoot + "../resource"
   },
-  "qxl.datademo": {
+  "qxl.versionlabel": {
     "sourceUri": qx.$$appRoot + ".",
     "resourceUri": qx.$$appRoot + "../resource"
   },
@@ -301,7 +301,7 @@ var libinfo = {
     "sourceUri": qx.$$appRoot + ".",
     "resourceUri": qx.$$appRoot + "../resource"
   },
-  "qxl.versionlabel": {
+  "qxl.datademo": {
     "sourceUri": qx.$$appRoot + ".",
     "resourceUri": qx.$$appRoot + "../resource"
   },

@@ -172,4 +172,4 @@
   qxl.demobrowser.demo.data.ListControllerWithFilter.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ListControllerWithFilter.js.map?dt=1586199386713
+//# sourceMappingURL=ListControllerWithFilter.js.map?dt=1586350624171

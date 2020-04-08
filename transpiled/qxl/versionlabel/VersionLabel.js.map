@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": [
-    "/home/travis/build/qooxdoo/qxl.demobrowser/qx_packages/qooxdoo_qxl_versionlabel_v1_0_0/source/class/qxl/versionlabel/VersionLabel.js"
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/qx_packages/qooxdoo_qxl_versionlabel_v1_0_0/source/class/qxl/versionlabel/VersionLabel.js"
   ],
   "names": [
     "qx",

@@ -97,4 +97,4 @@
   qxl.demobrowser.demo.layout.Canvas_LeftRight.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Canvas_LeftRight.js.map?dt=1586199387599
+//# sourceMappingURL=Canvas_LeftRight.js.map?dt=1586350625185

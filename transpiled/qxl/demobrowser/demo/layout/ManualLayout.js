@@ -82,4 +82,4 @@
   qxl.demobrowser.demo.layout.ManualLayout.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ManualLayout.js.map?dt=1586199388420
+//# sourceMappingURL=ManualLayout.js.map?dt=1586350626130

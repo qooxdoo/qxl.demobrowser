@@ -99,4 +99,4 @@
   qxl.demobrowser.demo.widget.Resizer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Resizer.js.map?dt=1586199392778
+//# sourceMappingURL=Resizer.js.map?dt=1586350631580

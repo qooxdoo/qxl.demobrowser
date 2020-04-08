@@ -122,4 +122,4 @@
   qxl.demobrowser.demo.layout.Canvas_Percent.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Canvas_Percent.js.map?dt=1586199387642
+//# sourceMappingURL=Canvas_Percent.js.map?dt=1586350625235

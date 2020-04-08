@@ -111,4 +111,4 @@
   qxl.demobrowser.demo.layout.Canvas_Fixed.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Canvas_Fixed.js.map?dt=1586199387579
+//# sourceMappingURL=Canvas_Fixed.js.map?dt=1586350625157

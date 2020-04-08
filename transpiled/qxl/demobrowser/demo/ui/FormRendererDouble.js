@@ -98,4 +98,4 @@
   qxl.demobrowser.demo.ui.FormRendererDouble.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=FormRendererDouble.js.map?dt=1586199390356
+//# sourceMappingURL=FormRendererDouble.js.map?dt=1586350628537

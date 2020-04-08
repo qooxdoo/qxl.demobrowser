@@ -175,4 +175,4 @@
   qxl.demobrowser.demo.table.Table_Window_Editor.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Table_Window_Editor.js.map?dt=1586199389852
+//# sourceMappingURL=Table_Window_Editor.js.map?dt=1586350627884

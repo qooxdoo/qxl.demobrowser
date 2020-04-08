@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": [
-    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/table/Table_Window_Editor.js"
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/table/Table_Window_Editor.js"
   ],
   "names": [
     "qx",

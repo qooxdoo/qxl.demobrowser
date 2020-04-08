@@ -216,4 +216,4 @@
   qxl.demobrowser.demo.table.MUtil.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MUtil.js.map?dt=1586199389308
+//# sourceMappingURL=MUtil.js.map?dt=1586350627221

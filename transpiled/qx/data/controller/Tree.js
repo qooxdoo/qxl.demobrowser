@@ -934,4 +934,4 @@
   qx.data.controller.Tree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Tree.js.map?dt=1586199400394
+//# sourceMappingURL=Tree.js.map?dt=1586350641170

@@ -401,4 +401,4 @@
   qxl.demobrowser.demo.showcase.Translation.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Translation.js.map?dt=1586199389281
+//# sourceMappingURL=Translation.js.map?dt=1586350627186

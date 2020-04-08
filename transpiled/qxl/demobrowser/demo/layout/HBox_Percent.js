@@ -258,4 +258,4 @@
   qxl.demobrowser.demo.layout.HBox_Percent.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=HBox_Percent.js.map?dt=1586199388282
+//# sourceMappingURL=HBox_Percent.js.map?dt=1586350625971

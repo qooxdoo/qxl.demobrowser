@@ -226,4 +226,4 @@
   qxl.demobrowser.demo.widget.SplitPane.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=SplitPane.js.map?dt=1586199392964
+//# sourceMappingURL=SplitPane.js.map?dt=1586350631819

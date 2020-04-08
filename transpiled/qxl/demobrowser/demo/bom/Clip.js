@@ -114,4 +114,4 @@
   qxl.demobrowser.demo.bom.Clip.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Clip.js.map?dt=1586199385521
+//# sourceMappingURL=Clip.js.map?dt=1586350622717

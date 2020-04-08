@@ -59,4 +59,4 @@
   qxl.demobrowser.demo.bom.PageVisibility.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=PageVisibility.js.map?dt=1586199385849
+//# sourceMappingURL=PageVisibility.js.map?dt=1586350623121

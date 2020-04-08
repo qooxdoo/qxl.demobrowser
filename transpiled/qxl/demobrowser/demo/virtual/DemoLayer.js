@@ -150,4 +150,4 @@
   qxl.demobrowser.demo.virtual.DemoLayer.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=DemoLayer.js.map?dt=1586199391247
+//# sourceMappingURL=DemoLayer.js.map?dt=1586350629576

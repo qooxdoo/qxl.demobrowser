@@ -3018,13 +3018,13 @@ qx.$$packageData['0'] = {
       "png",
       "qx"
     ],
-    "qx/icon/Oxygen/22/actions/system-log-out.png": [
+    "qx/icon/Oxygen/22/actions/process-stop.png": [
       22,
       22,
       "png",
       "qx"
     ],
-    "qx/icon/Oxygen/22/actions/process-stop.png": [
+    "qx/icon/Oxygen/22/actions/system-log-out.png": [
       22,
       22,
       "png",
@@ -3048,13 +3048,13 @@ qx.$$packageData['0'] = {
       "png",
       "qx"
     ],
-    "qx/icon/Oxygen/22/actions/view-refresh.png": [
+    "qx/icon/Oxygen/22/actions/view-fullscreen.png": [
       22,
       22,
       "png",
       "qx"
     ],
-    "qx/icon/Oxygen/22/actions/view-fullscreen.png": [
+    "qx/icon/Oxygen/22/actions/view-refresh.png": [
       22,
       22,
       "png",
@@ -5724,13 +5724,13 @@ qx.$$packageData['0'] = {
       "png",
       "qx"
     ],
-    "qx/icon/Tango/32/actions/edit-undo.png": [
+    "qx/icon/Tango/32/actions/folder-new.png": [
       32,
       32,
       "png",
       "qx"
     ],
-    "qx/icon/Tango/32/actions/folder-new.png": [
+    "qx/icon/Tango/32/actions/edit-undo.png": [
       32,
       32,
       "png",

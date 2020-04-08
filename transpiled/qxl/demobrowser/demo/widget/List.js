@@ -303,4 +303,4 @@
   qxl.demobrowser.demo.widget.List.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=List.js.map?dt=1586199392480
+//# sourceMappingURL=List.js.map?dt=1586350631241

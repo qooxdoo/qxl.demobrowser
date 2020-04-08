@@ -177,4 +177,4 @@
   qxl.demobrowser.demo.ui.MultiPageForm.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=MultiPageForm.js.map?dt=1586199390495
+//# sourceMappingURL=MultiPageForm.js.map?dt=1586350628724

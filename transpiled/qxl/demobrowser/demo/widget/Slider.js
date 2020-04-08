@@ -204,4 +204,4 @@
   qxl.demobrowser.demo.widget.Slider.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Slider.js.map?dt=1586199392882
+//# sourceMappingURL=Slider.js.map?dt=1586350631719

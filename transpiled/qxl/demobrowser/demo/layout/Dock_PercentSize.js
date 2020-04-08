@@ -200,4 +200,4 @@
   qxl.demobrowser.demo.layout.Dock_PercentSize.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Dock_PercentSize.js.map?dt=1586199387874
+//# sourceMappingURL=Dock_PercentSize.js.map?dt=1586350625487

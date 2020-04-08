@@ -95,4 +95,4 @@
   qxl.demobrowser.demo.widget.Popup.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Popup.js.map?dt=1586199392690
+//# sourceMappingURL=Popup.js.map?dt=1586350631477

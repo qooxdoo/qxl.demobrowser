@@ -96,4 +96,4 @@
   qxl.demobrowser.demo.data.JsonToTree.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=JsonToTree.js.map?dt=1586199386588
+//# sourceMappingURL=JsonToTree.js.map?dt=1586350624024

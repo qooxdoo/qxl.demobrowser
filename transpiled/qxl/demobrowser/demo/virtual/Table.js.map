@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": [
-    "/home/travis/build/qooxdoo/qxl.demobrowser/source/class/qxl/demobrowser/demo/virtual/Table.js"
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/virtual/Table.js"
   ],
   "names": [
     "qx",

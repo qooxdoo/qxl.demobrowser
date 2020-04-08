@@ -123,4 +123,4 @@
   qxl.demobrowser.Readme.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Readme.js.map?dt=1586199384786
+//# sourceMappingURL=Readme.js.map?dt=1586350621879

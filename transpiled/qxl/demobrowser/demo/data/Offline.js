@@ -152,4 +152,4 @@
   qxl.demobrowser.demo.data.Offline.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Offline.js.map?dt=1586199386837
+//# sourceMappingURL=Offline.js.map?dt=1586350624338

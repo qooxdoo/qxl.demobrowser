@@ -277,4 +277,4 @@
   qxl.demobrowser.demo.util.PropertyEditor.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=PropertyEditor.js.map?dt=1586199390899
+//# sourceMappingURL=PropertyEditor.js.map?dt=1586350629289

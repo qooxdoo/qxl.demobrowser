@@ -291,4 +291,4 @@
   qxl.demobrowser.demo.data.Github.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=Github.js.map?dt=1586199386542
+//# sourceMappingURL=Github.js.map?dt=1586350623965

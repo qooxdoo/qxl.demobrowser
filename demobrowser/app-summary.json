@@ -3,9 +3,9 @@
   "libraries": [
     "qxl.demobrowser",
     "qxl.logpane",
-    "qxl.datademo",
-    "qxl.formdemo",
     "qxl.versionlabel",
+    "qxl.formdemo",
+    "qxl.datademo",
     "qx"
   ],
   "parts": [
@@ -927,7 +927,7 @@
             "email": "Henner DOT Kollmann AT gmx DOT de"
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "qx": {
         "name": "qooxdoo framework",
@@ -1105,7 +1105,7 @@
     "qx.promise": true,
     "qx.promise.warnings": true,
     "qx.promise.longStackTraces": true,
-    "qx.compilerVersion": "1.0.0-beta.20200406-1111",
+    "qx.compilerVersion": "1.0.0-beta.20200407-1351",
     "qx.contrib": false,
     "qx.icontheme": [
       "Tango",

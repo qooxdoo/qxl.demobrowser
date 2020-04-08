@@ -61,4 +61,4 @@
   qxl.demobrowser.demo.event.ElementResize.$$dbClassInfo = $$dbClassInfo;
 })();
 
-//# sourceMappingURL=ElementResize.js.map?dt=1586199387233
+//# sourceMappingURL=ElementResize.js.map?dt=1586350624757

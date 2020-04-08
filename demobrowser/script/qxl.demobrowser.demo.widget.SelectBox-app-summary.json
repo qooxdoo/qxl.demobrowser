@@ -1,8 +1,12 @@
 {
   "appClass": "qxl.demobrowser.demo.widget.SelectBox",
   "libraries": [
-    "qx",
-    "qxl.demobrowser"
+    "qxl.demobrowser",
+    "qxl.logpane",
+    "qxl.versionlabel",
+    "qxl.formdemo",
+    "qxl.datademo",
+    "qx"
   ],
   "parts": [
     {
@@ -378,7 +382,7 @@
             "email": "Henner DOT Kollmann AT gmx DOT de"
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "qx": {
         "name": "qooxdoo framework",
