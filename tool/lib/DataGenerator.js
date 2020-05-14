@@ -10,38 +10,6 @@
   var walker = require('walker');
   var mkdirp = require('mkdirp');
 
-  // global vars
-  var jobSectionTemplate = {
-    "source-XXX": {
-      "extend": ["default-demo"],
-      "let": {
-        "DPACKAGE": "ZZZ",
-        "DSNAME": "YYY",
-        "BUILDTYPE": "source",
-        "EXCEPT": ["*"]
-      }
-    },
-    "build-XXX": {
-      "extend": ["default-demo"],
-      "let": { "DPACKAGE": "ZZZ",
-        "DSNAME": "YYY",
-        "BUILDTYPE": "build",
-        "EXCEPT": []
-      },
-      "compile-options": {
-        "code": {
-          "optimize": [
-            "variables",
-            "basecalls",
-            "strings",
-            "privates",
-            "whitespace"
-          ]
-        }
-      }
-    }
-  };
-
   var DataGenerator = function (config) {
     if (config.verbose) {
       console.log('Current config %s', JSON.stringify(config));
@@ -210,99 +178,12 @@
     },
 
     /**
-     * Create config.demo.json file with all the jobs
-     *
-     * @param {function} done
-     */
-    createJsonConfigFile: function (done) {
-      var dataGenerator = this;
-
-      var source = [];
-      var build = [];
-      var shadowedJobs = [];
-
-      var data = {};
-      data['include'] = [
-        {
-          path: 'tool/default.json'
-        }
-      ];
-      data['jobs'] = {};
-      data['config-warnings'] = {
-        'job-shadowing': shadowedJobs
-      };
-
-      var files = this.getFiles('.html');
-      files.forEach(function (file) {
-        var demoCategory = dataGenerator.getDemoCategoryFromFile(file.path);
-
-        // check for demo-specific config file
-        var configFile = file.entry.replace('.html', '.json');
-        if (fs.existsSync(configFile)) {
-          data['include'].push({
-            path: configFile
-          });
-        }
-
-        // build classname (category.name)
-        var className = [demoCategory.category, demoCategory.name].join('.');
-
-        if (dataGenerator.isValidDemoCategory(demoCategory)) {
-          source.push('source-' + className);
-          build.push('build-' + className);
-
-          var jobSection = dataGenerator.createJobSection(demoCategory);
-          data['jobs'] = dataGenerator.mergeJobs(data['jobs'], jobSection);
-        }
-
-      });
-
-      data['jobs']['source'] = {
-        run: source
-      };
-      data['jobs']['build'] = {
-        run: build
-      };
-
-      var demoConfigJsonFile = dataGenerator.config.demoConfigJsonFile;
-      dataGenerator.saveAsJsonFile(demoConfigJsonFile, data, done);
-    },
-
-    /**
-     * Checks if the given demo category is valid regarding naming
-     *
-     * @param demoCategory
-     * @returns {boolean}
-     */
-    isValidDemoCategory: function (demoCategory) {
-      return ['data', 'blank', 'undefined'].indexOf(demoCategory.name) <= -1;
-    },
-
-    /**
-     * Replace variables in jobSectionTemplate and return parsed string
-     *
-     * @param {object} demoCategory
-     * @returns {string}
-     */
-    createJobSection: function (demoCategory) {
-      var className = [demoCategory.category, demoCategory.name].join('.');
-      var stringifiedJobSectionTemplate = JSON.stringify(jobSectionTemplate);
-
-      return JSON.parse(stringifiedJobSectionTemplate
-        .split('XXX').join(className)
-        .split('YYY').join(demoCategory.name)
-        .split('ZZZ').join(demoCategory.category)
-      );
-    },
-
-    /**
      * copy all javascript files to config.scriptDestinationPath
      *
      * @param {function} done
      */
     copyJsFiles: function (done) {
       var dataGenerator = this;
-
       var files = this.getFiles('.html');
       var fileCounter = 0;
       files.forEach(function (file) {
@@ -316,21 +197,17 @@
             demoCategory.category,
             demoCategory.name
           );
-
-          if (!fs.existsSync(demoDataJsonFilePath)) {
-            fs.mkdirSync(demoDataJsonFilePath);
-          }
-
           var jsFilePath = path.join(dataGenerator.config.classPath, className + '.js');
-
           if (fs.existsSync(jsFilePath)) {
             fileCounter += 1;
             dataGenerator.copyJsFile(
               jsFilePath,
               path.join(
                 demoDataJsonFilePath,
-                util.format(
-                  'qxl.demobrowser.demo.%s.%s.src.js',
+              demoCategory.category,
+              demoCategory.name,
+              util.format(
+                  'qxl.demobrowser.demo.%s.%s.js',
                   demoCategory.category,
                   demoCategory.name
                 )
@@ -362,6 +239,11 @@
      */
     copyJsFile: function (sourcePath, targetPath, done) {
       var dataGenerator = this;
+
+      let p = path.dirname(targetPath);
+      if (!fs.existsSync(p)) {
+        mkdirp.sync(p);
+      }
 
       var readStream = fs.createReadStream(sourcePath);
       readStream.on("error", function (err) {

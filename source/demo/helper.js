@@ -2,6 +2,7 @@
 {
   var jsFileURL;
   var jsSourceURL;
+  var jsBaseURL;
 
   /*
      This class contains code based on the following work:
@@ -60,10 +61,10 @@
     var base = uri.file.substring(0, uri.file.indexOf("."));
     var directory = uri.directory.split("/");
     var category = directory[directory.length-2];
-
     // create the URI to the source script
-    jsFileURL = "../../script/qxl.demobrowser.demo." + category + "." + base + "-boot.js";
-    jsSourceURL = "../../script/qxl.demobrowser.demo." + category + "." + base + ".src.js";
+    jsBaseURL = "../../script/" + category + "/" + base;
+    jsFileURL = jsBaseURL + "/boot.js";
+    jsSourceURL = jsBaseURL + "/qxl.demobrowser.demo." + category + "." + base + ".js";
 
     // Apply document title
     document.title = base + " (" + category + ")";
@@ -98,9 +99,9 @@
   
   if (!window.qx) 
     window.qx = {};
-  qx.$$appRoot = "../../script/";
 
   getDataFromLocation();
+  qx.$$appRoot = jsBaseURL;
   loadScript();
   attachEvents();
 })();

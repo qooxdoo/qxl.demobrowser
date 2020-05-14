@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/qooxdoo/qooxdoo-compiler/master/resource/schema/v1/compile.json",
+	"$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
 	"environment": {
 		"qx.allowUrlVariants": true,
 		"qx.allowUrlSettings": true,
@@ -22,7 +22,17 @@
 	/** Targets */
 	"targets": [{
 			"type": "source",
-			"outputPath": "compiled/source"
+			"outputPath": "compiled/source",
+			"bundle": {
+				"include": "qx.*"
+   		},
+	  	"babelOptions": {
+				"targets": {
+						"edge": "18",
+						"chrome": "73",
+						"firefox": "66"
+			  }
+		  }
 		},
 		{
 			"type": "build",

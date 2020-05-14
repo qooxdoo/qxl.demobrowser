@@ -70,6 +70,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
               if (file.level === 2) {
                 let demoCategory = dataGenerator.getDemoCategoryFromFile(file.path);
                 let className = 'qxl.demobrowser.demo.' + demoCategory.category + '.' + demoCategory.name;
+				        let outDir = path.join(demoCategory.category, demoCategory.name);
                 let library = analyser.getLibraryFromClassname(className);
                 if (!library) {
                   console.info("no class found for " + file.path);
@@ -88,7 +89,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
                     analyser: analyser,
                     environment: environment,
                     name: className,
-                    outputPath: path.join(app, "/script"),
+                    outputPath: path.join(app, "script", outDir),
                     writeIndexHtmlToRoot: false,
                     include: [
                       "qx.theme.Indigo",
@@ -111,14 +112,8 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
               generateIndexHtml: false,
               analyser: analyser
             });
-            target.addPathMapping("source-outputDir/demobrowser/script/source-outputDir", "../..");
-            target.addPathMapping("build-outputDir/demobrowser/script/build-outputDir/resource", "../../resource");
-
             async.eachSeries(appInfos,
               (appInfo, cb) => {
-                target.set({
-                  scriptPrefix: appInfo.className + "-"
-                });
                 // Calculate dependencies and write it out
                 appInfo.app.setAnalyser(analyser);
                 appInfo.app.calcDependencies();

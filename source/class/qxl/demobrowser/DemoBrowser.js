@@ -1264,12 +1264,12 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
           if (qx.core.Environment.get("qx.contrib") == false) {
     
             // construct url to demo script source
-            var u = "script/qxl.demobrowser.demo";
             var parts = url.split('/');
             var cat = parts[parts.length - 2];
             var base = parts[parts.length - 1];
             base = base.substr(0, base.indexOf('.html'))
-            u += "." + cat + "." + base + ".src.js";
+            var u = "script/" + cat + "/"+ base + "/qxl.demobrowser.demo";
+            u += "." + cat + "." + base + ".js";
             let jsSourceFileName = qx.$$appRoot + u;
                
             // get the javascript code
