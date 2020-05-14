@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/root/Page.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Inline",
+    "members",
+    "main",
+    "box",
+    "ui",
+    "container",
+    "Composite",
+    "layout",
+    "HBox",
+    "w1",
+    "core",
+    "Widget",
+    "set",
+    "backgroundColor",
+    "decorator",
+    "padding",
+    "w2",
+    "w3",
+    "w4",
+    "add",
+    "getRoot",
+    "left",
+    "top",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "root",
+    "Page"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAkBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,gCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,GAAG,GAAG,IAAIX,EAAE,CAACY,EAAH,CAAMC,SAAN,CAAgBC,SAApB,CAA8B,IAAId,EAAE,CAACY,EAAH,CAAMG,MAAN,CAAaC,IAAjB,EAA9B,CAAV;AAEA,YAAIC,EAAE,GAAG,IAAIjB,EAAE,CAACY,EAAH,CAAMM,IAAN,CAAWC,MAAf,GAAwBC,GAAxB,CAA4B;AACnCC,UAAAA,eAAe,EAAE,KADkB;AAEnCC,UAAAA,SAAS,EAAE,MAFwB;AAGnCC,UAAAA,OAAO,EAAE;AAH0B,SAA5B,CAAT;AAMA,YAAIC,EAAE,GAAG,IAAIxB,EAAE,CAACY,EAAH,CAAMM,IAAN,CAAWC,MAAf,GAAwBC,GAAxB,CAA4B;AACnCC,UAAAA,eAAe,EAAE,MADkB;AAEnCC,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKA,YAAIG,EAAE,GAAG,IAAIzB,EAAE,CAACY,EAAH,CAAMM,IAAN,CAAWC,MAAf,GAAwBC,GAAxB,CAA4B;AACnCC,UAAAA,eAAe,EAAE,OADkB;AAEnCC,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKA,YAAII,EAAE,GAAG,IAAI1B,EAAE,CAACY,EAAH,CAAMM,IAAN,CAAWC,MAAf,GAAwBC,GAAxB,CAA4B;AACnCC,UAAAA,eAAe,EAAE,QADkB;AAEnCC,UAAAA,SAAS,EAAE;AAFwB,SAA5B,CAAT;AAKAX,QAAAA,GAAG,CAACgB,GAAJ,CAAQV,EAAR;AACAN,QAAAA,GAAG,CAACgB,GAAJ,CAAQH,EAAR;AACAb,QAAAA,GAAG,CAACgB,GAAJ,CAAQF,EAAR;AACAd,QAAAA,GAAG,CAACgB,GAAJ,CAAQD,EAAR;AAEA,aAAKE,OAAL,GAAeD,GAAf,CAAmBhB,GAAnB,EAAwB;AAACkB,UAAAA,IAAI,EAAE,EAAP;AAAWC,UAAAA,GAAG,EAAE;AAAhB,SAAxB;AACD;AAlCH;AAJF,GADA;AArBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,IAArB,CAA0BC,IAA1B,CAA+BhC,aAA/B,GAA+CA,aAA/C",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.root.Page\",\n{\n  extend : qx.application.Inline,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());\n\n      var w1 = new qx.ui.core.Widget().set({\n        backgroundColor: \"red\",\n        decorator: \"main\",\n        padding: 10\n      });\n\n      var w2 = new qx.ui.core.Widget().set({\n        backgroundColor: \"blue\",\n        decorator: \"main\"\n      });\n\n      var w3 = new qx.ui.core.Widget().set({\n        backgroundColor: \"green\",\n        decorator: \"main\"\n      });\n\n      var w4 = new qx.ui.core.Widget().set({\n        backgroundColor: \"yellow\",\n        decorator: \"main\"\n      });\n\n      box.add(w1);\n      box.add(w2);\n      box.add(w3);\n      box.add(w4);\n\n      this.getRoot().add(box, {left: 30, top: 120});\n    }\n  }\n});\n"
+  ]
+}

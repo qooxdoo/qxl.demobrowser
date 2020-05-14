@@ -1,0 +1,39 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/Background.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "resolved",
+    "util",
+    "ResourceManager",
+    "getInstance",
+    "toUri",
+    "q",
+    "setAttribute",
+    "bom",
+    "element",
+    "Background",
+    "compile",
+    "setStyles",
+    "getStyles",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": "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",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n *\n * @asset(qx/icon/Tango/48/devices/drive-optical.png)\n * @tag noPlayground\n *\n * @require(qx.module.Core)\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.Background\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var resolved = qx.util.ResourceManager.getInstance().toUri(\"qx/icon/Tango/48/devices/drive-optical.png\");\n\n      q(\"#box1_1\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved));\n      q(\"#box1_2\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"repeat-x\"));\n      q(\"#box1_3\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"repeat-y\"));\n      q(\"#box1_4\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"repeat\", 10));\n      q(\"#box1_5\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"repeat\", 0, 10));\n      q(\"#box1_6\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"repeat\", 10, 10));\n      q(\"#box1_7\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"no-repeat\", \"center\", \"center\"));\n      q(\"#box1_8\").setAttribute(\"style\", qx.bom.element.Background.compile(resolved, \"no-repeat\", \"right\", \"bottom\"));\n\n\n      q(\"#box2_1\").setStyles(qx.bom.element.Background.getStyles(resolved));\n      q(\"#box2_2\").setStyles(qx.bom.element.Background.getStyles(resolved, \"repeat-x\"));\n      q(\"#box2_3\").setStyles(qx.bom.element.Background.getStyles(resolved, \"repeat-y\"));\n      q(\"#box2_4\").setStyles(qx.bom.element.Background.getStyles(resolved, \"repeat\", 10));\n      q(\"#box2_5\").setStyles(qx.bom.element.Background.getStyles(resolved, \"repeat\", 0, 10));\n      q(\"#box2_6\").setStyles(qx.bom.element.Background.getStyles(resolved, \"repeat\", 10, 10));\n      q(\"#box2_7\").setStyles(qx.bom.element.Background.getStyles(resolved, \"no-repeat\", \"center\", \"center\"));\n      q(\"#box2_8\").setStyles(qx.bom.element.Background.getStyles(resolved, \"no-repeat\", \"right\", \"bottom\"));\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,164 @@
+{
+  "className": "qxl.demobrowser.demo.table.MUtil",
+  "packageName": "qxl.demobrowser.demo.table",
+  "name": "MUtil",
+  "superClass": null,
+  "interfaces": [],
+  "mixins": [],
+  "functionName": null,
+  "clazz": {
+    "location": {
+      "start": {
+        "line": 5,
+        "column": 0
+      },
+      "end": {
+        "line": 157,
+        "column": 3
+      }
+    },
+    "jsdoc": {
+      "@description": [
+        {
+          "name": "@description",
+          "body": ""
+        }
+      ],
+      "@require": [
+        {
+          "name": "@require",
+          "body": "qx.ui.table.selection.Manager"
+        }
+      ]
+    }
+  },
+  "type": "mixin",
+  "construct": {
+    "location": {
+      "start": {
+        "line": 7,
+        "column": 14
+      },
+      "end": {
+        "line": 9,
+        "column": 3
+      }
+    },
+    "jsdoc": {}
+  },
+  "members": {
+    "getTableMock": {
+      "location": {
+        "start": {
+          "line": 13,
+          "column": 4
+        },
+        "end": {
+          "line": 48,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getSelectionMock": {
+      "location": {
+        "start": {
+          "line": 51,
+          "column": 4
+        },
+        "end": {
+          "line": 57,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getColumnModelMock": {
+      "location": {
+        "start": {
+          "line": 60,
+          "column": 4
+        },
+        "end": {
+          "line": 79,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getPaneModelMock": {
+      "location": {
+        "start": {
+          "line": 82,
+          "column": 4
+        },
+        "end": {
+          "line": 92,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getModelMock": {
+      "location": {
+        "start": {
+          "line": 95,
+          "column": 4
+        },
+        "end": {
+          "line": 115,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getPaneMock": {
+      "location": {
+        "start": {
+          "line": 118,
+          "column": 4
+        },
+        "end": {
+          "line": 123,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "getScrollerMock": {
+      "location": {
+        "start": {
+          "line": 126,
+          "column": 4
+        },
+        "end": {
+          "line": 138,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "public"
+    },
+    "_getNewTableDiv": {
+      "location": {
+        "start": {
+          "line": 141,
+          "column": 4
+        },
+        "end": {
+          "line": 155,
+          "column": 5
+        }
+      },
+      "type": "function",
+      "access": "protected"
+    }
+  },
+  "descendants": []
+}

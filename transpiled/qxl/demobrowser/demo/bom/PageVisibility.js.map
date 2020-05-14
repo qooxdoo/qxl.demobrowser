@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/PageVisibility.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "page",
+    "bom",
+    "PageVisibility",
+    "log",
+    "on",
+    "setInterval",
+    "hidden",
+    "isHidden",
+    "Date",
+    "getVisibilityState",
+    "txt",
+    "document",
+    "getElementById",
+    "innerHTML",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAiBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,yCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAG,gBACP;AACE;AAEA,YAAIC,IAAI,GAAG,IAAIX,EAAE,CAACY,GAAH,CAAOC,cAAX,EAAX;AACA,YAAIC,GAAG,GAAG,KAAKA,GAAf;AAEAH,QAAAA,IAAI,CAACI,EAAL,CAAQ,QAAR,EAAkB,YAAW;AAC3BD,UAAAA,GAAG,CAAC,iDAAD,CAAH;AACD,SAFD,EANF,CAUE;;AACAE,QAAAA,WAAW,CAAC,YAAW;AACrB,cAAIC,MAAM,GAAGN,IAAI,CAACO,QAAL,EAAb;AACAJ,UAAAA,GAAG,CACD,CAAE,IAAIK,IAAJ,EAAF,GAAgB,OAAhB,GACA,6BADA,IACiCF,MAAM,GAAG,KAAH,GAAW,OADlD,IAC6D,KAD7D,GACqEA,MADrE,GAC8E,YAD9E,GAEA,QAFA,GAEWN,IAAI,CAACS,kBAAL,EAHV,CAAH;AAID,SANU,EAMR,IANQ,CAAX;AAQD,OArBH;AAuBEN,MAAAA,GAAG,EAAG,aAASO,GAAT,EAAc;AAClB,YAAIP,GAAG,GAAGQ,QAAQ,CAACC,cAAT,CAAwB,KAAxB,CAAV;AACAT,QAAAA,GAAG,CAACU,SAAJ,GAAgBH,GAAG,GAAG,MAAN,GAAeC,QAAQ,CAACC,cAAT,CAAwB,KAAxB,EAA+BC,SAA9D;AACD;AA1BH;AAJF,GADA;AApBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBf,GAArB,CAAyBC,cAAzB,CAAwCV,aAAxC,GAAwDA,aAAxD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2012 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Martin Wittemann (wittemann)\n\n************************************************************************ */\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.PageVisibility\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main : function()\n    {\n      this.base(arguments);\n\n      var page = new qx.bom.PageVisibility();\n      var log = this.log;\n\n      page.on(\"change\", function() {\n        log(\"----------- visibility change event -----------\");\n      });\n\n      // poll for the states\n      setInterval(function() {\n        var hidden = page.isHidden();\n        log(\n          +(new Date()) + \" --- \" +\n          \"hidden: <span style='color:\" + (hidden ? \"red\" : \"green\") + \";'>\" + hidden + \"</span> | \" +\n          \"state:\" + page.getVisibilityState());\n      }, 1000);\n\n    },\n\n    log : function(txt) {\n      var log = document.getElementById(\"log\");\n      log.innerHTML = txt + \"<br>\" + document.getElementById(\"log\").innerHTML;\n    }\n  }\n});\n"
+  ]
+}

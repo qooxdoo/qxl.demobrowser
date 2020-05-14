@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/Appearance.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Theme",
+    "define",
+    "extend",
+    "theme",
+    "indigo",
+    "Appearance",
+    "title",
+    "appearances",
+    "alias",
+    "include",
+    "style",
+    "width",
+    "padding",
+    "decorator",
+    "qxl",
+    "demobrowser"
+  ],
+  "mappings": ";;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;AAAAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,4BAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,KAAH,CAASC,MAAT,CAAgBC,UAD3B;AAEEC,IAAAA,KAAK,EAAG,cAFV;AAIEC,IAAAA,WAAW,EACX;AACE,mBACA;AACEC,QAAAA,KAAK,EAAG,MADV;AAEEC,QAAAA,OAAO,EAAG,MAFZ;AAIEC,QAAAA,KAAK,EAAG,iBACR;AACE,iBAAO;AACLC,YAAAA,KAAK,EAAG,GADH;AAELC,YAAAA,OAAO,EAAE,CAFJ;AAGLC,YAAAA,SAAS,EAAE;AAHN,WAAP;AAKD;AAXH;AAFF;AALF,GADA;AAAAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBV,UAAhB,CAA2BN,aAA3B,GAA2CA,aAA3C",
+  "sourcesContent": [
+    "qx.Theme.define(\"qxl.demobrowser.Appearance\",\n{\n  extend : qx.theme.indigo.Appearance,\n  title : \"Demo browser\",\n\n  appearances :\n  {\n    \"demo-tree\" :\n    {\n      alias : \"tree\",\n      include : \"tree\",\n\n      style : function()\n      {\n        return {\n          width : 270,\n          padding: 0,\n          decorator: \"main\"\n        };\n      }\n    }\n  }\n});\n"
+  ]
+}

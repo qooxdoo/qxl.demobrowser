@@ -1,0 +1,32 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/showcase/Form.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "getRoot",
+    "add",
+    "qxl",
+    "formdemo",
+    "FormItems",
+    "demobrowser",
+    "demo",
+    "showcase",
+    "Form"
+  ],
+  "mappings": ";;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;;AAIAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,oCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,UAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,aAAKC,OAAL,GAAeC,GAAf,CAAmB,IAAIC,GAAG,CAACC,QAAJ,CAAaC,SAAjB,EAAnB;AACD;AANH;AAJF,GADA;AAvBAF,EAAAA,GAAG,CAACG,WAAJ,CAAgBC,IAAhB,CAAqBC,QAArB,CAA8BC,IAA9B,CAAmChB,aAAnC,GAAmDA,aAAnD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Christian Hagendorn (chris_schmidt)\n     * Martin Wittemann (martinwittemann)\n\n************************************************************************ */\n\n/**\n * @tag showcase\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.showcase.Form\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      this.getRoot().add(new qxl.formdemo.FormItems());\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/data/filter/SearchAsYouTypeFilter.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "core",
+    "Object",
+    "construct",
+    "controller",
+    "__controller",
+    "filter",
+    "lang",
+    "Function",
+    "bind",
+    "data",
+    "search",
+    "getSearchString",
+    "__timerId",
+    "properties",
+    "searchString",
+    "check",
+    "apply",
+    "init",
+    "members",
+    "_applySearchString",
+    "value",
+    "old",
+    "timer",
+    "util",
+    "TimerManager",
+    "getInstance",
+    "stop",
+    "start",
+    "update",
+    "destruct",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "SearchAsYouTypeFilter"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;AAiBAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,wDAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,IAAH,CAAQC,MADnB;AAIEC,IAAAA,SAAS,EAAG,mBAASC,UAAT,EACZ;AACE,4CADF,CAEE;;AACA,WAAKC,YAAL,GAAoBD,UAApB,CAHF,CAKE;AACA;;AACA,WAAKE,MAAL,GAAcZ,EAAE,CAACa,IAAH,CAAQC,QAAR,CAAiBC,IAAjB,CAAsB,UAASC,IAAT,EAAe;AACjD,eAAOA,IAAI,CAACC,MAAL,CAAY,KAAKC,eAAL,EAAZ,KAAuC,CAAC,CAA/C;AACD,OAFa,EAEX,IAFW,CAAd,CAPF,CAWE;;AACA,WAAKC,SAAL,GAAiB,IAAjB;AACD,KAlBH;AAqBEC,IAAAA,UAAU,EAAG;AAEXC,MAAAA,YAAY,EAAG;AACbC,QAAAA,KAAK,EAAG,QADK;AAEbC,QAAAA,KAAK,EAAE,oBAFM;AAGbC,QAAAA,IAAI,EAAE;AAHO;AAFJ,KArBf;AA+BEC,IAAAA,OAAO,EACP;AACEN,MAAAA,SAAS,EAAE,IADb;AAEER,MAAAA,YAAY,EAAE,IAFhB;AAIEe,MAAAA,kBAAkB,EAAG,4BAASC,KAAT,EAAgBC,GAAhB,EAAqB;AACxC;AACA,YAAIC,KAAK,GAAG7B,EAAE,CAAC8B,IAAH,CAAQC,YAAR,CAAqBC,WAArB,EAAZ,CAFwC,CAGxC;;AACA,YAAI,KAAKb,SAAL,IAAkB,IAAtB,EAA4B;AAC1B;AACAU,UAAAA,KAAK,CAACI,IAAN,CAAW,KAAKd,SAAhB;AACA,eAAKA,SAAL,GAAiB,IAAjB;AACD,SARuC,CASxC;;;AACA,aAAKA,SAAL,GAAiBU,KAAK,CAACK,KAAN,CAAY,YAAW;AACtC,eAAKvB,YAAL,CAAkBwB,MAAlB;;AACA,eAAKhB,SAAL,GAAiB,IAAjB;AACD,SAHgB,EAGd,CAHc,EAGX,IAHW,EAGL,IAHK,EAGC,GAHD,CAAjB;AAID,OAlBH;AAoBEP,MAAAA,MAAM,EAAE;AApBV,KAhCF;;AAuDE;;;;;AAMAwB,IAAAA,QAAQ,EAAG,oBAAW;AACpB,WAAKzB,YAAL,GAAoB,IAApB;AACD;AA/DH,GADA;AAjBA0B,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBvB,IAArB,CAA0BJ,MAA1B,CAAiC4B,qBAAjC,CAAuDrC,aAAvD,GAAuEA,aAAvE",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2009 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Martin Wittemann (martinwittemann)\n\n************************************************************************ */\nqx.Class.define(\"qxl.demobrowser.demo.data.filter.SearchAsYouTypeFilter\",\n{\n  extend : qx.core.Object,\n\n\n  construct : function(controller)\n  {\n    this.base(arguments);\n    // store the controller\n    this.__controller = controller;\n\n    // apply the filter funtion on creation time because the 'this' context\n    // needs to be bound to the function\n    this.filter = qx.lang.Function.bind(function(data) {\n      return data.search(this.getSearchString()) != -1;\n    }, this);\n\n    // storage for the timer id\n    this.__timerId = null;\n  },\n\n\n  properties : {\n\n    searchString : {\n      check : \"String\",\n      apply: \"_applySearchString\",\n      init: \"\"\n    }\n  },\n\n\n  members :\n  {\n    __timerId: null,\n    __controller: null,\n\n    _applySearchString : function(value, old) {\n      // get the timer instance\n      var timer = qx.util.TimerManager.getInstance();\n      // check for the old listener\n      if (this.__timerId != null) {\n        // stop the old one\n        timer.stop(this.__timerId);\n        this.__timerId = null;\n      }\n      // start a new listener to update the controller\n      this.__timerId = timer.start(function() {\n        this.__controller.update();\n        this.__timerId = null;\n      }, 0, this, null, 200);\n    },\n\n    filter: null\n  },\n\n  /*\n   *****************************************************************************\n      DESTRUCT\n   *****************************************************************************\n   */\n\n  destruct : function() {\n    this.__controller = null;\n  }\n});"
+  ]
+}

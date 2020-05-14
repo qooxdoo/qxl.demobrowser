@@ -1,0 +1,42 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/AttributeStyle_2.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "chk",
+    "dom",
+    "Element",
+    "create",
+    "type",
+    "checked",
+    "id",
+    "document",
+    "body",
+    "appendChild",
+    "lab",
+    "bom",
+    "element",
+    "Attribute",
+    "set",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "AttributeStyle_2"
+  ],
+  "mappings": ";;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,2CAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,GAAG,GAAGX,EAAE,CAACY,GAAH,CAAOC,OAAP,CAAeC,MAAf,CAAsB,OAAtB,EAA+B;AACvCC,UAAAA,IAAI,EAAG,UADgC;AAEvCC,UAAAA,OAAO,EAAG,IAF6B;AAGvCC,UAAAA,EAAE,EAAG;AAHkC,SAA/B,CAAV;AAMAC,QAAAA,QAAQ,CAACC,IAAT,CAAcC,WAAd,CAA0BT,GAA1B;AAEA,YAAIU,GAAG,GAAGrB,EAAE,CAACY,GAAH,CAAOC,OAAP,CAAeC,MAAf,CAAsB,OAAtB,EAA+B;AACvC,iBAAQ;AAD+B,SAA/B,CAAV;AAIAd,QAAAA,EAAE,CAACsB,GAAH,CAAOC,OAAP,CAAeC,SAAf,CAAyBC,GAAzB,CAA6BJ,GAA7B,EAAkC,MAAlC,EAA0C,aAA1C;AAEAH,QAAAA,QAAQ,CAACC,IAAT,CAAcC,WAAd,CAA0BC,GAA1B;AACD;AApBH;AAJF,GADA;AAtBAK,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBN,GAArB,CAAyBO,gBAAzB,CAA0C1B,aAA1C,GAA0DA,aAA1D",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.AttributeStyle_2\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var chk = qx.dom.Element.create(\"input\", {\n        type : \"checkbox\",\n        checked : true,\n        id : \"chk\"\n      });\n\n      document.body.appendChild(chk);\n\n      var lab = qx.dom.Element.create(\"label\", {\n        \"for\" : \"chk\"\n      });\n\n      qx.bom.element.Attribute.set(lab, \"text\", \"Checkbox #1\");\n\n      document.body.appendChild(lab);\n    }\n  }\n});\n"
+  ]
+}

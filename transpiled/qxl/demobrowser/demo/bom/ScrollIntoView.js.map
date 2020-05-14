@@ -1,0 +1,44 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/ScrollIntoView.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "statics",
+    "test",
+    "ids",
+    "i",
+    "l",
+    "length",
+    "el",
+    "document",
+    "getElementById",
+    "log",
+    "Logger",
+    "info",
+    "offsetWidth",
+    "scrollWidth",
+    "clientWidth",
+    "offsetHeight",
+    "scrollHeight",
+    "clientHeight",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "bom",
+    "ScrollIntoView"
+  ],
+  "mappings": ";;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;AAmBA;;;AAGAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,yCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAG,gBACP;AACE,YAAIC,GAAG,GAAG,CAAE,IAAF,EAAQ,IAAR,EAAc,IAAd,EAAoB,IAApB,EAA0B,IAA1B,EAAgC,IAAhC,EAAsC,IAAtC,EAA4C,IAA5C,CAAV;;AAEA,aAAK,IAAIC,CAAC,GAAC,CAAN,EAASC,CAAC,GAACF,GAAG,CAACG,MAApB,EAA4BF,CAAC,GAACC,CAA9B,EAAiCD,CAAC,EAAlC,EACA;AACE,cAAIG,EAAE,GAAGC,QAAQ,CAACC,cAAT,CAAwBN,GAAG,CAACC,CAAD,CAA3B,CAAT;AACAZ,UAAAA,EAAE,CAACkB,GAAH,CAAOC,MAAP,CAAcC,IAAd,CAAmB,YAAYT,GAAG,CAACC,CAAD,CAAf,GAAqB,WAArB,GAAmCG,EAAE,CAACM,WAAtC,GAAoD,WAApD,GAAkEN,EAAE,CAACO,WAArE,GAAmF,WAAnF,GAAiGP,EAAE,CAACQ,WAAvH;AACAvB,UAAAA,EAAE,CAACkB,GAAH,CAAOC,MAAP,CAAcC,IAAd,CAAmB,aAAaT,GAAG,CAACC,CAAD,CAAhB,GAAsB,WAAtB,GAAoCG,EAAE,CAACS,YAAvC,GAAsD,WAAtD,GAAoET,EAAE,CAACU,YAAvE,GAAsF,WAAtF,GAAoGV,EAAE,CAACW,YAA1H;AACD;AACF;AAXH;AAJF,GADA;AAtBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,GAArB,CAAyBC,cAAzB,CAAwC5B,aAAxC,GAAwDA,aAAxD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.ScrollIntoView\",\n{\n  extend : qx.application.Native,\n\n  statics :\n  {\n    test : function()\n    {\n      var ids = [ \"z1\", \"z2\", \"z3\", \"z4\", \"z5\", \"z6\", \"z7\", \"z8\" ];\n\n      for (var i=0, l=ids.length; i<l; i++)\n      {\n        var el = document.getElementById(ids[i]);\n        qx.log.Logger.info(\"Width: \" + ids[i] + \": offset=\" + el.offsetWidth + \", scroll=\" + el.scrollWidth + \", client=\" + el.clientWidth);\n        qx.log.Logger.info(\"Height: \" + ids[i] + \": offset=\" + el.offsetHeight + \", scroll=\" + el.scrollHeight + \", client=\" + el.clientHeight);\n      }\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/layout/Spacer_Grid.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "layout",
+    "ui",
+    "VBox",
+    "setSpacing",
+    "container",
+    "Composite",
+    "setPadding",
+    "getRoot",
+    "add",
+    "edge",
+    "getGrid1",
+    "getGrid2",
+    "box",
+    "Grid",
+    "set",
+    "decorator",
+    "backgroundColor",
+    "allowGrowX",
+    "allowGrowY",
+    "core",
+    "Widget",
+    "row",
+    "column",
+    "Spacer",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "Spacer_Grid"
+  ],
+  "mappings": "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",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * This example demonstrates how spacer can be used to have different spacings\n * between grid columns or rows\n */\nqx.Class.define(\"qxl.demobrowser.demo.layout.Spacer_Grid\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var layout = new qx.ui.layout.VBox();\n      layout.setSpacing(10);\n\n      var container = new qx.ui.container.Composite(layout);\n      container.setPadding(20);\n\n      this.getRoot().add(container, {edge:0});\n\n      container.add(this.getGrid1());\n      container.add(this.getGrid2());\n    },\n\n\n    getGrid1 : function()\n    {\n      // auto size\n      var box = new qx.ui.container.Composite(new qx.ui.layout.Grid()).set({\n        decorator: \"main\",\n        backgroundColor: \"yellow\",\n        allowGrowX: false,\n        allowGrowY: false\n      });\n\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 0, column: 0});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 0, column: 1});\n\n      box.add(new qx.ui.core.Spacer(0, 10), {row: 1, column: 0});\n\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 2, column: 0});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 2, column: 1});\n\n      box.add(new qx.ui.core.Spacer(0, 20), {row: 3, column: 0});\n\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 4, column: 0});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 4, column: 1});\n\n      return box;\n    },\n\n    getGrid2 : function()\n    {\n      // auto size\n      var box = new qx.ui.container.Composite(new qx.ui.layout.Grid()).set({\n        decorator: \"main\",\n        backgroundColor: \"yellow\",\n        allowGrowX: false,\n        allowGrowY: false\n      });\n\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 0, column: 0});\n      box.add(new qx.ui.core.Spacer(10, 0), {row: 0, column: 2});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 0, column: 3});\n      box.add(new qx.ui.core.Spacer(30, 0), {row: 1, column: 4});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 0, column: 5});\n\n      box.add(new qx.ui.core.Spacer(0, 5), {row: 1, column: 0});\n\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 2, column: 0});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 2, column: 3});\n      box.add(new qx.ui.core.Widget().set({decorator: \"main\", backgroundColor: \"green\"}), {row: 2, column: 5});\n\n      return box;\n    }\n  }\n});\n"
+  ]
+}

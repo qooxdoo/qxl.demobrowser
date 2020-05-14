@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/treevirtual/TreeVirtual.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Standalone",
+    "members",
+    "main",
+    "include",
+    "ui",
+    "treevirtual",
+    "TreeVirtual",
+    "MNode",
+    "tree",
+    "set",
+    "width",
+    "rowHeight",
+    "setColumnWidth",
+    "setAlwaysShowOpenCloseSymbol",
+    "getRoot",
+    "add",
+    "left",
+    "top",
+    "bottom",
+    "dataModel",
+    "getDataModel",
+    "te1",
+    "addBranch",
+    "nodeSetLabelStyle",
+    "te",
+    "addLeaf",
+    "nodeSetCellStyle",
+    "te2",
+    "i",
+    "setData",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;AAMC;;;AAIDH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,8CAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,UAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAG,gBACP;AACE,oFADF,CAEE;AACA;AACA;;AACAV,QAAAA,EAAE,CAACI,KAAH,CAASO,OAAT,CAAiBX,EAAE,CAACY,EAAH,CAAMC,WAAN,CAAkBC,WAAnC,EACiBd,EAAE,CAACY,EAAH,CAAMC,WAAN,CAAkBE,KADnC,EALF,CAQE;;AACA,YAAIC,IAAI,GAAG,IAAIhB,EAAE,CAACY,EAAH,CAAMC,WAAN,CAAkBC,WAAtB,CAAkC,MAAlC,CAAX;AACAE,QAAAA,IAAI,CAACC,GAAL,CAAS;AACDC,UAAAA,KAAK,EAAI,GADR;AAEDC,UAAAA,SAAS,EAAE;AAFV,SAAT;AAIAH,QAAAA,IAAI,CAACI,cAAL,CAAoB,CAApB,EAAuB,GAAvB;AACAJ,QAAAA,IAAI,CAACK,4BAAL,CAAkC,IAAlC;AAEA,aAAKC,OAAL,GAAeC,GAAf,CAAmBP,IAAnB,EACmB;AACEQ,UAAAA,IAAI,EAAG,EADT;AAEEC,UAAAA,GAAG,EAAG,EAFR;AAGEC,UAAAA,MAAM,EAAG;AAHX,SADnB,EAjBF,CAwBE;;AACA,YAAIC,SAAS,GAAGX,IAAI,CAACY,YAAL,EAAhB;AAEA,YAAIC,GAAG,GAAGF,SAAS,CAACG,SAAV,CAAoB,IAApB,EAA0B,SAA1B,EAAqC,IAArC,CAAV;AACAd,QAAAA,IAAI,CAACe,iBAAL,CAAuBF,GAAvB,EAA4B,sCAA5B;AAEA,YAAIG,EAAJ;AAEAL,QAAAA,SAAS,CAACG,SAAV,CAAoBD,GAApB,EAAyB,OAAzB,EAAkC,IAAlC;AAEAG,QAAAA,EAAE,GAAGL,SAAS,CAACG,SAAV,CAAoBD,GAApB,EAAyB,WAAzB,EAAsC,IAAtC,CAAL;AACAF,QAAAA,SAAS,CAACM,OAAV,CAAkBD,EAAlB,EAAsB,cAAtB;AACAL,QAAAA,SAAS,CAACM,OAAV,CAAkBD,EAAlB,EAAsB,gBAAtB;AAEAL,QAAAA,SAAS,CAACG,SAAV,CAAoBD,GAApB,EAAyB,SAAzB,EAAoC,IAApC;AAEAG,QAAAA,EAAE,GAAGL,SAAS,CAACG,SAAV,CAAoBD,GAApB,EAAyB,OAAzB,EAAkC,IAAlC,CAAL;AACAb,QAAAA,IAAI,CAACkB,gBAAL,CAAsBF,EAAtB,EAA0B,yBAA1B;AAEA,YAAIG,GAAG,GAAGR,SAAS,CAACG,SAAV,CACR,IADQ,EACF,OADE,EACO,IADP,EACa,KADb,EACoB,gCADpB,CAAV;AAIAE,QAAAA,EAAE,GAAGL,SAAS,CAACG,SAAV,CAAoBK,GAApB,EAAyB,MAAzB,EAAiC,KAAjC,CAAL;;AAEA,aAAK,IAAIC,CAAC,GAAG,CAAb,EAAgBA,CAAC,GAAG,IAApB,EAA0BA,CAAC,EAA3B,EACA;AACET,UAAAA,SAAS,CAACM,OAAV,CAAkBD,EAAlB,EAAsB,mBAAmBI,CAAzC;AACD;;AAEDT,QAAAA,SAAS,CAACG,SAAV,CAAoBK,GAApB,EAAyB,MAAzB,EAAiC,IAAjC;AACAR,QAAAA,SAAS,CAACG,SAAV,CAAoBK,GAApB,EAAyB,OAAzB,EAAkC,IAAlC;AACAR,QAAAA,SAAS,CAACG,SAAV,CAAoBK,GAApB,EAAyB,MAAzB,EAAiC,IAAjC;AACAR,QAAAA,SAAS,CAACG,SAAV,CAAoBK,GAApB,EAAyB,MAAzB,EAAiC,IAAjC;AAEAR,QAAAA,SAAS,CAACU,OAAV;AACD;AA9DH;AAJF,GADA;AAVAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqB3B,WAArB,CAAiCC,WAAjC,CAA6CX,aAA7C,GAA6DA,aAA7D",
+  "sourcesContent": [
+    "/**\n * Test large trees.  This one adds a Spam branch with 3000 leaf nodes.\n *\n * @asset(qx/icon/${qx.icontheme}/22/apps/internet-mail.png)\n */\n\n /* ************************************************************************\n\n\n ************************************************************************ */\nqx.Class.define(\"qxl.demobrowser.demo.treevirtual.TreeVirtual\",\n{\n  extend : qx.application.Standalone,\n\n  members :\n  {\n    main : function()\n    {\n      this.base(arguments);\n      // We want to use some of the high-level node operation convenience\n      // methods rather than manually digging into the TreeVirtual helper\n      // classes.  Include the mixin that provides them.\n      qx.Class.include(qx.ui.treevirtual.TreeVirtual,\n                       qx.ui.treevirtual.MNode);\n\n      // tree\n      var tree = new qx.ui.treevirtual.TreeVirtual(\"Tree\");\n      tree.set({\n              width  : 400,\n              rowHeight: 22\n            });\n      tree.setColumnWidth(0, 400);\n      tree.setAlwaysShowOpenCloseSymbol(true);\n\n      this.getRoot().add(tree,\n                         {\n                           left : 10,\n                           top : 30,\n                           bottom : 30\n                         });\n\n      // tree data model\n      var dataModel = tree.getDataModel();\n\n      var te1 = dataModel.addBranch(null, \"Desktop\", true);\n      tree.nodeSetLabelStyle(te1, \"background-color: red; color: white;\");\n\n      var te;\n\n      dataModel.addBranch(te1, \"Files\", true);\n\n      te = dataModel.addBranch(te1, \"Workspace\", true);\n      dataModel.addLeaf(te, \"Windows (C:)\");\n      dataModel.addLeaf(te, \"Documents (D:)\");\n\n      dataModel.addBranch(te1, \"Network\", true);\n\n      te = dataModel.addBranch(te1, \"Trash\", true);\n      tree.nodeSetCellStyle(te, \"background-color: cyan;\");\n\n      var te2 = dataModel.addBranch(\n        null, \"Inbox\", true, false, \"icon/22/apps/internet-mail.png\"\n      );\n\n      te = dataModel.addBranch(te2, \"Spam\", false);\n\n      for (var i = 1; i < 3000; i++)\n      {\n        dataModel.addLeaf(te, \"Spam Message #\" + i);\n      }\n\n      dataModel.addBranch(te2, \"Sent\", true);\n      dataModel.addBranch(te2, \"Trash\", true);\n      dataModel.addBranch(te2, \"Data\", true);\n      dataModel.addBranch(te2, \"Edit\", true);\n\n      dataModel.setData();\n    }\n  }\n});\n"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/Placeholder.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "q",
+    "setHtml",
+    "env",
+    "get",
+    "setAttribute",
+    "on",
+    "addTextField",
+    "placeholder",
+    "update",
+    "now",
+    "Date",
+    "input",
+    "create",
+    "appendTo",
+    "document",
+    "body",
+    "setStyles",
+    "width",
+    "padding",
+    "fontSize",
+    "fontWeight",
+    "fontStyle",
+    "fontFamily",
+    "updatePlaceholder",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "bom",
+    "Placeholder"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAiBA;;;;AAKAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,sCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE,4EADF,CAEE;;AACAC,QAAAA,CAAC,CAAC,UAAD,CAAD,CAAcC,OAAd,CAAsBD,CAAC,CAACE,GAAF,CAAMC,GAAN,CAAU,iBAAV,IAA+B,EAArD,EAHF,CAKE;;AACAH,QAAAA,CAAC,CAAC,oBAAD,CAAD,CAAwBI,YAAxB,CAAqC,UAArC,EAAiD,IAAjD,EAAuDC,EAAvD,CAA0D,KAA1D,EAAiE,KAAKC,YAAtE;AAEAN,QAAAA,CAAC,CAACO,WAAF,CAAcC,MAAd;AACD,OAXH;AAcEF,MAAAA,YAAY,EAAG,wBAAW;AACxB,YAAIG,GAAG,GAAGC,IAAI,CAACD,GAAL,EAAV;AACA,YAAIE,KAAK,GAAGX,CAAC,CAACY,MAAF,CAAS,qCAAqCH,GAArC,GAA2C,SAApD,EACTI,QADS,CACAC,QAAQ,CAACC,IADT,CAAZ,CAFwB,CAKxB;;AACAJ,QAAAA,KAAK,CAACK,SAAN,CAAgB;AACdC,UAAAA,KAAK,EAAIR,GAAG,GAAG,GAAP,GAAc,EAAf,GAAqB,IADd;AAEdS,UAAAA,OAAO,EAAIT,GAAG,GAAG,EAAP,GAAa,IAFT;AAGdU,UAAAA,QAAQ,EAAIV,GAAG,GAAG,EAAP,GAAa,EAAd,GAAoB,IAHhB;AAIdW,UAAAA,UAAU,EAAGX,GAAG,GAAG,CAAN,GAAU,MAAV,GAAmB,QAJlB;AAKdY,UAAAA,SAAS,EAAGZ,GAAG,GAAG,CAAN,GAAU,QAAV,GAAqB,QALnB;AAMda,UAAAA,UAAU,EAAG,CAAC,WAAD,EAAc,OAAd,EAAuB,YAAvB,EAAqC,SAArC,EAAgDb,GAAG,GAAG,CAAtD;AANC,SAAhB,EAOGc,iBAPH;AAQD;AA5BH;AAJF,GADA;AAtBAC,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,GAArB,CAAyBC,WAAzB,CAAqCpC,aAArC,GAAqDA,aAArD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2012 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Martin Wittemann (wittemann)\n\n************************************************************************ */\n/**\n * @require(qx.module.Placeholder)\n * @require(qx.module.event.GestureHandler)\n */\n\nqx.Class.define(\"qxl.demobrowser.demo.bom.Placeholder\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n      // set the support label\n      q(\"#support\").setHtml(q.env.get(\"css.placeholder\") + \"\");\n\n      // add new textfields button\n      q(\"input[type=button]\").setAttribute(\"disabled\", null).on(\"tap\", this.addTextField);\n\n      q.placeholder.update();\n    },\n\n\n    addTextField : function() {\n      var now = Date.now();\n      var input = q.create(\"<input type='text' placeholder='\" + now + \"'/><br>\")\n        .appendTo(document.body);\n\n      // set random styles\n      input.setStyles({\n        width: ((now % 100) + 50) + \"px\",\n        padding : (now % 20) + \"px\",\n        fontSize: ((now % 30) + 10) + \"px\",\n        fontWeight : now % 2 ? \"bold\" : \"normal\",\n        fontStyle : now % 2 ? \"italic\" : \"normal\",\n        fontFamily : [\"monospace\", \"serif\", \"sans-serif\", \"cursive\"][now % 4]\n      }).updatePlaceholder();\n    }\n  }\n});\n"
+  ]
+}

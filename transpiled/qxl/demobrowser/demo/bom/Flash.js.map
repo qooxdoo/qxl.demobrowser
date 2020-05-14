@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/bom/Flash.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "application",
+    "Native",
+    "members",
+    "main",
+    "domElement",
+    "dom",
+    "Element",
+    "create",
+    "bom",
+    "element",
+    "Style",
+    "set",
+    "document",
+    "body",
+    "appendChild",
+    "movieUri",
+    "util",
+    "ResourceManager",
+    "getInstance",
+    "toUri",
+    "variables",
+    "flashVarText",
+    "params",
+    "bgcolor",
+    "scale",
+    "wmode",
+    "Flash",
+    "movie",
+    "id",
+    "qxl",
+    "demobrowser",
+    "demo"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;;;AAoBA;;;;;AAKA;;;;;AAKAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,gCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGN,EAAE,CAACO,WAAH,CAAeC,MAD1B;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,IAAI,EAAE,gBACN;AACE;AAEA,YAAIC,UAAU,GAAGX,EAAE,CAACY,GAAH,CAAOC,OAAP,CAAeC,MAAf,CAAsB,KAAtB,CAAjB;AACAd,QAAAA,EAAE,CAACe,GAAH,CAAOC,OAAP,CAAeC,KAAf,CAAqBC,GAArB,CAAyBP,UAAzB,EAAqC,UAArC,EAAiD,UAAjD;AACAX,QAAAA,EAAE,CAACe,GAAH,CAAOC,OAAP,CAAeC,KAAf,CAAqBC,GAArB,CAAyBP,UAAzB,EAAqC,KAArC,EAA4C,MAA5C;AACAX,QAAAA,EAAE,CAACe,GAAH,CAAOC,OAAP,CAAeC,KAAf,CAAqBC,GAArB,CAAyBP,UAAzB,EAAqC,QAArC,EAA+C,MAA/C;AACAX,QAAAA,EAAE,CAACe,GAAH,CAAOC,OAAP,CAAeC,KAAf,CAAqBC,GAArB,CAAyBP,UAAzB,EAAqC,OAArC,EAA8C,MAA9C;AACAX,QAAAA,EAAE,CAACe,GAAH,CAAOC,OAAP,CAAeC,KAAf,CAAqBC,GAArB,CAAyBP,UAAzB,EAAqC,MAArC,EAA6C,MAA7C;AACAQ,QAAAA,QAAQ,CAACC,IAAT,CAAcC,WAAd,CAA0BV,UAA1B;AAEA,YAAIW,QAAQ,GAAGtB,EAAE,CAACuB,IAAH,CAAQC,eAAR,CAAwBC,WAAxB,GAAsCC,KAAtC,CAA4C,sCAA5C,CAAf;AAEA,YAAIC,SAAS,GAAG;AACdC,UAAAA,YAAY,EAAE;AADA,SAAhB;AAIA,YAAIC,MAAM,GAAG;AACXC,UAAAA,OAAO,EAAE,SADE;AAEXC,UAAAA,KAAK,EAAE,SAFI;AAGXC,UAAAA,KAAK,EAAE;AAHI,SAAb;AAMAhC,QAAAA,EAAE,CAACe,GAAH,CAAOkB,KAAP,CAAanB,MAAb,CAAoBH,UAApB,EAAgC;AAAEuB,UAAAA,KAAK,EAAGZ,QAAV;AAAoBa,UAAAA,EAAE,EAAG;AAAzB,SAAhC,EAAoER,SAApE,EAA+EE,MAA/E;AACD;AA1BH;AAJF,GADA;AA9BAO,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBvB,GAArB,CAAyBkB,KAAzB,CAA+B9B,aAA/B,GAA+CA,aAA/C",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Sebastian Werner (wpbasti)\n     * Fabian Jakobs (fjakobs)\n     * Christian Hagendorn (chris_schmidt)\n\n************************************************************************ */\n\n/* ************************************************************************\n\n\n************************************************************************ */\n\n/**\n *\n * @asset(qxl/demobrowser/demo/flash/fo_tester.swf)\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.bom.Flash\",\n{\n  extend : qx.application.Native,\n\n  members :\n  {\n    main: function()\n    {\n      this.base(arguments);\n\n      var domElement = qx.dom.Element.create(\"div\");\n      qx.bom.element.Style.set(domElement, \"position\", \"absolute\");\n      qx.bom.element.Style.set(domElement, \"top\", \"20px\");\n      qx.bom.element.Style.set(domElement, \"bottom\", \"20px\");\n      qx.bom.element.Style.set(domElement, \"right\", \"20px\");\n      qx.bom.element.Style.set(domElement, \"left\", \"20px\");\n      document.body.appendChild(domElement);\n\n      var movieUri = qx.util.ResourceManager.getInstance().toUri(\"demobrowser/demo/flash/fo_tester.swf\");\n\n      var variables = {\n        flashVarText: \"this is passed in via FlashVars\"\n      };\n\n      var params = {\n        bgcolor: \"#FF6600\",\n        scale: \"noscale\",\n        wmode: \"opaque\"\n      };\n\n      qx.bom.Flash.create(domElement, { movie : movieUri, id : \"movie\" }, variables, params);\n    }\n  }\n});\n"
+  ]
+}

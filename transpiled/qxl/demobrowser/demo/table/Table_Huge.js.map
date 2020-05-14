@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "sources": [
+    "/home/runner/work/qxl.demobrowser/qxl.demobrowser/source/class/qxl/demobrowser/demo/table/Table_Huge.js"
+  ],
+  "names": [
+    "qx",
+    "Bootstrap",
+    "executePendingDefers",
+    "$$dbClassInfo",
+    "Class",
+    "define",
+    "extend",
+    "qxl",
+    "demobrowser",
+    "demo",
+    "table",
+    "TableDemo",
+    "members",
+    "getCaption",
+    "COL_COUNT",
+    "ROW_COUNT",
+    "createRandomRows",
+    "rowCount",
+    "rowData",
+    "row",
+    "row1",
+    "i",
+    "push",
+    "createTable",
+    "tableModel",
+    "_tableModel",
+    "ui",
+    "model",
+    "Simple",
+    "headers",
+    "setColumns",
+    "setData",
+    "Table",
+    "destruct",
+    "_disposeObjects",
+    "Table_Huge"
+  ],
+  "mappings": ";;;;;;;;;;;;;;AAAAA,EAAAA,EAAE,CAACC,SAAH,CAAaC,oBAAb,CAAkCC,aAAlC;;AAAA;;;;;;;;;;;;;;;;;;AAkBA;;;;AAIAH,EAAAA,EAAE,CAACI,KAAH,CAASC,MAAT,CAAgB,uCAAhB,EACA;AACEC,IAAAA,MAAM,EAAGC,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,KAArB,CAA2BC,SADtC;AAGEC,IAAAA,OAAO,EACP;AACEC,MAAAA,UAAU,EAAG,sBAAW;AACtB,eAAO,OAAP;AACD,OAHH;AAKEC,MAAAA,SAAS,EAAG,EALd;AAMEC,MAAAA,SAAS,EAAG,KANd;AASEC,MAAAA,gBAAgB,EAAE,0BAASC,QAAT,EAClB;AACE,YAAIC,OAAO,GAAG,EAAd;;AACA,aAAK,IAAIC,GAAG,GAAG,CAAf,EAAkBA,GAAG,GAAGF,QAAxB,EAAkCE,GAAG,EAArC,EACA;AACE,cAAIC,IAAI,GAAG,EAAX;;AACA,eAAK,IAAIC,CAAC,GAAG,CAAb,EAAgBA,CAAC,GAAG,KAAKP,SAAzB,EAAoCO,CAAC,EAArC,EAAyC;AACvCD,YAAAA,IAAI,CAACE,IAAL,CAAU,UAAUD,CAAV,GAAc,GAAd,GAAoBF,GAA9B;AACD;;AACDD,UAAAA,OAAO,CAACI,IAAR,CAAaF,IAAb;AACD;;AACD,eAAOF,OAAP;AACD,OArBH;AAuBEK,MAAAA,WAAW,EAAE,uBACb;AACE;AACA,YAAIL,OAAO,GAAG,KAAKF,gBAAL,CAAsB,KAAKD,SAA3B,CAAd,CAFF,CAIE;;AACA,YAAIS,UAAU,GAAG,KAAKC,WAAL,GAAmB,IAAIzB,EAAE,CAAC0B,EAAH,CAAMhB,KAAN,CAAYiB,KAAZ,CAAkBC,MAAtB,EAApC;AACA,YAAIC,OAAO,GAAG,EAAd;;AAEA,aAAK,IAAIR,CAAC,GAAG,CAAb,EAAgBA,CAAC,GAAG,KAAKP,SAAzB,EAAoCO,CAAC,EAArC,EAAyC;AACvCQ,UAAAA,OAAO,CAACP,IAAR,CAAa,YAAYD,CAAzB;AACD;;AACDG,QAAAA,UAAU,CAACM,UAAX,CAAsBD,OAAtB;AACAL,QAAAA,UAAU,CAACO,OAAX,CAAmBb,OAAnB,EAZF,CAcE;;AACA,YAAIR,KAAK,GAAG,IAAIV,EAAE,CAAC0B,EAAH,CAAMhB,KAAN,CAAYsB,KAAhB,CAAsBR,UAAtB,CAAZ;AAEA,eAAOd,KAAP;AACD;AA1CH,KAJF;;AAiDE;;;;;AAMAuB,IAAAA,QAAQ,EAAG,oBACX;AACE,WAAKC,eAAL,CAAqB,aAArB;AACD;AA1DH,GADA;AAtBA3B,EAAAA,GAAG,CAACC,WAAJ,CAAgBC,IAAhB,CAAqBC,KAArB,CAA2ByB,UAA3B,CAAsChC,aAAtC,GAAsDA,aAAtD",
+  "sourcesContent": [
+    "/* ************************************************************************\n\n   qooxdoo - the new era of web development\n\n   http://qooxdoo.org\n\n   Copyright:\n     2004-2008 1&1 Internet AG, Germany, http://www.1und1.de\n\n   License:\n     MIT: https://opensource.org/licenses/MIT\n     See the LICENSE file in the project's top-level directory for details.\n\n   Authors:\n     * Fabian Jakobs (fjakobs)\n\n************************************************************************ */\n\n/**\n * A really huge table\n * @tag noPlayground\n */\nqx.Class.define(\"qxl.demobrowser.demo.table.Table_Huge\",\n{\n  extend : qxl.demobrowser.demo.table.TableDemo,\n\n  members :\n  {\n    getCaption : function() {\n      return \"Table\";\n    },\n\n    COL_COUNT : 50,\n    ROW_COUNT : 10000,\n\n\n    createRandomRows: function(rowCount)\n    {\n      var rowData = [];\n      for (var row = 0; row < rowCount; row++)\n      {\n        var row1 = [];\n        for (var i = 0; i < this.COL_COUNT; i++) {\n          row1.push(\"Cell \" + i + \"x\" + row);\n        }\n        rowData.push(row1);\n      }\n      return rowData;\n    },\n\n    createTable: function()\n    {\n      // Create the initial data\n      var rowData = this.createRandomRows(this.ROW_COUNT);\n\n      // table model\n      var tableModel = this._tableModel = new qx.ui.table.model.Simple();\n      var headers = [];\n\n      for (var i = 0; i < this.COL_COUNT; i++) {\n        headers.push(\"Column \" + i);\n      }\n      tableModel.setColumns(headers);\n      tableModel.setData(rowData);\n\n      // table\n      var table = new qx.ui.table.Table(tableModel);\n\n      return table;\n    }\n  },\n\n  /*\n   *****************************************************************************\n      DESTRUCT\n   *****************************************************************************\n   */\n\n  destruct : function()\n  {\n    this._disposeObjects(\"_tableModel\");\n  }\n});\n"
+  ]
+}
