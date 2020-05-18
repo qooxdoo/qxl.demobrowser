@@ -1039,24 +1039,17 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 	  
       url = qx.$$appRoot + url;
 	  
-      if (this._iframe.getSource() == url)
-      {
-        this._iframe.reload();
-      }
-      else
-      {
-        this.__logDone = false;
-        this.__themePart.getChildren()[0].setEnabled(false);
-        this._iframe.setSource(url);
-        this._iframe.addListener("load", function () {
-          window.setTimeout(function() {
-            var cw = this._iframe.getWindow();
-            if (cw && cw.qx && cw.qx.theme && cw.qx.theme.manager && cw.qx.theme.manager.Meta) {
-              this.__themePart.getChildren()[0].setEnabled(true);
-            }
-          }.bind(this), 333);
-        }, this);
-      }
+      this.__logDone = false;
+      this.__themePart.getChildren()[0].setEnabled(false);
+      this._iframe.setSource(url);
+      this._iframe.addListener("load", function () {
+        window.setTimeout(function() {
+          var cw = this._iframe.getWindow();
+          if (cw && cw.qx && cw.qx.theme && cw.qx.theme.manager && cw.qx.theme.manager.Meta) {
+            this.__themePart.getChildren()[0].setEnabled(true);
+          }
+        }.bind(this), 333);
+      }, this);
 
       // Toggle menu buttons
       if (url == this.defaultUrl) {
