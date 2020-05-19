@@ -62,7 +62,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
               return "icon/22/mimetypes/office-document.png";
             }
           } else {
-            return "demobrowser/demo/icons/loading22.gif";
+            return "qxl/demobrowser/demo/icons/loading22.gif";
           }
         }
       });
