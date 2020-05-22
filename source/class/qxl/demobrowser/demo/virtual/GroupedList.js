@@ -24,6 +24,7 @@
 /**
  * @tag noPlayground
  *
+ * @asset(qxl/demobrowser/demo/data/persons.json)
  * @asset(qx/icon/${qx.icontheme}/16/categories/system.png)
  * @asset(qx/icon/${qx.icontheme}/16/categories/office.png)
  * @asset(qx/icon/${qx.icontheme}/16/emotes/face-laugh.png)
@@ -83,7 +84,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
 
     loadData : function()
     {
-      var url = "json/persons.json";
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/persons.json");
       var store = new qx.data.store.Json(url);
       store.bind("model.persons", this.__list, "model");
       store.bind("model.persons", this.__listGroupedByName, "model");

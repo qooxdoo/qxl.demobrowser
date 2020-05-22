@@ -23,6 +23,7 @@
 ************************************************************************ */
 /**
  *
+ * @asset(qxl/demobrowser/demo/data/persons.json)
  * @asset(qx/icon/${qx.icontheme}/16/devices/*)
  */
 
@@ -251,7 +252,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       container.add(selectBox);
 
       // Loads and create the model data
-      var url = "json/persons.json";
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/persons.json");
       var store = new qx.data.store.Json(url);
       store.bind("model.persons", selectBox, "model");
 

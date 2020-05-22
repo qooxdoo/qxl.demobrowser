@@ -65,7 +65,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
       controller3.setLabelPath("name");
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/data/finder.json");
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/finder.json");
       var store = new qx.data.store.Json(url);
 
       // connect the store and the first controller

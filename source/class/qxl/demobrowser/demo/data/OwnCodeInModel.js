@@ -65,7 +65,7 @@ qx.Class.define("qxl.demobrowser.demo.data.OwnCodeInModel",
       };
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/data/list.json");
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/list.json");
       var store = new qx.data.store.Json(url, delegate);
 
       // connect the store and the controller
