@@ -47,7 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
       var controller = new qx.data.controller.Tree(null, tree, "kids", "name");
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/data/tree.json");
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/tree.json");
       var store = new qx.data.store.Json(url);
 
       // create the status label
