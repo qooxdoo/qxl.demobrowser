@@ -8,6 +8,8 @@
   // 3rd party packages
   var path = require('upath');
   var walker = require('walker');
+  
+  // mkdirp is supposed to return a promise...except that it doesn't
   var mkdirp = qx.tool.utils.Promisify.promisify(require('mkdirp'));
 
   var DataGenerator = function (config) {
