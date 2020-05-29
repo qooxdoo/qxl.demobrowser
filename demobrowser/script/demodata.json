@@ -766,6 +766,29 @@
                 "nr": 0
             },
             {
+                "name": "FormController.html",
+                "tags": [
+                    "databinding",
+                    "serialization",
+                    "qx.Class.define",
+                    "qx.ui.groupbox.GroupBox",
+                    "qx.ui.layout.Canvas",
+                    "qx.ui.form.Form",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.DateField",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.renderer.Single",
+                    "qx.data.controller.Form",
+                    "qx.util.Serializer.toJson"
+                ],
+                "title": "FormController",
+                "nr": 0
+            },
+            {
                 "name": "FormAndListController.html",
                 "tags": [
                     "databinding",
@@ -787,29 +810,6 @@
                     "qx.dev.Debug.debugProperties"
                 ],
                 "title": "FormAndListController",
-                "nr": 0
-            },
-            {
-                "name": "FormController.html",
-                "tags": [
-                    "databinding",
-                    "serialization",
-                    "qx.Class.define",
-                    "qx.ui.groupbox.GroupBox",
-                    "qx.ui.layout.Canvas",
-                    "qx.ui.form.Form",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.DateField",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.renderer.Single",
-                    "qx.data.controller.Form",
-                    "qx.util.Serializer.toJson"
-                ],
-                "title": "FormController",
                 "nr": 0
             },
             {
@@ -2516,6 +2516,16 @@
                 "nr": 0
             },
             {
+                "name": "Form.html",
+                "tags": [
+                    "showcase",
+                    "noPlayground",
+                    "qx.Class.define"
+                ],
+                "title": "Form",
+                "nr": 0
+            },
+            {
                 "name": "Dialog.html",
                 "tags": [
                     "showcase",
@@ -2538,16 +2548,6 @@
                     "qx.ui.form.Button"
                 ],
                 "title": "Dialog",
-                "nr": 0
-            },
-            {
-                "name": "Form.html",
-                "tags": [
-                    "showcase",
-                    "noPlayground",
-                    "qx.Class.define"
-                ],
-                "title": "Form",
                 "nr": 0
             },
             {
@@ -2831,25 +2831,6 @@
                 "nr": "Events"
             },
             {
-                "name": "Table_Filtered_Model.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.ui.table.model.Filtered",
-                    "qx.ui.table.Table",
-                    "qx.ui.table.cellrenderer.Boolean",
-                    "qx.ui.table.cellrenderer.Html",
-                    "qx.ui.toolbar.ToolBar",
-                    "qx.ui.toolbar.Part",
-                    "qx.ui.toolbar.Button",
-                    "qx.ui.toolbar.Button",
-                    "qx.ui.toolbar.Button",
-                    "qx.ui.toolbar.Button"
-                ],
-                "title": "Table Filtered_Model",
-                "nr": 0
-            },
-            {
                 "name": "Table_Huge.html",
                 "tags": [
                     "noPlayground",
@@ -2886,6 +2867,25 @@
                     "qx.ui.toolbar.CheckBox"
                 ],
                 "title": "Table Remote_Model",
+                "nr": 0
+            },
+            {
+                "name": "Table_Filtered_Model.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.ui.table.model.Filtered",
+                    "qx.ui.table.Table",
+                    "qx.ui.table.cellrenderer.Boolean",
+                    "qx.ui.table.cellrenderer.Html",
+                    "qx.ui.toolbar.ToolBar",
+                    "qx.ui.toolbar.Part",
+                    "qx.ui.toolbar.Button",
+                    "qx.ui.toolbar.Button",
+                    "qx.ui.toolbar.Button",
+                    "qx.ui.toolbar.Button"
+                ],
+                "title": "Table Filtered_Model",
                 "nr": 0
             },
             {
