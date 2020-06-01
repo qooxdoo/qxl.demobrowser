@@ -1343,23 +1343,6 @@
                 "nr": 0
             },
             {
-                "name": "Canvas_Fixed.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.ui.decoration.Decorator",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.container.Composite"
-                ],
-                "title": "Canvas Fixed",
-                "nr": "Fixed"
-            },
-            {
                 "name": "Canvas_LeftRight.html",
                 "tags": [
                     "noPlayground",
@@ -2317,6 +2300,23 @@
                 "nr": "Separator"
             },
             {
+                "name": "Canvas_Fixed.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.ui.decoration.Decorator",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.container.Composite"
+                ],
+                "title": "Canvas Fixed",
+                "nr": "Fixed"
+            },
+            {
                 "name": "VBox_ShrinkX.html",
                 "tags": [
                     "noPlayground",
@@ -2978,6 +2978,22 @@
                 "nr": "Events"
             },
             {
+                "name": "TreeVirtual_Filter.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.Class.include",
+                    "qx.ui.container.Composite",
+                    "qx.ui.treevirtual.TreeVirtual",
+                    "qx.ui.groupbox.GroupBox",
+                    "qx.ui.layout.VBox",
+                    "qx.ui.basic.Label",
+                    "qx.ui.form.TextField",
+                    "qx.lang.Function.bind"
+                ],
+                "title": "TreeVirtual Filter",
+                "nr": "Filter"
+            },
+            {
                 "name": "TreeVirtual_Multiple_Columns.html",
                 "tags": [
                     "qx.Class.define",
@@ -2999,22 +3015,6 @@
                 ],
                 "title": "TreeVirtual Multiple_Columns",
                 "nr": 0
-            },
-            {
-                "name": "TreeVirtual_Filter.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.Class.include",
-                    "qx.ui.container.Composite",
-                    "qx.ui.treevirtual.TreeVirtual",
-                    "qx.ui.groupbox.GroupBox",
-                    "qx.ui.layout.VBox",
-                    "qx.ui.basic.Label",
-                    "qx.ui.form.TextField",
-                    "qx.lang.Function.bind"
-                ],
-                "title": "TreeVirtual Filter",
-                "nr": "Filter"
             },
             {
                 "name": "TreeVirtual_Selections.html",
@@ -3062,6 +3062,24 @@
                     "qx.type.Array"
                 ],
                 "title": "AutoSizeTextArea",
+                "nr": 0
+            },
+            {
+                "name": "ColorUtil.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.layout.Grid",
+                    "qx.ui.container.Composite",
+                    "qx.ui.container.Scroll",
+                    "qx.ui.control.ColorSelector",
+                    "qx.ui.basic.Atom",
+                    "qx.ui.basic.Atom",
+                    "qx.ui.basic.Label",
+                    "qx.ui.basic.Label",
+                    "qx.ui.form.Slider",
+                    "qx.util.ColorUtil[type]"
+                ],
+                "title": "ColorUtil",
                 "nr": 0
             },
             {
@@ -3183,6 +3201,27 @@
                 "nr": 0
             },
             {
+                "name": "Font.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.basic.Label",
+                    "qx.ui.decoration.Decorator",
+                    "qx.ui.container.Composite",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.bom.Font.fromString",
+                    "qx.bom.Font.fromString",
+                    "qx.bom.Font.fromString",
+                    "qx.bom.Font.fromString",
+                    "qx.bom.Font.fromString"
+                ],
+                "title": "Font",
+                "nr": 0
+            },
+            {
                 "name": "FormInvalids.html",
                 "tags": [
                     "qx.Class.define",
@@ -3239,27 +3278,6 @@
                     "qx.ui.form.renderer.Single"
                 ],
                 "title": "FormRenderer",
-                "nr": 0
-            },
-            {
-                "name": "Font.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.basic.Label",
-                    "qx.ui.decoration.Decorator",
-                    "qx.ui.container.Composite",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.bom.Font.fromString",
-                    "qx.bom.Font.fromString",
-                    "qx.bom.Font.fromString",
-                    "qx.bom.Font.fromString",
-                    "qx.bom.Font.fromString"
-                ],
-                "title": "Font",
                 "nr": 0
             },
             {
