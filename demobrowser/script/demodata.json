@@ -1343,6 +1343,23 @@
                 "nr": 0
             },
             {
+                "name": "Canvas_Fixed.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.ui.decoration.Decorator",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.core.Widget",
+                    "qx.ui.container.Composite"
+                ],
+                "title": "Canvas Fixed",
+                "nr": "Fixed"
+            },
+            {
                 "name": "Canvas_LeftRight.html",
                 "tags": [
                     "noPlayground",
@@ -2300,23 +2317,6 @@
                 "nr": "Separator"
             },
             {
-                "name": "Canvas_Fixed.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.ui.decoration.Decorator",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.core.Widget",
-                    "qx.ui.container.Composite"
-                ],
-                "title": "Canvas Fixed",
-                "nr": "Fixed"
-            },
-            {
                 "name": "VBox_ShrinkX.html",
                 "tags": [
                     "noPlayground",
@@ -3015,6 +3015,20 @@
                 ],
                 "title": "TreeVirtual Multiple_Columns",
                 "nr": 0
+            },
+            {
+                "name": "TreeVirtual_NodeEdit.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.Class.include",
+                    "qx.ui.container.Composite",
+                    "qx.ui.treevirtual.TreeVirtual",
+                    "qx.ui.groupbox.GroupBox",
+                    "qx.ui.layout.VBox",
+                    "qx.ui.basic.Label"
+                ],
+                "title": "TreeVirtual NodeEdit",
+                "nr": "NodeEdit"
             },
             {
                 "name": "TreeVirtual_Selections.html",
