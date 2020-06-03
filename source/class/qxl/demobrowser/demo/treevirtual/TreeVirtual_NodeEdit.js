@@ -78,7 +78,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
       instructionGroup.setLayout(new qx.ui.layout.VBox(2));
       hBox.add(instructionGroup);
 
-      var filterLabel = new qx.ui.basic.Label("Double-click any node to being the editing");
+      var filterLabel = new qx.ui.basic.Label("Double-click any node to begin the editing");
       instructionGroup.add(filterLabel);
     }
   }
