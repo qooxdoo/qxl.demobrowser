@@ -63,7 +63,7 @@
     var category = directory[directory.length-2];
     // create the URI to the source script
     jsBaseURL = "../../script/" + category + "/" + base;
-    jsFileURL = jsBaseURL + "/boot.js";
+    jsFileURL = jsBaseURL + "/index.js";
     jsSourceURL = jsBaseURL + "/qxl.demobrowser.demo." + category + "." + base + ".js";
 
     // Apply document title
