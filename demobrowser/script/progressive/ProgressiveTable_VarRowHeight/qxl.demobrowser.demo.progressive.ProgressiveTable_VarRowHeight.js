@@ -6,8 +6,8 @@
  * This also demonstrates how the minimum row height can be set by a
  * cell renderer.
  *
- * @asset(demobrowser/demo/icons/format-justify-left.png)
- * @asset(demobrowser/demo/icons/multimedia-player.png)
+ * @asset(qxl/demobrowser/demo/icons/format-justify-left.png)
+ * @asset(qxl/demobrowser/demo/icons/multimedia-player.png)
  */
 qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight",
 {
@@ -21,7 +21,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
     {
       this.base(arguments);
 
-      var base = "demobrowser/demo/icons/"
+      var base = "qxl/demobrowser/demo/icons/"
 
       this.imageData =
         [
