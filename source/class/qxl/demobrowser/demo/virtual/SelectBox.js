@@ -56,6 +56,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       advanced.add(this.createBox6());
       advanced.add(this.createBox7());
 
+      advanced.add(this.createBox8());
+      advanced.add(this.createBox9());
+
       container.add(standard, {left : 20, top : 20});
       container.add(advanced, {left : 20, top : 200});
       this.getRoot().add(scroller, {edge : 0});
@@ -274,6 +277,48 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
         }
       };
       selectBox.setDelegate(delegate);
+
+      return container;
+    }
+
+    createBox9 : function()
+    {
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      container.add(new qx.ui.basic.Label("Incremental Search"));
+
+      // Creates the model data
+      var rawData = [
+        'Elm street', 'Abbey road', 'Route 61', 'Central station', 'Central Park',
+        'Park Avenue', 'Broadway', 'Hohle Gasse', 'Überlandstrasse'
+      ];
+      var model   = qx.data.marshal.Json.createModel(rawData);
+
+      // Creates the select box
+      var selectBox = new qx.ui.form.VirtualSelectBox(model);
+      selectBox.setIncrementalSearch(true);
+      container.add(selectBox);
+
+      return container;
+    },
+
+    createBox9 : function()
+    {
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      container.add(new qx.ui.basic.Label("Incremental Search, rich highlighting"));
+
+      // Creates the model data
+      var rawData = [
+        'Elm street', 'Abbey road', 'Route 61', 'Central station', 'Central Park',
+        'Park Avenue', 'Broadway', 'Hohle Gasse', 'Überlandstrasse'
+      ];
+      var model   = qx.data.marshal.Json.createModel(rawData);
+
+      // Creates the select box
+      var selectBox = new qx.ui.form.VirtualSelectBox(model);
+      selectBox.setIncrementalSearch(true);
+      // Make labels and highlighting rich (HTML formatted)
+      selectBox.setRich(true);
+      container.add(selectBox);
 
       return container;
     }
