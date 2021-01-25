@@ -320,7 +320,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var selectBox = new qx.ui.form.VirtualSelectBox(model);
       selectBox.setIncrementalSearch(true);
       // Set labels and highlighting rich (HTML formatting)
-      selectBox.setRich(true);
+      if (selectBox.setRich) selectBox.setRich(true);
       container.add(selectBox);
 
       return container;

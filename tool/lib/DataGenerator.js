@@ -150,10 +150,9 @@
                 // save json file with all demos
                 var demoDataJsonFile = dataGenerator.config.demoDataJsonFile;
                 var dirName = path.dirname(demoDataJsonFile);
-                fs.mkdir(dirName, {recursive:true}).then(function () {
-                  dataGenerator.saveAsJsonFile(demoDataJsonFile, dataGenerator.getDemos());
-                  done(null);
-                });
+                fs.mkdirSync(dirName, {recursive:true});
+                dataGenerator.saveAsJsonFile(demoDataJsonFile, dataGenerator.getDemos());
+                done(null);
               }
             });
           }
