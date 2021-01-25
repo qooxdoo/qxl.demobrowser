@@ -43,28 +43,25 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
 
       var standard = new qx.ui.container.Composite(new qx.ui.layout.HBox(50));
       standard.setPadding(20);
-
-      var advanced = new qx.ui.container.Composite(new qx.ui.layout.HBox(50));
-      advanced.setPadding(20);
-
-      var incrementalSearch = new qx.ui.container.Composite(new qx.ui.layout.HBox(50));
-      incrementalSearch.setPadding(20);
-
       standard.add(this.createBox1());
       standard.add(this.createBox2());
       standard.add(this.createBox3());
       standard.add(this.createBox4());
 
+      var advanced = new qx.ui.container.Composite(new qx.ui.layout.HBox(50));
+      advanced.setPadding(20);
       advanced.add(this.createBox5());
       advanced.add(this.createBox6());
       advanced.add(this.createBox7());
 
-      search.add(this.createBox8());
-      search.add(this.createBox9());
+      var incrementalSearch = new qx.ui.container.Composite(new qx.ui.layout.HBox(50));
+      incrementalSearch.setPadding(20);
+      incrementalSearch.add(this.createBox8());
+      incrementalSearch.add(this.createBox9());
 
       container.add(standard, {left : 20, top : 20});
       container.add(advanced, {left : 20, top : 200});
-      container.add(search,   {left : 20, top : 380});
+      container.add(incrementalSearch,   {left : 20, top : 380});
       this.getRoot().add(scroller, {edge : 0});
     },
 
