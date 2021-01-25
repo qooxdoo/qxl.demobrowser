@@ -10,6 +10,12 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
     },
 
     __onMade() {
+      console.info(">>> Installing dependencies ...")
+      const path = this.require("upath");
+      const async = this.require("async");
+      // needed by DataGenerator
+      this.require('walker');
+      this.require('mkdirp');
       console.info(">>> Generating Demobrowser data... this might take a while");
       let command = this.getCompilerApi().getCommand();
       const maker = command.getMaker();
@@ -18,17 +24,9 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       const outputDir = maker.getTarget().getOutputDir();
       const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
       let targetClass = command.resolveTargetClass(command._getConfig().targetType);
+      let app = "demobrowser";
 
       return new qx.Promise(fullfilled => {
-        let app = "demobrowser";
-
-		    const path = this.require("upath");
-        const async = this.require("async");
-
-		    // needed by DataGenerator
-		    this.require('walker');
-        this.require('mkdirp');
-
         const DataGenerator = require(path.join(sourceDir, "tool/lib/DataGenerator"));
         // global vars
         const config = {
