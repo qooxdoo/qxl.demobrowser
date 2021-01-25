@@ -8,9 +8,6 @@
   // 3rd party packages
   var path = require('upath');
   var walker = require('walker');
-
-  // mkdirp is supposed to return a promise...except that it doesn't
-  var mkdirp = qx.tool.utils.Promisify.promisify(require('mkdirp'));
   var DataGenerator = function (config) {
     if (config.verbose) {
       console.log('Current config %s', JSON.stringify(config));
@@ -153,7 +150,7 @@
                 // save json file with all demos
                 var demoDataJsonFile = dataGenerator.config.demoDataJsonFile;
                 var dirName = path.dirname(demoDataJsonFile);
-                mkdirp(dirName).then(function () {
+                fs.mkdir(dirName, {recursive:true}).then(function () {
                   dataGenerator.saveAsJsonFile(demoDataJsonFile, dataGenerator.getDemos());
                   done(null);
                 });
@@ -243,7 +240,7 @@
 
       let p = path.dirname(targetPath);
       if (!fs.existsSync(p)) {
-        mkdirp.sync(p);
+        fs.mkdirSync(p, { recursive: true });
       }
 
       var readStream = fs.createReadStream(sourcePath);

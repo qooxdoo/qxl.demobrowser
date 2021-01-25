@@ -15,7 +15,6 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
       const async = this.require("async");
       // needed by DataGenerator
       this.require('walker');
-      this.require('mkdirp');
       console.info(">>> Generating Demobrowser data... this might take a while");
       let command = this.getCompilerApi().getCommand();
       const maker = command.getMaker();
