@@ -8,7 +8,7 @@
   // 3rd party packages
   var path = require('upath');
   var walker = require('walker');
-  
+
   // mkdirp is supposed to return a promise...except that it doesn't
   var mkdirp = qx.tool.utils.Promisify.promisify(require('mkdirp'));
 
@@ -36,13 +36,13 @@
       }
       demoPath += path.sep;
 
-      console.log('Catch entries in %s', demoPath);
+      console.log('- Catch entries in %s', demoPath);
 
       walker(demoPath)
         .on('file', function (entry, stat) {
           entry = path.normalize(entry);
           if (dataGenerator.config.verbose) {
-            console.log('read file %s (total amount (%s)', entry, dataGenerator.entries.length);
+            console.log('- read file %s (total amount (%s)', entry, dataGenerator.entries.length);
           }
           var filePath = entry.replace(demoPath, '');
           dataGenerator.entries.push({
@@ -56,7 +56,7 @@
         .on('dir', function (entry, stat) {
           entry = path.normalize(entry);
           if (dataGenerator.config.verbose) {
-            console.log('read directory %s (total amount (%s)', entry, dataGenerator.entries.length);
+            console.log('- read directory %s (total amount (%s)', entry, dataGenerator.entries.length);
           }
 
           var directoryPath = entry.replace(demoPath, '');
@@ -73,7 +73,7 @@
 
         })
         .on('end', function () {
-          console.log('%s entries (files and directories) catched', dataGenerator.entries.length);
+          console.log('- %s entries (files and directories) found', dataGenerator.entries.length);
           done(null, dataGenerator.entries);
         });
     },
@@ -104,7 +104,7 @@
         // add only directories at first level to ignore sub-folders at 2nd level like data
         if (directory.level === 1) {
           if (dataGenerator.config.verbose) {
-            console.log('Demo "%s" added to data generator', directory.path);
+            console.log('- Demo "%s" added to data generator', directory.path);
           }
           dataGenerator.addDemo(directory.path);
         }
@@ -140,7 +140,7 @@
             dataGenerator.getTagsFromJsFile(jsFilePath, function (err, tags) {
               var filePathParts = file.path.split('/');
               if (dataGenerator.config.verbose) {
-                console.log('Demo test "%s" added to data generator', file.path);
+                console.log('- Demo test "%s" added to data generator', file.path);
               }
               dataGenerator.addDemoTest(
                 filePathParts[0],
@@ -254,7 +254,7 @@
       var writeStream = fs.createWriteStream(targetPath);
       writeStream.on("error", function (err) {
         if (dataGenerator.config.verbose) {
-          console.log('[ERR] %s doesn\'t copied to %s', sourcePath, targetPath);
+          console.error('! %s not copied to %s', sourcePath, targetPath);
         }
         done(err);
       });
@@ -357,7 +357,7 @@
         if (err) {
           console.error(err);
         } else {
-          console.log(fileName + ' created');
+          console.info('- Created ' + fileName);
           if (done !== null && typeof done === 'function') {
             done(null);
           }

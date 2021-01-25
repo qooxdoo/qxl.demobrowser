@@ -5,30 +5,26 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
     async load() {
       let command = this.getCompilerApi().getCommand();
       if (command instanceof qx.tool.cli.commands.Compile) {
-        command.addListener("writtenApplication", (e) => this.__appCompiling(e.getData()));
+        command.addListener("made", async () => await this.__onMade());
       }
     },
-	
-    __appCompiling(application) {
-      let className = application.getClassName();
-      if (className !== "qxl.demobrowser.Application") {
-        return;
-      }
 
+    __onMade() {
+      console.info(">>> Generating Demobrowser data... this might take a while");
       let command = this.getCompilerApi().getCommand();
-      let maker = command.getMakersForApp(application.getName())[0];
+      const maker = command.getMaker();
       let analyser = maker.getAnalyser();
       const templateDir = command.getTemplateDir();
       const outputDir = maker.getTarget().getOutputDir();
       const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
       let targetClass = command.resolveTargetClass(command._getConfig().targetType);
 
-      return new qx.Promise((fullfiled) => {
-        let app = application.getName();
-        
+      return new qx.Promise(fullfilled => {
+        let app = "demobrowser";
+
 		    const path = this.require("upath");
         const async = this.require("async");
-		
+
 		    // needed by DataGenerator
 		    this.require('walker');
         this.require('mkdirp');
@@ -47,7 +43,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
         let dataGenerator = new DataGenerator(config);
         async.series([
           (cb) => {
-            console.info("\nDEMO BUILD STARTED");
+            console.info("- Start building...");
             cb();
           },
           // catches all the demos from config.demoPath
@@ -57,7 +53,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
           // copy all javascript files to config.scriptDestinationPath
           dataGenerator.copyJsFiles.bind(dataGenerator),
           (cb) => {
-            console.info("\nget apps");
+            console.info("- Get applications");
             let environment = {
               "qx.allowUrlVariants": true,
               "qx.allowUrlSettings": true,
@@ -73,7 +69,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
 				        let outDir = path.join(demoCategory.category, demoCategory.name);
                 let library = analyser.getLibraryFromClassname(className);
                 if (!library) {
-                  console.info("no class found for " + file.path);
+                  console.error("! no class found for " + file.path);
                   return;
                 }
                 appInfos.push({
@@ -106,7 +102,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
             cb();
           },
           (cb) => {
-            console.info("DEMO BUILD START COMPILE");
+            console.info("- Compiling ...");
             let target = new targetClass(outputDir);
             target.set({
               generateIndexHtml: false,
@@ -118,7 +114,7 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
                 appInfo.app.setAnalyser(analyser);
                 appInfo.app.calcDependencies();
                 if (command.argv.verbose) {
-                  console.info("Writing class " + appInfo.app.getClassName() + " into " + appInfo.app.getOutputPath());
+                  console.info("- Writing class " + appInfo.app.getClassName() + " into " + appInfo.app.getOutputPath());
                 }
                 target.generateApplication(appInfo.app, appInfo.app.getEnvironment())
                   .then(() => cb())
@@ -138,10 +134,10 @@ qx.Class.define("qxl.demobrowser.compile.LibraryApi", {
               });
           },
           (cb) => {
-            console.info("\nDEMO BUILD FINISHED");
+            console.info("- Demo build finished.");
             cb();
           }
-        ], fullfiled);
+        ], fullfilled);
       });
     }
   }

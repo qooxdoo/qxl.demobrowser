@@ -20,7 +20,6 @@
 			"qx.theme.Classic"
 		]
 	}],
-	/** Targets */
 	"targets": [{
 			"type": "source",
 			"outputPath": "compiled/source",
