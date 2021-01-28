@@ -4,39 +4,46 @@
 		"qx.allowUrlVariants": true,
 		"qx.allowUrlSettings": true,
 		"qx.contrib": false,
-		"qx.icontheme": ["Tango", "Oxygen"]
-	},
-	"applications": [{
-		"class": "qxl.demobrowser.Application",
-		"theme": "qxl.demobrowser.Theme",
-		"name": "demobrowser",
-		"title": "DemoBrowser",
-		"bootPath": "source/boot",
-		"include": [
-			"qxl.demobrowser.*",
-			"qx.theme.Indigo",
-			"qx.theme.Modern",
-			"qx.theme.Simple",
-			"qx.theme.Classic"
+		"qx.icontheme": [
+			"Tango",
+			"Oxygen"
 		]
-	}],
-	"targets": [{
+	},
+	"applications": [
+		{
+			"class": "qxl.demobrowser.Application",
+			"theme": "qxl.demobrowser.Theme",
+			"name": "demobrowser",
+			"title": "DemoBrowser",
+			"bootPath": "source/boot",
+			"include": [
+				"qxl.demobrowser.*",
+				"qx.theme.Indigo",
+				"qx.theme.Modern",
+				"qx.theme.Simple",
+				"qx.theme.Classic"
+			]
+		}
+	],
+	"targets": [
+		{
 			"type": "source",
 			"outputPath": "compiled/source",
 			"bundle": {
 				"include": "qx.*"
-   		},
-	  	"babelOptions": {
+			},
+			"babelOptions": {
 				"targets": {
-						"edge": "18",
-						"chrome": "73",
-						"firefox": "66"
-			  }
-		  }
+					"edge": "18",
+					"chrome": "73",
+					"firefox": "66"
+				}
+			}
 		},
 		{
 			"type": "build",
-			"outputPath": "compiled/build"
+			"outputPath": "compiled/build",
+			"deployPath": "html"
 		}
 	],
 	"defaultTarget": "source",
