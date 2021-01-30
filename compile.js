@@ -11,12 +11,12 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
         let command = this.getCommand();
         if (command instanceof qx.tool.cli.commands.Compile) {
           command.addListener("writtenApplication", async (evt) => {
-            await this.__onMade(evt.getData());
+            await this.__build(evt.getData());
           });
         }
         if (command instanceof qx.tool.cli.commands.Deploy) {
           command.addListener("afterDeploy", async (evt) => {
-            await this.__onDeploy(evt.getData());
+            await this.__deploy(evt.getData());
           });
         }
       }, this);
@@ -31,29 +31,33 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
               application: app
             };
       */
-    __onDeploy(data) {
-      let async = this.require("async");
+    __deploy(data) {
+      console.info(">>> Installing dependencies ...");
+      const path = this.require("upath");
+      const async = this.require("async");
+      console.info(">>> deploy files ...");
       return async.parallel([
         qx.tool.utils.files.Utils.sync(path.join(data.targetDir, "demo"), path.join(data.deployDir, "demo")),
         qx.tool.utils.files.Utils.sync(path.join(data.targetDir, "script"), path.join(data.deployDir, "script"))
       ]);
     },
+
     /** 
      * Fired when writing of single application is complete; data is an object containing:
      *   maker {qx.tool.compiler.makers.Maker}
      *   target {qx.tool.compiler.targets.Target}
      *   appMeta {qx.tool.compiler.targets.meta.ApplicationMeta}
      */
-    __onMade(data) {
+    __build(data) {
       let application = data.appMeta.getApplication();
       let className = application.getClassName();
       if (className !== "qxl.demobrowser.Application") {
         return;
       }
 
-      console.info(">>> Installing dependencies ...")
-      let path = this.require("upath");
-      let async = this.require("async");
+      console.info(">>> Installing dependencies ...");
+      const path = this.require("upath");
+      const async = this.require("async");
       // needed by DataGenerator
       this.require('walker');
       console.info(">>> Generating Demobrowser data... this might take a while");
@@ -202,7 +206,7 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
       }
       return false;
     }
-    
+
   }
 });
 
