@@ -222,7 +222,6 @@
               }
             );
           }
-
         }
       });
     },
@@ -236,30 +235,12 @@
      */
     copyJsFile: function (sourcePath, targetPath, done) {
       var dataGenerator = this;
-
-      let p = path.dirname(targetPath);
-      if (!fs.existsSync(p)) {
-        fs.mkdirSync(p, { recursive: true });
-      }
-
-      var readStream = fs.createReadStream(sourcePath);
-      readStream.on("error", function (err) {
-        done(err);
-      });
-      var writeStream = fs.createWriteStream(targetPath);
-      writeStream.on("error", function (err) {
-        if (dataGenerator.config.verbose) {
-          console.error('! %s not copied to %s', sourcePath, targetPath);
-        }
-        done(err);
-      });
-      writeStream.on("close", function () {
-        if (dataGenerator.config.verbose) {
+      qx.tool.utils.files.Utils.sync(sourcePath, targetPath).then((from) => {
+        if (from && dataGenerator.config.verbose) {
           console.log('%s copied to %s', sourcePath, targetPath);
         }
         done();
       });
-      readStream.pipe(writeStream);
     },
 
     /**
