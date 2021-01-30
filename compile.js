@@ -1,14 +1,16 @@
 const fs = require("fs");
-const path = require("path");
-const { promisify } = require("util");
-const stat = promisify(fs.stat);
-
+let path;
+let async;
 
 qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
   extend: qx.tool.cli.api.CompilerApi,
 
   members: {
     async load() {
+      path = this.require("upath");
+      async = this.require("async");
+      // needed by DataGenerator
+      this.require('walker');
       this.addListener("changeCommand", function () {
         let command = this.getCommand();
         if (command instanceof qx.tool.cli.commands.Compile) {
@@ -53,10 +55,6 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
       }
 
       console.info(">>> Installing dependencies ...")
-      const path = this.require("upath");
-      const async = this.require("async");
-      // needed by DataGenerator
-      this.require('walker');
       console.info(">>> Generating Demobrowser data... this might take a while");
       let command = this.getCommand();
       let analyser = data.maker.getAnalyser();
