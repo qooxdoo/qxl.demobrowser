@@ -1,5 +1,5 @@
 const fs = require("fs");
-const path = require("upath");
+const path = require("path");
 const { promisify } = require("util");
 const stat = promisify(fs.stat);
 
