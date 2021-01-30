@@ -7,10 +7,6 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
 
   members: {
     async load() {
-      path = this.require("upath");
-      async = this.require("async");
-      // needed by DataGenerator
-      this.require('walker');
       this.addListener("changeCommand", function () {
         let command = this.getCommand();
         if (command instanceof qx.tool.cli.commands.Compile) {
@@ -36,6 +32,7 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
             };
       */
     __onDeploy(data) {
+      let async = this.require("async");
       return async.parallel([
         qx.tool.utils.files.Utils.sync(path.join(data.targetDir, "demo"), path.join(data.deployDir, "demo")),
         qx.tool.utils.files.Utils.sync(path.join(data.targetDir, "script"), path.join(data.deployDir, "script"))
@@ -55,6 +52,10 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
       }
 
       console.info(">>> Installing dependencies ...")
+      let path = this.require("upath");
+      let async = this.require("async");
+      // needed by DataGenerator
+      this.require('walker');
       console.info(">>> Generating Demobrowser data... this might take a while");
       let command = this.getCommand();
       let analyser = data.maker.getAnalyser();
