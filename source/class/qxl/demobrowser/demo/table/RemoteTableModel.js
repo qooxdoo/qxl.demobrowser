@@ -31,6 +31,7 @@ qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
 
   construct : function() {
     this.base(arguments);
+    this.__PHPSupported = false;
     this.setColumns(["Id","Text"],["id","text"]);
   },
 
