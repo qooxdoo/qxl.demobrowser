@@ -34,7 +34,6 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
     __deploy(data) {
       console.info(">>> Installing dependencies ...");
       const path = this.require("upath");
-      const async = this.require("async");
       console.info(">>> deploy files ...");
       return Promise.all([
         qx.tool.utils.files.Utils.sync(path.join(data.targetDir, "demo"), path.join(data.deployDir, "demo")),
