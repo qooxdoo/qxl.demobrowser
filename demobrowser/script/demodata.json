@@ -790,29 +790,6 @@
                 "nr": 0
             },
             {
-                "name": "FormController.html",
-                "tags": [
-                    "databinding",
-                    "serialization",
-                    "qx.Class.define",
-                    "qx.ui.groupbox.GroupBox",
-                    "qx.ui.layout.Canvas",
-                    "qx.ui.form.Form",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.DateField",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.renderer.Single",
-                    "qx.data.controller.Form",
-                    "qx.util.Serializer.toJson"
-                ],
-                "title": "FormController",
-                "nr": 0
-            },
-            {
                 "name": "Github.html",
                 "tags": [
                     "noPlayground",
@@ -838,6 +815,29 @@
                     "qx.ui.embed.Html"
                 ],
                 "title": "Github",
+                "nr": 0
+            },
+            {
+                "name": "FormController.html",
+                "tags": [
+                    "databinding",
+                    "serialization",
+                    "qx.Class.define",
+                    "qx.ui.groupbox.GroupBox",
+                    "qx.ui.layout.Canvas",
+                    "qx.ui.form.Form",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.DateField",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.renderer.Single",
+                    "qx.data.controller.Form",
+                    "qx.util.Serializer.toJson"
+                ],
+                "title": "FormController",
                 "nr": 0
             },
             {
@@ -3426,26 +3426,6 @@
                 "nr": 0
             },
             {
-                "name": "FormRendererCustom.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.form.Form",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextField",
-                    "qx.ui.form.TextArea",
-                    "qx.ui.form.Button",
-                    "qx.ui.form.Button",
-                    "qx.Class.define",
-                    "qx.ui.container.Composite",
-                    "qx.ui.layout.HBox"
-                ],
-                "title": "FormRendererCustom",
-                "nr": 0
-            },
-            {
                 "name": "FormRendererDouble.html",
                 "tags": [
                     "qx.Class.define",
@@ -3480,6 +3460,26 @@
                     "qx.ui.form.renderer.SinglePlaceholder"
                 ],
                 "title": "FormRendererPlaceholder",
+                "nr": 0
+            },
+            {
+                "name": "FormRendererCustom.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.form.Form",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextField",
+                    "qx.ui.form.TextArea",
+                    "qx.ui.form.Button",
+                    "qx.ui.form.Button",
+                    "qx.Class.define",
+                    "qx.ui.container.Composite",
+                    "qx.ui.layout.HBox"
+                ],
+                "title": "FormRendererCustom",
                 "nr": 0
             },
             {
