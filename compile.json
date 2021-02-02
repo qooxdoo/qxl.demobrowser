@@ -1,56 +1,55 @@
 {
-	"$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
-	"environment": {
-		"qx.allowUrlVariants": true,
-		"qx.allowUrlSettings": true,
-		"qx.contrib": false,
-		"qx.icontheme": [
-			"Tango",
-			"Oxygen"
-		]
-	},
-	"applications": [
-		{
-			"class": "qxl.demobrowser.Application",
-			"theme": "qxl.demobrowser.Theme",
-			"name": "demobrowser",
-			"title": "DemoBrowser",
-			"bootPath": "source/boot",
-			"include": [
-				"qxl.demobrowser.*",
-				"qx.theme.Indigo",
-				"qx.theme.Modern",
-				"qx.theme.Simple",
-				"qx.theme.Classic"
-			]
-		}
-	],
-	"targets": [
-		{
-			"type": "source",
-			"outputPath": "compiled/source",
-			"bundle": {
-				"include": "qx.*"
-			},
-			"babelOptions": {
-				"targets": {
-					"edge": "18",
-					"chrome": "73",
-					"firefox": "66"
-				}
-			}
-		},
-		{
-			"type": "build",
-			"outputPath": "compiled/build",
-			"deployPath": "html"
-		}
-	],
-	"defaultTarget": "source",
-	"locales": [
-		"en"
-	],
-	"serve": {
-		"listenPort": 8080
-	}
+   "$schema": "https://qooxdoo.org/schema/compile-1-0-0.json",
+   "environment": {
+      "qx.allowUrlVariants": true,
+      "qx.allowUrlSettings": true,
+      "qx.contrib": false,
+      "qx.icontheme": [
+         "Tango",
+         "Oxygen"
+      ]
+   },
+   "applications": [{
+         "class": "qxl.demobrowser.Application",
+         "theme": "qx.theme.Indigo",
+         "name": "demobrowser",
+         "title": "DemoBrowser",
+         "bootPath": "source/boot",
+         "include": [
+            "qxl.demobrowser.*",
+            "qx.theme.Indigo",
+            "qx.theme.Modern",
+            "qx.theme.Simple",
+            "qx.theme.Classic",
+            "qx.theme.TangibleLight",
+            "qx.theme.TangibleDark"
+         ]
+      }
+   ],
+   "targets": [{
+         "type": "source",
+         "outputPath": "compiled/source",
+         "bundle": {
+            "include": "qx.*"
+         },
+         "babelOptions": {
+            "targets": {
+               "edge": "18",
+               "chrome": "73",
+               "firefox": "66"
+            }
+         }
+      }, {
+         "type": "build",
+         "outputPath": "compiled/build",
+         "deployPath": "html"
+      }
+   ],
+   "defaultTarget": "source",
+   "locales": [
+      "en"
+   ],
+   "serve": {
+      "listenPort": 8080
+   }
 }

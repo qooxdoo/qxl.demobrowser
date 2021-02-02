@@ -118,6 +118,8 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
                     "qx.theme.Modern",
                     "qx.theme.Simple",
                     "qx.theme.Classic",
+                    "qx.theme.TangibleLight",
+                    "qx.theme.TangibleDark",
                     "qx.log.appender.Native",
                     "qx.log.appender.Console"
                   ]).set({
@@ -131,7 +133,9 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
                       "qx.theme.Indigo",
                       "qx.theme.Modern",
                       "qx.theme.Simple",
-                      "qx.theme.Classic"
+                      "qx.theme.Classic",
+                      "qx.theme.TangibleLight",
+                      "qx.theme.TangibleDark"
                     ],
                     templatePath: templateDir
                   }),
