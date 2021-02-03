@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.RadioButtonGroup",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // using VBox
@@ -59,8 +58,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.RadioButtonGroup",
     },
 
 
-    addButtons : function(group, names)
-    {
+    addButtons : function(group, names) {
       for (var i = 0; i < names.length; i++) {
         group.add(new qx.ui.form.RadioButton(names[i]));
       }

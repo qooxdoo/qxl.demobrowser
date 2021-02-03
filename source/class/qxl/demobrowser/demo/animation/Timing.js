@@ -29,8 +29,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Timing",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var timings = ["ease", "linear", "ease-in", "ease-out", "ease-in-out"];
@@ -44,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Timing",
         bar.className = "bar";
         bar.style.backgroundColor = colors[i % colors.length];
         document.body.appendChild(bar);
-      };
+      }
 
       this.start();
       window.setInterval(this.start, 3000);
@@ -56,7 +55,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Timing",
         q(item).animate({timing: timing, duration: 2000, keep: 100, keyFrames : {
           0 : {width: "100px"},
           100 : {width: "700px"}
-        }})
+        }});
       });
     }
   }

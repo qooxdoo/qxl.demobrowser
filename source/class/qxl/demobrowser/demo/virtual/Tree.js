@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
     i: 0,
     __store: null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // initializes layout
@@ -53,7 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
         var item = e.getOriginalTarget();
         var model = item && item.getModel ? item.getModel() : store.getModel();
         var newItem;
-        if (e.getCurrentAction() == "move"){
+        if (e.getCurrentAction() == "move") {
           newItem = e.getDragTarget().getModel();
           this.removeItem(store.getModel(), newItem);
         } else {
@@ -100,8 +99,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
     },
 
 
-    getCommandFrame : function(tree)
-    {
+    getCommandFrame : function(tree) {
       var commandFrame = new qx.ui.groupbox.GroupBox("Control");
       var spacerSize = 4;
 
@@ -118,11 +116,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
 
       commandFrame.add(tCurrentInput, {row: row++, column: 1});
 
-      tree.getSelection().addListener("change", function(e)
-      {
+      tree.getSelection().addListener("change", function(e) {
         var selection = tree.getSelection();
-        if(selection.getLength() > 0)
-        {
+        if (selection.getLength() > 0) {
           if (tree.getSelectionMode() === "multi") {
             tCurrentInput.setValue(selection.getLength() + " items");
           } else {
@@ -142,8 +138,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
       };
 
       var modeMgr = new qx.ui.form.RadioGroup();
-      for (var mode in modes)
-      {
+      for (var mode in modes) {
         var radioButton = new qx.ui.form.RadioButton(modes[mode]).set({
           value: mode == tree.getOpenMode()
         });
@@ -163,8 +158,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
       var btnMultiSelect = new qx.ui.form.CheckBox("Enable multi selection");
       commandFrame.add(btnMultiSelect, {row: row++, column: 1});
 
-      btnMultiSelect.addListener("changeValue", function(e)
-      {
+      btnMultiSelect.addListener("changeValue", function(e) {
         var enable = e.getData();
         tree.setSelectionMode(enable ? "multi": "single");
       });
@@ -172,8 +166,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree",
       var btnDragSelect = new qx.ui.form.CheckBox("Enable drag selection");
       commandFrame.add(btnDragSelect, {row: row++, column: 1});
 
-      btnDragSelect.addListener("changeValue", function(e)
-      {
+      btnDragSelect.addListener("changeValue", function(e) {
         var enable = e.getData();
         tree.setDragSelection(enable);
 

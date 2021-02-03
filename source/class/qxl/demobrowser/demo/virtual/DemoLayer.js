@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
 {
   extend : qx.ui.virtual.layer.WidgetCell,
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments, this);
     this._pool = {
       atom : [],
@@ -52,47 +51,39 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
     _pool : null,
     __rowData : null,
 
-    getCellData : function(row, column)
-    {
+    getCellData : function(row, column) {
       if (!this.__rowData[row]) {
         this.__rowData[row] = [];
       }
-      if (!this.__rowData[row][column])
-      {
+      if (!this.__rowData[row][column]) {
         this.__rowData[row][column] = {
           label: this.__generateName(),
           icon: this.__getIcon()
-        }
+        };
       }
       return this.__rowData[row][column];
     },
 
 
-    getCellWidget : function(row, column)
-    {
+    getCellWidget : function(row, column) {
       var widget;
 
-      if (column % 2 == 0)
-      {
+      if (column % 2 == 0) {
         widget = this._pool.atom.pop();
         if (!widget) {
           widget = new qx.ui.basic.Atom();
-          widget.addListener("pointerover", function()
-          {
+          widget.addListener("pointerover", function() {
             var icon = this.__getIcon();
             widget.setIcon(icon);
             this.__rowData[row][column].icon = icon;
           }, this);
         }
         widget.set(this.getCellData(row, column));
-      }
-      else
-      {
+      } else {
         widget = this._pool.checkbox.pop();
-        if (!widget)
-        {
+        if (!widget) {
           widget = new qx.ui.form.CheckBox();
-          widget.addListener("changeValue", function(){
+          widget.addListener("changeValue", function() {
             this.setLabel(this.getLabel() == "foobar!" ? widget.getUserData("row") + " / " + widget.getUserData("column") : "foobar!");
           }, widget);
         }
@@ -111,15 +102,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
 
     poolCellWidget: function(widget) {
       if (widget.classname == "qx.ui.basic.Atom") {
-        this._pool.atom.push(widget)
+        this._pool.atom.push(widget);
       } else {
-        this._pool.checkbox.push(widget)
+        this._pool.checkbox.push(widget);
       }
     },
 
 
-    __generateName : function()
-    {
+    __generateName : function() {
       var name = "";
       for (var j=0; j<10; j++) {
         name += String.fromCharCode(Math.floor(Math.random()*25)+65);
@@ -127,8 +117,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
       return name;
     },
 
-    __getIcon : function()
-    {
+    __getIcon : function() {
       var prefix = "icon/";
       var suffix = "places/";
 

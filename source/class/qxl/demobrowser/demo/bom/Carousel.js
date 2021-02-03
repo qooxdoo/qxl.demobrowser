@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Carousel",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
 
@@ -43,15 +42,15 @@ qx.Class.define("qxl.demobrowser.demo.bom.Carousel",
       var carousel = document.getElementById("carousel");
       var entries = [];
       for (var i=0; i < items.length; i++) {
-        entries[i] = qx.bom.Template.get("carousel-entry", {data: items[i]})
+        entries[i] = qx.bom.Template.get("carousel-entry", {data: items[i]});
         qx.bom.element.Class.add(entries[i], "entry");
         qx.dom.Element.insertEnd(entries[i], carousel);
-      };
+      }
 
 
       for (var i=0; i < entries.length; i++) {
          qx.bom.element.Style.set(entries[i], "left", (i * width - offset) + "px");
-      };
+      }
 
 
       var round = Math.floor(items.length / 2) + 1;
@@ -71,7 +70,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Carousel",
           var item = entries[i];
           var frames = {0 : {}, 100 :{}};
 
-          var to = parseInt(qx.bom.element.Style.get(item, "left"))  - width;
+          var to = parseInt(qx.bom.element.Style.get(item, "left")) - width;
 
           // left overflow
           if (to < -offset) {
@@ -109,10 +108,9 @@ qx.Class.define("qxl.demobrowser.demo.bom.Carousel",
           }
 
           qx.bom.element.Animation.animate(item, {duration: 500, keep: 100, keyFrames : frames});
-        };
+        }
         round = (round+1) % entries.length;
       }, 1000);
-
     }
   }
 });

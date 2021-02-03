@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Flickr",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // fetch some data from Flickr
@@ -80,8 +79,8 @@ qx.Class.define("qxl.demobrowser.demo.data.Flickr",
       }});
 
       var iconOptions = {converter : function(data, model) {
-        return ("http://farm" + model.getFarm() + ".static.flickr.com/" + model.getServer() + "/"
-         + data + "_" + model.getSecret() + "_s.jpg");
+        return ("http://farm" + model.getFarm() + ".static.flickr.com/" + model.getServer() + "/" +
+         data + "_" + model.getSecret() + "_s.jpg");
       }};
       controller.setIconOptions(iconOptions);
       controller.setIconPath("id");
@@ -97,8 +96,8 @@ qx.Class.define("qxl.demobrowser.demo.data.Flickr",
       this.getRoot().add(image, {left: 30, top: 200});
       var detailOptions = {converter : function(data) {
         if (data) {
-          return ("http://farm" + data.getFarm() + ".static.flickr.com/" + data.getServer() + "/"
-            + data.getId() + "_" + data.getSecret() + ".jpg");
+          return ("http://farm" + data.getFarm() + ".static.flickr.com/" + data.getServer() + "/" +
+            data.getId() + "_" + data.getSecret() + ".jpg");
         }
         return "";
       }};
@@ -133,8 +132,7 @@ qx.Class.define("qxl.demobrowser.demo.data.store.Flickr",
 {
   extend : qx.data.store.Jsonp,
 
-  construct : function(tag)
-  {
+  construct : function(tag) {
     this.setCallbackName("jsonFlickrApi");
     this.base(arguments, this.__generateUrl(tag));
   },

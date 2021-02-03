@@ -25,14 +25,14 @@
  * @asset(qxl/demobrowser/backend/remote_table.php)
  */
 
-qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
+qx.Class.define("qxl.demobrowser.demo.table.RemoteTableModel", {
 
   extend : qx.ui.table.model.Remote,
 
   construct : function() {
     this.base(arguments);
     this.__PHPSupported = false;
-    this.setColumns(["Id","Text"],["id","text"]);
+    this.setColumns(["Id", "Text"], ["id", "text"]);
   },
 
   members : {
@@ -40,8 +40,7 @@ qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
     __checkingForPHP : false,
 
      // overloaded - called whenever the table requests the row count
-    _loadRowCount : function()
-    {
+    _loadRowCount : function() {
       this.__checkPHP();
       if (this.__checkingForPHP) {
         return;
@@ -55,8 +54,7 @@ qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
     },
 
 
-    _loadRowData : function(firstRow, lastRow)
-    {
+    _loadRowData : function(firstRow, lastRow) {
       this.__checkPHP();
       if (this.__checkingForPHP) {
         return;
@@ -107,7 +105,7 @@ qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
       var url = qx.util.ResourceManager.getInstance().toUri("demobrowser/backend/remote_table.php");
       req.setUrl(url + "?" + param);
       req.addListener("success", function() {
-        callback.call(this, req.getResponseText())
+        callback.call(this, req.getResponseText());
       }, this);
       req.send();
     },
@@ -127,8 +125,8 @@ qx.Class.define('qxl.demobrowser.demo.table.RemoteTableModel', {
       var self = this;
       window.setTimeout(function() {
         var data = [];
-        for (var i=firstRow;i<=lastRow;i++){
-          data.push({id:i,text:'Hello '+i+' Generated on:'+(new Date())});
+        for (var i=firstRow; i<=lastRow; i++) {
+          data.push({id:i, text:"Hello "+i+" Generated on:"+(new Date())});
         }
         self._onRowDataLoaded(data);
       }, 0);

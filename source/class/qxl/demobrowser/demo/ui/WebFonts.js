@@ -28,14 +28,12 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       // Call super class
       this.base(arguments);
 
       // Enable logging in debug variant
-      if (qx.core.Environment.get("qx.debug"))
-      {
+      if (qx.core.Environment.get("qx.debug")) {
         // support native logging capabilities, e.g. Firebug for Firefox
         qx.log.appender.Native;
         // support additional cross-browser console. Press F7 to toggle visibility
@@ -113,13 +111,13 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
       */
 
       var demoTextShort = "The quick brown fox jumps over the lazy dog";
-      var demoTextLong = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-      + "Nam lectus justo, porttitor ac, ullamcorper ac, cursus in, ante. Duis mi ante,"
-      + "sodales in, auctor vel, vehicula eget, sapien. Proin iaculis dui vitae leo. "
-      + "Integer blandit tempus leo. Morbi turpis. Suspendisse turpis. Nulla eget leo."
-      + "Cras interdum sollicitudin ante. Sed placerat scelerisque magna. Vestibulum "
-      + "rutrum nibh a eros. Cum sociis natoque penatibus et magnis dis parturient "
-      + "montes, nascetur ridiculus mus."
+      var demoTextLong = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+      "Nam lectus justo, porttitor ac, ullamcorper ac, cursus in, ante. Duis mi ante," +
+      "sodales in, auctor vel, vehicula eget, sapien. Proin iaculis dui vitae leo. " +
+      "Integer blandit tempus leo. Morbi turpis. Suspendisse turpis. Nulla eget leo." +
+      "Cras interdum sollicitudin ante. Sed placerat scelerisque magna. Vestibulum " +
+      "rutrum nibh a eros. Cum sociis natoque penatibus et magnis dis parturient " +
+      "montes, nascetur ridiculus mus.";
       var textWidgets = [];
 
       var mainContainer = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));

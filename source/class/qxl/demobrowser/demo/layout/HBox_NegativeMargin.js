@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size + negative margins
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -74,8 +72,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // auto size + negative margins + collapsing
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -100,8 +97,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // auto size + negative margins + flex (growing)
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -126,8 +122,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // auto size + negative margins + different flex (growing)
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -152,8 +147,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // zero width + negative margins + different flex (growing)
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -182,8 +176,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox6 : function()
-    {
+    getBox6 : function() {
       // auto size + negative margins + flex (shrinking)
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",
@@ -208,8 +201,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_NegativeMargin",
     },
 
 
-    getBox7 : function()
-    {
+    getBox7 : function() {
       // auto size + negative margins + different flex (shrinking)
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox()).set({
         decorator: "main",

@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
     /**
      * @lint ignoreDeprecated(alert)
      */
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var Logger = qx.log.Logger;
@@ -62,7 +61,9 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
       q("h1,h2").addClass("header");
 
       // Add some events
-      q("p").on("tap", function() { alert(this.innerHTML) });
+      q("p").on("tap", function() {
+ alert(this.innerHTML); 
+});
 
 
 
@@ -116,7 +117,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
       // NEXT
 
       var res = q("ul").getNext()[0].tagName;
-      Logger.debug("Tag following the UL element: " + res)
+      Logger.debug("Tag following the UL element: " + res);
 
 
       // NEXT ALL
@@ -140,7 +141,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
       // PREV
 
       var res = q("ul").getPrev()[0].tagName;
-      Logger.debug("Tag before the UL element: " + res)
+      Logger.debug("Tag before the UL element: " + res);
 
 
       // PREV ALL
@@ -190,7 +191,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
       Logger.debug("Found " + res.length + " submit buttons using filter(selector)");
 
       // or a function
-      var res = q("input").filter(function(item, index, array){
+      var res = q("input").filter(function(item, index, array) {
         return item.type === "submit";
       });
       Logger.debug("Found " + res.length + " submit button using filter(function)");
@@ -270,7 +271,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selector",
 
       q("#detail1,#detail2,#detail3").wrap("<b></b>");
 
-      q("#detail2").wrap('<div style="background:#FFFFBB"></div>');
+      q("#detail2").wrap("<div style=\"background:#FFFFBB\"></div>");
     }
   }
 });

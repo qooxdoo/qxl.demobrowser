@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Label_Reflow",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
       //this.getRoot().setPadding(20);
 
@@ -61,13 +60,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.Label_Reflow",
       dialog.add(btn_toggle, {row: 1, column: 1});
 
       var growText = false;
-      btn_toggle.addListener("tap", function()
-      {
+      btn_toggle.addListener("tap", function() {
         var label = pane.getChildren()[0];
         label.setValue(
           growText ?
-            "qooxdoo is a comprehensive and innovative Ajax application framework. Leveraging object-oriented JavaScript allows developers to build impressive cross-browser applications. No HTML, CSS nor DOM knowledge is needed."
-          :
+            "qooxdoo is a comprehensive and innovative Ajax application framework. Leveraging object-oriented JavaScript allows developers to build impressive cross-browser applications. No HTML, CSS nor DOM knowledge is needed." :
             "<b>qooxdoo is cool.</b>"
         );
         growText = !growText;
@@ -81,8 +78,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Label_Reflow",
       dialog.add(btn_resize, {row: 1, column: 2});
 
       var growPane = false;
-      btn_resize.addListener("tap", function(e)
-      {
+      btn_resize.addListener("tap", function(e) {
         if (growPane) {
           pane.setWidth(600);
         } else {
@@ -92,8 +88,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Label_Reflow",
       });
     },
 
-    getPane : function()
-    {
+    getPane : function() {
       var pane = new qx.ui.container.Composite(new qx.ui.layout.VBox(14)).set({
         backgroundColor : "#FFF",
         width: 600,

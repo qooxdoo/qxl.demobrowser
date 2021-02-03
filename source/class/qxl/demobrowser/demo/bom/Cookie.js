@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Cookie",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(8));
@@ -42,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Cookie",
 
       var saveButton = new qx.ui.form.Button("Save");
       container.add(saveButton);
-      saveButton.addListener("execute", function(e)
-      {
+      saveButton.addListener("execute", function(e) {
         if (textField.getValue() != "") {
           qx.bom.Cookie.set(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY, textField.getValue());
           textField.setValue("");
@@ -52,16 +50,14 @@ qx.Class.define("qxl.demobrowser.demo.bom.Cookie",
 
       var restoreButton = new qx.ui.form.Button("Restore");
       container.add(restoreButton);
-      restoreButton.addListener("execute", function(e)
-      {
+      restoreButton.addListener("execute", function(e) {
         var restoredValue = qx.bom.Cookie.get(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY);
         textField.setValue(restoredValue != null ? restoredValue : "");
       }, this);
 
       var deleteButton = new qx.ui.form.Button("Delete");
       container.add(deleteButton);
-      deleteButton.addListener("execute", function(e)
-      {
+      deleteButton.addListener("execute", function(e) {
         qx.bom.Cookie.del(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY);
         textField.setValue("");
       }, this);

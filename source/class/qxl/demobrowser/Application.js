@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.Application",
 {
   extend : qx.application.Standalone,
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
 
     // Include CSS files
@@ -56,25 +55,22 @@ qx.Class.define("qxl.demobrowser.Application",
   members :
   {
     // overridden
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // Enable logging in source (or debug build)
-      if (qx.core.Environment.get("qx.debug"))
-      {
+      if (qx.core.Environment.get("qx.debug")) {
         qx.log.appender.Native;
         qx.log.appender.Console;
       }
 
       // Initialize the viewer
-      this.viewer = new qxl.demobrowser.DemoBrowser;
+      this.viewer = new qxl.demobrowser.DemoBrowser();
       this.getRoot().add(this.viewer, {edge:0});
     },
 
     // overridden
-    finalize : function()
-    {
+    finalize : function() {
       this.base(arguments);
       this.viewer.dataLoader(qx.$$appRoot + "script/demodata.json");
     }

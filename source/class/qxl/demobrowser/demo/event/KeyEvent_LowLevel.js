@@ -29,8 +29,7 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this.debug(qx.core.Environment.get("engine.version"));
@@ -42,18 +41,16 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel",
         );
 
       var events = ["keydown", "keypress", "keyup"];
-      for (var i=0; i<events.length; i++)
-      {
+      for (var i=0; i<events.length; i++) {
         qx.bom.Event.addNativeListener(
           document.documentElement,
           events[i],
           qx.lang.Function.bind(this.logKeyEvent, this)
-        )
+        );
       }
     },
 
-    logKeyEvent: function(keyEvent)
-    {
+    logKeyEvent: function(keyEvent) {
       var type = keyEvent.type;
       this._log([
         type,

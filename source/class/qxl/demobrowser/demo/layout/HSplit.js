@@ -28,8 +28,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
      *
      * @return {void}
      */
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // Two Flex Tests
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneTwoFlexSimple : function()
-    {
+    addSplitPaneTwoFlexSimple : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -71,8 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneTwoFlexWithOneMin : function()
-    {
+    addSplitPaneTwoFlexWithOneMin : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -94,8 +91,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneTwoFlexWithOneMax : function()
-    {
+    addSplitPaneTwoFlexWithOneMax : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -117,8 +113,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneTwoFlexWithTwoMin : function()
-    {
+    addSplitPaneTwoFlexWithTwoMin : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -141,8 +136,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneTwoFlexWithTwoMax : function()
-    {
+    addSplitPaneTwoFlexWithTwoMax : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -169,8 +163,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
 
 
 
-    addSplitPaneOneFlexSimple : function()
-    {
+    addSplitPaneOneFlexSimple : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -191,8 +184,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneOneFlexSimpleWithMax : function()
-    {
+    addSplitPaneOneFlexSimpleWithMax : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -214,8 +206,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
     },
 
 
-    addSplitPaneOneFlexSimpleWithMin : function()
-    {
+    addSplitPaneOneFlexSimpleWithMin : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setWidth(400);
       splitpane.setHeight(60);
@@ -241,8 +232,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HSplit",
 
 
 
-    addSplitPaneAuto : function()
-    {
+    addSplitPaneAuto : function() {
       var splitpane = new qx.ui.splitpane.Pane("horizontal");
       splitpane.setDecorator("main");
       this.getRoot().add(splitpane, {left:500, top:340});

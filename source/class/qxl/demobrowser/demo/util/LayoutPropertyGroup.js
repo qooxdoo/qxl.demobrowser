@@ -42,8 +42,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
       "top" : {
         type: "string",
         nullable: true,
-        convert: function(value)
-        {
+        convert: function(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
@@ -53,8 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
       "right" : {
         type: "string",
         nullable: true,
-        convert: function(value)
-        {
+        convert: function(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
@@ -64,8 +62,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
       "bottom" : {
         type: "string",
         nullable: true,
-        convert: function(value)
-        {
+        convert: function(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
@@ -75,8 +72,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
       "left" : {
         type: "string",
         nullable: true,
-        convert: function(value)
-        {
+        convert: function(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
@@ -133,8 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
 
   members :
   {
-    _setProperty : function(widget, name, value)
-    {
+    _setProperty : function(widget, name, value) {
       var convert = this._properties[name].convert;
       if (convert) {
         value = convert(value);

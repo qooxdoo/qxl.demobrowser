@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Form",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this.getRoot().add(new qxl.formdemo.FormItems());

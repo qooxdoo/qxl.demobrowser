@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var nextId = 0;

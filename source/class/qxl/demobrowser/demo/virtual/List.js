@@ -54,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
 
     __quickCheck : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var container = this.getRoot();
@@ -64,8 +63,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       container.add(this.createAdditiveSelectionList(), {left: 520, top: 20});
     },
 
-    createConfigurableList : function()
-    {
+    createConfigurableList : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Configurable").set({
@@ -75,12 +73,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
 
       // Creates model data
       var rawData = [];
-      for (var i = 0; i < 2500; i++)
-      {
+      for (var i = 0; i < 2500; i++) {
         rawData[i] = {
           label: "Item No " + i,
           icon: (i % 4) ? "16" : "48"
-        }
+        };
       }
       var model = qx.data.marshal.Json.createModel(rawData);
 
@@ -110,7 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
           controller.bindDefaultProperties(item, id);
           controller.bindProperty("label", "enabled", {
             converter : function(data) {
-              return parseInt(data.replace(/Item No /g, "")) % 9 != 0
+              return parseInt(data.replace(/Item No /g, "")) % 9 != 0;
             }
           }, item, id);
         }
@@ -133,8 +130,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       // Sets the list item size to all items.
       // This is needed, because we use images with different size.
       var rowConfig = list.getPane().getRowConfig();
-      for (var i = 0; i < 2500; i++)
-      {
+      for (var i = 0; i < 2500; i++) {
         if (i % 4 == 0) {
           rowConfig.setItemSize(i, 56);
         } else {
@@ -192,8 +188,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       return container;
     },
 
-    createOneSelectionList : function()
-    {
+    createOneSelectionList : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("One as selection mode").set({
@@ -203,8 +198,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
 
       // Creates the mode data
       var model = new qx.data.Array();
-      for (var i = 0; i < 250; i++)
-      {
+      for (var i = 0; i < 250; i++) {
         var item = new qxl.demobrowser.demo.virtual.model.Item("Item No " + i, "icon/16/places/folder.png");
         model.push(item);
       }
@@ -227,8 +221,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       return container;
     },
 
-    createAdditiveSelectionList : function()
-    {
+    createAdditiveSelectionList : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Additive selection").set({
@@ -236,18 +229,17 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       });
       container.add(title);
 
-      var l3l = ["Leon","Lukas","Luca","Finn","Tim","Felix","Jonas","Luis",
-                 "Maximilian","Julian","Max","Paul","Niclas","Jan","Ben","Elias","Jannick",
-                 "Philipp","Noah","Tom","Moritz","Nico","David","Nils","Simon","Fabian",
-                 "Erik","Justin","Alexander","Jakob","Florian","Nick","Linus","Mika","Jason",
-                 "Daniel","Lennard","Marvin","Jannis","Tobias","Dominic","Marlon","Marc",
-                 "Johannes","Jonathan","Julius","Colin","Joel","Kevin","Vincent","Robin"];
+      var l3l = ["Leon", "Lukas", "Luca", "Finn", "Tim", "Felix", "Jonas", "Luis",
+                 "Maximilian", "Julian", "Max", "Paul", "Niclas", "Jan", "Ben", "Elias", "Jannick",
+                 "Philipp", "Noah", "Tom", "Moritz", "Nico", "David", "Nils", "Simon", "Fabian",
+                 "Erik", "Justin", "Alexander", "Jakob", "Florian", "Nick", "Linus", "Mika", "Jason",
+                 "Daniel", "Lennard", "Marvin", "Jannis", "Tobias", "Dominic", "Marlon", "Marc",
+                 "Johannes", "Jonathan", "Julius", "Colin", "Joel", "Kevin", "Vincent", "Robin"];
 
       // Creates the model data and the new selection
       var model = new qx.data.Array();
       var selection = new qx.data.Array();
-      for (var i = 0; i < l3l.length; i++)
-      {
+      for (var i = 0; i < l3l.length; i++) {
         var item = new qxl.demobrowser.demo.virtual.model.Item(l3l[i]);
         model.push(item);
 
@@ -272,33 +264,26 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       return container;
     },
 
-    onSelectionModeChange : function(e)
-    {
+    onSelectionModeChange : function(e) {
       var value = e.getData()[0].getUserData("value");
       this.__configList.setSelectionMode(value);
 
-      if (value == "single" || value == "one")
-      {
+      if (value == "single" || value == "one") {
         this.__dragCheck.setEnabled(false);
         this.__quickCheck.setEnabled(true);
-      }
-      else if (value == "multi" || value == "addaptive")
-      {
+      } else if (value == "multi" || value == "addaptive") {
         this.__dragCheck.setEnabled(true);
         this.__quickCheck.setEnabled(false);
       }
     },
 
-    onShowModeChange : function(e)
-    {
+    onShowModeChange : function(e) {
       var value = e.getData()[0].getUserData("value");
       this.setShowMode(value);
     },
 
-    onDragCheckChange : function(e)
-    {
-      if (e.getData())
-      {
+    onDragCheckChange : function(e) {
+      if (e.getData()) {
         var mode = this.__configList.getSelectionMode();
         if (mode == "single" || mode == "one") {
           this.debug("Drag selection is only available for the modes multi or additive");
@@ -308,10 +293,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.List",
       this.__configList.setDragSelection(e.getData());
     },
 
-    onQuickCheckChange : function(e)
-    {
-      if (e.getData())
-      {
+    onQuickCheckChange : function(e) {
+      if (e.getData()) {
         var mode = this.__configList.getSelectionMode();
         if (mode == "multi" || mode == "additive") {
           this.debug("Quick selection is only available for the modes multi or additive");

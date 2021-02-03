@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.data.OwnCodeInModel",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create and add the list
@@ -104,9 +103,9 @@ qx.Class.define("qxl.demobrowser.demo.data.OwnCodeInModel",
       syncListDescription.setRich(true);
       syncListDescription.setWidth(410);
       syncListDescription.setValue(
-        "<b>Adding own code to the model</b><br/>"
-        + "Using the delegation to bring two sort function to the root model "
-        + "class of this demo. The buttons just calling those sort functions."
+        "<b>Adding own code to the model</b><br/>" +
+        "Using the delegation to bring two sort function to the root model " +
+        "class of this demo. The buttons just calling those sort functions."
       );
       this.getRoot().add(syncListDescription, {left: 10, top: 10});
     }
@@ -126,10 +125,9 @@ qx.Mixin.define("qxl.demobrowser.demo.data.ItemsMixin",
         if (a.getType() > b.getType()) {
           return 1;
         } else if (a.getType() < b.getType()) {
-          return -1
-        } else {
+          return -1;
+        } 
           return 0;
-        }
       });
     },
 

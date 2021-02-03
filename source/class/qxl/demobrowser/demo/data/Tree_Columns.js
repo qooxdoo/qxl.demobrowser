@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -89,7 +88,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
       };
 
       for (var i = 0; i < 50; i++) {
-        data.children[1].children[7].children[i] = {label: "Item " + i}
+        data.children[1].children[7].children[i] = {label: "Item " + i};
       }
 
       this.extendData(data);
@@ -105,8 +104,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
     },
 
 
-    extendData : function(data)
-    {
+    extendData : function(data) {
       data.date = "May " + Math.round(Math.random() * 30 + 1) + " 2010";
       data.size = Math.round(Math.random() * 100) + "kb";
       data.light = Math.floor(Math.random() * 4) == 0;

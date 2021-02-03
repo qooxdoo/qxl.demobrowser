@@ -10,8 +10,7 @@ qx.Mixin.define("qxl.demobrowser.demo.table.MUtil",
 
   members :
   {
-    getTableMock : function()
-    {
+    getTableMock : function() {
       var columnModel = this.getColumnModelMock();
       var model = this.getModelMock();
       var selection = new qx.ui.table.selection.Model();
@@ -19,53 +18,81 @@ qx.Mixin.define("qxl.demobrowser.demo.table.MUtil",
       selectionManager.setSelectionModel(selection);
 
       var table = {
-        getTableModel : function() { return model; },
-        getTableColumnModel : function() { return columnModel; },
-        getRowHeight : function() { return 20; },
-        getForceLineHeight : function() { return true; },
-        getSelectionModel : function() { return selection; },
-        getDataRowRenderer : function() { return new qx.ui.table.rowrenderer.Default(table)},
+        getTableModel : function() {
+ return model; 
+},
+        getTableColumnModel : function() {
+ return columnModel; 
+},
+        getRowHeight : function() {
+ return 20; 
+},
+        getForceLineHeight : function() {
+ return true; 
+},
+        getSelectionModel : function() {
+ return selection; 
+},
+        getDataRowRenderer : function() {
+ return new qx.ui.table.rowrenderer.Default(table); 
+},
         updateContent : function() {},
         setFocusedCell : function(col, row) {},
-        getKeepFirstVisibleRowComplete : function() { return true; },
-        _updateScrollBarVisibility : function(){},
-        getSelectionManager : function() { return selectionManager; },
+        getKeepFirstVisibleRowComplete : function() {
+ return true; 
+},
+        _updateScrollBarVisibility : function() {},
+        getSelectionManager : function() {
+ return selectionManager; 
+},
         getNewTablePaneHeader : function(obj) {
           return function(obj) {
             var header = new qx.ui.table.pane.Header(obj);
             return header;
-          }
+          };
         },
         getNewTablePane : function(obj) {
           return function(obj) {
             return new qx.ui.table.pane.Pane(obj);
-          }
+          };
         },
-        getEnabled : function() { return true; }
-      }
+        getEnabled : function() {
+ return true; 
+}
+      };
 
       return table;
     },
 
 
-    getSelectionMock : function()
-    {
+    getSelectionMock : function() {
       return {
-        isSelectedIndex : function(index) { return index == 0; },
+        isSelectedIndex : function(index) {
+ return index == 0; 
+},
         resetSelection : function() {}
       };
     },
 
 
-    getColumnModelMock : function()
-    {
+    getColumnModelMock : function() {
       return {
-        getColumnCount : function() { return 4; },
-        getVisibleColumnCount : function() { return 4; },
-        getVisibleColumnAtX : function(x) {return x; },
-        getColumnWidth : function(col) { return 100; },
+        getColumnCount : function() {
+ return 4; 
+},
+        getVisibleColumnCount : function() {
+ return 4; 
+},
+        getVisibleColumnAtX : function(x) {
+ return x; 
+},
+        getColumnWidth : function(col) {
+ return 100; 
+},
         setColumnWidth : function(col, width) {},
-        getVisibleX : function(x) { return x; },
+        getVisibleX : function(x) {
+ return x; 
+},
         getHeaderCellRenderer : function(col) {
           return new qx.ui.table.headerrenderer.Default();
         },
@@ -79,67 +106,96 @@ qx.Mixin.define("qxl.demobrowser.demo.table.MUtil",
     },
 
 
-    getPaneModelMock : function()
-    {
+    getPaneModelMock : function() {
       var model = {
-        getColumnAtX : function(x) { return x; },
-        getColumnCount : function() { return 4; },
-        getX : function(col) { return col; },
-        getColumnLeft : function(col) { return col * 100; },
-        getTotalWidth : function() { return 4 * 100; }
-      }
+        getColumnAtX : function(x) {
+ return x; 
+},
+        getColumnCount : function() {
+ return 4; 
+},
+        getX : function(col) {
+ return col; 
+},
+        getColumnLeft : function(col) {
+ return col * 100; 
+},
+        getTotalWidth : function() {
+ return 4 * 100; 
+}
+      };
       return model;
     },
 
 
-    getModelMock : function()
-    {
+    getModelMock : function() {
       return {
-        getSortColumnIndex : function() { return 0; },
-        isSortAscending : function() { return true; },
-        isColumnSortable : function(col) { return true; },
-        getColumnName : function(col) { return "Column #" + col; },
-        isColumnEditable : function(col) { return false; },
+        getSortColumnIndex : function() {
+ return 0; 
+},
+        isSortAscending : function() {
+ return true; 
+},
+        isColumnSortable : function(col) {
+ return true; 
+},
+        getColumnName : function(col) {
+ return "Column #" + col; 
+},
+        isColumnEditable : function(col) {
+ return false; 
+},
         sortByColumn : function(col, ascending) {},
-        getRowCount : function() { return 500; },
+        getRowCount : function() {
+ return 500; 
+},
         prefetchRows : function() {},
         getRowData : function(row) {
           var data = [];
           for (var i=0; i<4; i++) {
-            data.push("Cell " + i + "x" + row)
+            data.push("Cell " + i + "x" + row);
           }
           return data;
         },
-        getValue : function(col, row) { return "Cell " + col + "x" + row; }
-      }
+        getValue : function(col, row) {
+ return "Cell " + col + "x" + row; 
+}
+      };
     },
 
 
-    getPaneMock : function()
-    {
+    getPaneMock : function() {
       return {
-        getFirstVisibleRow : function() { return 0; }
-      }
+        getFirstVisibleRow : function() {
+ return 0; 
+}
+      };
     },
 
 
-    getScrollerMock : function()
-    {
+    getScrollerMock : function() {
       var table = this.getTableMock();
       var paneModel = this.getPaneModelMock();
       var pane = this.getPaneMock();
 
       return {
-        getTable : function() { return table; },
-        getTablePaneModel : function() { return paneModel; },
-        getTablePane : function() { return pane; },
-        getShowCellFocusIndicator : function() { return true; }
-      }
+        getTable : function() {
+ return table; 
+},
+        getTablePaneModel : function() {
+ return paneModel; 
+},
+        getTablePane : function() {
+ return pane; 
+},
+        getShowCellFocusIndicator : function() {
+ return true; 
+}
+      };
     },
 
 
-    _getNewTableDiv : function(width)
-    {
+    _getNewTableDiv : function(width) {
       var div = qx.dom.Element.create("div");
       qx.bom.element.Style.setStyles(div, {
         position : "absolute",

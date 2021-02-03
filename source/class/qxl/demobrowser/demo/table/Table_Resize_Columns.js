@@ -38,8 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
@@ -77,7 +76,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
       var resizeBehavior = tcm.getBehavior();
 
       // This uses the set() method to set all attriutes at once; uses flex
-      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80  });
+      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80 });
 
       // We could also set them individually:
       resizeBehavior.setWidth(1, "50%");
@@ -90,10 +89,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
       return table;
     },
 
-    createControls : function()
-    {
+    createControls : function() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button, part, checkBox;
+      var button; var part; var checkBox;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
@@ -144,8 +142,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel");
   }
 });

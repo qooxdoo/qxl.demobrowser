@@ -42,14 +42,12 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
       // Enable logging in debug variant
-      if (qx.core.Environment.get("qx.debug"))
-      {
+      if (qx.core.Environment.get("qx.debug")) {
         // support native logging capabilities, e.g. Firebug for Firefox
         qx.log.appender.Native;
         // support additional cross-browser console. Press F7 to toggle visibility
@@ -73,12 +71,11 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
 
       var engine = qx.core.Environment.get("engine.name");
       var modernIe = engine == "mshtml" && qx.core.Environment.get("browser.documentmode") > 10;
-      if (engine != "webkit" && !modernIe)
-      {
+      if (engine != "webkit" && !modernIe) {
         var warningLabelStyle = {
           "color" : "green",
           "position" : "absolute",
-          "font-family": 'Lucida Grande',
+          "font-family": "Lucida Grande",
           "font-size" : "12px",
           "left" : "30px",
           "top" : "20px"

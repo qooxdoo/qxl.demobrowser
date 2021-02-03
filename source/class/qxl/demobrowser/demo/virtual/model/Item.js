@@ -19,8 +19,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.model.Item",
 {
   extend : qx.core.Object,
 
-  construct : function(label, icon)
-  {
+  construct : function(label, icon) {
     this.base(arguments);
 
     if (label != null) {

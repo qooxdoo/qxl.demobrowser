@@ -7,15 +7,12 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Conditional",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
-      var createRandomRows = function(rowCount)
-        {
+      var createRandomRows = function(rowCount) {
         var rowData = [ ];
-        for (var row = 0; row < rowCount; row++)
-        {
+        for (var row = 0; row < rowCount; row++) {
           var x = Math.random() * 1000;
           rowData.push(
                        {
@@ -59,8 +56,8 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Conditional",
       var r = new qx.ui.progressive.renderer.table.cell.Conditional(
         "right", "", "", "");
 
-      r.addNumericCondition(">", 0,   null, "FF0000", null, null);
-      r.addNumericCondition(">", 50,  null, "EE0011", null, null);
+      r.addNumericCondition(">", 0, null, "FF0000", null, null);
+      r.addNumericCondition(">", 50, null, "EE0011", null, null);
       r.addNumericCondition(">", 100, null, "DD0022", null, null);
       r.addNumericCondition(">", 150, null, "CC0033", null, null);
       r.addNumericCondition(">", 200, null, "BB0044", null, null);

@@ -36,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create a container for the main layout and set the main layout
@@ -45,7 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       mainContainer.setPadding(20);
 
       // add the scroll container to the root
-      this.getRoot().add(mainContainer, { edge: 0 } );
+      this.getRoot().add(mainContainer, { edge: 0 });
 
       ///////////////////////////////////////////////////////////////
       // Toolbar stuff
@@ -137,7 +136,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       var menuItem = overflowMenu.getChildren();
       for (var i = 0; i < menuItem.length; i++) {
         menuItem[i].setVisibility("excluded");
-      };
+      }
 
       var showHideHandler = function(item, visibility) {
         var items = [];
@@ -148,9 +147,9 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
         }
 
         for (var i = 0; i < items.length; i++) {
-          items[i].setVisibility(visibility)
-        };
-      }
+          items[i].setVisibility(visibility);
+        }
+      };
 
       // handler for showind and hiding toobar items
       toolbar.addListener("showItem", function(e) {
@@ -190,12 +189,10 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       controlContainer.add(size48Button, {row:0, column:3});
 
       // register the handler
-      sizeManager.addListener("changeSelection", function(e)
-      {
+      sizeManager.addListener("changeSelection", function(e) {
         var value = e.getData()[0];
-        var button, size, url;
-        for (var i=0; i<buttons.length; i++)
-        {
+        var button; var size; var url;
+        for (var i=0; i<buttons.length; i++) {
           button = buttons[i];
           url = button.getIcon();
 
@@ -231,8 +228,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       controlContainer.add(showLabelButton, {row:1, column:3});
 
       // register the handler
-      showManager.addListener("changeSelection", function(e)
-      {
+      showManager.addListener("changeSelection", function(e) {
         if (e.getData()[0] == showBothButton) {
           toolbar.setShow("both");
         } else if (e.getData()[0] == showIconButton) {
@@ -252,7 +248,9 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
 
       enabledOverflowBox.bind("value", toolbar, "overflowHandling");
       enabledOverflowBox.bind("value", showManager, "enabled", {converter:
-        function(data) {return !data;}
+        function(data) {
+ return !data; 
+}
       });
     }
   }

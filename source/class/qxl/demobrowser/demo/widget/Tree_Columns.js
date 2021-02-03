@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree_Columns",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -104,19 +103,17 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree_Columns",
       te2_7.add(te2_7_1, te2_7_2, te2_7_3, te2_7_4);
 
       var te2_8 = this.configureTreeItem(new qx.ui.tree.TreeFolder(), "Big");
-      for (var i=0;i<50; i++) {
+      for (var i=0; i<50; i++) {
         te2_8.add(this.configureTreeItem(new qx.ui.tree.TreeFolder(), "Item " + i));
-      };
+      }
 
       var te2_9 = this.configureTreeItem(new qx.ui.tree.TreeFolder(), "Spam");
 
       te2.add(te2_1, te2_2, te2_3, te2_4, te2_5, te2_6, te2_7, te2_8, te2_9);
       root.add(te2);
-
     },
 
-    configureTreeItem : function(treeItem, vLabel, vIcon)
-    {
+    configureTreeItem : function(treeItem, vLabel, vIcon) {
       // A left-justified icon
       if (Math.floor(Math.random() * 4) == 0) {
         var img = new qx.ui.basic.Image("icon/16/status/dialog-information.png");

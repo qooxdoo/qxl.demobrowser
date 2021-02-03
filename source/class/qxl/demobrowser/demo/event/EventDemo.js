@@ -35,14 +35,12 @@ qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var btnClear = document.getElementById("btnClear");
 
-      if (btnClear)
-      {
+      if (btnClear) {
         qx.bom.Element.addListener(
           btnClear,
           "tap",
@@ -53,8 +51,7 @@ qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
     },
 
 
-    _initLogger : function(columns, el, maxLogSize)
-    {
+    _initLogger : function(columns, el, maxLogSize) {
       this.__tableHead = "<table><tr><th>" + columns.join("</th><th>") + "</th></tr>";
       this.__maxLogSize = maxLogSize || 50;
       this.__logDiv = el;
@@ -63,15 +60,13 @@ qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
     },
 
 
-    _clearLog : function()
-    {
+    _clearLog : function() {
       this.__logDiv.innerHTML = this.__tableHead + "</table>";
       this.__logs = [];
     },
 
 
-    _log : function(values)
-    {
+    _log : function(values) {
       this.__logs.unshift(values);
       this.__logs = this.__logs.slice(0, this.__maxLogSize);
 

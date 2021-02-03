@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
    * @param icon {String?null} Icon to use
    * @param value {String?null} The items string value
    */
-  construct : function(label, icon, value)
-  {
+  construct : function(label, icon, value) {
     this.base(arguments);
 
     if (label != null) {
@@ -124,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
     */
 
     // property apply
-    _applyManager : function(value, old)
-    {
+    _applyManager : function(value, old) {
       if (old) {
         old.remove(this);
       }
@@ -148,8 +146,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
      * This is normally the real value with a fallback to the label like in HTML
      * select boxes.
      */
-    getFormValue : function()
-    {
+    getFormValue : function() {
       var value = this.getValue();
       if (value == null) {
         value = this.getLabel();

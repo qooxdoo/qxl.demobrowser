@@ -26,12 +26,10 @@ qx.Class.define("qxl.demobrowser.demo.bom.Dimension",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
-      for (var i=1; i<1000; i++)
-      {
+      for (var i=1; i<1000; i++) {
         var el = document.getElementById("block" + i);
         if (!el) {
           break;
@@ -41,14 +39,18 @@ qx.Class.define("qxl.demobrowser.demo.bom.Dimension",
         this.debug(msg);
       }
 
-      function boxSize(el)
-      {
+      /**
+       * @param el
+       */
+      function boxSize(el) {
         var Dimension = qx.bom.element.Dimension;
         return Dimension.getWidth(el) + "x" + Dimension.getHeight(el);
       }
 
-      function contentSize(el)
-      {
+      /**
+       * @param el
+       */
+      function contentSize(el) {
         var Dimension = qx.bom.element.Dimension;
         return Dimension.getContentWidth(el) + "x" + Dimension.getContentHeight(el);
       }

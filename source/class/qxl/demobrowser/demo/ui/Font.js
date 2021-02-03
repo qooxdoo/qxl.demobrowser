@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Font",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var label = new qx.ui.basic.Label("Hello World").set({

@@ -31,8 +31,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Meta_Columns",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
       tableModel.setColumns([ "ID", "A number", "A date", "Boolean test" ]);

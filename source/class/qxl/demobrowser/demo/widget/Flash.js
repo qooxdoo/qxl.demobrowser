@@ -34,12 +34,11 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
   {
     __window : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var tabView = new qx.ui.tabview.TabView();
-      tabView.setContentPadding([8,8,8,8]);
+      tabView.setContentPadding([8, 8, 8, 8]);
 
       var doc = this.getRoot();
       doc.add(tabView, {edge: 0});
@@ -58,13 +57,12 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
       doc.add(this.__window, {top: 20, left: 20});
     },
 
-    createWindow : function()
-    {
+    createWindow : function() {
       var win = new qx.ui.window.Window("Flash Player Version").set(
       {
         width: 300,
         height: 200,
-        contentPadding: [0,0,0,0]
+        contentPadding: [0, 0, 0, 0]
       });
 
       win.setLayout(new qx.ui.layout.Canvas());
@@ -84,8 +82,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
     */
 
 
-    createFlashDemo1 : function ()
-    {
+    createFlashDemo1 : function () {
       var container = new qx.ui.container.Composite(
         new qx.ui.layout.VBox(4)
       );
@@ -103,8 +100,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
       container.add(flash, {flex: 1});
 
       var button = new qx.ui.form.Button("Show Flash Player version");
-      button.addListener("execute", function()
-      {
+      button.addListener("execute", function() {
         this.__window.open();
       }, this);
       container.add(button);
@@ -128,8 +124,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
 
     __sendButton : null,
 
-    createFlashDemo2 : function()
-    {
+    createFlashDemo2 : function() {
       //Set for call back
       this.self(arguments).setCallBackInstance(this);
 
@@ -191,26 +186,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
       return container;
     },
 
-    sendMessage : function(message)
-    {
+    sendMessage : function(message) {
       this.__messageFromFlash.setValue(message);
     },
 
     /**
      * @lint ignoreDeprecated(alert)
      */
-    initFlash : function()
-    {
-      if (this.__flash.getFlashElement().setup)
-      {
+    initFlash : function() {
+      if (this.__flash.getFlashElement().setup) {
         this.__flash.getFlashElement().setup("qxl.demobrowser.demo.widget.Flash.sendMessage");
         this.__sendButton.setEnabled(true);
-      }
-      else
-      {
-        alert("Couldn't connect to Flash Player! Please make sure that:\n"
-          + "1) no pop-up or advertising blocker is activated.\n"
-          + "2) this html page is not loaded from the file system, but a webserver.");
+      } else {
+        alert("Couldn't connect to Flash Player! Please make sure that:\n" +
+          "1) no pop-up or advertising blocker is activated.\n" +
+          "2) this html page is not loaded from the file system, but a webserver.");
       }
     }
   },
@@ -224,18 +214,15 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
   {
     __callBackInstance : null,
 
-    setCallBackInstance : function(callBackInstance)
-    {
+    setCallBackInstance : function(callBackInstance) {
       qxl.demobrowser.demo.widget.Flash.__callBackInstance = callBackInstance;
     },
 
-    sendMessage : function(message)
-    {
+    sendMessage : function(message) {
       qxl.demobrowser.demo.widget.Flash.__callBackInstance.sendMessage(message);
     },
 
-    flashReady : function()
-    {
+    flashReady : function() {
       qxl.demobrowser.demo.widget.Flash.__callBackInstance.initFlash();
     }
   },
@@ -246,8 +233,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Flash",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__messageFromFlash", "__messageToFlash",
       "__sendButton", "__flash", "__window");
   }

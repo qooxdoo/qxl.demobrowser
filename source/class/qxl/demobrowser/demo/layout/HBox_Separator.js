@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -45,8 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5, null, "separator-horizontal")).set({
         decorator: "main",
@@ -62,8 +60,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // container higher, vertical alignment
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5, null, "separator-horizontal")).set({
         decorator: "main",
@@ -80,8 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // auto size + horizontal margins
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5, null, "separator-horizontal")).set({
         decorator: "main",
@@ -89,9 +85,9 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Separator",
         allowGrowX: false
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"})
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"})
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"})
+      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
 
       container.add(w1);
       container.add(w2);

@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Focus",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       qx.event.Registration.addListener(document.documentElement, "activate", this._onActivate, this, true);
@@ -39,44 +38,35 @@ qx.Class.define("qxl.demobrowser.demo.event.Focus",
       qx.event.Registration.addListener(window, "blur", this._onWindowBlur, this);
     },
 
-    _onWindowFocus : function(e)
-    {
+    _onWindowFocus : function(e) {
       this.debug("Window focussed");
     },
 
-    _onWindowBlur : function(e)
-    {
+    _onWindowBlur : function(e) {
       this.debug("Window blurred");
     },
 
-    _onActivate : function(e)
-    {
+    _onActivate : function(e) {
       this.debug("Activate: " + e.getTarget());
       e.getTarget().style.background = "#E8ECF6";
     },
 
-    _onDeactivate : function(e)
-    {
+    _onDeactivate : function(e) {
       this.debug("Deactivate: " + e.getTarget());
       e.getTarget().style.background = "";
     },
 
-    _onFocusIn : function(e)
-    {
+    _onFocusIn : function(e) {
       this.debug("FocusIn: " + e.getTarget());
 
-      if (qx.core.Environment.get("engine.name") == "webkit")
-      {
+      if (qx.core.Environment.get("engine.name") == "webkit") {
         e.getTarget().style.border = "1px dotted red";
-      }
-      else
-      {
+      } else {
         e.getTarget().style.outline = "1px dotted red";
       }
     },
 
-    _onFocusOut : function(e)
-    {
+    _onFocusOut : function(e) {
       this.debug("FocusOut: " + e.getTarget());
 
       if (qx.core.Environment.get("engine.name") == "mshtml") {

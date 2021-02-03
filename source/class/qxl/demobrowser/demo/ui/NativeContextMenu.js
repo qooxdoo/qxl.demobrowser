@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.NativeContextMenu",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // disable globally

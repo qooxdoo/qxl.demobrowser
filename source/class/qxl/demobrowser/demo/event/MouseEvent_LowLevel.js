@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent_LowLevel",
   {
     __logMouseEventWrapper : null,
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this.__logMouseEventWrapper = qx.lang.Function.bind(this.logMouseEvent, this);
@@ -45,9 +44,8 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent_LowLevel",
       var mouseDiv = document.getElementById("mouse");
 
       var events = ["mousedown", "mouseup", "click", "dblclick", "contextmenu", "mousemove", "mouseover", "mouseout"];
-      for (var i=0; i<events.length; i++)
-      {
-        var elem = document.getElementById("check_" + events[i])
+      for (var i=0; i<events.length; i++) {
+        var elem = document.getElementById("check_" + events[i]);
         if (elem.checked) {
           qx.bom.Event.addNativeListener(
             mouseDiv,
@@ -59,8 +57,7 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent_LowLevel",
       }
     },
 
-    __changeCheckbox : function(e)
-    {
+    __changeCheckbox : function(e) {
       var target = qx.bom.Event.getTarget(e);
       var type = target.id.split("_")[1];
       var checked = target.checked;
@@ -72,9 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent_LowLevel",
           type,
           this.__logMouseEventWrapper
         );
-      }
-      else
-      {
+      } else {
         qx.bom.Event.removeNativeListener(
           mouseDiv,
           type,
@@ -84,8 +79,7 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent_LowLevel",
     },
 
 
-    logMouseEvent: function(mouseEvent)
-    {
+    logMouseEvent: function(mouseEvent) {
       qx.bom.Event.preventDefault(mouseEvent);
 
       this._log([

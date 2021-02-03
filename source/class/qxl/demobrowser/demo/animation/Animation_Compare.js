@@ -44,8 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
             qx.bom.element.AnimationCss.animate(buttons[0], animation);
             qx.bom.element.AnimationJs.animate(buttons[1], animation);
           }
-
-        }
+        };
       })(desc, name);
 
       qxWeb(buttons[0]).on("tap", onTap);
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
     },
 
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
       this.aniClasses = [qx.bom.element.AnimationCss, qx.bom.element.AnimationJs];
 
@@ -284,8 +282,8 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
         return function(e) {
           for (var i=0; i < handle.length; i++) {
             handle[i].stop();
-          };
-        }
+          }
+        };
       })(infinite);
 
       qxWeb(buttons[0]).on("tap", onTap);
@@ -319,8 +317,8 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
                 handle2[i].el.innerHTML = "Pause";
               }
             }
-          };
-        }
+          }
+        };
       })(infinite);
 
       qxWeb(buttons[0]).on("tap", onTap);
@@ -374,7 +372,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
       };
       var onEnd = function(e) {
         e.innerHTML = "Ended";
-      }
+      };
 
       var handle3 = [];
       handle3.push(qx.bom.element.AnimationCss.animate(buttons[0], delay));
@@ -382,7 +380,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_Compare",
       for (var i=0; i < handle3.length; i++) {
         handle3[i].on("start", onStart);
         handle3[i].on("end", onEnd);
-      };
+      }
 
       cssContainer.appendChild(buttons[0]);
       jsContainer.appendChild(buttons[1]);

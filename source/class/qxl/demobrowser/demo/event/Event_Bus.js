@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bus",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -62,56 +61,51 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bus",
       // send messages in timeouts
 
       // 'start' message
-      qx.event.Timer.once(function(e){
+      qx.event.Timer.once(function(e) {
         this._log(["", "X", "", "start", ""]);
         eventBus.getInstance().dispatchByName("start");
       }, this, 1000);
 
 
       // 'loading' message
-      qx.event.Timer.once(function(e){
+      qx.event.Timer.once(function(e) {
         this._log(["", "X", "", "loading", ""]);
         eventBus.getInstance().dispatchByName("loading");
       }, this, 2500);
 
 
       // 'loading' message
-      qx.event.Timer.once(function(e){
+      qx.event.Timer.once(function(e) {
         this._log(["", "X", "", "loading", ""]);
         eventBus.getInstance().dispatchByName("loading");
       }, this, 4000);
 
 
       // 'finished' message
-      qx.event.Timer.once(function(e){
+      qx.event.Timer.once(function(e) {
         this._log(["", "X", "", "finished", ""]);
         eventBus.getInstance().dispatchByName("finished");
       }, this, 5000);
     },
 
 
-    _startCallback : function(e)
-    {
+    _startCallback : function(e) {
       this._log(["", "", "X", "start", "_startCallback"]);
     },
 
-    _anotherStartCallback : function(e)
-    {
+    _anotherStartCallback : function(e) {
       this._log(["", "", "X", "start", "_anotherStartCallback"]);
     },
 
-    _loadingCallback : function(e)
-    {
+    _loadingCallback : function(e) {
       this._log(["", "", "X", "loading", "_loadingCallback"]);
     },
 
-    _finishedCallback : function(e)
-    {
+    _finishedCallback : function(e) {
       this._log(["", "", "X", "finished", "_finishedCallback"]);
     },
 
-    _anotherFinishedCallback : function(e)
-    {
+    _anotherFinishedCallback : function(e) {
       this._log(["", "", "X", "finished", "_anotherFinishedCallback"]);
     }
   }

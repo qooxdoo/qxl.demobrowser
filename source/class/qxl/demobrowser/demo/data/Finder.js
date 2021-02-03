@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create and configure a window
@@ -73,7 +72,6 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
       // connect the rest of the controllers
       controller1.bind("selection[0].files", controller2, "model");
       controller2.bind("selection[0].files", controller3, "model");
-
     }
   }
 });

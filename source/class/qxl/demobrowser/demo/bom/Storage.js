@@ -28,8 +28,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Storage",
   {
     __storage : null,
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this.setUsing();

@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // fetch some data from Twitter
@@ -66,10 +65,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
       description.setRich(true);
       description.setWidth(500);
       description.setValue(
-        "<b>Debugging models</b><br/>"
-        + "Every model created by the data stores consists only of qooxdoo "
-        + "objects with properties. To see the properties, you can use the "
-        + "debugModel function in qx.dev.Debug."
+        "<b>Debugging models</b><br/>" +
+        "Every model created by the data stores consists only of qooxdoo " +
+        "objects with properties. To see the properties, you can use the " +
+        "debugModel function in qx.dev.Debug."
       );
       this.getRoot().add(description, {left: 10, top: 10});
     }
@@ -91,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.data.store.Identica",
  {
    extend : qx.data.store.Jsonp,
 
-   construct : function(user)
-   {
+   construct : function(user) {
      var url = "http://identi.ca/api/statuses/user_timeline/" + user + ".json";
      this.base(arguments, url);
    }

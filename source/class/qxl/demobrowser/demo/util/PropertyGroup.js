@@ -21,8 +21,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
 {
   extend : qx.ui.core.Widget,
 
-  construct : function(propertyDescription)
-  {
+  construct : function(propertyDescription) {
     this.base(arguments);
 
     this._properties = propertyDescription;
@@ -39,8 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
 
     var row = 0;
 
-    for (var prop in this._properties)
-    {
+    for (var prop in this._properties) {
       var type = this._properties[prop].type;
       var nullable = this._properties[prop].nullable;
 
@@ -48,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
         paddingTop: 4
       }), {row: row, column: 0});
 
-      if (nullable)
-      {
+      if (nullable) {
         var nullWidget = new qx.ui.form.CheckBox("null");
         nullWidget.addListener("changeValue", this._createOnNullPropertyChange(prop), this);
 
@@ -57,36 +54,28 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
         this._properties[prop].nullWidget = nullWidget;
       }
 
-      if (type == "int")
-      {
+      if (type == "int") {
         var formItem = new qx.ui.form.Spinner().set({
           minimum: this._properties[prop].min || 0,
           maximum: this._properties[prop].max !== undefined ? this._properties[prop].max : 1000
         });
         formItem.addListener("changeValue", this._createOnIntPropertyChange(prop), this);
         this._add(formItem, {row: row++, column: 1});
-      }
-      else if (type == "bool")
-      {
+      } else if (type == "bool") {
         var formItem = new qx.ui.form.CheckBox();
         formItem.addListener("changeValue", this._createOnBoolPropertyChange(prop), this);
         this._add(formItem, {row: row++, column: 1});
-      }
-      else if (type == "enum")
-      {
+      } else if (type == "enum") {
         var values = this._properties[prop].values;
         var formItem = new qx.ui.form.RadioGroup();
-        for (var i=0; i<values.length; i++)
-        {
+        for (var i=0; i<values.length; i++) {
           var widget = new qx.ui.form.RadioButton(values[i]);
           widget.setUserData("value", values[i]);
           formItem.add(widget);
           this._add(widget, {row: row++, column:1});
         }
         formItem.addListener("changeSelection", this._createOnEnumPropertyChange(prop, formItem), this);
-      }
-      else if (type == "string")
-      {
+      } else if (type == "string") {
         var formItem = new qx.ui.form.TextField();
         formItem.setLiveUpdate(true);
         formItem.addListener("changeValue", this._createOnIntPropertyChange(prop), this);
@@ -191,8 +180,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
     },
 
 
-    _setProperty : function(widget, name, value)
-    {
+    _setProperty : function(widget, name, value) {
       if (!widget) {
         return;
       }
@@ -207,64 +195,51 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
     },
 
 
-    _getProperty : function(widget, name)
-    {
+    _getProperty : function(widget, name) {
       var getter = "get" + qx.lang.String.firstUp(name);
       return widget[getter]();
     },
 
 
-    _hasProperty : function(widget, name)
-    {
+    _hasProperty : function(widget, name) {
       var setter = "set" + qx.lang.String.firstUp(name);
-      return (typeof(widget[setter]) == "function");
+      return (typeof (widget[setter]) == "function");
     },
 
 
-    _createOnIntPropertyChange : function(property)
-    {
-      return function(e)
-      {
+    _createOnIntPropertyChange : function(property) {
+      return function(e) {
         var widget = this.getSelected();
         this._setProperty(widget, property, e.getTarget().getValue());
-      }
+      };
     },
 
 
-    _createOnBoolPropertyChange : function(property)
-    {
-      return function(e)
-      {
+    _createOnBoolPropertyChange : function(property) {
+      return function(e) {
         var widget = this.getSelected();
         this._setProperty(widget, property, e.getTarget().getValue());
-      }
+      };
     },
 
 
-    _createOnEnumPropertyChange : function(property, mgr)
-    {
-      return function(e)
-      {
+    _createOnEnumPropertyChange : function(property, mgr) {
+      return function(e) {
         var widget = this.getSelected();
         this._setProperty(widget, property, mgr.getSelection()[0].getUserData("value"));
-      }
+      };
     },
 
 
-    _createOnNullPropertyChange : function(property)
-    {
-      return function(e)
-      {
+    _createOnNullPropertyChange : function(property) {
+      return function(e) {
         var widget = this.getSelected();
         var control = e.getTarget();
 
-        if (control.getValue())
-        {
+        if (control.getValue()) {
           this._setProperty(widget, property, null);
           this._properties[property].formItem.setEnabled(false);
-        }
-        else
-        {
+        } else {
           var value = null;
 
           if (this._properties[property].type == "enum") {
@@ -276,20 +251,17 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
           this._setProperty(widget, property, value);
           this._properties[property].formItem.setEnabled(true);
         }
-      }
+      };
     },
 
 
-    _updateControls : function(widget)
-    {
-      for (var prop in this._properties)
-      {
+    _updateControls : function(widget) {
+      for (var prop in this._properties) {
         var type = this._properties[prop].type;
         var formItem = this._properties[prop].formItem;
         var nullable = this._properties[prop].nullable;
 
-        if (!this._hasProperty(widget, prop))
-        {
+        if (!this._hasProperty(widget, prop)) {
           formItem.setEnabled(false);
           if (nullable) {
             this._properties[prop].nullWidget.setEnabled(false);
@@ -302,25 +274,16 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
 
         var propValue = this._getProperty(widget, prop);
 
-        if (propValue !== null)
-        {
-          if (type == "int")
-          {
+        if (propValue !== null) {
+          if (type == "int") {
             formItem.setValue(parseInt(propValue));
-          }
-          else if (type == "string")
-          {
+          } else if (type == "string") {
             formItem.setValue(propValue.toString());
-          }
-          else if (type == "bool")
-          {
+          } else if (type == "bool") {
             formItem.setValue(!!propValue);
-          }
-          else if (type == "enum")
-          {
+          } else if (type == "enum") {
             var items = formItem.getItems();
-            for (var i = 0, l = items.length; i < l; i++)
-            {
+            for (var i = 0, l = items.length; i < l; i++) {
               var item = items[i];
               if (item.getUserData("value") == propValue) {
                 formItem.setSelection([item]);
@@ -330,13 +293,11 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyGroup",
           }
         }
 
-        if (nullable)
-        {
+        if (nullable) {
           this._properties[prop].nullWidget.setValue(propValue == null);
           this._properties[prop].nullWidget.setEnabled(true);
           formItem.setEnabled(propValue !== null);
         }
-
       }
     }
 

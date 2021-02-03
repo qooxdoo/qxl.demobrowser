@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.FormAndListController",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create some dummy data

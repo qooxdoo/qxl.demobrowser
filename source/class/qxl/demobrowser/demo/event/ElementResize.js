@@ -30,25 +30,22 @@ qx.Class.define("qxl.demobrowser.demo.event.ElementResize",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var el = document.getElementById("resize");
       qx.bom.Element.addListener(el, "resize", this._onResize, this);
 
-      this.update(el, el.offsetWidth, el.offsetHeight)
+      this.update(el, el.offsetWidth, el.offsetHeight);
     },
 
-    _onResize : function(e)
-    {
+    _onResize : function(e) {
       var data = e.getData();
-      this.update(e.getTarget(), data.width, data.height)
+      this.update(e.getTarget(), data.width, data.height);
     },
 
 
-    update : function(el, width, height)
-    {
+    update : function(el, width, height) {
       el.innerHTML = "width: " + width + "px<br>height: " + height + "px";
     }
   }

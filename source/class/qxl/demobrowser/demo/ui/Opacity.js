@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Opacity",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -42,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Opacity",
     },
 
 
-    getGrid1 : function()
-    {
+    getGrid1 : function() {
       var border = new qx.ui.decoration.Decorator().set({
         width: 1,
         style: "solid",
@@ -70,10 +68,8 @@ qx.Class.define("qxl.demobrowser.demo.ui.Opacity",
 
       var scale = Math.sqrt((columns-1)*(columns-1) + (rows-1)*(rows-1));
 
-      for (var x=0; x<columns; x++)
-      {
-        for (var y=0; y<rows; y++)
-        {
+      for (var x=0; x<columns; x++) {
+        for (var y=0; y<rows; y++) {
           box.add(new qx.ui.core.Widget().set({
             backgroundColor: "green",
             height: boxSize,

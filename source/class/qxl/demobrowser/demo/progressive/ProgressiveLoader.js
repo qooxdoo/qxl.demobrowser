@@ -9,8 +9,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // We'll use the progressive table's progress footer.  For that, we
@@ -27,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
       // that the widget queue gets flushed
       progressive.setFlushWidgetQueueAfterBatch(true);
 
-      var addFunc = function(func)
-      {
+      var addFunc = function(func) {
         var ret =
         {
           renderer : "func",
@@ -70,9 +68,9 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
       var pages =
         [
-          { text : "Red",    background : "red",    color : "white" },
-          { text : "Green",  background : "green",  color : "white" },
-          { text : "Blue",   background : "blue",   color : "white" },
+          { text : "Red", background : "red", color : "white" },
+          { text : "Green", background : "green", color : "white" },
+          { text : "Blue", background : "blue", color : "white" },
           { text : "Purple", background : "purple", color : "white" },
           { text : "Yellow", background : "yellow", color : "black" }
         ];
@@ -86,8 +84,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
         };
       progressive.addListener(
         "renderStart",
-        function(e)
-        {
+        function(e) {
           // Our event data is an object containing the 'state' object and
           // the number of elements to be rendered.
           var state = e.getData().state;
@@ -119,13 +116,11 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
       progressive.addListener(
         "renderEnd",
-        function(e)
-        {
+        function(e) {
           // We don't need the Progressive any longer.  Arrange for it to be
           // destroyed.
           qx.event.Timer.once(
-            function()
-            {
+            function() {
               this.getLayoutParent().remove(this);
               this.dispose();
             },
@@ -134,8 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
       // Create the tabview which is the basis of our GUI
       dataModel.addElement(addFunc(
-        function(userData)
-        {
+        function(userData) {
           // Get our context
           var context = userData.context;
 
@@ -158,12 +152,10 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
           context.currentPage = null;
         }));
 
-      for (var page = 0; page < pages.length; page++)
-      {
+      for (var page = 0; page < pages.length; page++) {
         // Create this page
         dataModel.addElement(addFunc(
-          function(userData)
-          {
+          function(userData) {
             // Get our context
             var context = userData.context;
 
@@ -182,19 +174,16 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
             context.col = 0;
 
             // Save the first page
-            if (context.page == 0)
-            {
+            if (context.page == 0) {
               context.firstPage = context.currentPage;
             }
           }));
 
         // For each row on this page...
-        for (var row = 0; row < 20; row++)
-        {
+        for (var row = 0; row < 20; row++) {
           // Create a horizontal layout for this row
           dataModel.addElement(addFunc(
-            function(userData)
-            {
+            function(userData) {
               // Get our context
               var context = userData.context;
 
@@ -212,12 +201,10 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
               context.col = 0;
             }));
 
-          for (var col = 0; col < 10; col++)
-          {
+          for (var col = 0; col < 10; col++) {
             // Add elements to the horizontal layout
             dataModel.addElement(addFunc(
-              function(userData)
-              {
+              function(userData) {
                 // Get our context
                 var context = userData.context;
 
@@ -241,24 +228,21 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
             // Increment to the next column
             dataModel.addElement(addFunc(
-              function(userData)
-              {
+              function(userData) {
                 ++userData.context.col;
               }));
           }
 
           // Increment to the next row
           dataModel.addElement(addFunc(
-            function(userData)
-            {
+            function(userData) {
               ++userData.context.row;
             }));
         }
 
         // Increment to the next page
         dataModel.addElement(addFunc(
-          function(userData)
-          {
+          function(userData) {
             ++userData.context.page;
           }));
       }
@@ -266,8 +250,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader",
 
       // Switch back to the first page
       dataModel.addElement(addFunc(
-        function(userData)
-        {
+        function(userData) {
           userData.context.tabview.setSelection([userData.context.firstPage]);
         }));
 

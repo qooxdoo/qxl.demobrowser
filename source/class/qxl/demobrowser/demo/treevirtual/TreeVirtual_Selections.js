@@ -7,8 +7,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
@@ -57,8 +56,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections",
       var te2 = dataModel.addBranch(null, "Inbox", true);
 
       te = dataModel.addBranch(te2, "Spam", false);
-      for (var i = 1; i < 3000; i++)
-      {
+      for (var i = 1; i < 3000; i++) {
         dataModel.addLeaf(te, "Spam Message #" + i);
       }
 
@@ -94,10 +92,8 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections",
       // We want to be notified if the selection changes
       o.addListener(
         "changeSelection",
-        function(e)
-        {
-          switch(e.getData()[0].getLabel())
-          {
+        function(e) {
+          switch (e.getData()[0].getLabel()) {
           case "No Selection":
             tree.setSelectionMode(
               qx.ui.treevirtual.TreeVirtual.SelectionMode.NONE);

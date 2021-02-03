@@ -84,7 +84,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
 
       // submit
       var submitButton = new qx.ui.form.Button("submit");
-      submitButton
+      submitButton;
       page2.add(submitButton, {row: 2, column: 1});
 
       ////////////////////////////////////////
@@ -131,8 +131,6 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
       validator.bind("valid", submitButton, "enabled");
 
       ////////////////////////////////////////
-
-
     }
   }
 });

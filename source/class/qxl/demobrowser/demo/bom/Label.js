@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Label",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var label1 = qx.bom.Label.create("Quite a long label text");
@@ -56,11 +55,11 @@ qx.Class.define("qxl.demobrowser.demo.bom.Label",
       var t1 = "hello world";
       var t2 = "foo bar";
       var clazz = qx.bom.Label;
-      var start = new Date;
+      var start = new Date();
       for (var i=0; i<500; i++) {
         clazz.getTextSize(i%2?t1:t2);
       }
-      var stop = new Date;
+      var stop = new Date();
       this.debug("Runtime to measure 500 text blocks: " + (stop-start) + "ms");
 
 
@@ -68,11 +67,11 @@ qx.Class.define("qxl.demobrowser.demo.bom.Label",
       var h1 = "hello <b>world</b>";
       var h2 = "foo <i>bar</i>";
       var clazz = qx.bom.Label;
-      var start = new Date;
+      var start = new Date();
       for (var i=0; i<500; i++) {
         clazz.getHtmlSize(i%2?h1:h2);
       }
-      var stop = new Date;
+      var stop = new Date();
       this.debug("Runtime to measure 500 html blocks: " + (stop-start) + "ms");
     }
   }

@@ -31,8 +31,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
     *****************************************************************************
     */
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       //
@@ -52,7 +51,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       this.__data = qx.data.marshal.Json.createModel(data, true);
 
       // Groups
-      var groups = []
+      var groups = [];
       for (var i = 0; i < 2; i++) {
         groups[i] = {
           name: null,
@@ -103,7 +102,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
     },
 
     configureGroupItem : function(group) {
-
       // Background
       group.setBackgroundColor("#ddd");
 
@@ -112,7 +110,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
 
       // Sync value of items with value of group
       group.addListener("changeValue", function(e) {
-
         // Ignore change when triState was set. Avoids infinite loop.
         if (group.getValue() === null) {
           return;
@@ -131,7 +128,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
     },
 
     bindItem : function(controller, item, id) {
-
       // Bind name -> label
       controller.bindProperty("name", "label", null, item, id);
 
@@ -145,7 +141,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       var data = this.__data;
       controller.bindPropertyReverse("group.checked", "value", {
         converter: function(value, model) {
-
           var item = model.getItem(id);
           var group = item.getGroup();
 
@@ -164,13 +159,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
           // Set triState when one item in group is checked
           if (isOneChecked) {
             return isAllChecked ? true : null;
-          } else {
+          } 
             return false;
-          }
-
         }
       }, item, id);
-
     },
 
     bindGroupItem : function(controller, group, id) {

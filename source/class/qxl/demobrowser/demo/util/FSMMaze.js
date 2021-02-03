@@ -33,15 +33,14 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
     }
   },
 
-  construct : function(rows, columns, x, y, cellSize)
-  {
+  construct : function(rows, columns, x, y, cellSize) {
     this.base(arguments);
     this.setLayout(new qx.ui.layout.Grid());
 
-    this.numRows  = (rows === undefined     ? 10 : rows);
-    this.numCols  = (columns === undefined  ? 10 : columns);
-    this.x        = (x === undefined        ? 50 : x);
-    this.y        = (y === undefined        ? 50 : y);
+    this.numRows = (rows === undefined ? 10 : rows);
+    this.numCols = (columns === undefined ? 10 : columns);
+    this.x = (x === undefined ? 50 : x);
+    this.y = (y === undefined ? 50 : y);
     this.cellSize = (cellSize === undefined ? 50 : cellSize);
 
     this.totalHeight = this.numRows * this.cellSize;
@@ -50,13 +49,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
     this.setWidth(this.totalWidth);
     this.setHeight(this.totalHeight);
 
-    for (var row = 0; row < this.numRows; row++)
-    {
+    for (var row = 0; row < this.numRows; row++) {
       this.getLayout().setRowHeight(row, this.cellSize);
     }
 
-    for (var col = 0; col < this.numCols; col++)
-    {
+    for (var col = 0; col < this.numCols; col++) {
       this.getLayout().setColumnWidth(col, this.cellSize);
     }
 
@@ -69,14 +66,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
     this.mazeInfo = [];
 
     // Build a grid with all walls of all cells intact
-    for (row = 0; row < this.numRows; row++)
-    {
+    for (row = 0; row < this.numRows; row++) {
       this.cells[row] = [];
       this.mazeInfo[row] = [];
 
-      for (col = 0; col < this.numCols; col++)
-      {
-
+      for (col = 0; col < this.numCols; col++) {
         // Instantiate this cell
         this.cells[row][col] = new qx.ui.container.Composite();
         this.cells[row][col].setLayout(new qx.ui.layout.HBox());
@@ -114,15 +108,13 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
         col : Math.floor(Math.random() * this.numCols)
       };
 
-    while (visitedCells < totalCells)
-    {
+    while (visitedCells < totalCells) {
       // Initialize neighbors of current cell array
       neighbors = [];
 
       // See if there's a west neighbor with all walls intact
       if (currentCell.col > 0 &&
-          (this.mazeInfo[currentCell.row][currentCell.col - 1] == 0xf))
-      {
+          (this.mazeInfo[currentCell.row][currentCell.col - 1] == 0xf)) {
         neighbors.push(
           {
             row             : currentCell.row,
@@ -134,8 +126,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
 
       // See if there's a south neighbor with all walls intact
       if (currentCell.row < this.numRows - 1 &&
-          (this.mazeInfo[currentCell.row + 1][currentCell.col] == 0xf))
-      {
+          (this.mazeInfo[currentCell.row + 1][currentCell.col] == 0xf)) {
         neighbors.push(
           {
             row             : currentCell.row + 1,
@@ -147,8 +138,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
 
       // See if there's an east neighbor with all walls intact
       if (currentCell.col < this.numCols - 1 &&
-          (this.mazeInfo[currentCell.row][currentCell.col + 1] == 0xf))
-      {
+          (this.mazeInfo[currentCell.row][currentCell.col + 1] == 0xf)) {
         neighbors.push(
           {
             row             : currentCell.row,
@@ -160,8 +150,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
 
       // See if there's a north neighbor with all walls intact
       if (currentCell.row > 0 &&
-          (this.mazeInfo[currentCell.row - 1][currentCell.col] == 0xf))
-      {
+          (this.mazeInfo[currentCell.row - 1][currentCell.col] == 0xf)) {
         neighbors.push(
           {
             row             : currentCell.row - 1,
@@ -172,8 +161,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
       }
 
       // Did we find any neighbors with all walls intact?
-      if (neighbors.length > 0)
-      {
+      if (neighbors.length > 0) {
         // Yup.  Choose one at random
         var r = Math.floor(Math.random() * neighbors.length);
         neighbor = neighbors[r];
@@ -202,8 +190,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
           widthRight: previousWall.getWidthRight(),
           widthTop: previousWall.getWidthTop()
         });
-        switch(neighbor.currentCellWall)
-        {
+        switch (neighbor.currentCellWall) {
         case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
           currentWall.setWidthLeft(0);
           break;
@@ -235,8 +222,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
           widthRight: previousNeighborWall.getWidthRight(),
           widthTop: previousNeighborWall.getWidthTop()
         });
-        switch(neighbor.neighborWall)
-        {
+        switch (neighbor.neighborWall) {
         case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
           neighborWall.setWidthLeft(0);
           break;
@@ -263,9 +249,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
 
         // We've visited one more cell
         visitedCells++;
-      }
-      else
-      {
+      } else {
         // Pop the most recent cell from the cell stack
         var cell = cellStack.pop();
         currentCell = { row : cell.row, col : cell.col };
@@ -277,20 +261,19 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
       {
         row : Math.floor(Math.random() * this.numRows),
         col : Math.floor(Math.random() * this.numCols)
-      }
+      };
 
     // Show the starting cell
     var startCell = this.cells[this.startCell.row][this.startCell.col];
     startCell.setBackgroundColor("#b0ffb0");
 
     // Determine the ending cell, not too close to the starting cell
-    do
-    {
+    do {
       this.endCell =
         {
           row : Math.floor(Math.random() * this.numRows),
           col : Math.floor(Math.random() * this.numCols)
-        }
+        };
     } while ((Math.abs(this.startCell.row - this.endCell.row) <
               this.numRows / 2) ||
              (Math.abs(this.startCell.col - this.endCell.col) <
@@ -306,8 +289,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
     /**
      * Get the size of each cell.
      */
-    getCellSize : function()
-    {
+    getCellSize : function() {
       return this.cellSize;
     },
 
@@ -317,8 +299,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      * @return {Object}
      *   The returned object contains two members: row and col.
      */
-    getStartCell : function()
-    {
+    getStartCell : function() {
       return this.startCell;
     },
 
@@ -328,8 +309,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      * @return {Object}
      *   The returned object contains two members: row and col.
      */
-    getEndCell : function()
-    {
+    getEndCell : function() {
       return this.endCell;
     },
 
@@ -343,9 +323,8 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      * @return {Object}
      *   The returned object contains two members: top and left.
      */
-    getCellTopLeft : function(cell)
-    {
-      return(
+    getCellTopLeft : function(cell) {
+      return (
         {
           top  : this.y + (this.cellSize * cell.row),
           left : this.x + (this.cellSize * cell.col)
@@ -363,13 +342,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      *   The returned object contains two members: row and col.
      *   If there is no such neighbor, null is returned.
      */
-    getWestCell : function(cell)
-    {
+    getWestCell : function(cell) {
       var dir = qxl.demobrowser.demo.util.FSMMaze.Direction.WEST;
       if (cell.col > 0 &&
-          ((this.mazeInfo[cell.row][cell.col] & dir) == 0))
-      {
-        return(
+          ((this.mazeInfo[cell.row][cell.col] & dir) == 0)) {
+        return (
           {
             row : cell.row,
             col : cell.col - 1
@@ -390,13 +367,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      *   The returned object contains two members: row and col.
      *   If there is no such neighbor, null is returned.
      */
-    getSouthCell : function(cell)
-    {
+    getSouthCell : function(cell) {
       var dir = qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH;
-      if (cell.row <  this.numRows - 1 &&
-          ((this.mazeInfo[cell.row][cell.col] & dir) == 0))
-      {
-        return(
+      if (cell.row < this.numRows - 1 &&
+          ((this.mazeInfo[cell.row][cell.col] & dir) == 0)) {
+        return (
           {
             row : cell.row + 1,
             col : cell.col
@@ -417,13 +392,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      *   The returned object contains two members: row and col.
      *   If there is no such neighbor, null is returned.
      */
-    getEastCell : function(cell)
-    {
+    getEastCell : function(cell) {
       var dir = qxl.demobrowser.demo.util.FSMMaze.Direction.EAST;
       if (cell.col < this.numCols - 1 &&
-          ((this.mazeInfo[cell.row][cell.col] & dir) == 0))
-      {
-        return(
+          ((this.mazeInfo[cell.row][cell.col] & dir) == 0)) {
+        return (
           {
             row : cell.row,
             col : cell.col + 1
@@ -444,13 +417,11 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      *   The returned object contains two members: row and col.
      *   If there is no such neighbor, null is returned.
      */
-    getNorthCell : function(cell)
-    {
+    getNorthCell : function(cell) {
       var dir = qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH;
       if (cell.row > 0 &&
-          ((this.mazeInfo[cell.row][cell.col] & dir) == 0))
-      {
-        return(
+          ((this.mazeInfo[cell.row][cell.col] & dir) == 0)) {
+        return (
           {
             row : cell.row - 1,
             col : cell.col
@@ -469,8 +440,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMaze",
      *
      * @return {Void}
      */
-    markCell : function(cell)
-    {
+    markCell : function(cell) {
       var size = Math.ceil(this.cellSize / 5);
       var o = new qx.ui.basic.Label("&bull;", null, "html");
       o.set(

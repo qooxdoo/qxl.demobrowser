@@ -36,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
   {
     __dlg : null,
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       /* Set locale to english to avoid language mix if browser locale is
@@ -67,8 +66,7 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
 
 
     nextId : 0,
-    createRandomRows : function(rowCount)
-    {
+    createRandomRows : function(rowCount) {
       var rowData = [];
       var now = new Date().getTime();
       var dateRange = 400 * 24 * 60 * 60 * 1000; // 400 days
@@ -86,7 +84,7 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
 
 
     createTable : function() {
-      throw new Error("abstract method call")
+      throw new Error("abstract method call");
     },
 
 
@@ -95,10 +93,8 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
     },
 
 
-    showDialog : function(text)
-    {
-      if (!this.__dlg)
-      {
+    showDialog : function(text) {
+      if (!this.__dlg) {
         var dlg = this.__dlg = new qx.ui.window.Window().set({
           modal: true,
           showMinimize: false,

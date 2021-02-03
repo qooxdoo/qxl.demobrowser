@@ -35,15 +35,13 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Table",
   {
     __cellRenderer : null,
 
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
       var scroller = new qx.ui.virtual.core.Scroller(10000, 10000, 20, 100);
       // change all cell sizes!!
-      for (var i=0; i<10000; i++)
-      {
+      for (var i=0; i<10000; i++) {
         scroller.getPane().getRowConfig().setItemSize(i, 20 + Math.round(Math.random() * 40));
         scroller.getPane().getColumnConfig().setItemSize(i, 50 + Math.round(Math.random() * 80));
       }
@@ -67,8 +65,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Table",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__cellRenderer");
   }
 });

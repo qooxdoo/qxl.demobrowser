@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       window.APPLICATION = this;
@@ -38,8 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip init: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    set0 : function()
-    {
+    set0 : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Setting to: 20,20  120,40");
@@ -49,8 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip after: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    set1 : function()
-    {
+    set1 : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Setting to: 20,20  null,40");
@@ -60,8 +57,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip after: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    set2 : function()
-    {
+    set2 : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Setting to: 20,20  120,null");
@@ -71,8 +67,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip after: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    set3 : function()
-    {
+    set3 : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Setting to: null,20  120,40");
@@ -82,8 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip after: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    set4 : function()
-    {
+    set4 : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Setting to: 20,null  120,40");
@@ -93,8 +87,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Clip",
       qx.log.Logger.debug("Clip after: " + clip.left + "," + clip.top + "  " + clip.width + "," + clip.height);
     },
 
-    reset : function()
-    {
+    reset : function() {
       var el = document.getElementById("test1");
 
       qx.log.Logger.debug("Resetting");

@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Environment",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var output = new qx.util.StringBuilder();
@@ -51,8 +50,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Environment",
       keys.sort();
 
       var lastPrefix = "";
-      for (var i = 0; i < keys.length; i++)
-      {
+      for (var i = 0; i < keys.length; i++) {
         var key = keys[i];
 
         var prefix = key.split(".")[0];
@@ -83,10 +81,8 @@ qx.Class.define("qxl.demobrowser.demo.bom.Environment",
       var numberOfChecks = qx.lang.Object.getLength(checks);
       keys = Object.keys(checks);
 
-      if (numberOfChecks)
-      {
-        for (var i = 0; i < keys.length; i++)
-        {
+      if (numberOfChecks) {
+        for (var i = 0; i < keys.length; i++) {
           var key = keys[i];
           qx.core.Environment.getAsync(key, function(result) {
             output.add("<tr><td>", this, "</td><td>", qx.lang.Json.stringify(result, null, 2), "</td></tr>");

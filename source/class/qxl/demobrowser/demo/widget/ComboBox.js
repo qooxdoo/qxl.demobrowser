@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // examlpe 1: default combo box with 30 text items
@@ -52,8 +51,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createDefaultExample : function()
-    {
+    _createDefaultExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Default");
       label.setFont("bold");
@@ -68,8 +66,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       var comboBox = new qx.ui.form.ComboBox();
 
       // fill the combo box with some stuff
-      for (var i=1; i<31; i++)
-      {
+      for (var i=1; i<31; i++) {
         var tempItem = new qx.ui.form.ListItem("2^ " + i + " = " + Math.pow(2, i));
         comboBox.add(tempItem);
       }
@@ -95,8 +92,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createIconExample : function()
-    {
+    _createIconExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With icons");
       label.setFont("bold");
@@ -111,8 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       var comboBox = new qx.ui.form.ComboBox();
 
       // fill the combo box with some stuff
-      for (var i=1; i<31; i++)
-      {
+      for (var i=1; i<31; i++) {
         var tempItem = new qx.ui.form.ListItem(i + "'s Icon", "icon/16/places/folder.png");
         comboBox.add(tempItem);
       }
@@ -132,8 +127,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createHtmlExample : function()
-    {
+    _createHtmlExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With HTML (rich) text");
       label.setFont("bold");
@@ -155,8 +149,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
                    "HTML entities: &laquo; &lt; &amp; &gt; &raquo;"];
 
       // fill the combo box with some stuff
-      for (var i = 0; i < items.length; i++)
-      {
+      for (var i = 0; i < items.length; i++) {
         var tempItem = new qx.ui.form.ListItem(items[i]);
 
         if (i > 0) {
@@ -179,8 +172,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createWideExample : function()
-    {
+    _createWideExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Wide, long list");
       label.setFont("bold");
@@ -196,8 +188,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       comboBox.setWidth(300);
 
       // fill the combo box with some stuff
-      for (var i=1; i<101; i++)
-      {
+      for (var i=1; i<101; i++) {
         var tempItem = new qx.ui.form.ListItem(i + "'s Item");
         comboBox.add(tempItem);
       }

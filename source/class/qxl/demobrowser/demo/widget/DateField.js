@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.DateField",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       /* Set locale to english to avoid language mix if browser locale is

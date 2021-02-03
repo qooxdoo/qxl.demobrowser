@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     moveSeconds : 0.2
   },
 
-  construct : function(origin, maze, facing, view)
-  {
+  construct : function(origin, maze, facing, view) {
     // Determine this mouse's name
     var mouseName = qxl.demobrowser.demo.util.FSMMouse.nextMouse.toString();
 
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     this.facing = facing;
 
     // Save the starting cell
-    if (origin === null)
-    {
+    if (origin === null) {
       // This is the initial mouse. Get the location of the starting cell
       this.currentCell = maze.getStartCell();
 
@@ -71,9 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
       // The initial mouse will look sideways
       this.bLookSideways = true;
-    }
-    else
-    {
+    } else {
       // We're a clone.  Our starting cell is our origin's current cell
       this.currentCell = origin.currentCell;
 
@@ -91,8 +87,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     this.currentLocation = maze.getCellTopLeft(this.currentCell);
 
     // Get the appropriate mouse image
-    switch(facing)
-    {
+    switch (facing) {
     case qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH:
       this.mouseImage =
         new qx.ui.basic.Image("demobrowser/demo/ui/mouse-north.gif");
@@ -136,8 +131,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
     var state = new qx.util.fsm.State("State_FadingIn",
     {
-      "onentry" : function(_this, entry)
-      {
+      "onentry" : function(_this, entry) {
         // Start a timer to expire shortly
         _this.oneshot(1000 / qxl.demobrowser.demo.util.FSMMouse.ticksPerSec);
       },
@@ -162,18 +156,16 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     var trans = new qx.util.fsm.Transition(
                   "Transition_FadingIn_to_FadingIn_via_Oneshot",
     {
-      "predicate" : function(_this, event)
-      {
+      "predicate" : function(_this, event) {
         return _this.opacity < 1.0;
       },
 
       "nextState" : "State_FadingIn",
 
-      "ontransition" : function(_this, event)
-      {
+      "ontransition" : function(_this, event) {
         // We want fade in to take N seconds
         _this.opacity +=
-          1 / (qxl.demobrowser.demo.util.FSMMouse.fadeSeconds * qxl.demobrowser.demo.util.FSMMouse.ticksPerSec)
+          1 / (qxl.demobrowser.demo.util.FSMMouse.fadeSeconds * qxl.demobrowser.demo.util.FSMMouse.ticksPerSec);
         _this.mouseImage.setOpacity(_this.opacity);
       }
     });
@@ -212,16 +204,13 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
       //  Determine if there are other possible directions of travel by
       //  looking left and right.  If either of those directions has no wall,
       //  then create a new mouse to continue in that direction.
-      "onentry" : function(_this, entry)
-      {
+      "onentry" : function(_this, entry) {
         // Have we reached our destination?
         var endCell = maze.getEndCell();
         if (_this.currentCell.row == endCell.row &&
-            _this.currentCell.col == endCell.col)
-        {
+            _this.currentCell.col == endCell.col) {
           // Yup.  Generate the backtrack.  Skip the node where the mouse is.
-          for (var i = _this.traversed.length - 2; i >= 0; i--)
-          {
+          for (var i = _this.traversed.length - 2; i >= 0; i--) {
             maze.markCell(_this.traversed[i]);
           }
 
@@ -231,23 +220,19 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
         // Determine what directions we need to look.  We want to look in the
         // directions that are to our left and to our right.
-        switch(_this.facing)
-        {
+        switch (_this.facing) {
         case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
           // If we were just cloned, unless we're the initial mouse, we don't
           // need to look for other directions to travel.
-          if (_this.bLookSideways)
-          {
+          if (_this.bLookSideways) {
             // See if we can go south
-            if (maze.getSouthCell(_this.currentCell) !== null)
-            {
+            if (maze.getSouthCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH, view);
             }
 
             // See if we can go north
-            if (maze.getNorthCell(_this.currentCell) !== null)
-            {
+            if (maze.getNorthCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH, view);
             }
@@ -258,8 +243,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // If we're the initial mouse, see if we can go east
           if (_this.bLookBehind &&
-              maze.getEastCell(_this.currentCell) !== null)
-          {
+              maze.getEastCell(_this.currentCell) !== null) {
             // We can.  Create a clone to go that way
             new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.EAST, view);
 
@@ -269,8 +253,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // See if we can continue on our merry way, or if we've hit a wall.
           _this.destinationCell = maze.getWestCell(_this.currentCell);
-          if (_this.destinationCell !== null)
-          {
+          if (_this.destinationCell !== null) {
             // We can continue.  Determine our new destination location.
             _this.destinationLocation =
               maze.getCellTopLeft(_this.destinationCell);
@@ -279,9 +262,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
             var event = new qx.event.type.Event();
             event.setType("KickInTheAss");
             _this.eventListener(event);
-          }
-          else
-          {
+          } else {
             var event = new qx.event.type.Event();
             event.setType("Die");
             _this.eventListener(event);
@@ -291,18 +272,15 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
         case qxl.demobrowser.demo.util.FSMMaze.Direction.EAST:
           // If we were just cloned, unless we're the initial mouse, we don't
           // need to look for other directions to travel.
-          if (_this.bLookSideways)
-          {
+          if (_this.bLookSideways) {
             // See if we can go south
-            if (maze.getSouthCell(_this.currentCell) !== null)
-            {
+            if (maze.getSouthCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH, view);
             }
 
             // See if we can go north
-            if (maze.getNorthCell(_this.currentCell) !== null)
-            {
+            if (maze.getNorthCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH, view);
             }
@@ -313,8 +291,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // If we're the initial mouse, see if we can go west
           if (_this.bLookBehind &&
-              maze.getWestCell(_this.currentCell) !== null)
-          {
+              maze.getWestCell(_this.currentCell) !== null) {
             // We can.  Create a clone to go that way
             new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.WEST, view);
 
@@ -324,8 +301,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // See if we can continue on our merry way, or if we've hit a wall.
           _this.destinationCell = maze.getEastCell(_this.currentCell);
-          if (_this.destinationCell !== null)
-          {
+          if (_this.destinationCell !== null) {
             // We can continue.  Determine our new destination location.
             _this.destinationLocation =
               maze.getCellTopLeft(_this.destinationCell);
@@ -334,9 +310,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
             var event = new qx.event.type.Event();
             event.setType("KickInTheAss");
             _this.eventListener(event);
-          }
-          else
-          {
+          } else {
             var event = new qx.event.type.Event();
             event.setType("Die");
             _this.eventListener(event);
@@ -346,18 +320,15 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
         case qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH:
           // If we were just cloned, unless we're the initial mouse, we don't
           // need to look for other directions to travel.
-          if (_this.bLookSideways)
-          {
+          if (_this.bLookSideways) {
             // See if we can go west
-            if (maze.getWestCell(_this.currentCell) !== null)
-            {
+            if (maze.getWestCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.WEST, view);
             }
 
             // See if we can go east
-            if (maze.getEastCell(_this.currentCell) !== null)
-            {
+            if (maze.getEastCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.EAST, view);
             }
@@ -368,8 +339,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // If we're the initial mouse, see if we can go north
           if (_this.bLookBehind &&
-              maze.getNorthCell(_this.currentCell) !== null)
-          {
+              maze.getNorthCell(_this.currentCell) !== null) {
             // We can.  Create a clone to go that way
             new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH, view);
 
@@ -379,19 +349,16 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // See if we can continue on our merry way, or if we've hit a wall.
           _this.destinationCell = maze.getSouthCell(_this.currentCell);
-          if (_this.destinationCell !== null)
-          {
+          if (_this.destinationCell !== null) {
             // We can continue.  Determine our new destination location.
             _this.destinationLocation =
               maze.getCellTopLeft(_this.destinationCell);
 
             // Dispatch an event to cause us to continue.
             var event = new qx.event.type.Event();
-            event.setType("KickInTheAss")
+            event.setType("KickInTheAss");
             _this.eventListener(event);
-          }
-          else
-          {
+          } else {
             var event = new qx.event.type.Event();
             event.setType("Die");
             _this.eventListener(event);
@@ -401,18 +368,15 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
         case qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH:
           // If we were just cloned, unless we're the initial mouse, we don't
           // need to look for other directions to travel.
-          if (_this.bLookSideways)
-          {
+          if (_this.bLookSideways) {
             // See if we can go west
-            if (maze.getWestCell(_this.currentCell) !== null)
-            {
+            if (maze.getWestCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.WEST, view);
             }
 
             // See if we can go east
-            if (maze.getEastCell(_this.currentCell) !== null)
-            {
+            if (maze.getEastCell(_this.currentCell) !== null) {
               // We can.  Create a clone to go that way
               new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.EAST, view);
             }
@@ -423,8 +387,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // If we're the initial mouse, see if we can go south
           if (_this.bLookBehind &&
-              maze.getSouthCell(_this.currentCell) !== null)
-          {
+              maze.getSouthCell(_this.currentCell) !== null) {
             // We can.  Create a clone to go that way
             new qxl.demobrowser.demo.util.FSMMouse(_this, maze, qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH, view);
 
@@ -434,8 +397,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
           // See if we can continue on our merry way, or if we've hit a wall.
           _this.destinationCell = maze.getNorthCell(_this.currentCell);
-          if (_this.destinationCell !== null)
-          {
+          if (_this.destinationCell !== null) {
             // We can continue.  Determine our new destination location.
             _this.destinationLocation =
               maze.getCellTopLeft(_this.destinationCell);
@@ -444,9 +406,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
             var event = new qx.event.type.Event();
             event.setType("KickInTheAss");
             _this.eventListener(event);
-          }
-          else
-          {
+          } else {
             var event = new qx.event.type.Event();
             event.setType("Die");
             _this.eventListener(event);
@@ -500,8 +460,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
     var state = new qx.util.fsm.State("State_FadingOut",
     {
-      "onentry" : function(_this, entry)
-      {
+      "onentry" : function(_this, entry) {
         // Start a timer to expire shortly
         _this.oneshot(1000 / qxl.demobrowser.demo.util.FSMMouse.ticksPerSec);
       },
@@ -526,20 +485,17 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     var trans = new qx.util.fsm.Transition(
                   "Transition_FadingOut_to_FadingOut_via_Oneshot",
     {
-      "predicate" : function(_this, event)
-      {
+      "predicate" : function(_this, event) {
         return _this.opacity > 0.0;
       },
 
       "nextState" : "State_FadingOut",
 
-      "ontransition" : function(_this, event)
-      {
+      "ontransition" : function(_this, event) {
         // We want fade in to take N seconds
         _this.opacity -=
           1 / (qxl.demobrowser.demo.util.FSMMouse.fadeSeconds * qxl.demobrowser.demo.util.FSMMouse.ticksPerSec);
-        if (_this.opacity < 0.0)
-        {
+        if (_this.opacity < 0.0) {
           _this.opacity = 0.0;
         }
         _this.mouseImage.setOpacity(_this.opacity);
@@ -575,8 +531,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
     var state = new qx.util.fsm.State("State_Moving",
     {
-      "onentry" : function(_this, entry)
-      {
+      "onentry" : function(_this, entry) {
         // Start a timer to expire shortly
         _this.oneshot(1000 / qxl.demobrowser.demo.util.FSMMouse.ticksPerSec);
       },
@@ -601,10 +556,8 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     var trans = new qx.util.fsm.Transition(
                   "Transition_Moving_to_Moving_via_Oneshot",
     {
-      "predicate" : function(_this, event)
-      {
-        switch(_this.facing)
-        {
+      "predicate" : function(_this, event) {
+        switch (_this.facing) {
         case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
           return _this.currentLocation.left > _this.destinationLocation.left;
 
@@ -616,22 +569,19 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
         case qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH:
           return _this.currentLocation.top > _this.destinationLocation.top;
-
         }
       },
 
       "nextState" : "State_Moving",
 
-      "ontransition" : function(_this, event)
-      {
+      "ontransition" : function(_this, event) {
         // We want move to take N seconds
         var moveAmount =
           Math.ceil(maze.cellSize /
                     (qxl.demobrowser.demo.util.FSMMouse.moveSeconds * qxl.demobrowser.demo.util.FSMMouse.ticksPerSec));
 
         // Determine which direction we're moving, and move.
-        switch(_this.facing)
-        {
+        switch (_this.facing) {
         case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
           _this.currentLocation.left =
             Math.round(_this.currentLocation.left - moveAmount);
@@ -687,8 +637,7 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
     {
       "nextState" : "State_CellArrival",
 
-      "ontransition" : function(_this, event)
-      {
+      "ontransition" : function(_this, event) {
         // We're now at the destination cell.
         _this.currentCell = _this.destinationCell;
 
@@ -706,11 +655,9 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
 
     var state = new qx.util.fsm.State("State_Zombie",
     {
-      "onentry" : function(_this, entry)
-      {
+      "onentry" : function(_this, entry) {
         qx.event.Timer.once(
-          function()
-          {
+          function() {
             view.remove(this.mouseImage);
             this.mouseImage.dispose();
             this.mouseImage = null;
@@ -735,16 +682,14 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse",
   {
     opacity : 0.0,
 
-    oneshot : function(timeout)
-    {
+    oneshot : function(timeout) {
       // Create time instance
       var timer = new qx.event.Timer(timeout);
 
       // Add event listener to interval
       timer.addListener(
         "interval",
-        function()
-        {
+        function() {
           timer.dispose();
           var event = new qx.event.type.Event();
           event.setType("oneshot");

@@ -43,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Selection",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
@@ -78,10 +77,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Selection",
     },
 
 
-    createControls : function()
-    {
+    createControls : function() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button, part;
+      var button; var part;
 
 
       part = new qx.ui.toolbar.Part();
@@ -99,8 +97,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Selection",
         "Multiple intervals (toggle)" : Model.MULTIPLE_INTERVAL_SELECTION_TOGGLE,
         "No selection" : Model.NO_SELECTION
       };
-      for (var key in selections)
-      {
+      for (var key in selections) {
         var item = new qx.ui.form.ListItem(key);
         item.setUserData("value", selections[key] + "");
         selectBox.add(item);
@@ -153,8 +150,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Selection",
       part.add(btnHideCellFocus);
 
       button = new qx.ui.toolbar.Button("Show selection", "icon/22/status/dialog-information.png");
-      button.addListener("execute", function(evt)
-      {
+      button.addListener("execute", function(evt) {
         var selection = [];
         this._table.getSelectionModel().iterateSelection(function(ind) {
           selection.push(ind + "");
@@ -173,8 +169,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Selection",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel");
   }
 });

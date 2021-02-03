@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Geolocation",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var label1 = qx.bom.Label.create("Finding Your Location...", true);
@@ -34,7 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Geolocation",
       label1.style.height = "100px";
       document.body.appendChild(label1);
 
-      if(!qx.core.Environment.get("html.geolocation")){
+      if (!qx.core.Environment.get("html.geolocation")) {
         qx.bom.Label.setValue(label1, "Geolocation Not Supported");
         return;
       }

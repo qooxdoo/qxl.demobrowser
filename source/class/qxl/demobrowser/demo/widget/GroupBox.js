@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the main layout
@@ -44,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
       // add the main layout to a container widget and to the document root
       var container = new qx.ui.container.Composite(mainLayout);
       container.setPadding(20);
-      this.getRoot().add(container, {left:0,top:0});
+      this.getRoot().add(container, {left:0, top:0});
 
 
 

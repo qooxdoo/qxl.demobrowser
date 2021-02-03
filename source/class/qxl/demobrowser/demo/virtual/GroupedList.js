@@ -41,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
 
     __listGroupedByGroup : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var firstExample = this.createFirstExample();
@@ -62,15 +61,15 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       description.setWidth(470);
       description.setSelectable(true);
       description.setValue(
-        "<b>Grouped List</b><br/>"
-        + "Loads the json file <a href='json/persons.json' target='_blank'>"
-        + "persons.json</a> and binds the created model to all list widgets. "
-        + "The first list shows only the row data and uses a converter for the "
-        + "label that concatenates the first and last name. "
-        + "The second list sorts the items by last name and groups the items "
-        + "by the first letter of the last name. The third list sorts the items "
-        + "by first name and groups it by the 'group' model property. The "
-        + "third list is configured  to use a customized group item for rendering."
+        "<b>Grouped List</b><br/>" +
+        "Loads the json file <a href='json/persons.json' target='_blank'>" +
+        "persons.json</a> and binds the created model to all list widgets. " +
+        "The first list shows only the row data and uses a converter for the " +
+        "label that concatenates the first and last name. " +
+        "The second list sorts the items by last name and groups the items " +
+        "by the first letter of the last name. The third list sorts the items " +
+        "by first name and groups it by the 'group' model property. The " +
+        "third list is configured  to use a customized group item for rendering."
       );
       container.add(description);
 
@@ -82,8 +81,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       listContainer.add(thirdExample);
     },
 
-    loadData : function()
-    {
+    loadData : function() {
       var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/persons.json");
       var store = new qx.data.store.Json(url);
       store.bind("model.persons", this.__list, "model");
@@ -91,8 +89,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       store.bind("model.persons", this.__listGroupedByGroup, "model");
     },
 
-    createFirstExample : function()
-    {
+    createFirstExample : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Raw List:").set({
@@ -114,8 +111,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       return container;
     },
 
-    createSecondExample : function()
-    {
+    createSecondExample : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Grouped by last name:").set({
@@ -137,8 +133,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       // Creates the delegate for sorting and grouping
       var delegate = {
         // Sorts the model data by last name
-        sorter : function(a, b)
-        {
+        sorter : function(a, b) {
           a = a.getLastname();
           b = b.getLastname();
 
@@ -158,8 +153,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       return container;
     },
 
-    createThirdExample : function()
-    {
+    createThirdExample : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Grouped by group:").set({
@@ -181,8 +175,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       // Creates the delegate for sorting and grouping
       var delegate = {
         // Sorts the model data by last name
-        sorter : function(a, b)
-        {
+        sorter : function(a, b) {
           a = a.getLastname();
           b = b.getLastname();
 
@@ -213,7 +206,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
           controller.bindProperty(null, "label", null, item, id);
           controller.bindProperty(null, "icon", {
             converter : function(data) {
-              switch(data) {
+              switch (data) {
                 case "Friends":
                   return "icon/16/emotes/face-laugh.png";
                 case "Colleagues":
@@ -234,8 +227,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
     }
   },
 
-  destruct : function()
-  {
+  destruct : function() {
     this.__list.dispose();
     this.__listGroupedByName.dispose();
     this.__listGroupedByGroup.dispose();

@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var label = new qx.ui.basic.Label("What do you need for the beach?");
@@ -36,7 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
       var container = new qx.ui.container.Composite(mainLayout);
       container.setPadding(20);
 
-      this.getRoot().add(container, {left:0,top:0});
+      this.getRoot().add(container, {left:0, top:0});
 
       container.add(label);
 
@@ -44,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
       var cbOil = new qx.ui.form.CheckBox("Sun Oil");
       var cbTowel = new qx.ui.form.CheckBox("Towel");
       var cbBeer = new qx.ui.form.CheckBox("Beer");
-      var cbBT =  new qx.ui.form.CheckBox("Bathing togs");
+      var cbBT = new qx.ui.form.CheckBox("Bathing togs");
 
       this._checkBoxes = [ cbOil, cbTowel, cbBeer, cbBT ];
 
@@ -67,28 +66,22 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
      * @param e {qx.event.type.Data} The incoming data event
      * @lint ignoreDeprecated(alert)
      */
-    _onExecute : function(e)
-    {
+    _onExecute : function(e) {
       var cbs = this._checkBoxes;
       var count = 0;
       var str = "";
 
-      for (var i=0; i<cbs.length; i++)
-      {
-        if (cbs[i].getValue())
-        {
+      for (var i=0; i<cbs.length; i++) {
+        if (cbs[i].getValue()) {
           count++;
-          str += (cbs[i].getLabel()  + ", ");
+          str += (cbs[i].getLabel() + ", ");
         }
       }
 
-      if (count > 0)
-      {
+      if (count > 0) {
         str = str.substring(0, str.length-2);
         alert("You need these things for the beach: " + str);
-      }
-      else
-      {
+      } else {
         alert("Are you sure you need nothing for the beach?");
       }
     }
@@ -100,8 +93,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeArray("_checkBoxes");
   }
 });

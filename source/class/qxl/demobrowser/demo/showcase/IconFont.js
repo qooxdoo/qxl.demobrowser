@@ -48,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
@@ -76,8 +75,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
       this._container.add(this._table, {flex: 1});
     },
 
-    _createTable : function()
-    {
+    _createTable : function() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
       tableModel.setColumns([ "Unicode", "Glyph", "Image" ]);
@@ -100,8 +98,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
       return table;
     },
 
-    _initFont : function()
-    {
+    _initFont : function() {
       var currentFont = qx.theme.manager.Font.getInstance().getTheme();
 
       // Add font definitions
@@ -116,7 +113,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
               {
                 family: "FontAwesome",
                 source: [
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf" , "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
                 ]
               }
             ]

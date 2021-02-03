@@ -29,8 +29,7 @@ qx.Class.define("qxl.demobrowser.Tree",
   *****************************************************************************
   */
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
 
     this.label = arguments[0] || "";
@@ -57,13 +56,12 @@ qx.Class.define("qxl.demobrowser.Tree",
      *
      * @return {Array | var} TODOC
      */
-    pwd : function()  // aka 'dirname'
+    pwd : function() // aka 'dirname'
     {
       if (this.parent == null) {
         return [];
-      } else {
+      } 
         return this.parent.pwd().concat(this.parent.label);
-      }
     },
 
 
@@ -94,8 +92,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param args {var} TODOC
      * @return {void}
      */
-    map : function(fun, args)
-    {
+    map : function(fun, args) {
       var style = "depth";
       var curr = this;
 
@@ -113,8 +110,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      *
      * @return {void}
      */
-    print : function()
-    {
+    print : function() {
       this.map(function() {
         this.debug(this.label);
       }, []);
@@ -128,31 +124,30 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param style {String} "depth"|"breadth" - traversal style
      * @return {Function} iterator {Function}
      */
-    getIterator : function(style)  // returns an iterator function
+    getIterator : function(style) // returns an iterator function
     {
       var agenda = [ this ];
       var depthfirst = style == "depth" ? 1 : 0;
 
-      function f()
-      {
+      /**
+       *
+       */
+      function f() {
         var curr;
 
-        if (agenda.length)
-        {
+        if (agenda.length) {
           curr = agenda.shift();
           var children = curr.getChildren();
 
-          if (children.length)  // expand container
+          if (children.length) // expand container
           {
             if (depthfirst) {
-              agenda = children.concat(agenda);  // depth-first
+              agenda = children.concat(agenda); // depth-first
             } else {
-              agenda = agenda.concat(children);  // breadth-first
+              agenda = agenda.concat(children); // breadth-first
             }
           }
-        }
-        else
-        {
+        } else {
           curr = null;
         }
 
@@ -190,8 +185,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param offset {var} TODOC
      * @return {var} TODOC
      */
-    getSibling : function(offset)
-    {
+    getSibling : function(offset) {
       var sibs = this.parent.getChildren();
       var myIndex = this.self(arguments).indexOf(sibs, this);
       var sibIndex = myIndex + offset;
@@ -208,8 +202,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param node {Node} TODOC
      * @return {void}
      */
-    add : function(node)
-    {
+    add : function(node) {
       this.children.push(node);
       node.parent = this;
     }
@@ -225,10 +218,8 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param obj {Object} TODOC
      * @return {var} TODOC
      */
-    indexOf : function(arr, obj)
-    {
-      for (var i=0; i<arr.length; i++)
-      {
+    indexOf : function(arr, obj) {
+      for (var i=0; i<arr.length; i++) {
         if (arr[i] == obj) {
           return i;
         }
@@ -245,8 +236,7 @@ qx.Class.define("qxl.demobrowser.Tree",
   *****************************************************************************
   */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("widgetLinkFull", "widgetLinkFlat", "parent");
     this._disposeArray("children");
     this._disposeArray("tags");

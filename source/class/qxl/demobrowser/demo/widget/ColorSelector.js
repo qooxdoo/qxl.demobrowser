@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorSelector",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       /* Set locale to english to avoid language mix if browser locale is
@@ -47,7 +46,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorSelector",
       this.getRoot().add(valueLabel, {left: 60, top: 340});
 
       selector.bind("value", valueLabel, "value");
-
     }
   }
 });

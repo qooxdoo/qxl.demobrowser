@@ -68,8 +68,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem",
     __date : null,
     __mode : null,
 
-    _addWidgets : function()
-    {
+    _addWidgets : function() {
       var leadIcon = this.__leadIcon = new qx.ui.basic.Image();
       this.bind("leadIcon", leadIcon, "source");
       leadIcon.setWidth(16);

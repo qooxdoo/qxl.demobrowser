@@ -7,8 +7,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
       var te2 = dataModel.addBranch(null, "Inbox", true);
 
       te = dataModel.addBranch(te2, "Spam", false);
-      for (var i = 1; i < 3000; i++)
-      {
+      for (var i = 1; i < 3000; i++) {
         dataModel.addLeaf(te, "Spam Message #" + i);
       }
 
@@ -66,10 +64,10 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
        */
       tree.addListener("dataEdited",
                        /**
+                        * @param e
                         * @lint ignoreDeprecated(alert)
                         */
-                       function(e)
-                       {
+                       function(e) {
                          var data = e.getData();
                          alert(`dataEdited from ${data.oldValue.label} to ${data.value.label}`);
                        });

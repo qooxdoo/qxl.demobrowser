@@ -37,8 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 

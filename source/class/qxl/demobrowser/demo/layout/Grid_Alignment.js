@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -46,8 +45,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
     },
 
 
-    getNewWidget : function()
-    {
+    getNewWidget : function() {
       var widget = new qx.ui.core.Widget().set({
         decorator: "main",
         backgroundColor: "green",
@@ -60,8 +58,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
     },
 
 
-    getColumnAlignGrid : function()
-    {
+    getColumnAlignGrid : function() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
@@ -86,8 +83,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
     },
 
 
-    getRowAlignGrid : function()
-    {
+    getRowAlignGrid : function() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
@@ -112,8 +108,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
     },
 
 
-    getCellAlignGrid : function()
-    {
+    getCellAlignGrid : function() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
@@ -126,7 +121,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
       box.setLayout(layout);
 
       for (var x=0; x<5; x++) {
-        layout.setColumnAlign(x, "center", "middle")
+        layout.setColumnAlign(x, "center", "middle");
         for (var y=0; y<5; y++) {
           box.add(this.getNewWidget(), {row: y, column: x});
         }
@@ -136,7 +131,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
       widget.set({
         alignX: "left",
         alignY: "top"
-      })
+      });
       widget.set({
         backgroundColor : "orange",
         width: 20,
@@ -147,7 +142,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
       widget.set({
         alignX: "right",
         alignY: "bottom"
-      })
+      });
 
       widget.set({
         backgroundColor : "orange",
@@ -159,8 +154,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
     },
 
 
-    getRowColumnAlignGrid : function()
-    {
+    getRowColumnAlignGrid : function() {
       // Ambiguous alignment of the center widget
       // hAlign is taken from the row
       // vAlign is taken from the column

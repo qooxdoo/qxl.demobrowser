@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.ManualLayout",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var borderColor = "black";

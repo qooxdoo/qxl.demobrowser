@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Audio",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       var doc = this.getRoot();
 
@@ -44,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Audio",
 
       if (qx.core.Environment.get("html.audio.mp3")) {
         var uri = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/media/knock.mp3");
-      }
-      else if(qx.core.Environment.get("html.audio.ogg")) {
+      } else if (qx.core.Environment.get("html.audio.ogg")) {
         var uri = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/media/knock.ogg");
       } else {
         doc.add(new qx.ui.basic.Label("It seems that your browser doesn't support HTML5 audio", {left: 10, top: 10}));
@@ -117,7 +115,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.Audio",
           play.resetValue();
         }
       }, this);
-
     }
   },
 

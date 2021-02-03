@@ -42,8 +42,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
   members :
   {
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var layout = new qx.ui.layout.HBox(5);
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
       this.runTest("testHtmlCell");
 
       // TODO: This does not work in Classic!
-      if(qx.core.Environment.get("qx.theme") == "qx.theme.Modern")
-      {
+      if (qx.core.Environment.get("qx.theme") == "qx.theme.Modern") {
         this.runTest("testImageCell");
         this.runTest("testBooleanCell");
         this.runTest("testBooleanCellCustomImage");
@@ -66,16 +64,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
     },
 
 
-    runTest : function(testName)
-    {
+    runTest : function(testName) {
       this.setUp();
       this[testName]();
       //this.tearDown();
     },
 
 
-    setUp : function()
-    {
+    setUp : function() {
       this.container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       this.topContainer.add(this.container);
     },
@@ -86,24 +82,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
     },
 
 
-    testStringCell : function()
-    {
+    testStringCell : function() {
       var cellData = {
         value : ["Juhu", "<b>HTML</b>", "", null],
         states : [{}, {selected: 1}]
-      }
-      var stringCell = new qx.ui.virtual.cell.String;
+      };
+      var stringCell = new qx.ui.virtual.cell.String();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         var cell = this.__renderCell(stringCell, cellData.value, cellData.states);
         this.container.add(cell);
       }, this);
     },
 
 
-    testNumberCell : function()
-    {
+    testNumberCell : function() {
       var cellData = {
         value : [-1.666666, 0, null],
         format : [
@@ -113,13 +106,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
           })
         ],
         states : [{}, {selected: 1}]
-      }
+      };
       var cellRenderer = new qx.ui.virtual.cell.Number();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         if (cellData.format) {
-          cellRenderer.setNumberFormat(cellData.format)
+          cellRenderer.setNumberFormat(cellData.format);
         } else {
           cellRenderer.resetNumberFormat();
         }
@@ -129,8 +121,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
     },
 
 
-    testDateCell : function()
-    {
+    testDateCell : function() {
       var cellData = {
         value : [new Date(), null],
         format : [
@@ -138,13 +129,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
           new qx.util.format.DateFormat(qx.locale.Date.getDateFormat("medium"))
         ],
         states : [{}, {selected: 1}]
-      }
+      };
       var cellRenderer = new qx.ui.virtual.cell.Date();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         if (cellData.format) {
-          cellRenderer.setDateFormat(cellData.format)
+          cellRenderer.setDateFormat(cellData.format);
         } else {
           cellRenderer.resetDateFormat();
         }
@@ -154,24 +144,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
     },
 
 
-    testHtmlCell : function()
-    {
+    testHtmlCell : function() {
       var cellData = {
         value : ["Juhu", "<b>HTML</b>", "", null],
         states : [{}, {selected: 1}]
-      }
-      var cellRenderer = new qx.ui.virtual.cell.Html;
+      };
+      var cellRenderer = new qx.ui.virtual.cell.Html();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
         this.container.add(cell);
       }, this);
     },
 
 
-    testImageCell : function()
-    {
+    testImageCell : function() {
       var cellData = {
         value : [
           {
@@ -185,53 +172,47 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
           null
         ],
         states : [{}, {selected: 1}]
-      }
-      var cellRenderer = new qx.ui.virtual.cell.Image;
+      };
+      var cellRenderer = new qx.ui.virtual.cell.Image();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
         this.container.add(cell);
       }, this);
     },
 
 
-    testBooleanCell : function()
-    {
+    testBooleanCell : function() {
       var cellData = {
         value : [true, false, null],
         states : [{}, {selected: 1}]
-      }
-      var cellRenderer = new qx.ui.virtual.cell.Boolean;
+      };
+      var cellRenderer = new qx.ui.virtual.cell.Boolean();
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
         this.container.add(cell);
       }, this);
     },
 
 
-    testBooleanCellCustomImage : function()
-    {
+    testBooleanCellCustomImage : function() {
       var cellData = {
         value : [true, false, null],
         states : [{}, {selected: 1}]
-      }
-      var cellRenderer = new qx.ui.virtual.cell.Boolean;
+      };
+      var cellRenderer = new qx.ui.virtual.cell.Boolean();
       cellRenderer.setIconFalse("icon/16/emotes/face-sad.png");
       cellRenderer.setIconTrue("icon/16/emotes/face-smile.png");
 
-      qx.util.Permutation.permute(cellData, function(cellData)
-      {
+      qx.util.Permutation.permute(cellData, function(cellData) {
         var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
         this.container.add(cell);
       }, this);
     },
 
 
-    __renderCell : function(cell, value, states)
-    {
+    __renderCell : function(cell, value, states) {
       var width = 100;
       var height = 30;
 
@@ -262,16 +243,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
     },
 
 
-    _getCellSizeStyle : function(width, height, insetX, insetY)
-    {
+    _getCellSizeStyle : function(width, height, insetX, insetY) {
       var style = "";
-      if (qx.core.Environment.get("css.boxmodel") == "content")
-      {
+      if (qx.core.Environment.get("css.boxmodel") == "content") {
         width -= insetX;
         height -= insetY;
       }
 
-      style += "width:" +  width + "px;";
+      style += "width:" + width + "px;";
       style += "height:" + height + "px;";
 
       return style;

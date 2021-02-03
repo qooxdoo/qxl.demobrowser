@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Page",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());

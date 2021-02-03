@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ScrollBar",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.Grid()).set({

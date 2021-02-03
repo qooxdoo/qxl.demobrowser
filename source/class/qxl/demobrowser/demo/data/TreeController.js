@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeController",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the data
@@ -123,10 +122,10 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeController",
        treeDescription.setRich(true);
        treeDescription.setWidth(240);
        treeDescription.setValue(
-         "<b>Tree binding</b><br/>"
-         + "This tree is bound to a set of randomly generated nodes. Every node"
-         + " does have a name and a name2 property, containing 'Item i' and "
-         + "'Thing i'."
+         "<b>Tree binding</b><br/>" +
+         "This tree is bound to a set of randomly generated nodes. Every node" +
+         " does have a name and a name2 property, containing 'Item i' and " +
+         "'Thing i'."
        );
        this.getRoot().add(treeDescription, {left: 20, top: 10});
 
@@ -136,8 +135,8 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeController",
        selectionListDescription.setRich(true);
        selectionListDescription.setWidth(100);
        selectionListDescription.setValue(
-         "<b>Selected Items</b><br/>"
-         + "A list containing the selected items of the tree."
+         "<b>Selected Items</b><br/>" +
+         "A list containing the selected items of the tree."
        );
        this.getRoot().add(selectionListDescription, {left: 270, top: 10});
     }

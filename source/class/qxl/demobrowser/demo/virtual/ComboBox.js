@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
      *
      * @return {void}
      */
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // examlpe 1: default combo box with 30 text items
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
      *
      * @return {void}
      */
-    _createDefaultExample : function()
-    {
+    _createDefaultExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Default");
       label.setFont("bold");
@@ -66,8 +64,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
 
       //create a simple model
       var rawData = [];
-      for (var i=1; i<401; i++)
-      {
+      for (var i=1; i<401; i++) {
         rawData.push("2^ " + i + " = " + Math.pow(2, i));
       }
       var model = qx.data.marshal.Json.createModel(rawData);
@@ -94,8 +91,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
      *
      * @return {void}
      */
-    _createIconExample : function()
-    {
+    _createIconExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With icons");
       label.setFont("bold");
@@ -111,8 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
 
       // create the model
       var rawData = [];
-      for (var i=1; i<31; i++)
-      {
+      for (var i=1; i<31; i++) {
         rawData.push({
           label : i + "'s Icon",
           icon : "icon/16/places/folder.png"
@@ -138,8 +133,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
      *
      * @return {void}
      */
-    _createHtmlExample : function()
-    {
+    _createHtmlExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With HTML (rich) text");
       label.setFont("bold");
@@ -166,11 +160,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
 
       // Set the created list item's "rich" property
       var delegate = {
-        configureItem : function(item)
-        {
+        configureItem : function(item) {
           item.setRich(true);
         }
-      }
+      };
 
       comboBox.setDelegate(delegate);
 
@@ -197,8 +190,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
      *
      * @return {void}
      */
-    _createWideExample : function()
-    {
+    _createWideExample : function() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Sorted and filtered model");
       label.setFont("bold");
@@ -214,8 +206,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
 
       //create a simple model
       var rawData = [];
-      for (var i=1; i<100; i++)
-      {
+      for (var i=1; i<100; i++) {
         rawData.push("Item " + i);
       }
       var model = qx.data.marshal.Json.createModel(rawData);
@@ -229,9 +220,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ComboBox",
         // Remove even-numbered items
         filter : function(item) {
           var num = parseInt(/([0-9]+)/.exec(item)[1], 10);
-          return num % 2 ? true : false;
+          return !!(num % 2);
         }
-      }
+      };
 
       comboBox.setDelegate(delegate);
 

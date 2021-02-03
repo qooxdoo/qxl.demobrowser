@@ -10,8 +10,7 @@ qx.Theme.define("qxl.demobrowser.Appearance",
       alias : "tree",
       include : "tree",
 
-      style : function()
-      {
+      style : function() {
         return {
           width : 270,
           padding: 0,

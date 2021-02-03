@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the data
@@ -115,8 +114,8 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       syncListDescription.setRich(true);
       syncListDescription.setWidth(200);
       syncListDescription.setValue(
-        "<b>Multi selection List</b><br/>"
-        + "Bound to the same data and share the selection."
+        "<b>Multi selection List</b><br/>" +
+        "Bound to the same data and share the selection."
       );
       this.getRoot().add(syncListDescription, {left: 20, top: 10});
 
@@ -125,8 +124,8 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       selectionListDescription.setRich(true);
       selectionListDescription.setWidth(100);
       selectionListDescription.setValue(
-        "<b>Selection List</b><br/>"
-        + "Bound to the selection of the list to the left."
+        "<b>Selection List</b><br/>" +
+        "Bound to the selection of the list to the left."
       );
       this.getRoot().add(selectionListDescription, {left: 260, top: 10});
 
@@ -135,8 +134,8 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       selectionLabelDescription.setRich(true);
       selectionLabelDescription.setWidth(100);
       selectionLabelDescription.setValue(
-        "<b>Selection Label</b><br/>"
-        + "Bound to the selection of the list to the left."
+        "<b>Selection Label</b><br/>" +
+        "Bound to the selection of the list to the left."
       );
       this.getRoot().add(selectionLabelDescription, {left: 380, top: 10});
     }

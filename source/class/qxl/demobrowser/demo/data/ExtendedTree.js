@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var colors = ["red", "blue", "green", "black", "gray", "yellow"];
@@ -100,9 +99,9 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree",
       description.setRich(true);
       description.setWidth(300);
       description.setValue(
-        "<b>A tree configures with bindItem</b><br/>"
-        + "The tree has bound its label to the name of the modeln and its "
-        + "textColor to some random colors."
+        "<b>A tree configures with bindItem</b><br/>" +
+        "The tree has bound its label to the name of the modeln and its " +
+        "textColor to some random colors."
       );
       this.getRoot().add(description, {left: 10, top: 10});
     }

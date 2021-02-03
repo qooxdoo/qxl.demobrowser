@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Inline_Dynamic_Resize",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var isle1 = new qx.ui.root.Inline(document.getElementById("isle1"), false, true);
@@ -48,14 +47,13 @@ qx.Class.define("qxl.demobrowser.demo.root.Inline_Dynamic_Resize",
       isle2.add(slideBar, {edge: 0});
 
       var icons = [
-        "audio-card.png","audio-input-microphone.png","battery.png",
-        "camera-photo.png","camera-web.png","computer.png","display.png",
-        "drive-harddisk.png","drive-optical.png","input-keyboard.png",
-        "network-wired.png","network-wireless.png"
+        "audio-card.png", "audio-input-microphone.png", "battery.png",
+        "camera-photo.png", "camera-web.png", "computer.png", "display.png",
+        "drive-harddisk.png", "drive-optical.png", "input-keyboard.png",
+        "network-wired.png", "network-wireless.png"
       ];
 
-      for (var i=0; i<icons.length; i++)
-      {
+      for (var i=0; i<icons.length; i++) {
         slideBar.add((new qx.ui.basic.Image("icon/48/devices/" + icons[i])).set({
           decorator: "main",
           padding: 4

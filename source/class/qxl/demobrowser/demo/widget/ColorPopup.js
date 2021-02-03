@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var doc = this.getRoot();
@@ -37,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
       mypop.setValue("#23F3C1");
 
       var mybtn = new qx.ui.form.Button("Open Popup");
-      mybtn.addListener("execute", function(e)
-      {
+      mybtn.addListener("execute", function(e) {
         mypop.placeToWidget(mybtn);
         mypop.show();
       });
@@ -52,7 +50,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
       doc.add(myview, {
         left : 120,
         top : 20
-      })
+      });
 
       doc.add(mybtn, {
         left : 20,
@@ -79,7 +77,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
       mypop.addListener("changeBlue", function(e) {
         this.debug("Blue Listener: " + e.getData());
       });
-
     }
   }
 });

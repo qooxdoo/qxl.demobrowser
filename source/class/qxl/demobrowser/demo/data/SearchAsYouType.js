@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create some stuff for the list items
@@ -82,8 +81,8 @@ qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
       description.setRich(true);
       description.setWidth(200);
       description.setValue(
-        "<b>Search As You Type List</b><br/>"
-        + "Type a name and the list will show only the matching results (case-sensitive)."
+        "<b>Search As You Type List</b><br/>" +
+        "Type a name and the list will show only the matching results (case-sensitive)."
       );
       container.addAt(description, 0);
     }

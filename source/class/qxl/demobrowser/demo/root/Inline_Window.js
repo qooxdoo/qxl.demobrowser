@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Inline_Window",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var isle = new qx.ui.root.Inline(document.getElementById("isle")).set({
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Inline_Window",
 
     cModWin : 1,
 
-    newModalWindow : function()
-    {
+    newModalWindow : function() {
       var win = new qx.ui.window.Window("Modal Window #" + this.cModWin++).set({
         modal: true
       });

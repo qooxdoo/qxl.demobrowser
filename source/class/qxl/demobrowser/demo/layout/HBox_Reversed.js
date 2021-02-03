@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Reversed",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // auto width + reversed

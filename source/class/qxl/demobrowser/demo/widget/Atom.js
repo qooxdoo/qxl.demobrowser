@@ -38,8 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Atom",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
 

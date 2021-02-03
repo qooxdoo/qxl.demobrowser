@@ -43,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
     },
 
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var eventsWin = this._eventsWin = new qx.ui.window.Window("Event log").set({
@@ -72,8 +71,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
@@ -131,10 +129,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
     },
 
 
-    createControls : function()
-    {
+    createControls : function() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button, part;
+      var button; var part;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
@@ -145,13 +142,10 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
       part.add(button);
 
       button.addListener("changeValue", function(e) {
-        if (button.isValue())
-        {
+        if (button.isValue()) {
           this._events.setData([]);
           this._eventsWin.open();
-        }
-        else
-        {
+        } else {
           this._eventsWin.close();
         }
       }, this);
@@ -160,8 +154,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
     },
 
 
-    getContextMenu : function()
-    {
+    getContextMenu : function() {
       var menu = new qx.ui.menu.Menu();
 
       var cutButton = new qx.ui.menu.Button("Cut", "icon/16/actions/edit-cut.png");
@@ -182,8 +175,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel", "_eventsWin", "_events");
   }
 });

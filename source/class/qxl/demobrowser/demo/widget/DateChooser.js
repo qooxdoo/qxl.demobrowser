@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.DateChooser",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       /* Set locale to english to avoid language mix if browser locale is
@@ -47,7 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.DateChooser",
       containerRightTop.add(containerDescription);
       containerRight.add(containerRightTop);
       containerRight.add(containerRightBottom);
-      containerTop.add(containerRight)
+      containerTop.add(containerRight);
       container.add(containerTop);
       this.getRoot().add(container, { left : 20, top: 20});
 

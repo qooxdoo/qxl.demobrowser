@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_ShrinkX",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // auto size with limited height

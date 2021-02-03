@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -42,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
     },
 
 
-    getGrid1 : function()
-    {
+    getGrid1 : function() {
       var container = new qx.ui.container.Composite().set({
         textColor: "#DDD"
       });
@@ -73,8 +71,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
       ];
 
       var i=0;
-      for (var i=0; i<cursors.length; i++)
-      {
+      for (var i=0; i<cursors.length; i++) {
         container.add(new qx.ui.basic.Label(cursors[i]).set({
           decorator: "main",
           backgroundColor: "#555",

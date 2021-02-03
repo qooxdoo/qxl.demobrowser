@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Iframe",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var iframe = qx.bom.Iframe.create({
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Iframe",
       qx.event.Registration.addListener(iframe, "load", this.bindIFrameEvents, this);
     },
 
-    bindIFrameEvents : function()
-    {
+    bindIFrameEvents : function() {
       var iframe = window.document.getElementById("iframe");
       var iframeDocument = qx.bom.Iframe.getDocument(iframe);
 
@@ -78,7 +76,6 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Iframe",
         this._scroll,
         this
       );
-
     },
 
      _onkeydown: function(e) {
@@ -99,26 +96,22 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Iframe",
       this.debug("bubble: " + elem.id + " " + e.getEventPhase());
     },
 
-    _preventDefault : function(e)
-    {
+    _preventDefault : function(e) {
       this.debug(e.getType() + ": " + e);
       e.preventDefault();
     },
 
-    _stopPropagation : function(e)
-    {
+    _stopPropagation : function(e) {
       this.debug(e.getType() + " (inner): " + e);
       e.stopPropagation();
     },
 
-    _onTap1 : function(e)
-    {
-      this.debug(e.getType() + " 1: " +  e);
+    _onTap1 : function(e) {
+      this.debug(e.getType() + " 1: " + e);
       qx.event.Registration.removeListener(this._juhu, "tap", this._onTap1);
     },
 
-    _onTap2 : function(e)
-    {
+    _onTap2 : function(e) {
       this.debug(e.getType() + " 2: " + e);
     }
   },

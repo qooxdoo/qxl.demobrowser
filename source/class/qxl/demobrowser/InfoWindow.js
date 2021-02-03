@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
 
   extend : qx.ui.window.Window,
 
-  construct : function(caption, icon)
-  {
+  construct : function(caption, icon) {
     this.base(arguments, caption, icon);
     this.setLayout(new qx.ui.layout.VBox(10));
     this.setMinWidth(200);
@@ -65,8 +64,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
      *
      * @return {qx.ui.container.Composite} The container widget
      */
-    _getContentContainer : function()
-    {
+    _getContentContainer : function() {
       if (!this.__contentContainer) {
         this.__contentContainer = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
         this.__contentContainer.setMinHeight(20);
@@ -78,8 +76,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
     /**
      * Removes all child widgets from the content container
      */
-    clear : function()
-    {
+    clear : function() {
       this._getContentContainer().removeAll();
     },
 
@@ -89,8 +86,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
      *
      * @return {qx.ui.form.Button} The OK button
      */
-    _makeOkButton : function()
-    {
+    _makeOkButton : function() {
       var okButton = new qx.ui.form.Button(this.tr("OK"));
       okButton.addListener("execute", function(ev) {
         this.close();
@@ -102,8 +98,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
     },
 
 
-    _applyContent : function(value, old)
-    {
+    _applyContent : function(value, old) {
       this.clear();
       this._getContentContainer().add(value, {edge: 0});
     },
@@ -112,13 +107,12 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
     /**
      * Centers the window relative to the viewport.
      */
-    center : function()
-    {
-      var x = Math.floor((qx.bom.Viewport.getWidth() / 2) - ( this.getBounds().width / 2));
-      var y = Math.floor((qx.bom.Viewport.getHeight() / 2) - ( this.getBounds().height / 2));
+    center : function() {
+      var x = Math.floor((qx.bom.Viewport.getWidth() / 2) - (this.getBounds().width / 2));
+      var y = Math.floor((qx.bom.Viewport.getHeight() / 2) - (this.getBounds().height / 2));
       x = x >= 0 ? x : 0;
       y = y >= 0 ? y : 0;
-      this.moveTo(x,y);
+      this.moveTo(x, y);
     },
 
 
@@ -126,8 +120,7 @@ qx.Class.define("qxl.demobrowser.InfoWindow", {
      * Callback function for a resize listener that centers the window if the
      * @link{#autoCenter} property is active.
      */
-    __centerOnResize : function()
-    {
+    __centerOnResize : function() {
       if (this.getAutoCenter()) {
         this.center();
       }

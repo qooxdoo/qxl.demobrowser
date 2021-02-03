@@ -25,14 +25,13 @@ qx.Class.define("qxl.demobrowser.demo.bom.Transform",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // check for transform support
       if (qx.core.Environment.get("css.transform") == null) {
         document.body.innerHTML = "";
-        var label = document.createElement('label');
+        var label = document.createElement("label");
         label.innerHTML = "CSS transforms not supported, sorry!";
         document.body.appendChild(label);
         return;
@@ -137,12 +136,11 @@ qx.Class.define("qxl.demobrowser.demo.bom.Transform",
         qx.bom.element.Transform.setPerspective(box, 100);
         qx.bom.element.Transform.setBackfaceVisibility(box, false);
         qx.bom.element.Transform.transform(box, {rotate: [null, "150deg", "10deg"]});
-
       } else {
         // mark all 3d stuff as not working
         document.getElementById("3dpart").style["display"] = "none";
 
-        var label = document.createElement('label');
+        var label = document.createElement("label");
         label.innerHTML = "<br><br>Your browser does not support 3D CSS transforms, sorry!";
         document.body.appendChild(label);
       }

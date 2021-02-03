@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.WebWorker",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       var doc = this.getRoot();
 

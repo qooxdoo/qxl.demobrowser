@@ -36,7 +36,6 @@ qx.Class.define("qxl.demobrowser.demo.data.Github", {
      * @ignore(GITHUB)
      */
     main: function() {
-
       if (typeof GITHUB == "undefined") {
         return;
       }
@@ -101,9 +100,9 @@ qx.Class.define("qxl.demobrowser.demo.data.Github", {
     },
 
     _setUpBinding: function() {
-      var list = this.__list,
-          gistsStore = this.__gistsStore,
-          gistStore = this.__gistStore;
+      var list = this.__list;
+          var gistsStore = this.__gistsStore;
+          var gistStore = this.__gistStore;
 
       // List
       list.setLabelPath("description");
@@ -143,6 +142,7 @@ qx.Class.define("github.rest.Resource", {
   extend: qx.io.rest.Resource,
 
   /**
+   * @param description
    * @ignore(GITHUB.*)
    */
   construct: function(description) {
@@ -202,7 +202,7 @@ qx.Class.define("github.view.Gist", {
     label.setFont("bold");
     var scroll = new qx.ui.container.Scroll();
     this.__content = new qx.ui.embed.Html();
-    this.__content.setMinHeight(1000);      // TODO: Determine height/width to fit
+    this.__content.setMinHeight(1000); // TODO: Determine height/width to fit
     scroll.add(this.__content);
     this.add(label, {row: 1, column: 0});
     this.add(scroll, {row: 2, column: 0, colSpan: 2});

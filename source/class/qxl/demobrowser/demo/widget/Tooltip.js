@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -60,8 +59,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     __columns : 4,
     __index : 0,
 
-    add : function(widget)
-    {
+    add : function(widget) {
       this.container.add(widget, {
         row: Math.floor(this.__index / this.__columns),
         column : this.__index % this.__columns
@@ -70,11 +68,9 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     },
 
 
-    createSharedToolTip : function()
-    {
+    createSharedToolTip : function() {
       var tooltip = new qx.ui.tooltip.ToolTip("Shared ToolTip");
-      tooltip.addListener("appear", function(e)
-      {
+      tooltip.addListener("appear", function(e) {
         var label = "Shared tool tip of button #";
         if (this.getOpener() == button1) {
           label += "1";
@@ -94,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     },
 
 
-    createIconToolTip : function()
-    {
+    createIconToolTip : function() {
       var button = new qx.ui.form.Button("Icon only ToolTip").set({
         toolTip: new qx.ui.tooltip.ToolTip(null, "icon/16/actions/help-about.png")
       });
@@ -103,8 +98,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     },
 
 
-    createToolTip : function()
-    {
+    createToolTip : function() {
       var button = new qx.ui.form.Button("ToolTip with icon and label").set({
         toolTip: new qx.ui.tooltip.ToolTip(
           "Hello World #3", "icon/16/actions/help-about.png"
@@ -114,8 +108,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     },
 
 
-    createShortTimeoutToolTip : function()
-    {
+    createShortTimeoutToolTip : function() {
       var tooltip = new qx.ui.tooltip.ToolTip(
         "Such a great tooltip with a (show) timeout of 50ms.",
         "icon/32/actions/help-about.png"
@@ -128,8 +121,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
     },
 
 
-    createRichToolTip : function()
-    {
+    createRichToolTip : function() {
       var tooltip = new qx.ui.tooltip.ToolTip(
         "A long label text with auto-wrapping. " +
           "This also may contain <b style='color:red'>rich HTML</b> markup " +
@@ -145,24 +137,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
       button.setToolTip(tooltip);
     },
 
-    createToolTipText : function()
-    {
+    createToolTipText : function() {
       var button = new qx.ui.form.Button("Button with ToolTipText").set({
         toolTipText : "Tooltip text"
       });
       this.add(button);
     },
 
-    createToolTipIcon : function()
-    {
+    createToolTipIcon : function() {
       var button = new qx.ui.form.Button("Button with ToolTipIcon").set({
         toolTipIcon : "icon/16/actions/help-about.png"
       });
       this.add(button);
     },
 
-    createToolTipTextIcon : function()
-    {
+    createToolTipTextIcon : function() {
       var button = new qx.ui.form.Button("Button with ToolTipText and ToolTipIcon").set({
         toolTipText : "Tooltip text",
         toolTipIcon : "icon/16/actions/help-about.png"
@@ -177,8 +166,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("container");
   }
 });

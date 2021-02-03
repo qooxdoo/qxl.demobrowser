@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size + disabled y grow
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -75,8 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // auto size + enabled y grow
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -99,8 +96,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // auto size + static height + middle aligned + disabled x grow
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -132,8 +128,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // auto size + static height + middle aligned + enabled x grow
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -164,8 +159,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Margin",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // auto size + static height + middle aligned + enabled x grow + huge marginRight
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({

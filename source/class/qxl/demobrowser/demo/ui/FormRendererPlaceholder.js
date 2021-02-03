@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormRendererPlaceholder",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // create the form

@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this.getRoot().add(this._getResizer(), {left: 20, top: 20});
@@ -36,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
     },
 
 
-    _getResizerList : function()
-    {
+    _getResizerList : function() {
       var list = new qx.ui.form.List().set({
         width: 100,
         height: 200,
@@ -48,7 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
       });
 
       for (var i = 0; i < 100; i++) {
-        list.add(new qx.ui.form.ListItem('Option number '+i));
+        list.add(new qx.ui.form.ListItem("Option number "+i));
       }
 
       var resizer = new qx.ui.container.Resizer();
@@ -59,9 +57,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
     },
 
 
-    _getResizer : function()
-    {
-      var tArea = new qx.ui.form.TextArea;
+    _getResizer : function() {
+      var tArea = new qx.ui.form.TextArea();
       tArea.setValue("Resize me\nI'm resizable");
 
       var resizer = new qx.ui.container.Resizer().set({

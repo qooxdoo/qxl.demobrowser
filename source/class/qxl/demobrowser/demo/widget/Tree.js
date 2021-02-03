@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var hBox = new qx.ui.layout.HBox();
@@ -52,8 +51,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
     },
 
 
-    getTree : function()
-    {
+    getTree : function() {
       var tree = new qx.ui.tree.Tree().set({
         width : 200,
         height : 400,
@@ -109,8 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
      * @return {qx.ui.groupbox.GroupBox} group box
      * @lint ignoreDeprecated(alert)
      */
-    getCommandFrame : function(tree)
-    {
+    getCommandFrame : function(tree) {
       var commandFrame = new qx.ui.groupbox.GroupBox("Control");
       var spacerSize = 4;
 
@@ -127,19 +124,15 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
 
       commandFrame.add(tCurrentInput, {row: row++, column: 1});
 
-      tree.addListener("changeSelection", function(e)
-      {
+      tree.addListener("changeSelection", function(e) {
         var data = e.getData();
-        if(data.length > 0)
-        {
+        if (data.length > 0) {
           if (this.getSelectionMode() === "multi") {
             tCurrentInput.setValue(data.length + " items");
           } else {
             tCurrentInput.setValue(data[0].getLabel());
           }
-        }
-        else
-        {
+        } else {
           tCurrentInput.setValue("");
         }
       });
@@ -154,15 +147,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
       };
 
       var modeMgr = new qx.ui.form.RadioGroup();
-      for (var mode in modes)
-      {
+      for (var mode in modes) {
         var radioButton = new qx.ui.form.RadioButton(modes[mode]).set({
           value: mode == tree.getOpenMode()
         });
         radioButton.setUserData("mode", mode);
 
         modeMgr.add(radioButton);
-        commandFrame.add(radioButton, {row: row++, column: 1})
+        commandFrame.add(radioButton, {row: row++, column: 1});
       }
 
       modeMgr.addListener("changeSelection", function(e) {
@@ -176,8 +168,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
       var btnMultiSelect = new qx.ui.form.CheckBox("Enable multi selection");
       commandFrame.add(btnMultiSelect, {row: row++, column: 1});
 
-      btnMultiSelect.addListener("changeValue", function(e)
-      {
+      btnMultiSelect.addListener("changeValue", function(e) {
         var enable = e.getData();
         tree.setSelectionMode(enable ? "multi": "single");
       });
@@ -187,8 +178,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
       var btnDragSelect = new qx.ui.form.CheckBox("Enable drag selection");
       commandFrame.add(btnDragSelect, {row: row++, column: 1});
 
-      btnDragSelect.addListener("changeValue", function(e)
-      {
+      btnDragSelect.addListener("changeValue", function(e) {
         var enable = e.getData();
         tree.setDragSelection(enable);
 
@@ -244,8 +234,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tree",
       var vShowSelectedItems = new qx.ui.form.Button("Show Selected Items");
       commandFrame.add(vShowSelectedItems, {row: row++, column: 1});
 
-      vShowSelectedItems.addListener("execute", function(e)
-      {
+      vShowSelectedItems.addListener("execute", function(e) {
         if (this.getSelectionMode() === "single") {
           alert(this.getSelection());
         } else {

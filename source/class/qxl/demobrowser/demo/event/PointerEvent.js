@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
       var pointerDiv = document.getElementById("pointer");
 
       var events = ["pointerdown", "pointerup", "tap", "dbltap", "longtap", "pointermove", "pointerover", "pointerout", "swipe", "track", "rotate", "pinch"];
-      for (var i=0; i<events.length; i++)
-      {
+      for (var i=0; i<events.length; i++) {
         var elem = document.getElementById("check_" + events[i]);
         if (elem.checked) {
           qx.bom.Element.addListener(
@@ -76,14 +74,15 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
       qx.bom.Element.addListener(
         pointerDiv,
         "losecapture",
-        function(e) { captureDiv.checked = false; },
+        function(e) {
+ captureDiv.checked = false; 
+},
         this
       );
     },
 
 
-    __changeCheckbox : function(e)
-    {
+    __changeCheckbox : function(e) {
       var type = e.getTarget().id.split("_")[1];
       var checked = e.getTarget().checked;
       var pointerDiv = document.getElementById("pointer");
@@ -95,22 +94,18 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
           this.logPointerEvent,
           this
         );
-      }
-      else
-      {
+      } else {
         qx.bom.Element.removeListener(
           pointerDiv,
           type,
           this.logPointerEvent,
           this
         );
-
       }
     },
 
 
-    logPointerEvent: function(pointerEvent)
-    {
+    logPointerEvent: function(pointerEvent) {
       pointerEvent.preventDefault();
 
       this._log([

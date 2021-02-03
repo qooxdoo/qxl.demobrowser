@@ -68,13 +68,13 @@ qx.Class.define("qxl.demobrowser.demo.data.model.Node",
   members: {
     _validateNumber: function(value) {
       // check if its a number
-      if(!isNaN(parseFloat(value))) {
-        if(/^\d+$/.test(value)) {
+      if (!isNaN(parseFloat(value))) {
+        if (/^\d+$/.test(value)) {
           return;
         }
       }
-      throw new qx.core.ValidationError("Validation Error: " + value
-        + "is no number (parseFloat says so!).");
+      throw new qx.core.ValidationError("Validation Error: " + value +
+        "is no number (parseFloat says so!).");
     },
 
 

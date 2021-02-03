@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ProgressBar",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var root = this.getRoot();
@@ -34,7 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ProgressBar",
       var slider = new qx.ui.form.Slider().set({minimum:0, maximum: 200});
       var info = new qx.ui.basic.Label();
 
-      root.add(container, {left:0,top:0});
+      root.add(container, {left:0, top:0});
       container.add(pb);
       container.add(slider);
       container.add(info);

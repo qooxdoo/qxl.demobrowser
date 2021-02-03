@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Flash",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var domElement = qx.dom.Element.create("div");

@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Reversed",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // auto height + reversed

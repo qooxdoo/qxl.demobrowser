@@ -26,12 +26,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
   ],
 
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments, 0, 1, this.getItemHeight(), 10);
 
     this.__widgetLayer = new qx.ui.virtual.layer.WidgetCell(this);
-    this.getPane().addLayer(this.__widgetLayer)
+    this.getPane().addLayer(this.__widgetLayer);
     this.getPane().addListener("resize", this._onResize, this);
 
     this.__items = [];
@@ -212,14 +211,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     },
 
 
-    update : function()
-    {
+    update : function() {
       var rowConfig = this.getPane().getRowConfig();
       rowConfig.setItemCount(this.__items.length);
 
       rowConfig.resetItemSizes();
-      for(var i=0; i<this.__items.length; i++)
-      {
+      for (var i=0; i<this.__items.length; i++) {
         var height = this.__items[i].getHeight();
         if (height !== null) {
           rowConfig.setItemSize(i, height);
@@ -228,11 +225,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     },
 
 
-    updateSelection : function()
-    {
+    updateSelection : function() {
       var widgets = this.__widgetLayer.getChildren();
-      for (var i=0; i<widgets.length; i++)
-      {
+      for (var i=0; i<widgets.length; i++) {
         var widget = widgets[i];
         var row = widget.getUserData("row");
 
@@ -251,8 +246,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     ---------------------------------------------------------------------------
     */
 
-    _onResize : function(e)
-    {
+    _onResize : function(e) {
       this.getPane().getColumnConfig().setItemSize(0, e.getData().width);
       qx.ui.core.queue.Widget.add(this);
     },
@@ -261,8 +255,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
       qx.ui.core.queue.Widget.add(this);
     },
 
-    _onChangeSelection : function(e)
-    {
+    _onChangeSelection : function(e) {
       this.updateSelection();
       this.fireDataEvent("changeSelection", this.__rowsToItems(e.getData()));
     },
@@ -275,8 +268,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     */
 
     // interface implementation
-    getCellWidget : function(row, column)
-    {
+    getCellWidget : function(row, column) {
       var data = this.__items[row];
       if (!data) {
         return null;
@@ -315,14 +307,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @return {String} Value of the list
      */
-    getValue : function()
-    {
+    getValue : function() {
       var selected = this.getSelection();
       var result = [];
       var value;
 
-      for (var i=0, l=selected.length; i<l; i++)
-      {
+      for (var i=0, l=selected.length; i<l; i++) {
         // Try value first
         value = selected[i].getValue();
 
@@ -344,16 +334,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @param value {String} Comma separated list
      */
-    setValue : function(value)
-    {
+    setValue : function(value) {
       // Clear current selection
       var splitted = value.split(",");
 
       // Building result list
       var result = [];
       var item;
-      for (var i=0, l=splitted.length; i<l; i++)
-      {
+      for (var i=0, l=splitted.length; i<l; i++) {
         item = this.findItem(splitted[i]);
         if (item) {
           result.push(item);
@@ -392,16 +380,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     },
 
 
-    _addHelper : function(child)
-    {
+    _addHelper : function(child) {
       this.fireDataEvent("addItem", child);
       child.addListener("changeHeight", this._onChangeItemHeight, this);
       qx.ui.core.queue.Widget.add(this);
     },
 
 
-    _removeHelper : function(child)
-    {
+    _removeHelper : function(child) {
       this.fireDataEvent("removeItem", child);
       child.removeListener("changeHeight", this._onChangeItemHeight, this);
       qx.ui.core.queue.Widget.add(this);
@@ -418,8 +404,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} the item to add.
      * @return {Widget} This object (for chaining support)
      */
-    add : function(child)
-    {
+    add : function(child) {
       this.__items.push(child);
       this._addHelper(child);
       return this;
@@ -432,8 +417,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} the item to remove
      * @return {Widget} This object (for chaining support)
      */
-    remove : function(child)
-    {
+    remove : function(child) {
       qx.lang.Array.remove(this.__items, child);
       this._removeHelper(child);
       return this;
@@ -445,9 +429,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @return {void}
      */
-    removeAll : function()
-    {
-      for (var i=0,j=this.__items.length; i<j; i++) {
+    removeAll : function() {
+      for (var i=0, j=this.__items.length; i<j; i++) {
         this._removeHelper(this.__items[i]);
       }
       this.__items = [];
@@ -483,8 +466,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param index {Integer} Index, at which the item will be inserted
      */
-    addAt : function(child, index)
-    {
+    addAt : function(child, index) {
       qx.lang.Array.insertAt(this.__items, child, index);
       this._addHelper(child);
     },
@@ -501,8 +483,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param before {LayoutItem} item before the new item will be inserted.
      */
-    addBefore : function(child, before)
-    {
+    addBefore : function(child, before) {
       qx.lang.Array.insertBefore(this.__items, child, before);
       this._addHelper(child);
     },
@@ -519,8 +500,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param after {LayoutItem} item, after which the new item will be inserted
      */
-    addAfter : function(child, after)
-    {
+    addAfter : function(child, after) {
       qx.lang.Array.insertAfter(this.__items, child, after);
       this._addHelper(child);
     },
@@ -536,8 +516,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @param index {Integer} Index of the item to remove.
      */
-    removeAt : function(index)
-    {
+    removeAt : function(index) {
       this.__items.splice(index, 1);
       this._removeHelper(this.__items[index]);
     },
@@ -549,26 +528,22 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     ---------------------------------------------------------------------------
     */
 
-    __itemToRow : function(item)
-    {
+    __itemToRow : function(item) {
       var row = this.__items.indexOf(item);
       if (row < 0) {
         return null;
-      } else {
+      } 
         return row;
-      }
     },
 
 
-    __rowToItem : function(row)
-    {
+    __rowToItem : function(row) {
       var item = this.__items[row];
       return item;
     },
 
 
-    __itemsToRows : function(items)
-    {
+    __itemsToRows : function(items) {
       var rows = [];
       for (var i=0; i<items.length; i++) {
         rows.push(this.__itemToRow(items[i]));
@@ -577,8 +552,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     },
 
 
-    __rowsToItems : function(rows)
-    {
+    __rowsToItems : function(rows) {
       var items = [];
       for (var i=0; i<rows.length; i++) {
         items.push(this.__items[rows[i]]);

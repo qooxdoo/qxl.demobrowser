@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -48,8 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // one percent child which is not flexible
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -82,8 +80,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // all percent child, using 99% in sum, flex enabled for last
       // child (=> perfect result, last one a bit bigger)
       var box = new qx.ui.layout.VBox();
@@ -117,8 +114,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // one percent child which is not flexible + auto sizing
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -150,8 +146,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // all child in percents + auto sizing + flex enabled
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -183,8 +178,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // all child in percents + flex enabled (shrinking)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -217,8 +211,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
     },
 
 
-    getBox6 : function()
-    {
+    getBox6 : function() {
       // all child in percents + flex enabled (growing)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({

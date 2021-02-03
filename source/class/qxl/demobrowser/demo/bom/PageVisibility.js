@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.PageVisibility",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var page = new qx.bom.PageVisibility();
@@ -43,7 +42,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.PageVisibility",
           "hidden: <span style='color:" + (hidden ? "red" : "green") + ";'>" + hidden + "</span> | " +
           "state:" + page.getVisibilityState());
       }, 1000);
-
     },
 
     log : function(txt) {

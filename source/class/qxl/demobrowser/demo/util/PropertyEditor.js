@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
 {
   extend : qx.ui.core.scroll.AbstractScrollArea,
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
 
     // Force ScrollArea to have an auto-width
@@ -81,15 +80,13 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
 
   members :
   {
-    handleWidgetTap : function(e)
-    {
+    handleWidgetTap : function(e) {
       var widget = e.getTarget();
       this.setWidget(widget);
     },
 
 
-    _createWidgetIndicator : function()
-    {
+    _createWidgetIndicator : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox().set({
         spacing: 5
       }));
@@ -108,18 +105,16 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    _createLabel : function(text)
-    {
+    _createLabel : function(text) {
       return new qx.ui.basic.Label(text).set({
         font: "bold",
         allowGrowX: true,
         padding: [5, 0, 5, 0]
-      })
+      });
     },
 
 
-    _createContainer : function(label, mainWidget)
-    {
+    _createContainer : function(label, mainWidget) {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox().set({
         spacing: 5
       }));
@@ -131,8 +126,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    updateWidgetLayoutPropertyEditor : function(widget)
-    {
+    updateWidgetLayoutPropertyEditor : function(widget) {
       var layout = widget.getLayoutParent() ? widget.getLayoutParent()._getLayout() : null;
       var wlpe = this.getWidgetLayoutPropertyEditor(layout);
 
@@ -145,11 +139,10 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
       }
 
       if (this._wlpe) {
-        this._pane.remove(this._wlpe)
+        this._pane.remove(this._wlpe);
       }
 
-      if (!wlpe)
-      {
+      if (!wlpe) {
         this._wlpe = wlpe;
         return;
       }
@@ -160,8 +153,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    updateLayoutPropertyEditor : function(widget)
-    {
+    updateLayoutPropertyEditor : function(widget) {
       var layout = widget.getLayout ? widget.getLayout() : null;
       var lpe = this.getLayoutPropertyEditor(layout);
 
@@ -174,11 +166,10 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
       }
 
       if (this._lpe) {
-        this._pane.remove(this._lpe)
+        this._pane.remove(this._lpe);
       }
 
-      if (!lpe)
-      {
+      if (!lpe) {
         this._lpe = lpe;
         return;
       }
@@ -189,8 +180,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    getWidgetLayoutPropertyEditor : function(layout)
-    {
+    getWidgetLayoutPropertyEditor : function(layout) {
       if (!layout) {
         return null;
       }
@@ -202,8 +192,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
         return this._editorGroups[name];
       }
 
-      switch(name)
-      {
+      switch (name) {
         case "wlpe_qx.ui.layout.HBox":
         case "wlpe_qx.ui.layout.VBox":
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
@@ -245,8 +234,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    getLayoutPropertyEditor : function(layout)
-    {
+    getLayoutPropertyEditor : function(layout) {
       if (!layout) {
         return null;
       }
@@ -258,8 +246,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
         return this._editorGroups[name];
       }
 
-      switch(name)
-      {
+      switch (name) {
         case "lpe_qx.ui.layout.HBox":
           group = new qxl.demobrowser.demo.util.PropertyGroup(
             qxl.demobrowser.demo.util.PropertyGroup.HBOX_PROPERTIES
@@ -288,8 +275,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     },
 
 
-    _applyWidget : function(value, old)
-    {
+    _applyWidget : function(value, old) {
       this._layoutControls.setSelected(value);
 
       this._widgetIndicator.setBackgroundColor(value.getBackgroundColor());
@@ -302,8 +288,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
   },
 
 
-  destruct : function()
-  {
+  destruct : function() {
     this._pane = this._editorGroups = this._widgetIndicator =
       this._layoutControls = null;
   }

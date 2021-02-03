@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Remote_Model",
 {
   extend : qxl.demobrowser.demo.table.TableDemo,
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
     this.__timer = new qx.event.Timer(1000);
   },
@@ -42,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Remote_Model",
   {
     __timer : null,
 
-    createTable: function()
-    {
+    createTable: function() {
       var tableModel = this._tableModel = new qxl.demobrowser.demo.table.RemoteTableModel();
       var custom = {
         tableColumnModel : function(obj) {
@@ -54,27 +52,26 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Remote_Model",
       this.__timer.addListener("interval", tableModel.reloadData, tableModel);
 
 
-      var table = new qx.ui.table.Table(tableModel,custom);
+      var table = new qx.ui.table.Table(tableModel, custom);
       var col = table.getTableColumnModel().getBehavior();
-      col.setWidth(0,'10%');
-      col.setWidth(1,'90%');
+      col.setWidth(0, "10%");
+      col.setWidth(1, "90%");
 
       return table;
     },
 
-    createControls: function()
-    {
+    createControls: function() {
       var bar = new qx.ui.toolbar.ToolBar();
       var part = new qx.ui.toolbar.Part();
       bar.add(part);
 
-      var reload = new qx.ui.toolbar.Button('Reload', "icon/22/actions/view-refresh.png");
-      reload.addListener('execute',function(){
+      var reload = new qx.ui.toolbar.Button("Reload", "icon/22/actions/view-refresh.png");
+      reload.addListener("execute", function() {
         this._tableModel.reloadData();
       }, this);
       part.add(reload);
 
-      var poll = new qx.ui.toolbar.CheckBox('Poll');
+      var poll = new qx.ui.toolbar.CheckBox("Poll");
       poll.addListener("execute", function() {
         if (poll.getValue()) {
           this.__timer.start();
@@ -85,7 +82,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Remote_Model",
       part.add(poll);
 
       // disable the reload button on poll
-      poll.bind("value", reload, "enabled", {converter : function(data) {return !data;}});
+      poll.bind("value", reload, "enabled", {converter : function(data) {
+ return !data; 
+}});
 
       return bar;
     }

@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Placeholder",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
       // set the support label
       q("#support").setHtml(q.env.get("css.placeholder") + "");

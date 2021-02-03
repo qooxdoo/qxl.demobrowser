@@ -70,14 +70,13 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
   *****************************************************************************
   */
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
 
     this.__menuItemStore = {};
 
     // Configure layout
-    var layout = new qx.ui.layout.VBox;
+    var layout = new qx.ui.layout.VBox();
     this.setLayout(layout);
 
     // Header
@@ -172,8 +171,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
     // Back button and bookmark support
     this._history = qx.bom.History.getInstance();
-    this._history.addListener("changeState", function(e)
-    {
+    this._history.addListener("changeState", function(e) {
       var newSample = e.getData().replace("~", "/");
 
       if (this._currentSample != newSample) {
@@ -249,8 +247,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     defaultUrl : "demo/welcome.html",
     playgroundUrl : (qx.core.Environment.get("qx.serve.appspath") || "https://www.qooxdoo.org/qxl.") + "playground/",
 
-    __makeCommands : function()
-    {
+    __makeCommands : function() {
       this._cmdObjectSummary = new qx.ui.command.Command("Ctrl+O");
       this._cmdObjectSummary.addListener("execute", this.__getObjectSummary, this);
 
@@ -265,25 +262,22 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
       this._cmdSampleInOwnWindow = new qx.ui.command.Command("Ctrl+N");
       this._cmdSampleInOwnWindow.addListener("execute", this.__openWindow, this);
-
     },
 
 
 
     /**
      * TODOC
-     *
+     * @param e
      */
-    __syncRightView :  function(e)
-    {
+    __syncRightView :  function(e) {
       var theOtherGroup = e.getTarget()===this.__viewGroup ? this.__menuViewRadioGroup : this.__viewGroup;
       var selected = e.getData()[0];
-      if(theOtherGroup && selected) {
+      if (theOtherGroup && selected) {
         theOtherGroup.setModelSelection([selected.getModel()]);
       }
       var show = selected != null ? selected.getUserData("value") : "";
-      switch(show)
-      {
+      switch (show) {
         case "html":
           this.__stack.setSelection([this.__htmlView]);
           this.__stack.show();
@@ -309,8 +303,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * TODOC
      *
      */
-    __getObjectSummary : function()
-    {
+    __getObjectSummary : function() {
       var cw = this._iframe.getWindow();
       var msg;
       if (cw && cw.qx) {
@@ -328,8 +321,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       this.__infoWindow.show();
     },
 
-    __openWindow : function()
-    {
+    __openWindow : function() {
       var sampUrl = this._iframe.getSource();
       // remove th query params
       sampUrl = sampUrl.substr(0, sampUrl.indexOf("?"));
@@ -341,8 +333,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __setCurrentJSCode : function(code)
-    {
+    __setCurrentJSCode : function(code) {
       var playable = !!code;
 
       var currentTags = this._tree.getSelection()[0].getUserData("tags");
@@ -355,12 +346,10 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __toPlayground : function()
-    {
-      if (this.__currentJSCode)
-      {
+    __toPlayground : function() {
+      if (this.__currentJSCode) {
         var code = this.__currentJSCode;
-        var codeJson = '{"code": ' + '"' + encodeURIComponent(code) + '"}';
+        var codeJson = "{\"code\": " + "\"" + encodeURIComponent(code) + "\"}";
         var url = this.playgroundUrl + "#" + encodeURIComponent(codeJson);
         window.open(url, "_blank");
       } else {
@@ -383,12 +372,11 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Handler for opening the manual.
      */
     __onManualOpen : function() {
-      window.open((qx.core.Environment.get("qx.serve.docspath") || "https://www.qooxdoo.org/") +  "docs");
+      window.open((qx.core.Environment.get("qx.serve.docspath") || "https://www.qooxdoo.org/") + "docs");
     },
 
 
-    __makeToolBar : function()
-    {
+    __makeToolBar : function() {
       var bar = new qx.ui.toolbar.ToolBar();
 
 
@@ -418,11 +406,11 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       prevNextPart.add(nextbutt);
       this._nextButton = nextbutt;
 
-      var navButtonOptions =  {
+      var navButtonOptions = {
         converter : function(data) {
           return data == "visible";
         }
-      }
+      };
       qx.data.SingleValueBinding.bind(this._runbutton, "visibility", prevbutt, "enabled", navButtonOptions);
       qx.data.SingleValueBinding.bind(this._runbutton, "visibility", nextbutt, "enabled", navButtonOptions);
 
@@ -469,17 +457,15 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         externLinksPart2.add(helpButton);
         helpButton.setToolTipText(this.tr("Open the qooxdoo Manual"));
         helpButton.addListener("execute", this.__onManualOpen, this);
-
       }
       // THEME MENU
       // -----------------------------------------------------
 
-      var menuPart = new qx.ui.toolbar.Part;
+      var menuPart = new qx.ui.toolbar.Part();
       bar.add(menuPart);
 
-      if (qx.core.Environment.get("qx.contrib") == false)
-      {
-        var themeMenu = this.__themeMenu = new qx.ui.menu.Menu;
+      if (qx.core.Environment.get("qx.contrib") == false) {
+        var themeMenu = this.__themeMenu = new qx.ui.menu.Menu();
         var group = new qx.ui.form.RadioGroup();
 
         var themes = qx.Theme.getAll();
@@ -505,19 +491,18 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       // VIEWS
       // -----------------------------------------------------
 
-      var viewPart = new qx.ui.toolbar.Part;
+      var viewPart = new qx.ui.toolbar.Part();
       this.__viewPart = viewPart;
       bar.addSpacer();
       bar.add(viewPart);
 
-      if (qx.core.Environment.get("qx.contrib") == false)
-      {
+      if (qx.core.Environment.get("qx.contrib") == false) {
         var htmlView = new qx.ui.toolbar.RadioButton("HTML Code", "icon/22/apps/internet-web-browser.png");
         htmlView.setToolTipText("Display HTML source");
-        htmlView.setModel('html');
+        htmlView.setModel("html");
         var jsView = new qx.ui.toolbar.RadioButton("JS Code", "icon/22/mimetypes/executable.png");
         jsView.setToolTipText("Display JavaScript source");
-        jsView.setModel('js');
+        jsView.setModel("js");
 
         htmlView.setUserData("value", "html");
         jsView.setUserData("value", "js");
@@ -530,14 +515,14 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       logView.setToolTipText("Display log file");
 
       logView.setUserData("value", "log");
-      logView.setModel('log');
+      logView.setModel("log");
 
       viewPart.add(logView);
 
-      var viewGroup = this.__viewGroup = new qx.ui.form.RadioGroup;
+      var viewGroup = this.__viewGroup = new qx.ui.form.RadioGroup();
       viewGroup.setAllowEmptySelection(true);
       viewGroup.add(logView);
-      viewGroup.addListener('changeSelection',this.__syncRightView,this);
+      viewGroup.addListener("changeSelection", this.__syncRightView, this);
 
       if (qx.core.Environment.get("qx.contrib") == false) {
         viewGroup.add(htmlView, jsView);
@@ -549,7 +534,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
       // add a button for overflow handling
       var chevron = new qx.ui.toolbar.MenuButton(null, "icon/22/actions/media-seek-forward.png");
-      chevron.setAppearance("toolbar-button");  // hide the down arrow icon
+      chevron.setAppearance("toolbar-button"); // hide the down arrow icon
       bar.add(chevron);
       bar.setOverflowIndicator(chevron);
 
@@ -585,9 +570,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     _onHideItem : function(e) {
       var partItem = e.getData();
       var menuItems = this._getMenuItems(partItem);
-      for(var i=0, l=menuItems.length; i<l; i++){
+      for (var i=0, l=menuItems.length; i<l; i++) {
         menuItems[i].setVisibility("visible");
-        if(partItem === this.__themePart && !(menuItems[i] instanceof qx.ui.menu.Separator)) {
+        if (partItem === this.__themePart && !(menuItems[i] instanceof qx.ui.menu.Separator)) {
           menuItems[i].getMenu().setPosition("right-top");
         }
       }
@@ -601,14 +586,12 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     _onShowItem : function(e) {
       var partItem = e.getData();
       var menuItems = this._getMenuItems(partItem);
-      for(var i=0,l=menuItems.length;i<l;i++)
-      {
+      for (var i=0, l=menuItems.length; i<l; i++) {
         menuItems[i].setVisibility("excluded");
       }
-      if(partItem === this.__themePart)
-      {
+      if (partItem === this.__themePart) {
         var menuButtons = partItem.getMenuButtons();
-        for(var i=0, l=menuButtons.length; i<l; i++) {
+        for (var i=0, l=menuButtons.length; i<l; i++) {
           menuButtons[i].getMenu().setPosition("bottom-left");
         }
       }
@@ -618,48 +601,40 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     /**
      * Helper for the overflow handling. It is responsible for returning a
      * corresponding menu item for the given toolbar item.
-     *
      * @param toolbarItem {qx.ui.core.Widget} The toolbar item to look for.
+     * @param partItem
      * @return {qx.ui.core.Widget} The coresponding menu items.
      */
     _getMenuItems : function(partItem) {
       var cachedItems = [];
-      if (partItem instanceof qx.ui.toolbar.Part)
-      {
+      if (partItem instanceof qx.ui.toolbar.Part) {
         var partButtons = partItem.getChildren();
         var separator = null;
         var firstGroup = false;
         var menuItems = this.__overflowMenu.getChildren();
-        if(partItem != this.__viewPart)
-        {
+        if (partItem != this.__viewPart) {
           separator = this.__menuItemStore[partItem.toHashCode()];
-          if (!separator)
-          {
+          if (!separator) {
           separator = new qx.ui.menu.Separator();
-          this.__overflowMenu.addBefore(separator,menuItems[0]);
+          this.__overflowMenu.addBefore(separator, menuItems[0]);
           this.__menuItemStore[partItem.toHashCode()] = separator;
           }
           cachedItems.push(separator);
-        }
-        else
-        {
+        } else {
           firstGroup = true;
         }
-        for(var i=0, l=partButtons.length; i<l; i++)
-        {
-          if(partButtons[i].getVisibility() == 'excluded'){
+        for (var i=0, l=partButtons.length; i<l; i++) {
+          if (partButtons[i].getVisibility() == "excluded") {
             continue;
           }
           var cachedItem = this.__menuItemStore[partButtons[i].toHashCode()];
 
-          if (!cachedItem)
-          {
-            if(partButtons[i] instanceof qx.ui.toolbar.RadioButton)
-            {
-              cachedItem = new qx.ui.menu.RadioButton( partButtons[i].getLabel() );
+          if (!cachedItem) {
+            if (partButtons[i] instanceof qx.ui.toolbar.RadioButton) {
+              cachedItem = new qx.ui.menu.RadioButton(partButtons[i].getLabel());
               cachedItem.setToolTipText(partButtons[i].getToolTipText());
               cachedItem.setEnabled(partButtons[i].getEnabled());
-              cachedItem.setUserData('value',partButtons[i].getUserData('value'));
+              cachedItem.setUserData("value", partButtons[i].getUserData("value"));
               cachedItem.setModel(partButtons[i].getModel());
               partButtons[i].bind("enabled", cachedItem, "enabled");
 
@@ -667,16 +642,13 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
               partButtons[i].bind("value", cachedItem, "value");
               cachedItem.bind("value", partButtons[i], "value");
 
-              if(!this.__menuViewRadioGroup)
-              {
+              if (!this.__menuViewRadioGroup) {
                 this.__menuViewRadioGroup = new qx.ui.form.RadioGroup();
                 this.__menuViewRadioGroup.setAllowEmptySelection(true);
-                this.__menuViewRadioGroup.addListener('changeSelection',this.__syncRightView,this);
+                this.__menuViewRadioGroup.addListener("changeSelection", this.__syncRightView, this);
               }
               this.__menuViewRadioGroup.add(cachedItem);
-            }
-            else if(partButtons[i] instanceof qx.ui.toolbar.MenuButton)
-            {
+            } else if (partButtons[i] instanceof qx.ui.toolbar.MenuButton) {
               cachedItem = new qx.ui.menu.Button(
                 partButtons[i].getLabel().translate(),
                 partButtons[i].getIcon(),
@@ -686,46 +658,36 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
               cachedItem.setToolTipText(partButtons[i].getToolTipText());
               cachedItem.setEnabled(partButtons[i].getEnabled());
               partButtons[i].bind("enabled", cachedItem, "enabled");
-            }
-            else if(partButtons[i] instanceof qx.ui.toolbar.Button)
-            {
+            } else if (partButtons[i] instanceof qx.ui.toolbar.Button) {
               cachedItem = new qx.ui.menu.Button(
                 partButtons[i].getLabel().translate(),
                 partButtons[i].getIcon()
                 );
-              cachedItem.getChildControl('label', false).setRich(true);
+              cachedItem.getChildControl("label", false).setRich(true);
               cachedItem.setTextColor(partButtons[i].getTextColor());
               cachedItem.setToolTipText(partButtons[i].getToolTipText());
               cachedItem.setEnabled(partButtons[i].getEnabled());
               partButtons[i].bind("enabled", cachedItem, "enabled");
-              var listeners = qx.event.Registration.getManager(partButtons[i]).getListeners(partButtons[i],'execute');
-              if(listeners && listeners.length>0)
-              {
-                for(var j=0, k=listeners.length; j<k; j++) {
-                  cachedItem.addListener('execute', qx.lang.Function.bind(listeners[j].handler,listeners[j].context));
+              var listeners = qx.event.Registration.getManager(partButtons[i]).getListeners(partButtons[i], "execute");
+              if (listeners && listeners.length>0) {
+                for (var j=0, k=listeners.length; j<k; j++) {
+                  cachedItem.addListener("execute", qx.lang.Function.bind(listeners[j].handler, listeners[j].context));
                 }
               }
-            }
-            else if(partButtons[i] instanceof qx.ui.toolbar.CheckBox)
-            {
+            } else if (partButtons[i] instanceof qx.ui.toolbar.CheckBox) {
               cachedItem = new qx.ui.menu.CheckBox(
                 partButtons[i].getLabel()
                 );
               cachedItem.setToolTipText(partButtons[i].getToolTipText());
               cachedItem.setEnabled(partButtons[i].getEnabled());
               partButtons[i].bind("enabled", cachedItem, "enabled");
-            }
-            else
-            {
+            } else {
               cachedItem = new qx.ui.menu.Separator();
             }
-            if(firstGroup)
-            {
+            if (firstGroup) {
               this.__overflowMenu.add(cachedItem);
-            }
-            else
-            {
-              this.__overflowMenu.addBefore(cachedItem,separator);
+            } else {
+              this.__overflowMenu.addBefore(cachedItem, separator);
             }
             this.__menuItemStore[partButtons[i].toHashCode()] = cachedItem;
           }
@@ -736,8 +698,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       return cachedItems;
     },
 
-    __makeDemoView : function()
-    {
+    __makeDemoView : function() {
       var iframe = new qx.ui.embed.Iframe().set({
         nativeContextMenu: true
       });
@@ -747,8 +708,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       return iframe;
     },
 
-    __makeHtmlCodeView : function()
-    {
+    __makeHtmlCodeView : function() {
       var f3 = new qx.ui.embed.Html("<div class='script'>The sample source will be displayed here.</div>");
       f3.setOverflow("auto", "auto");
       f3.setFont("monospace");
@@ -764,8 +724,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       return f3;
     },
 
-    __makeJsCodeView : function()
-    {
+    __makeJsCodeView : function() {
       var f4 = new qx.ui.embed.Html("<div class='script'>The sample JS source will be displayed here.</div>");
       f4.setOverflow("auto", "auto");
       f4.setFont("monospace");
@@ -789,8 +748,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      *
      * @return {var} TODOC
      */
-    __makeTree : function()
-    {
+    __makeTree : function() {
       var tree1 = new qx.ui.tree.Tree();
       var root = new qx.ui.tree.TreeFolder("Demos");
       tree1.setAppearance("demo-tree");
@@ -800,7 +758,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       this.tree = this.widgets["treeview.flat"] = tree1;
 
       tree1.addListener("changeSelection", this.treeGetSelection, this);
-      tree1.addListener("dbltap", function(e){
+      tree1.addListener("dbltap", function(e) {
         qx.event.Timer.once(this.runSample, this, 50);
       }, this);
 
@@ -808,8 +766,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __makeUrlMenu : function()
-    {
+    __makeUrlMenu : function() {
       var urlWindow = new qx.ui.window.Window(this.tr("Demo Link"), "icon/22/mimetypes/text-html.png");
       urlWindow.setLayout(new qx.ui.layout.VBox(10));
       urlWindow.setAllowMaximize(false);
@@ -856,8 +813,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     //   EVENT HANDLER
     // ------------------------------------------------------------------------
 
-    treeGetSelection : function(e)
-    {
+    treeGetSelection : function(e) {
       var treeNode = this.tree.getSelection()[0];
       this._runbutton.setEnabled(!treeNode.hasChildren());
       var modelNode = treeNode.getUserData("modelLink");
@@ -871,8 +827,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param e {Event} TODOC
      * @return {void}
      */
-    leftReloadTree : function(e)
-    {
+    leftReloadTree : function(e) {
       this._sampleToTreeNodeMap = {};
       var _sampleToTreeNodeMap = this._sampleToTreeNodeMap;
       var _initialSection = null;
@@ -881,7 +836,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       // set a section to open initially
       var state = this._history.getState();
 
-      var section =  state.match(/([^~]+)~/);
+      var section = state.match(/([^~]+)~/);
       if (section) {
         // demo preselected, e.g. #bom~Clip.html
         _initialSection = section[1];
@@ -903,31 +858,25 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
        *        model root for the tree from which the widgets representation
        *        will be built
        */
-      function buildSubTree(widgetR, modelR)
-      {
+      function buildSubTree(widgetR, modelR) {
         var children = modelR.getChildren();
         var t;
 
-        for (var i=0; i<children.length; i++)
-        {
+        for (var i=0; i<children.length; i++) {
           var currNode = children[i];
 
-          if (currNode.hasChildren())
-          {
+          if (currNode.hasChildren()) {
             t = new qx.ui.tree.TreeFolder(that.polish(currNode.label));
             t.setUserData("filled", false);
             t.setUserData("node", currNode);
 
             buildSubTree(t, t.getUserData("node"));
 
-            if (currNode.label == _initialSection)
-            {
+            if (currNode.label == _initialSection) {
               _initialNode = t;
               t.setOpen(true);
             }
-          }
-          else
-          {
+          } else {
             // When the node has no type, it is a folder without childeren
             if (!currNode.type) {
               continue;
@@ -938,7 +887,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
             if (currNode.tags) {
               t.setUserData("tags", currNode.tags);
               if (qx.core.Environment.get("qx.contrib") == true) {
-                for (var j=0,m=currNode.tags.length; j<m; j++) {
+                for (var j=0, m=currNode.tags.length; j<m; j++) {
                   var tag = currNode.tags[j];
                   if (tag.indexOf("qxVersion") == 0) {
                     fullName += "/" + tag.substr(10) + "/index.html";
@@ -962,19 +911,17 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       var that = this;
 
       // Handle current Tree Selection and Content
-      this.tree.setUserData("modelLink", ttree);  // link top level widgets and model
+      this.tree.setUserData("modelLink", ttree); // link top level widgets and model
 
-      this.tree.getRoot().setOpen(true)
+      this.tree.getRoot().setOpen(true);
       buildSubTree(this.tree.getRoot(), ttree);
 
 
       if (_initialNode != null) {
         this.tree.setSelection([_initialNode]);
-      }
-      else {
+      } else {
         this.tree.setSelection([this.tree.getRoot()]);
       }
-
     },
 
 
@@ -984,8 +931,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param e {Event} TODOC
      * @return {void}
      */
-    runSample : function(e)
-    {
+    runSample : function(e) {
       if (this.tests.selected && this.tests.selected != "") {
         var file = this.tests.selected.replace(".", "/");
         this.setCurrentSample(file);
@@ -1001,8 +947,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param value {var} TODOC
      * @return {void}
      */
-    setCurrentSample : function(value)
-    {
+    setCurrentSample : function(value) {
       if (!value) {
         return;
       }
@@ -1013,10 +958,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
       var url;
       var treeNode = this._sampleToTreeNodeMap[value];
-      if (treeNode)
-      {
+      if (treeNode) {
         treeNode.getTree().setSelection([treeNode]);
-        url = 'demo/' + value;
+        url = "demo/" + value;
         if (qx.core.Environment.get("qx.contrib") == false) {
           url += "?qxenv:qx.theme:" + this.__currentTheme;
         }
@@ -1024,9 +968,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         if (currentTags) {
           this.__playgroundButton.setEnabled(!currentTags.includes("noPlayground"));
         }
-      }
-      else
-      {
+      } else {
         url = this.defaultUrl;
       }
 	  
@@ -1056,19 +998,14 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __ehIframeLoaded : function()
-    {
+    __ehIframeLoaded : function() {
       var fwindow = this._iframe.getWindow();
       var furl = this._iframe.getSource();
-      if (furl != null && furl != this.defaultUrl)
-      {
+      if (furl != null && furl != this.defaultUrl) {
         var url;
-        try
-        {
+        try {
           url = fwindow.location.href;
-        }
-        catch(ex)
-        {
+        } catch (ex) {
           url = window.location.href;
           var splitIndex = url.lastIndexOf("/");
           if (splitIndex != -1) {
@@ -1083,16 +1020,13 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         var split = url.substring(posHtml, posSearch).split("/");
         var div = String.fromCharCode(187);
 
-        if (split.length == 2)
-        {
+        if (split.length == 2) {
           var category = split[0];
           category = category.charAt(0).toUpperCase() + category.substring(1);
           var pagename = split[1].replace(".html", "").replace(/_/g, " ");
           pagename = pagename.charAt(0).toUpperCase() + pagename.substring(1);
           var title = "qooxdoo " + div + " Demo Browser " + div + " " + category + " " + div + " " + pagename;
-        }
-        else
-        {
+        } else {
           var title = "qooxdoo " + div + " Demo Browser " + div + " Start";
         }
 
@@ -1101,19 +1035,15 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __onLogInterval : function(e)
-    {
+    __onLogInterval : function(e) {
       var fwindow = this._iframe.getWindow();
 
-      try
-      {
+      try {
         // Do this in a try-catch block. For instance if a demobrowser runs from
         // the local file system over the file:// protocol, there might be
         // security restrictions when trying to access some fwindow properties
-        if (fwindow && fwindow.qx && fwindow.qx.log && fwindow.qx.log.appender)
-        {
-          if (!this.__logDone)
-          {
+        if (fwindow && fwindow.qx && fwindow.qx.log && fwindow.qx.log.appender) {
+          if (!this.__logDone) {
             this.__logDone = true;
 
             this.debug("Demo loaded: " + this._currentSample);
@@ -1135,14 +1065,10 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
               this.__getPageSource(this._currentSampleUrl);
             }
           }
-        }
-        else
-        {
+        } else {
           this.__logDone = false;
         }
-      }
-      catch(ex)
-      {
+      } catch (ex) {
         this.__logDone = false;
       }
     },
@@ -1158,8 +1084,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * This method filters the folders in the tree.
      * @param term {String} The search term.
      */
-    filter : function(term)
-    {
+    filter : function(term) {
       var searchRegExp = new RegExp("^.*" + term + ".*", "ig");
       var items = this._tree.getRoot().getItems(true, true);
 
@@ -1186,17 +1111,15 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
           count++;
         }
 
-        if ( (inTags || (folder.getLabel().search(searchRegExp) != -1) ||
-            (parent.getLabel().search(searchRegExp) != -1 ) ) )
-        {
-          if (folder.getChildren().length == 0 ) {
+        if ((inTags || (folder.getLabel().search(searchRegExp) != -1) ||
+            (parent.getLabel().search(searchRegExp) != -1))) {
+          if (folder.getChildren().length == 0) {
             showing++;
           }
           folder.show();
           folder.getParent().setOpen(true);
           folder.getParent().show();
-        }
-        else {
+        } else {
           folder.exclude();
         }
       }
@@ -1231,9 +1154,8 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param url {var} TODOC
      * @return {String} TODOC
      */
-    __getPageSource : function(url)
-    {
-      if( typeof(url) != "string" ){
+    __getPageSource : function(url) {
+      if (typeof (url) != "string") {
         return;
       }
 
@@ -1241,19 +1163,17 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       var req = new qx.io.request.Xhr(url);
       req.setTimeout(180000);
 
-      req.addListener("success", function(evt)
-      {
+      req.addListener("success", function(evt) {
         // get the content of the request
         var content = evt.getTarget().getResponse();
         // if there is a content
         if (content) {
           if (qx.core.Environment.get("qx.contrib") == false) {
-    
             // construct url to demo script source
-            var parts = url.split('/');
+            var parts = url.split("/");
             var cat = parts[parts.length - 2];
             var base = parts[parts.length - 1];
-            base = base.substr(0, base.indexOf('.html'))
+            base = base.substr(0, base.indexOf(".html"));
             var u = "script/" + cat + "/"+ base + "/qxl.demobrowser.demo";
             u += "." + cat + "." + base + ".js";
             let jsSourceFileName = qx.$$appRoot + u;
@@ -1302,8 +1222,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param url {var} TODOC
      * @return {void}
      */
-    dataLoader : function(url)
-    {
+    dataLoader : function(url) {
       var req = new qx.io.request.Xhr(url);
       req.setTimeout(180000);
 
@@ -1313,8 +1232,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
        * @param evt {var} TODOC
        * @lint ignoreDeprecated(alert, eval)
        */
-      req.addListener("success", function(evt)
-      {
+      req.addListener("success", function(evt) {
         var content = evt.getTarget().getResponse();
 
         // For reasons unknown, requests made here that fail because of security
@@ -1333,8 +1251,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
         var treeData = eval(content);
 
         // give the browser a chance to update its UI before doing more
-        qx.event.Timer.once(function()
-        {
+        qx.event.Timer.once(function() {
           this.tests.handler = new qxl.demobrowser.TreeDataHandler(treeData);
           this.leftReloadTree();
 
@@ -1365,12 +1282,10 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * @param e {Event} TODOC
      * @return {void}
      */
-    playPrev : function(e)
-    {
-      var currSamp = this.tree.getSelection()[0];  // widget
+    playPrev : function(e) {
+      var currSamp = this.tree.getSelection()[0]; // widget
 
-      if (currSamp)
-      {
+      if (currSamp) {
         var otherSamp = this.tree.getPreviousNodeOf(currSamp, false);
         if (!otherSamp || otherSamp == this.tree.getRoot()) {
           return;
@@ -1402,10 +1317,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
         if (!otherSamp || otherSamp === currSamp) {
           return;
-        } else {
+        } 
           this.tree.setSelection([otherSamp]);
           this.runSample();
-        }
       }
     },
 
@@ -1418,14 +1332,12 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      *
      * @ignore(getChildren)
      */
-    playNext : function(e)
-    {
+    playNext : function(e) {
       this._nextButton.setEnabled(true);
       this._prevButton.setEnabled(true);
-      var currSamp = this.tree.getSelection()[0];  // widget
+      var currSamp = this.tree.getSelection()[0]; // widget
 
-      if (currSamp)
-      {
+      if (currSamp) {
         var otherSamp = this.tree.getNextNodeOf(currSamp);
         if (!otherSamp) {
           return;
@@ -1453,8 +1365,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
           }
           otherSamp = candidate;
         }
-        if (otherSamp)
-        {
+        if (otherSamp) {
           this.tree.setSelection([otherSamp]);
           this.runSample();
         }
@@ -1462,8 +1373,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __beautySource : function (src, type)
-    {
+    __beautySource : function (src, type) {
       var bsrc = new qx.util.StringBuilder("<pre class='script'>");
       var lines = [];
       var currBlock = new qx.util.StringBuilder();
@@ -1472,7 +1382,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
 
       src = src.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
-      var lines = src.split('\n');
+      var lines = src.split("\n");
 
       // if the source is a javascript file
       if (type == "javascript") {
@@ -1481,25 +1391,22 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
                      "</div></pre>";
       }
 
-      for (var i=0; i<lines.length; i++)
-      {
+      for (var i=0; i<lines.length; i++) {
           if (PScriptStart.exec(lines[i])) // start of inline script
           {
             // add this line to 'normal' code
             bsrc.add(this.__beautyHtml(qx.bom.String.escape(currBlock.get() + lines[i])));
-            currBlock.clear();  // start new block
-          }
-          else if (PScriptEnd.exec(lines[i])) // end of inline script
+            currBlock.clear(); // start new block
+          } else if (PScriptEnd.exec(lines[i])) // end of inline script
           {
             // pass script block to tokenizer
             var s1 = qx.dev.Tokenizer.javaScriptToHtml(currBlock.get());
-            bsrc.add('<div class="script">', s1, '</div>');
+            bsrc.add("<div class=\"script\">", s1, "</div>");
             currBlock.clear(); // start new block
-            currBlock.add(lines[i], '\n');
-          }
-          else // no border line
+            currBlock.add(lines[i], "\n");
+          } else // no border line
           {
-            currBlock.add(lines[i], '\n');
+            currBlock.add(lines[i], "\n");
           }
       }
 
@@ -1514,10 +1421,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      * Diables all menu buttons which functionality only works with a selected
      * demo.
      */
-    disableMenuButtons : function()
-    {
+    disableMenuButtons : function() {
       var elements = this.__menuElements;
-      for(var i=0; i<elements.length; i++) {
+      for (var i=0; i<elements.length; i++) {
         elements[i].setEnabled(false);
       }
     },
@@ -1528,51 +1434,48 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
      */
     enableMenuButtons : function() {
       var elements = this.__menuElements;
-      for(var i=0; i<elements.length; i++) {
+      for (var i=0; i<elements.length; i++) {
         elements[i].setEnabled(true);
       }
     },
 
-    __beautyHtml : function (str)
-    {
+    __beautyHtml : function (str) {
       var res = str;
 
       // This match function might be a bit of overkill right now, but provides
       // for later extensions (cf. Flanagan(5th), 703)
-      function matchfunc (vargs)
-      {
+      /**
+       * @param vargs
+       */
+      function matchfunc (vargs) {
         var s = new qx.util.StringBuilder(arguments[1],
-          '<span class="html-tag-name">', arguments[2], '</span>');
+          "<span class=\"html-tag-name\">", arguments[2], "</span>");
         var curr;
         var endT = false;
 
         // handle rest of submatches
         if (arguments.length -2 > 3) {
-          for (var i=3; i<arguments.length-2; i++)
-          {
+          for (var i=3; i<arguments.length-2; i++) {
             curr = arguments[i];
-            if (curr == "/")
-            {
+            if (curr == "/") {
               endT = true;
               break;
-            }
-            else // handle tag attributes
+            } else // handle tag attributes
             {
               var m = /\s*([^=]+?)\s*=\s*((?!&quot;)\S+|&quot;.*?&quot;)\s*/g;
               var r;
 
               while ((r = m.exec(curr)) != null) {
-                s.add(' <span class="keyword">', r[1],
-                  '</span>=<span class="string">', r[2].replace(/\s*$/,""), '</span>');
+                s.add(" <span class=\"keyword\">", r[1],
+                  "</span>=<span class=\"string\">", r[2].replace(/\s*$/, ""), "</span>");
               }
             }
           }
           s.add((endT?"/":""));
         }
-        s.add('&gt;');
+        s.add("&gt;");
 
         return s.get();
-
       } //matchfunc()
 
       //res = res.replace(/(&lt;\/?)([a-zA-Z]+)\b/g, matchfunc);  // only tag start
@@ -1593,8 +1496,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     },
 
 
-    __onChangeTheme : function(e)
-    {
+    __onChangeTheme : function(e) {
       this.__currentTheme = e.getData()[0].getUserData("value");
       var cw = this._iframe.getWindow();
       var theme = cw.qx.Theme.getByName(this.__currentTheme);
@@ -1607,8 +1509,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
     /**
      * Creates the application header.
      */
-    _createHeader : function()
-    {
+    _createHeader : function() {
       var layout = new qx.ui.layout.HBox();
       var header = new qx.ui.container.Composite(layout);
       header.setAppearance("app-header");
@@ -1618,7 +1519,7 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
       version.setFont("default");
 
       header.add(title);
-      header.add(new qx.ui.core.Spacer, {flex : 1});
+      header.add(new qx.ui.core.Spacer(), {flex : 1});
       header.add(version);
 
       return header;
@@ -1634,14 +1535,13 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
   *****************************************************************************
   */
 
-  destruct : function()
-  {
+  destruct : function() {
     this.widgets = this.tests = this._sampleToTreeNodeMap = this.tree =
       this.logelem = null;
     this._disposeObjects("mainsplit", "tree1", "left", "runbutton", "toolbar",
-      "f1", "f2", "_history", "logappender", '_cmdObjectSummary',
-      '_cmdRunSample', '_cmdPrevSample', '_cmdNextSample',
-      '_cmdSampleInOwnWindow', 
+      "f1", "f2", "_history", "logappender", "_cmdObjectSummary",
+      "_cmdRunSample", "_cmdPrevSample", "_cmdNextSample",
+      "_cmdSampleInOwnWindow", 
       "_navPart", "_runbutton", "__sobutt", "__themePart", "__themeMenu",
       "__viewPart", "__viewGroup", "__menuBar", "_infosplit", "_searchTextField",
       "_status", "_tree", "_iframe", "_demoView", "__menuElements", 

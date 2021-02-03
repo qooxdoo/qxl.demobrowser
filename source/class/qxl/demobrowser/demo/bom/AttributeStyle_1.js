@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.AttributeStyle_1",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var attrib = qx.bom.element.Attribute;
@@ -94,7 +93,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.AttributeStyle_1",
       this.info("test9");
       this.debug("Document: " + qx.bom.Document.getWidth() + "x" + qx.bom.Document.getHeight());
       this.debug("Viewport: " + qx.bom.Viewport.getWidth() + "x" + qx.bom.Viewport.getHeight());
-
     }
   }
 });

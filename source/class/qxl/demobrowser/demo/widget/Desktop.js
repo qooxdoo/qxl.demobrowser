@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Desktop",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var tabView = new qx.ui.tabview.TabView();
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Desktop",
         [400, 300, 300, 60]
       ];
 
-      for (var i=0; i<winDefs.length; i++)
-      {
+      for (var i=0; i<winDefs.length; i++) {
         var def = winDefs[i];
         var win = new qx.ui.window.Window("Window #" + (i+1)).set({
           width: def[0],
@@ -69,7 +67,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.Desktop",
         desktop.add(win);
         win.open();
       }
-
     }
   }
 });

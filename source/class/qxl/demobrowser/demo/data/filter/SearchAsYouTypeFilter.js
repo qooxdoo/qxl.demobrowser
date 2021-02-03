@@ -20,8 +20,7 @@ qx.Class.define("qxl.demobrowser.demo.data.filter.SearchAsYouTypeFilter",
   extend : qx.core.Object,
 
 
-  construct : function(controller)
-  {
+  construct : function(controller) {
     this.base(arguments);
     // store the controller
     this.__controller = controller;

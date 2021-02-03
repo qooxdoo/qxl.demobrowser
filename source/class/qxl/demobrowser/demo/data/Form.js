@@ -28,8 +28,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Form",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the UI ///////////////////
@@ -40,7 +39,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Form",
       this.getRoot().add(groupBox, {left: 10, top: 10});
       var grid = new qx.ui.layout.Grid();
       grid.setSpacing(5);
-      grid.setColumnAlign(0, "left", "middle")
+      grid.setColumnAlign(0, "left", "middle");
       groupBox.setLayout(grid);
 
       // name
@@ -96,10 +95,10 @@ qx.Class.define("qxl.demobrowser.demo.data.Form",
       // connect the checkbox (boolean to int conversion)
       var okModel2CheckBox = {converter: function(data) {
         return data === 1;
-      }}
+      }};
       var okCheckBox2Model = {converter: function(data) {
         return data ? 1 : 0;
-      }}
+      }};
       controller.addTarget(
         okCheckBox, "value", "ok", true, okModel2CheckBox, okCheckBox2Model
       );
@@ -135,7 +134,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Form",
         if (object instanceof qx.ui.form.ListItem) {
           return object.getLabel();
         }
-      }
+      };
 
       // invoke the serialization
       sendButton.addListener("execute", function() {
@@ -144,8 +143,6 @@ qx.Class.define("qxl.demobrowser.demo.data.Form",
         }
       }, this);
       ////////////////////////////////////
-
-
     }
   }
 });

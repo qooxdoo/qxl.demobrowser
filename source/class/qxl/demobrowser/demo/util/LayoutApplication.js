@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutApplication",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var frame = new qx.ui.container.Composite(new qx.ui.layout.Dock());
@@ -55,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutApplication",
     },
 
 
-    _onTapRoot : function(e)
-    {
+    _onTapRoot : function(e) {
       if (e.getTarget() !== this._root) {
         this._editor.handleWidgetTap(e);
       }

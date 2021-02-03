@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       /* Event binding */
@@ -81,9 +80,8 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       var options = {converter: function(value) {
         if (value < 50) {
           return "Lower than 50!";
-        } else {
+        } 
           return "Bigger than 50!";
-        }
       }};
       // bind the slider value to the label content
       sliderSelfConvert.bind("value", labelSelfConvert, "value", options);
@@ -115,7 +113,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       var changeChildButton = new qx.ui.form.Button("Toggle child");
       this.getRoot().add(changeChildButton, {top: 260, left: 80});
       changeChildButton.addListener("execute", function() {
-        if (rootNode.getChild () == node1) {
+        if (rootNode.getChild() == node1) {
           rootNode.setChild(node2);
         } else {
           rootNode.setChild(node1);
@@ -131,7 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       this.getRoot().add(labelArrayLast, {top: 310, left: 60});
 
       // bind the target lables
-      rootNode.bind("child.names[0]", labelArrayFirst, "value");  // first
+      rootNode.bind("child.names[0]", labelArrayFirst, "value"); // first
       rootNode.bind("child.names[last]", labelArrayLast, "value");
 
 
@@ -179,9 +177,9 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       eventDescription.setRich(true);
       eventDescription.setWidth(450);
       eventDescription.setValue(
-        "<b>Description</b><br/>"
-        + "Binding an data event, containing the change of the textfield to"
-        + " the label."
+        "<b>Description</b><br/>" +
+        "Binding an data event, containing the change of the textfield to" +
+        " the label."
       );
       this.getRoot().add(eventDescription, {left: 250, top: 10});
 
@@ -190,9 +188,9 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       defaultDescription.setRich(true);
       defaultDescription.setWidth(450);
       defaultDescription.setValue(
-        "<b>Description</b><br/>"
-        + "Binding a number value (slider value) to a labels string (content)."
-        + " The default conversion will handle the type conversion."
+        "<b>Description</b><br/>" +
+        "Binding a number value (slider value) to a labels string (content)." +
+        " The default conversion will handle the type conversion."
       );
       this.getRoot().add(defaultDescription, {left: 250, top: 80});
 
@@ -201,10 +199,10 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       ownDescription.setRich(true);
       ownDescription.setWidth(450);
       ownDescription.setValue(
-        "<b>Description</b><br/>"
-        + "Binding a slider value to a labels text but conversion the number "
-        + "with a self written converter to a string only saying it its "
-        + " above or below 50."
+        "<b>Description</b><br/>" +
+        "Binding a slider value to a labels text but conversion the number " +
+        "with a self written converter to a string only saying it its " +
+        " above or below 50."
       );
       this.getRoot().add(ownDescription, {left: 250, top: 150});
 
@@ -213,12 +211,12 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       deepDescription.setRich(true);
       deepDescription.setWidth(450);
       deepDescription.setValue(
-        "<b>Description</b><br/>"
-        + "Binding of node elements containing a node as child and an array "
-        + "of names.<br/>The reverse button reverses the current selected child "
-        + "names array.<br/>Toggle child will change the child of the root node "
-        + "from a node containing ['Homer', 'Marge'] as names to a node "
-        + "containing ['Bart', 'Lisa'] as names."
+        "<b>Description</b><br/>" +
+        "Binding of node elements containing a node as child and an array " +
+        "of names.<br/>The reverse button reverses the current selected child " +
+        "names array.<br/>Toggle child will change the child of the root node " +
+        "from a node containing ['Homer', 'Marge'] as names to a node " +
+        "containing ['Bart', 'Lisa'] as names."
       );
       this.getRoot().add(deepDescription, {left: 250, top: 240});
 
@@ -227,14 +225,12 @@ qx.Class.define("qxl.demobrowser.demo.data.SingleValueBinding",
       validationDescription.setRich(true);
       validationDescription.setWidth(450);
       validationDescription.setValue(
-        "<b>Description</b><br/>"
-        + "Binding the textfield to a property with a validation. The validator"
-        + " in the object only accepts numbers. On a validation fail, a red "
-        + " border will surround the textfield."
+        "<b>Description</b><br/>" +
+        "Binding the textfield to a property with a validation. The validator" +
+        " in the object only accepts numbers. On a validation fail, a red " +
+        " border will surround the textfield."
       );
       this.getRoot().add(validationDescription, {left: 250, top: 390});
-
-
     }
   }
 });

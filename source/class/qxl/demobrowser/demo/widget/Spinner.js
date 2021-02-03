@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
 
   members :
   {
-    addSimpleSpinner : function(container, row)
-    {
+    addSimpleSpinner : function(container, row) {
       var spinner = new qx.ui.form.Spinner();
       container.add(new qx.ui.basic.Label("Simple"), {column: 0, row: row});
       container.add(new qx.ui.basic.Label("0"), {column: 1, row: row});
@@ -37,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       });
     },
 
-    addNonEditableSpinner : function(container, row)
-    {
+    addNonEditableSpinner : function(container, row) {
       var spinner = new qx.ui.form.Spinner(0, 50, 100);
       spinner.setEditable(false);
       container.add(new qx.ui.basic.Label("Not Editable"), {column: 0, row: row});
@@ -47,8 +45,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       container.add(new qx.ui.basic.Label("100"), {column: 3, row: row});
     },
 
-    addWrappingSpinner : function(container, row)
-    {
+    addWrappingSpinner : function(container, row) {
       var spinner = new qx.ui.form.Spinner(-30, 30, 30);
       spinner.setWrap(true);
       container.add(new qx.ui.basic.Label("Wrap"), {column: 0, row: row});
@@ -57,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       container.add(new qx.ui.basic.Label("30"), {column: 3, row: row});
     },
 
-    addSteppedSpinner : function(container, row)
-    {
+    addSteppedSpinner : function(container, row) {
       var spinner = new qx.ui.form.Spinner(-3000, 0, 3000).set({
         singleStep: 25
       });
@@ -68,9 +64,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       container.add(new qx.ui.basic.Label("3000"), {column: 3, row: row});
     },
 
-    addDisabledSpinner : function(container, row)
-    {
-      var spinner = new qx.ui.form.Spinner;
+    addDisabledSpinner : function(container, row) {
+      var spinner = new qx.ui.form.Spinner();
       spinner.setEnabled(false);
       container.add(new qx.ui.basic.Label("Disabled"), {column: 0, row: row});
       container.add(new qx.ui.basic.Label("0"), {column: 1, row: row});
@@ -78,8 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       container.add(new qx.ui.basic.Label("100"), {column: 3, row: row++});
     },
 
-    addFormattedSpinner : function(container, row)
-    {
+    addFormattedSpinner : function(container, row) {
       var spinner = new qx.ui.form.Spinner(0, 200, 300);
       spinner.setSingleStep(0.5);
       spinner.setWidth(70);
@@ -96,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
       container.add(new qx.ui.basic.Label("300"), {column: 3, row: row++});
     },
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var layout = new qx.ui.layout.Grid(10, 8);
@@ -108,7 +101,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Spinner",
 
       var container = new qx.ui.container.Composite(layout);
       container.setPadding(10);
-      this.getRoot().add(container, {left:0,top:0});
+      this.getRoot().add(container, {left:0, top:0});
 
       this.addSimpleSpinner(container, 0);
       this.addNonEditableSpinner(container, 1);
