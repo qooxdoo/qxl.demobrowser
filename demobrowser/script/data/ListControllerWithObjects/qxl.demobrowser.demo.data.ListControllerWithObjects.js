@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // names
@@ -81,9 +80,8 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
         converter : function(data) {
           if (data) {
             return "green";
-          } else {
+          } 
             return "red";
-          }
         }
       };
 
@@ -152,10 +150,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
        syncListDescription.setRich(true);
        syncListDescription.setWidth(600);
        syncListDescription.setValue(
-         "<b>Displaying objects in a list</b><br/>"
-         + "This list display a set of persons in a list. Every person does "
-         + "have a name and an emotion, which is displayed with the help of "
-         + " a converter by the icon. The font color shows the online status."
+         "<b>Displaying objects in a list</b><br/>" +
+         "This list display a set of persons in a list. Every person does " +
+         "have a name and an emotion, which is displayed with the help of " +
+         " a converter by the icon. The font color shows the online status."
        );
        this.getRoot().add(syncListDescription, {left: 10, top: 10});
     }

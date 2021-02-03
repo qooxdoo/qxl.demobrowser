@@ -23,17 +23,15 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this.getRoot().add(this._createVerticalLayout(), {left:20, top:20});
       this.getRoot().add(this._createHorizontalLayout(), {left:20, top:340});
     },
 
-    _createVerticalLayout : function()
-    {
-      var sliders = []
+    _createVerticalLayout : function() {
+      var sliders = [];
 
       sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
         maximum: 1000,
@@ -82,8 +80,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
 
       var col = 0;
 
-      for (var i=0; i<sliders.length; i++)
-      {
+      for (var i=0; i<sliders.length; i++) {
         var group = sliders[i];
         group.slider.setOrientation("vertical");
 
@@ -103,9 +100,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
     },
 
 
-    _createHorizontalLayout : function()
-    {
-      var sliders = []
+    _createHorizontalLayout : function() {
+      var sliders = [];
 
       sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
         maximum: 1000,
@@ -153,8 +149,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
       grid.setColumnAlign(2, "right", "bottom");
 
       var row = 0;
-      for (var i=0; i<sliders.length; i++)
-      {
+      for (var i=0; i<sliders.length; i++) {
         var group = sliders[i];
         group.slider.setOrientation("horizontal");
 
@@ -176,8 +171,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
     },
 
 
-    _createSliderGroup : function(slider)
-    {
+    _createSliderGroup : function(slider) {
       var group =
       {
         slider: slider,

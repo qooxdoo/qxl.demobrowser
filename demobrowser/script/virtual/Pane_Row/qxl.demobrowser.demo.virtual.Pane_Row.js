@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_Row",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 

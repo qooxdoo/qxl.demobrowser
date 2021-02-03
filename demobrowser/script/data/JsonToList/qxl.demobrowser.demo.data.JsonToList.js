@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToList",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create and add the list
@@ -77,13 +76,12 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToList",
       description.setRich(true);
       description.setWidth(450);
       description.setValue(
-        "<b>List bound to data in a json file</b><br/>"
-        + "Loading the json file <a href='" + url +"' target='_blank'>"
-        + "list.json</a> and bind the items to the list widget. The icons "
-        + " will be created by a converter which converts the type to an icon url."
+        "<b>List bound to data in a json file</b><br/>" +
+        "Loading the json file <a href='" + url +"' target='_blank'>" +
+        "list.json</a> and bind the items to the list widget. The icons " +
+        " will be created by a converter which converts the type to an icon url."
       );
       this.getRoot().add(description, {left: 10, top: 10});
-
     }
   }
 });

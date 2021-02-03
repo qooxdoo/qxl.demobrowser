@@ -36,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
   extend : qx.application.Standalone,
 
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
   },
 
@@ -46,13 +45,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
     /**
      * TODOC
      */
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // Enable logging in debug variant
-      if ((qx.core.Environment.get("qx.debug")))
-      {
+      if ((qx.core.Environment.get("qx.debug"))) {
         // support native logging capabilities, e.g. Firebug for Firefox
         qx.log.appender.Native;
         // support additional cross-browser console. Press F7 to toggle visibility
@@ -92,7 +89,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
 
       // Ensure that the FSM diagram gets copied during build (and cached)
       o = new qx.ui.basic.Image("demobrowser/demo/ui/FsmMiceMaze.png");
-      o = null;               // image no longer needed
+      o = null; // image no longer needed
 
       o = new qx.ui.basic.Label(description);
       o.set(
@@ -111,8 +108,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
       // Determine (randomly) the facing direction of the initial mouse
       var facing;
       var random = Math.floor(Math.random() * 4);
-      switch(random)
-      {
+      switch (random) {
       case 0:
         facing = qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH;
         break;
@@ -128,7 +124,6 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
       case 3:
         facing = qxl.demobrowser.demo.util.FSMMaze.Direction.WEST;
         break;
-
       }
 
       // Create the initial mouse
@@ -140,8 +135,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
     /**
      * TODOC
      */
-    close : function()
-    {
+    close : function() {
       this.base(arguments);
     },
 

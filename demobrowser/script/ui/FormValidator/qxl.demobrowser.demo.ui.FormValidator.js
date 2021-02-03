@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormValidator",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // create a field for a usernamen
@@ -115,7 +114,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormValidator",
         send.setEnabled(false);
         send.setLabel("Validating...");
         // return type can not be used because of async validation
-        manager.validate()
+        manager.validate();
       }, this);
 
 
@@ -146,9 +145,9 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormValidator",
       notEmptyDescription.setRich(true);
       notEmptyDescription.setWidth(400);
       notEmptyDescription.setValue(
-        "<b>Client side form validation</b><br/>"
-        + "All fields are required. Some by a custom validator, some by a "
-        + "predefined validator and some by the required flag."
+        "<b>Client side form validation</b><br/>" +
+        "All fields are required. Some by a custom validator, some by a " +
+        "predefined validator and some by the required flag."
       );
       this.getRoot().add(notEmptyDescription, {left: 20, top: 10});
     }

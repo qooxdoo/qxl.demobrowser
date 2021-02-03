@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -48,8 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // different flex dimensions
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -75,8 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // different flex dimensions + limits
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -104,8 +101,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // different flex dimensions + rounding issues
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -114,8 +110,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
         allowGrowY: false
       });
 
-      for (var i=0; i<25; i++)
-      {
+      for (var i=0; i<25; i++) {
         container.add(new qx.ui.core.Widget().set({
           decorator: "main",
           backgroundColor: "green",
@@ -127,8 +122,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // container height > layout max height
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -158,8 +152,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // container height < layout min height
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         height: 150,
@@ -189,8 +182,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Flex",
     },
 
 
-    getBox6 : function()
-    {
+    getBox6 : function() {
       // container height < layout min height, but minHeight = auto
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         height: 150,

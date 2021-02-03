@@ -46,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // table model
       var tableModel = this._tableModel = new qx.ui.table.model.Simple();
       tableModel.setColumns([ "ID", "A number", "A date", "Boolean" ]);
@@ -59,7 +58,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
       // table
       var table = new qx.ui.table.Table(tableModel).set({
         decorator: null
-      })
+      });
 
       var tcm = table.getTableColumnModel();
 
@@ -90,8 +89,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
     },
 
 
-    _handleDropRequest: function(e)
-    {
+    _handleDropRequest: function(e) {
       var type = e.getCurrentType();
       var sel = this._table.getSelectionModel().getSelectedRanges();
 
@@ -102,13 +100,10 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
 
       var selMap = [];
 
-      for (var i=0; i<sel.length; i++)
-      {
-        for (var s = sel[i].minIndex; s <= sel[i].maxIndex; s++)
-        {
+      for (var i=0; i<sel.length; i++) {
+        for (var s = sel[i].minIndex; s <= sel[i].maxIndex; s++) {
           var rowdata = this._table.getTableModel().getRowData(s);
-          if (rowdata == null)
-          {
+          if (rowdata == null) {
             continue;
           }
           rowdata.rowId = s;
@@ -119,14 +114,12 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
     },
 
 
-    _handleDrop: function(e)
-    {
-      if (e.supportsType("movetransfer"))
-      {
+    _handleDrop: function(e) {
+      if (e.supportsType("movetransfer")) {
         var data = e.getData("movetransfer");
         var dm = this._table.getTableModel();
         dm.removeRows(data[0].rowId, data.length);
-        dm.addRows(data, this._table.getFocusedRow() );
+        dm.addRows(data, this._table.getFocusedRow());
       }
     }
   },
@@ -137,8 +130,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel");
   }
 });

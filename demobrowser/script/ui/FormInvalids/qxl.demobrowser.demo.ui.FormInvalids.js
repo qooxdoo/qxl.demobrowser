@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormInvalids",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var widgets = [];
@@ -158,8 +157,8 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormInvalids",
       var listDescription = new qx.ui.basic.Label();
       listDescription.setRich(true);
       listDescription.setWidth(280);
-      listDescription.setValue("<b>Validation</b><br/>Press the button to"
-        + " invalidate all shown widgets. Try the invalid focus and tooltip.");
+      listDescription.setValue("<b>Validation</b><br/>Press the button to" +
+        " invalidate all shown widgets. Try the invalid focus and tooltip.");
       this.getRoot().add(listDescription, {left: 20, top: 10});
     }
   }

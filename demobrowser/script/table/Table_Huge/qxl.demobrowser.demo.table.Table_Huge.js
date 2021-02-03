@@ -34,11 +34,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
     ROW_COUNT : 10000,
 
 
-    createRandomRows: function(rowCount)
-    {
+    createRandomRows: function(rowCount) {
       var rowData = [];
-      for (var row = 0; row < rowCount; row++)
-      {
+      for (var row = 0; row < rowCount; row++) {
         var row1 = [];
         for (var i = 0; i < this.COL_COUNT; i++) {
           row1.push("Cell " + i + "x" + row);
@@ -48,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
       return rowData;
     },
 
-    createTable: function()
-    {
+    createTable: function() {
       // Create the initial data
       var rowData = this.createRandomRows(this.ROW_COUNT);
 
@@ -76,8 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel");
   }
 });

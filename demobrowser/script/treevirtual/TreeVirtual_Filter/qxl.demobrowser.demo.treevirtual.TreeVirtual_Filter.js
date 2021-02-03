@@ -7,8 +7,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
@@ -37,7 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
       var resizeBehavior = tree.getTableColumnModel().getBehavior();
 
       // Ensure that the tree column remains sufficiently wide
-      resizeBehavior.set(0, { width:"1*", minWidth:180  });
+      resizeBehavior.set(0, { width:"1*", minWidth:180 });
 
       hBox.add(tree);
 
@@ -65,8 +64,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
 
       te = dataModel.addBranch(te2, "Spam", true);
 
-      for (var i = 1; i < 3000; i++)
-      {
+      for (var i = 1; i < 3000; i++) {
         dataModel.addLeaf(te, "Spam Message #" + i);
       }
 
@@ -88,12 +86,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
       textField.setValue("100");
       textField.addListener("input", function() {
         dataModel.setData();
-      },this);
+      }, this);
       commandFrame.add(textField);
 
       // Set the filter
-      var filter = qx.lang.Function.bind(function(node)
-      {
+      var filter = qx.lang.Function.bind(function(node) {
         if (node.type == qx.ui.treevirtual.MTreePrimitive.Type.LEAF) {
           var label = node.label;
           return label.indexOf(textField.getValue()) != -1;

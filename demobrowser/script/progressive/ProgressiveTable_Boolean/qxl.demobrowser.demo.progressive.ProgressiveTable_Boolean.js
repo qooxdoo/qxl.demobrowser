@@ -7,8 +7,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var nextId = 0;
@@ -21,9 +20,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
                          location : "end",
                          data     : [
                                      nextId++,
-                                     (Math.floor(Math.random() * 2) == 0
-                                      ? false
-                                      : true)
+                                     (Math.floor(Math.random() * 2) != 0)
                                     ]
                        });
         }

@@ -28,13 +28,12 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // check for annimation support
       if (qx.core.Environment.get("css.animation") == null) {
-        var label = document.createElement('label');
+        var label = document.createElement("label");
         label.innerHTML = "CSS animations not supported, sorry!";
         document.body.appendChild(label);
         return;
@@ -47,9 +46,9 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation",
       }};
 
       var transform = {duration: 1000, keyFrames : {
-          0: {"scale": [1,1], "rotate" : ["0deg", "0deg"], "skew": "0deg", "translate" : "0px"},
+          0: {"scale": [1, 1], "rotate" : ["0deg", "0deg"], "skew": "0deg", "translate" : "0px"},
           50: {"scale": [1, 0.2], "rotate" : ["0deg", "90deg"], "skew": "10deg", "translate": "-50px"},
-          100: {"scale": [1,1], "rotate" : ["0deg", "0deg"], "skew": "0deg", "translate": "0px"}
+          100: {"scale": [1, 1], "rotate" : ["0deg", "0deg"], "skew": "0deg", "translate": "0px"}
         }
       };
 
@@ -177,7 +176,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation",
           (function(animation, test) {
             return function(e) {
               qx.bom.element.Animation.animate(e.target, animation, test == "Fast Width" ? 300 : undefined);
-            }
+            };
           })(tests[test], test)
         );
       }

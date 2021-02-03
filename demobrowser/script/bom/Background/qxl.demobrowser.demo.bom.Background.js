@@ -30,8 +30,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Background",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var resolved = qx.util.ResourceManager.getInstance().toUri("qx/icon/Tango/48/devices/drive-optical.png");

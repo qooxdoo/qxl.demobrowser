@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.TextField",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var rootContainer = new qx.ui.container.Composite(new qx.ui.layout.HBox());
@@ -78,7 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.TextField",
 
       var btnLiveUpdate = new qx.ui.form.Button("Toggle live update");
       btnLiveUpdate.addListener("execute", function() {
-        input1.toggleLiveUpdate()
+        input1.toggleLiveUpdate();
       });
       controls.add(btnLiveUpdate);
 

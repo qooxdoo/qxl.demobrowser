@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(container);
 
       container.add(this.getGrid1());
@@ -43,8 +42,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
     },
 
 
-    getGrid1 : function()
-    {
+    getGrid1 : function() {
       // auto size
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
@@ -75,8 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
     },
 
 
-    getGrid2 : function()
-    {
+    getGrid2 : function() {
       // flex columns
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
@@ -90,10 +87,10 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
       var layout = new qx.ui.layout.Grid();
       layout.setColumnFlex(1, 2);
       layout.setRowFlex(1, 3);
-      layout.setColumnMinWidth(0,70);
-      layout.setColumnMinWidth(1,100);
-      layout.setColumnMaxWidth(2,150);
-      layout.setRowMinHeight(0,70);
+      layout.setColumnMinWidth(0, 70);
+      layout.setColumnMinWidth(1, 100);
+      layout.setColumnMaxWidth(2, 150);
+      layout.setRowMinHeight(0, 70);
       layout.setSpacing(5);
       box.setLayout(layout);
 

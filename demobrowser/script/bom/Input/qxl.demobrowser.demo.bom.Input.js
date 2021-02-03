@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Input",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var textField = qx.bom.Input.create("text");
@@ -86,6 +85,9 @@ qx.Class.define("qxl.demobrowser.demo.bom.Input",
         value : "val2"
       });
 
+      /**
+       * @param e
+       */
       function radioChange(e) {
         this.debug("Changed radio: " + e.getTarget().name + " = " + e.getData());
       }
@@ -100,8 +102,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Input",
 
       var selectBox1 = qx.bom.Input.create("select");
       var op;
-      for (var i=0; i<10; i++)
-      {
+      for (var i=0; i<10; i++) {
         op = document.createElement("option");
         op.value = "VAL" + i;
         op.appendChild(document.createTextNode("Value " + i));
@@ -122,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Input",
         size : 3
       });
       var op;
-      for (var i=0; i<10; i++)
-      {
+      for (var i=0; i<10; i++) {
         op = document.createElement("option");
         op.value = "VAL" + i;
         op.appendChild(document.createTextNode("Value " + i));
@@ -145,8 +145,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Input",
         multiple : true
       });
       var op;
-      for (var i=0; i<10; i++)
-      {
+      for (var i=0; i<10; i++) {
         op = document.createElement("option");
         op.value = "VAL" + i;
         op.appendChild(document.createTextNode("Value " + i));

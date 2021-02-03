@@ -46,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
@@ -82,10 +81,9 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
     },
 
 
-    createControls : function()
-    {
+    createControls : function() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button, part, checkBox;
+      var button; var part; var checkBox;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
@@ -124,8 +122,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
       part.add(button);
 
       button = new qx.ui.toolbar.Button("Show selection", "icon/22/status/dialog-information.png");
-      button.addListener("execute", function(evt)
-      {
+      button.addListener("execute", function(evt) {
         var selection = [];
         table.getSelectionModel().iterateSelection(function(ind) {
           selection.push(ind + "");
@@ -159,47 +156,37 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
         value: table.getKeepFirstVisibleRowComplete(),
         toolTip: new qx.ui.tooltip.ToolTip("Demonstrate use of alternate sorting algorithm.")
       });
-      checkBox.addListener("changeValue", function(evt)
-      {
-        if (evt.getData())
-        {
-          var ascending = function(row1, row2, columnIndex)
-          {
+      checkBox.addListener("changeValue", function(evt) {
+        if (evt.getData()) {
+          var ascending = function(row1, row2, columnIndex) {
             var obj1 = row1[columnIndex];
             var obj2 = row2[columnIndex];
-            if (obj1 % 2 == 1 && obj2 % 2 == 0)
-            {
+            if (obj1 % 2 == 1 && obj2 % 2 == 0) {
               return 1;
             }
-            if (obj2 % 2 == 1 && obj1 % 2 == 0)
-            {
+            if (obj2 % 2 == 1 && obj1 % 2 == 0) {
               return -1;
             }
             return (obj1 > obj2) ? 1 : ((obj1 == obj2) ? 0 : -1);
           };
 
-          var descending = function(row1, row2, columnIndex)
-          {
+          var descending = function(row1, row2, columnIndex) {
             var obj1 = row1[columnIndex];
             var obj2 = row2[columnIndex];
-            if (obj1 % 2 == 1 && obj2 % 2 == 0)
-            {
+            if (obj1 % 2 == 1 && obj2 % 2 == 0) {
               return -1;
             }
-            if (obj2 % 2 == 1 && obj1 % 2 == 0)
-            {
+            if (obj2 % 2 == 1 && obj1 % 2 == 0) {
               return 1;
             }
             return (obj1 < obj2) ? 1 : ((obj1 == obj2) ? 0 : -1);
-          }
+          };
 
           table.getTableModel().setSortMethods(0, {
             ascending  : ascending,
             descending : descending
           });
-        }
-        else
-        {
+        } else {
           table.getTableModel().setSortMethods(0, null);
         }
       }, checkBox);
@@ -215,8 +202,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("_tableModel");
   }
 });

@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -47,16 +46,15 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent",
       var mouseDiv = document.getElementById("mouse");
 
       var events = ["mousedown", "mouseup", "click", "dblclick", "contextmenu", "mousemove", "mouseover", "mouseout"];
-      for (var i=0; i<events.length; i++)
-      {
-        var elem = document.getElementById("check_" + events[i])
+      for (var i=0; i<events.length; i++) {
+        var elem = document.getElementById("check_" + events[i]);
         if (elem.checked) {
           qx.bom.Element.addListener(
             mouseDiv,
             events[i],
             this.logMouseEvent,
             this
-          )
+          );
         }
         qx.bom.Element.addListener(elem, "change", this.__changeCheckbox, this);
       }
@@ -76,14 +74,15 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent",
       qx.bom.Element.addListener(
         mouseDiv,
         "losecapture",
-        function(e) { captureDiv.checked = false; },
+        function(e) {
+ captureDiv.checked = false; 
+},
         this
       );
     },
 
 
-    __changeCheckbox : function(e)
-    {
+    __changeCheckbox : function(e) {
       var type = e.getTarget().id.split("_")[1];
       var checked = e.getTarget().checked;
       var mouseDiv = document.getElementById("mouse");
@@ -94,23 +93,19 @@ qx.Class.define("qxl.demobrowser.demo.event.MouseEvent",
           type,
           this.logMouseEvent,
           this
-        )
-      }
-      else
-      {
+        );
+      } else {
         qx.bom.Element.removeListener(
           mouseDiv,
           type,
           this.logMouseEvent,
           this
-        )
-
+        );
       }
     },
 
 
-    logMouseEvent: function(mouseEvent)
-    {
+    logMouseEvent: function(mouseEvent) {
       mouseEvent.preventDefault();
 
       this._log([

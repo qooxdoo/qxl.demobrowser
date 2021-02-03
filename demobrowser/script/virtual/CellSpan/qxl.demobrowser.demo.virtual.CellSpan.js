@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
   {
     __cellRenderer : null,
 
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
@@ -73,8 +72,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
     },
 
 
-    getHtmlCellSpanScroller : function()
-    {
+    getHtmlCellSpanScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 50, 120);
       var pane = scroller.getPane();
 
@@ -95,16 +93,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
     },
 
 
-    getCellProperties : function(row, column)
-    {
+    getCellProperties : function(row, column) {
       var color = (row + column) % 2 == 0 ? "yellow" : "green";
       this.__cellRenderer.setBackgroundColor(color);
       return this.__cellRenderer.getCellProperties(row + " / " + column);
     },
 
 
-    getWidgetCellSpanScroller : function()
-    {
+    getWidgetCellSpanScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 50, 120);
       var pane = scroller.getPane();
 
@@ -127,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
       return scroller;
     },
 
-    getCellWidget : function(row, column)
-    {
+    getCellWidget : function(row, column) {
       var widget = this._pool.pop() || new qx.ui.basic.Label().set({
         allowGrowX: true
       });
@@ -151,8 +146,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
   *****************************************************************************
   */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__cellRenderer");
     this._pool = null;
   }

@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_HBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var root = this.getRoot();
@@ -34,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_HBox",
     },
 
 
-    getSpacerWithoutFlex : function()
-    {
+    getSpacerWithoutFlex : function() {
       // spacer without flex
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
@@ -56,8 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_HBox",
       return box;
     },
 
-    getSpacerWithFlex : function()
-    {
+    getSpacerWithFlex : function() {
       // spacer with flex
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
@@ -78,8 +75,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_HBox",
       return box;
     },
 
-    getAddRemoveSpacer : function()
-    {
+    getAddRemoveSpacer : function() {
       // addSpacer and remove
       var box = new qx.ui.container.Composite().set({
         decorator: "main",

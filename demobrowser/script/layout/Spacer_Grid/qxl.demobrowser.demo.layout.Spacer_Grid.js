@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_Grid",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var layout = new qx.ui.layout.VBox();
@@ -44,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_Grid",
     },
 
 
-    getGrid1 : function()
-    {
+    getGrid1 : function() {
       // auto size
       var box = new qx.ui.container.Composite(new qx.ui.layout.Grid()).set({
         decorator: "main",
@@ -70,8 +68,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Spacer_Grid",
       return box;
     },
 
-    getGrid2 : function()
-    {
+    getGrid2 : function() {
       // auto size
       var box = new qx.ui.container.Composite(new qx.ui.layout.Grid()).set({
         decorator: "main",

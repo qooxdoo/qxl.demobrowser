@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Canvas",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var label = new qx.ui.basic.Label("Resize the windows to see the effect.");
@@ -35,17 +34,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.Canvas",
       });
       win1.setLayout(new qx.ui.layout.Canvas());
 
-      if (!qx.core.Environment.get("html.canvas"))
-      {
+      if (!qx.core.Environment.get("html.canvas")) {
         var canvas1 = new qx.ui.container.Composite(new qx.ui.layout.HBox());
         canvas1.add(new qx.ui.basic.Label("Canvas is not supported by this browser!").set({
           rich : true,
           alignX: "center",
           alignY: "middle"
         }));
-      }
-      else
-      {
+      } else {
         var canvas1 = new qx.ui.embed.Canvas().set({
           canvasWidth: 200,
           canvasHeight: 200,
@@ -65,17 +61,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.Canvas",
       });
       win2.setLayout(new qx.ui.layout.Canvas());
 
-      if (!qx.core.Environment.get("html.canvas"))
-      {
+      if (!qx.core.Environment.get("html.canvas")) {
         var canvas2 = new qx.ui.container.Composite(new qx.ui.layout.HBox());
         canvas2.add(new qx.ui.basic.Label("Canvas is not support by this browser!").set({
           rich : true,
           alignX: "center",
           alignY: "middle"
         }));
-      }
-      else
-      {
+      } else {
         var canvas2 = new qx.ui.embed.Canvas().set({
           canvasWidth: 200,
           canvasHeight: 200,
@@ -90,16 +83,15 @@ qx.Class.define("qxl.demobrowser.demo.widget.Canvas",
     },
 
 
-    draw : function(e)
-    {
+    draw : function(e) {
       var data = e.getData();
       var ctx = data.context;
 
       ctx.fillStyle = "rgb(200,0,0)";
-      ctx.fillRect (20, 20, 105, 100);
+      ctx.fillRect(20, 20, 105, 100);
 
       ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-      ctx.fillRect (70, 70, 105, 100);
+      ctx.fillRect(70, 70, 105, 100);
     }
   }
 });

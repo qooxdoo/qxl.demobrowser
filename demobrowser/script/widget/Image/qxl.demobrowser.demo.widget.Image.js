@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this._initFont();
@@ -45,7 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
       layout.setSpacing(20);
 
       var container = new qx.ui.container.Composite(layout);
-      this.getRoot().add(container, {left:20,top:20});
+      this.getRoot().add(container, {left:20, top:20});
 
       container.add(new qx.ui.basic.Image("qxl/demobrowser/demo/icons/multimedia-player.png"));
 
@@ -93,8 +92,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
       this.getRoot().add(btn, {left:20, top:180});
     },
 
-    _initFont : function()
-    {
+    _initFont : function() {
       var currentFont = qx.theme.manager.Font.getInstance().getTheme();
 
       // Add font definitions
@@ -109,7 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image",
               {
                 family: "FontAwesome",
                 source: [
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf" , "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
                 ]
               }
             ]

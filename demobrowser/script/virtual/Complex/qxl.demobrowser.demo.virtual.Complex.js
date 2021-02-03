@@ -38,8 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Complex",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Complex",
       scroller.getPane().setWidth(450);
 
       // change 8 sizes
-      for (var i=2; i<10; i++)
-      {
+      for (var i=2; i<10; i++) {
         scroller.getPane().getRowConfig().setItemSize(i, 50 + Math.round(Math.random() * 40));
         scroller.getPane().getColumnConfig().setItemSize(i, 50 + Math.round(Math.random() * 80));
       }
@@ -56,7 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Complex",
       this.getRoot().add(scroller, {left : 20, top : 10});
       scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "rgb(238, 243, 255)"));
       scroller.getPane().addLayer(new qx.ui.virtual.layer.GridLines("horizontal"));
-      scroller.getPane().addLayer(new qxl.demobrowser.demo.virtual.DemoLayer);
+      scroller.getPane().addLayer(new qxl.demobrowser.demo.virtual.DemoLayer());
 
       // Creates the prefetch behavior
       new qx.ui.virtual.behavior.Prefetch(

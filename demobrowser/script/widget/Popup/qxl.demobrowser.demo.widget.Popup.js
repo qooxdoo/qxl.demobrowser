@@ -32,8 +32,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var box = new qx.ui.layout.HBox();
@@ -41,7 +40,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
 
       var container = new qx.ui.container.Composite(box).set({
         padding: 20
-      })
+      });
       this.getRoot().add(container);
 
       container.add(this._getPopupButton1());
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
     },
 
 
-    _getPopupButton1 : function()
-    {
+    _getPopupButton1 : function() {
       var button = new qx.ui.form.Button("Open Popup #1");
 
       var popup = new qx.ui.popup.Popup(new qx.ui.layout.Canvas()).set({
@@ -62,8 +60,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
 
       popup.add(new qx.ui.basic.Atom("Hello World #1", "icon/32/apps/media-photo-album.png"));
 
-      button.addListener("pointerdown", function(e)
-      {
+      button.addListener("pointerdown", function(e) {
         popup.placeToPointer(e);
         popup.show();
       }, this);
@@ -72,8 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
     },
 
 
-    _getPopupButton2 : function()
-    {
+    _getPopupButton2 : function() {
       var button = new qx.ui.form.Button("Open Popup #2");
 
       var popup = new qx.ui.popup.Popup(new qx.ui.layout.Canvas()).set({
@@ -85,8 +81,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Popup",
 
       popup.add(new qx.ui.basic.Atom("Hello World #1", "icon/32/apps/media-photo-album.png"));
 
-      button.addListener("pointerdown", function(e)
-      {
+      button.addListener("pointerdown", function(e) {
         popup.placeToPointer(e);
         popup.show();
       }, this);

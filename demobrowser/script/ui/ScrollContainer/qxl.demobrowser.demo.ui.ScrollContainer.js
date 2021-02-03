@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.ScrollContainer",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scrollContainer = new qx.ui.container.Scroll();
@@ -62,17 +61,13 @@ qx.Class.define("qxl.demobrowser.demo.ui.ScrollContainer",
       scrollContainer.addListener("scrollAnimationYEnd", function() {
         ani.setEnabled(true);
       });
-
     },
 
-    generateBoxes : function()
-    {
+    generateBoxes : function() {
       var box = new qx.ui.container.Composite(new qx.ui.layout.Grid());
 
-      for (var y=0; y<20; y++)
-      {
-        for (var x=0; x<10; x++)
-        {
+      for (var y=0; y<20; y++) {
+        for (var x=0; x<10; x++) {
           box.add((new qx.ui.core.Widget()).set({
             backgroundColor : ((x+y) % 2 == 0) ? "red" : "blue",
             width : 60,

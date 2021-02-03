@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selection",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       /* ***************************************
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selection",
       qx.dom.Element.insertEnd(getSelDocumentButton, textContainer);
 
       var setSelDocumentButton = qx.bom.Input.create("button", { value : "setSelectionDocument", style : "margin: 4px"});
-      qx.bom.Element.addListener(setSelDocumentButton, "tap", function(e)
-      {
+      qx.bom.Element.addListener(setSelDocumentButton, "tap", function(e) {
         qx.bom.Selection.set(document.getElementById("plaintext").firstChild, 0, 4);
         this.debug(qx.bom.Selection.getLength(document));
       }, this);
@@ -135,8 +133,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selection",
     /* ***************************************
      *  EVENT LISTENER
      * ************************************* */
-    _getSelection : function(e)
-    {
+    _getSelection : function(e) {
       document.getElementById("results").innerHTML = qx.bom.Selection.get(this) +
                                                      "<br/>" +
                                                      qx.bom.Selection.getLength(this);
@@ -150,8 +147,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Selection",
       document.getElementById("results").innerHTML = qx.bom.Selection.getEnd(this);
     },
 
-    _setSelection : function(e)
-    {
+    _setSelection : function(e) {
       qx.bom.Selection.set(this, 0, 7);
     }
   },

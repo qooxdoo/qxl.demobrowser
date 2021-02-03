@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -66,8 +64,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // container wider, horizontal alignment
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -84,8 +81,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // container higher, vertical alignment = bottom
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -106,8 +102,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // container higher, vertical alignment = middle
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -128,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // auto size + vertical margins
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5)).set({
         decorator: "main",
@@ -162,8 +156,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox6 : function()
-    {
+    getBox6 : function() {
       // manual height + vertical margins + alignment=bottom
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -201,8 +194,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox",
     },
 
 
-    getBox7 : function()
-    {
+    getBox7 : function() {
       // manual height + vertical margins + alignment=middle
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({

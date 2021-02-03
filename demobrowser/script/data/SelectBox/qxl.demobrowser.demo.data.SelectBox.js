@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SelectBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create a dummy model
@@ -84,8 +83,8 @@ qx.Class.define("qxl.demobrowser.demo.data.SelectBox",
       syncBoxDescription.setRich(true);
       syncBoxDescription.setWidth(240);
       syncBoxDescription.setValue(
-        "<b>Synchronized Selection</b><br/>"
-        + "Bound to the same data and share the selection. The label is also bound to the selection."
+        "<b>Synchronized Selection</b><br/>" +
+        "Bound to the same data and share the selection. The label is also bound to the selection."
       );
       this.getRoot().add(syncBoxDescription, {left: 10, top: 10});
 
@@ -94,8 +93,8 @@ qx.Class.define("qxl.demobrowser.demo.data.SelectBox",
       controlDescription.setRich(true);
       controlDescription.setWidth(130);
       controlDescription.setValue(
-        "<b>Change Selection</b><br/>"
-        + "Type in the textfield or set the selection with the button."
+        "<b>Change Selection</b><br/>" +
+        "Type in the textfield or set the selection with the button."
       );
       this.getRoot().add(controlDescription, {left: 300, top: 10});
     }

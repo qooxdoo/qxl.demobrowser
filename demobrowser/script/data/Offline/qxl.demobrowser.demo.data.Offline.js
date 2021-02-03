@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Offline",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // show a warning if html5 local storage is not supported
@@ -57,7 +56,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Offline",
       if (store.getModel() == null) {
         // create a empty model
         var model = qx.data.marshal.Json.createModel(["initial entry"]);
-        store.setModel(model)
+        store.setModel(model);
       }
 
       // connect the store and the controller
@@ -104,9 +103,9 @@ qx.Class.define("qxl.demobrowser.demo.data.Offline",
       description.setRich(true);
       description.setWidth(300);
       description.setValue(
-        "<b>Offline data store</b><br/>"
-        + "The added data will be keept on reload. Just add or remove strings "
-        + "and reload to see the result."
+        "<b>Offline data store</b><br/>" +
+        "The added data will be keept on reload. Just add or remove strings " +
+        "and reload to see the result."
       );
       this.getRoot().add(description, {left: 10, top: 10});
     }

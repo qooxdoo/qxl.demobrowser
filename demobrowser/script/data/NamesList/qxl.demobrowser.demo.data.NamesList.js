@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.data.NamesList",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create and add the list
@@ -76,14 +75,13 @@ qx.Class.define("qxl.demobrowser.demo.data.NamesList",
       description.setRich(true);
       description.setWidth(470);
       description.setValue(
-        "<b>List bound to data in a json file</b><br/>"
-        + "Loading the json file <a href='" + url +"' target='_blank'>"
-        + "persons.json</a> and bind the items to the list widget. In the "
-        + "converter for the label, the names will be set to both, the first "
-        + "and last name."
+        "<b>List bound to data in a json file</b><br/>" +
+        "Loading the json file <a href='" + url +"' target='_blank'>" +
+        "persons.json</a> and bind the items to the list widget. In the " +
+        "converter for the label, the names will be set to both, the first " +
+        "and last name."
       );
       this.getRoot().add(description, {left: 10, top: 10});
-
     }
   }
 });

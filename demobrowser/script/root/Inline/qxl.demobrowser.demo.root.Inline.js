@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Inline",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var isle = new qx.ui.root.Inline(document.getElementById("isle")).set({

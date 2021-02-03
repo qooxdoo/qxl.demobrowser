@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._manager = new qx.ui.command.GroupManager();
@@ -42,8 +41,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
     },
 
 
-    _createWidgets : function()
-    {
+    _createWidgets : function() {
       var tabview = new qx.ui.tabview.TabView();
 
       var page1 = new qx.ui.tabview.Page("Page1 - press 5 to change color");
@@ -67,8 +65,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
     },
 
 
-    getGroupManager : function()
-    {
+    getGroupManager : function() {
       return this._manager;
     }
   }
@@ -83,8 +80,7 @@ qx.Class.define("ColorSwitch",
   extend : qx.ui.container.Composite,
 
 
-  construct : function(controller)
-  {
+  construct : function(controller) {
     this.base(arguments);
     this.setLayout(new qx.ui.layout.VBox(15));
     this.setPadding(25);
@@ -115,8 +111,7 @@ qx.Class.define("ColorSwitch",
     _group : null,
 
 
-    _createWidgets : function()
-    {
+    _createWidgets : function() {
       var btn = new qx.ui.form.TextField();
       btn.setPlaceholder("If focused here, all commands will be disabled! Please press key \"5\"!");
       btn.addListener("focusin", this._blockCommands, this);
@@ -133,26 +128,22 @@ qx.Class.define("ColorSwitch",
     },
 
 
-    toggleColor : function(target, command)
-    {
+    toggleColor : function(target, command) {
       this.setBackgroundColor(this.getBackgroundColor() == "#ABEFEF" ? "#ABEFAB" : "#ABEFEF");
     },
 
 
-    _onAppear : function(e)
-    {
+    _onAppear : function(e) {
       this._controller.getGroupManager().setActive(this._group);
     },
 
 
-    _blockCommands : function(e)
-    {
+    _blockCommands : function(e) {
       this._controller.getGroupManager().block();
     },
 
 
-    _unblockCommands : function(e)
-    {
+    _unblockCommands : function(e) {
       this._controller.getGroupManager().unblock();
     }
   }

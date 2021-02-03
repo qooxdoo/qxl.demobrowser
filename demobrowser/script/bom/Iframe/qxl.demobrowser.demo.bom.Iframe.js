@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Iframe",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var iframe = qx.bom.Iframe.create({

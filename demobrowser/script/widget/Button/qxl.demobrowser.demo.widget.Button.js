@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var box = new qx.ui.layout.HBox();
@@ -44,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
 
       var container = new qx.ui.container.Composite(box);
       container.setPadding(20);
-      this.getRoot().add(container, {left:0,top:0});
+      this.getRoot().add(container, {left:0, top:0});
 
       this.addNormalButtons(container);
       this.addToggleButton(container);
@@ -54,8 +53,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
     },
 
 
-    addNormalButtons : function(container)
-    {
+    addNormalButtons : function(container) {
       var btn1 = new qx.ui.form.Button("Button A", "icon/22/apps/media-video-player.png");
       container.add(btn1);
 
@@ -65,8 +63,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
     },
 
 
-    addToggleButton : function(container)
-    {
+    addToggleButton : function(container) {
       var button = new qx.ui.form.ToggleButton("Toggle Button", "icon/22/apps/internet-web-browser.png");
       button.focus();
       container.add(button);
@@ -77,8 +74,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
     },
 
 
-    addToggleButtonGroup: function(container)
-    {
+    addToggleButtonGroup: function(container) {
       var button1 = new qx.ui.form.ToggleButton("On");
       var button2 = new qx.ui.form.ToggleButton("Off");
 
@@ -90,8 +86,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
     },
 
 
-    addRepeatButton : function(container)
-    {
+    addRepeatButton : function(container) {
       var button = new qx.ui.form.RepeatButton(null, "icon/22/actions/list-add.png");
       container.add(button);
 
@@ -103,16 +98,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
       container.add(label);
 
       // Listener
-      button.addListener("execute", function()
-      {
+      button.addListener("execute", function() {
         var tempValue = parseInt(label.getValue()) + 1;
         label.setValue(tempValue.toString());
       });
     },
 
 
-    addHoverButton : function(container)
-    {
+    addHoverButton : function(container) {
       var button = new qx.ui.form.HoverButton("Hover").set({
         padding: 10,
         backgroundColor: "#AAA"
@@ -127,8 +120,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Button",
       container.add(label);
 
       // Listener
-      button.addListener("execute", function()
-      {
+      button.addListener("execute", function() {
         var tempValue = parseInt(label.getValue()) + 1;
         label.setValue(tempValue.toString());
       });

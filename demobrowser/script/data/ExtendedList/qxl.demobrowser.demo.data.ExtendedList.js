@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedList",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // names
@@ -124,9 +123,9 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedList",
        syncListDescription.setRich(true);
        syncListDescription.setWidth(410);
        syncListDescription.setValue(
-         "<b>Displaying Checkboxes in a list</b><br/>"
-         + "This list display a set of persons in a list as checkbox. Every "
-         + "person does have a name as label and an online status as checkbox."
+         "<b>Displaying Checkboxes in a list</b><br/>" +
+         "This list display a set of persons in a list as checkbox. Every " +
+         "person does have a name as label and an online status as checkbox."
        );
        this.getRoot().add(syncListDescription, {left: 10, top: 10});
     }

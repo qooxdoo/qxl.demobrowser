@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Label",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
@@ -75,13 +74,11 @@ qx.Class.define("qxl.demobrowser.demo.widget.Label",
     },
 
 
-    createConfigureButton : function(widget, caption)
-    {
+    createConfigureButton : function(widget, caption) {
       var button = new qx.ui.form.Button(caption);
 
       var win;
-      button.addListener("execute", function()
-      {
+      button.addListener("execute", function() {
         if (!win) {
           win = this.createEditDialog(widget, caption);
         }
@@ -92,8 +89,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Label",
     },
 
 
-    createEditDialog : function(widget, caption)
-    {
+    createEditDialog : function(widget, caption) {
       var win = new qx.ui.window.Window(caption).set({
         allowMinimize: false,
         showMinimize: false,

@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Video",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       var doc = this.getRoot();
 
@@ -45,14 +44,11 @@ qx.Class.define("qxl.demobrowser.demo.bom.Video",
 
       if (qx.core.Environment.get("html.video.h264")) {
         var videoUrl = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/media/qx.m4v");
-      }
-      else if(qx.core.Environment.get("html.video.webm")) {
+      } else if (qx.core.Environment.get("html.video.webm")) {
         var videoUrl = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/media/qx.webm");
-      }
-      else if(qx.core.Environment.get("html.video.ogg")) {
+      } else if (qx.core.Environment.get("html.video.ogg")) {
         var videoUrl = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/media/qx.ogv");
-      }
-      else {
+      } else {
         doc.add(new qx.ui.basic.Label("It seems that your browser doesn't support HTML5 video", {left: 10, top: 10}));
         return;
       }
@@ -133,7 +129,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.Video",
           play.resetValue();
         }
       }, this);
-
     }
   }
 });

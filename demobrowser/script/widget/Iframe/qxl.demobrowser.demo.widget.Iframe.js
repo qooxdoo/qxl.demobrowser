@@ -29,8 +29,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Iframe",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
 

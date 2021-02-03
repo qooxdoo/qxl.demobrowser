@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWith3Widgets",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the data
@@ -122,12 +121,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWith3Widgets",
        commonDescription.setRich(true);
        commonDescription.setWidth(360);
        commonDescription.setValue(
-         "All 3 widgets share the same data model. The List and the SelectBox "
-         + "also share the same selection."
+         "All 3 widgets share the same data model. The List and the SelectBox " +
+         "also share the same selection."
         );
        this.getRoot().add(commonDescription, {left: 20, top: 30});
-
-
     }
   }
 });

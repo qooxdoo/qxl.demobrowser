@@ -31,8 +31,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Scroll",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create an array with 30 numbers in it
@@ -55,7 +54,6 @@ qx.Class.define("qxl.demobrowser.demo.animation.Scroll",
           q(".list").removeClass("scrolling");
         });
       });
-
     },
 
 

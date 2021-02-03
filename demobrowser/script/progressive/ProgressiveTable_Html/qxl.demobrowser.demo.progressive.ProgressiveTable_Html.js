@@ -7,12 +7,10 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Html",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
-      var createRow = function(html, height)
-      {
+      var createRow = function(html, height) {
         var ret =
         {
           renderer : "row",

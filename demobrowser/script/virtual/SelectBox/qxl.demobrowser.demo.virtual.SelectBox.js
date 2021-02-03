@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -58,16 +57,16 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       incrementalSearch.setPadding(20);
       incrementalSearch.add(this.createBox8());
       incrementalSearch.add(this.createBox9());
+      incrementalSearch.add(this.createBox10());
 
       container.add(standard, {left : 20, top : 20});
       container.add(advanced, {left : 20, top : 200});
-      container.add(incrementalSearch,   {left : 20, top : 380});
+      container.add(incrementalSearch, {left : 20, top : 380});
       this.getRoot().add(scroller, {edge : 0});
     },
 
 
-    createBox1 : function()
-    {
+    createBox1 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Simple"));
 
@@ -94,8 +93,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     },
 
 
-    createBox2 : function()
-    {
+    createBox2 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Long text"));
 
@@ -112,8 +110,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       // Bind selection with tooltip
       selectBox.bind("selection[0]", selectBox, "toolTipText", null);
       var delegate = {
-        bindItem : function(controller, item, id)
-        {
+        bindItem : function(controller, item, id) {
           controller.bindDefaultProperties(item, id);
           controller.bindProperty("", "toolTipText", null, item, id);
         }
@@ -124,16 +121,15 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     },
 
 
-    createBox3 : function()
-    {
+    createBox3 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("With icons"));
 
       var iconNames = [ "audio-card", "audio-input-microphone", "battery",
-                        "camera-photo","camera-web","computer","display",
-                        "drive-harddisk","drive-optical","input-keyboard",
-                        "input-mouse","media-flash","media-optical","multimedia-player",
-                        "network-wired","network-wireless","pda","phone","printer" ];
+                        "camera-photo", "camera-web", "computer", "display",
+                        "drive-harddisk", "drive-optical", "input-keyboard",
+                        "input-mouse", "media-flash", "media-optical", "multimedia-player",
+                        "network-wired", "network-wireless", "pda", "phone", "printer" ];
 
       var iconPrefix = "icon/16/devices/";
       var iconPostfix = ".png";
@@ -161,8 +157,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     },
 
 
-    createBox4 : function()
-    {
+    createBox4 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Empty Item"));
 
@@ -182,8 +177,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     },
 
 
-    createBox5 : function()
-    {
+    createBox5 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Sorted"));
 
@@ -204,15 +198,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
         sorter : function(a, b) {
           return a < b ? 1 : a > b ? -1 : 0;
         }
-      }
+      };
       selectBox.setDelegate(delegate);
 
       return container;
     },
 
 
-    createBox6 : function()
-    {
+    createBox6 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Filtered"));
 
@@ -233,15 +226,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
         filter : function(data) {
           return ((parseInt(data.slice(5, data.length), 10)) % 2 == 1);
         }
-      }
+      };
       selectBox.setDelegate(delegate);
 
       return container;
     },
 
 
-    createBox7 : function()
-    {
+    createBox7 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       container.add(new qx.ui.basic.Label("Grouped with Persons"));
 
@@ -263,13 +255,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       // Creates the delegate for sorting
       var delegate = {
         // Sorts the model data by first name
-        sorter : function(a, b)
-        {
+        sorter : function(a, b) {
           a = a.getFirstname();
           b = b.getFirstname();
 
           return a > b ? 1 : a < b ? -1 : 0;
-
         },
 
         // Assign the group name for each item (fist char form first name)
@@ -283,44 +273,65 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     },
 
 
-    createBox8 : function()
-    {
+    createBox8 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
-      container.add(new qx.ui.basic.Label("Incremental Search"));
+      container.add(new qx.ui.basic.Label("Incremental Search, plain highlighting"));
 
       // Creates the model data
       var rawData = [
-        'Elm street', 'Abbey road', 'Route 61', 'Central station', 'Central Park',
-        'Park Avenue', 'Broadway', 'Hohle Gasse', 'Überlandstrasse'
+        "Elm street", "Abbey road", "Route 61", "Central station", "Central Park",
+        "Park Avenue", "Broadway", "Hohle Gasse", "Überlandstrasse"
       ];
-      var model   = qx.data.marshal.Json.createModel(rawData);
+      var model = qx.data.marshal.Json.createModel(rawData);
 
       // Creates the select box
-      var selectBox = new qx.ui.form.VirtualSelectBox(model);
-      selectBox.setIncrementalSearch(true);
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : "plain"
+      });
       container.add(selectBox);
 
       return container;
     },
 
 
-    createBox9 : function()
-    {
+    createBox9 : function() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
-      container.add(new qx.ui.basic.Label("Incremental Search, rich labels"));
+      container.add(new qx.ui.basic.Label("Incremental Search, html highlighting"));
 
       // Creates the model data
       var rawData = [
-        'Elm street', 'Abbey road', 'Route 61', 'Central station', 'Central Park',
-        'Park Avenue', 'Broadway', 'Hohle Gasse', 'Überlandstrasse'
+        "Elm street", "Abbey road", "Route 61", "Central station", "Central Park",
+        "Park Avenue", "Broadway", "Hohle Gasse", "Überlandstrasse"
       ];
-      var model   = qx.data.marshal.Json.createModel(rawData);
+      var model = qx.data.marshal.Json.createModel(rawData);
 
       // Creates the select box
-      var selectBox = new qx.ui.form.VirtualSelectBox(model);
-      selectBox.setIncrementalSearch(true);
-      // Set labels and highlighting rich (HTML formatting)
-      if (selectBox.setRich) selectBox.setRich(true);
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : "html"
+      });
+      container.add(selectBox);
+
+      return container;
+    },
+
+    createBox10 : function() {
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      container.add(new qx.ui.basic.Label("Incremental Search, no highlighting"));
+
+      // Creates the model data
+      var rawData = [
+        "Elm street", "Abbey road", "Route 61", "Central station", "Central Park",
+        "Park Avenue", "Broadway", "Hohle Gasse", "Überlandstrasse"
+      ];
+      var model = qx.data.marshal.Json.createModel(rawData);
+
+      // Creates the select box
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : "none"
+      });
       container.add(selectBox);
 
       return container;

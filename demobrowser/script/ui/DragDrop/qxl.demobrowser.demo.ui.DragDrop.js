@@ -36,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
     __list : null,
     __currentListItem : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var root = this.getRoot();
@@ -75,8 +74,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
       check.setValue(true);
       container.add(check, { left : 20, top : 260 });
 
-      source.addListener("dragstart", function(e)
-      {
+      source.addListener("dragstart", function(e) {
         // dragstart is cancelable, you can put any runtime checks
         // here to dynamically disallow the drag feature on a widget
         if (!check.isValue()) {
@@ -92,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         e.addAction("move");
       });
 
-      source.addListener("droprequest", function(e)
-      {
+      source.addListener("droprequest", function(e) {
         this.debug("Related of droprequest: " + e.getRelatedTarget());
 
         var action = e.getCurrentAction();
@@ -107,13 +104,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
           selection = [dragTarget];
         }
 
-        switch(type)
-        {
+        switch (type) {
           case "items":
             result = selection;
 
-            if (action == "copy")
-            {
+            if (action == "copy") {
               var copy = [];
               for (var i=0, l=result.length; i<l; i++) {
                 copy[i] = result[i].clone();
@@ -128,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         }
 
         // Remove selected items on move
-        if (action == "move")
-        {
+        if (action == "move") {
           for (var i=0, l=selection.length; i<l; i++) {
             this.remove(selection[i]);
           }
@@ -156,8 +150,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
       targetSimple.setSelectionMode("multi");
       container.add(targetSimple, { left : 140, top: 40 });
 
-      targetSimple.addListener("drop", function(e)
-      {
+      targetSimple.addListener("drop", function(e) {
         this.debug("Related of drop: " + e.getRelatedTarget());
 
         // Move items from source to target
@@ -167,8 +160,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         }
       });
 
-      targetSimple.addListener("dragover", function(e)
-      {
+      targetSimple.addListener("dragover", function(e) {
         if (!e.supportsType("items")) {
           e.preventDefault();
         }
@@ -188,8 +180,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
       targetEven.setDroppable(true);
       container.add(targetEven, { left : 260, top: 40 });
 
-      targetEven.addListener("drop", function(e)
-      {
+      targetEven.addListener("drop", function(e) {
         this.debug("Related of drop: " + e.getRelatedTarget());
 
         // Move items from source to target
@@ -199,8 +190,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         }
       });
 
-      targetEven.addListener("dragover", function(e)
-      {
+      targetEven.addListener("dragover", function(e) {
         if (!e.supportsType("items")) {
           e.preventDefault();
         }
@@ -234,15 +224,13 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
       container.add(textareaTarget, { left : 380, top: 40 });
 
       // Serialize content to text, items are left in the list
-      textareaTarget.addListener("drop", function(e)
-      {
+      textareaTarget.addListener("drop", function(e) {
         this.debug("Related of drop: " + e.getRelatedTarget());
 
         this.setValue(e.getData("value").replace(/,/g, "\n"));
       });
 
-      textareaTarget.addListener("dragover", function(e)
-      {
+      textareaTarget.addListener("dragover", function(e) {
         if (!e.supportsType("value")) {
           e.preventDefault();
         }
@@ -286,14 +274,12 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         e.addAction("move");
       });
 
-      both.addListener("dragend", function(e)
-      {
+      both.addListener("dragend", function(e) {
         // Move indicator away
         indicator.setDomPosition(-1000, -1000);
       });
 
-      both.addListener("drag", function(e)
-      {
+      both.addListener("drag", function(e) {
         var orig = e.getOriginalTarget();
 
         // store the current listitem - if the user drops on the indicator
@@ -313,8 +299,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
         indicator.setDomPosition(origCoords.left, origCoords.top);
       });
 
-      both.addListener("dragover", function(e)
-      {
+      both.addListener("dragover", function(e) {
         // Stop when the dragging comes from outside
         if (e.getRelatedTarget()) {
           e.preventDefault();
@@ -331,12 +316,10 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
     },
 
 
-    __reorderList : function(listItem, reorderItem)
-    {
-
+    __reorderList : function(listItem, reorderItem) {
       // Only continue if the target is a list item.
       if (listItem.classname != "qx.ui.form.ListItem") {
-        return ;
+        return;
       }
 
       var sel = this.__list.getSortedSelection();
@@ -358,8 +341,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.DragDrop",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__list");
   }
 });

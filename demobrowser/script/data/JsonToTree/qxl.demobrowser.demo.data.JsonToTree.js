@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create and add the tree
@@ -76,12 +75,11 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
       description.setRich(true);
       description.setWidth(260);
       description.setValue(
-        "<b>Tree bound to data in a json file</b><br/>"
-        + "Loading the json file <a href='" + url +"' target='_blank'>"
-        + "tree.json</a> and bind the items to the tree widget."
+        "<b>Tree bound to data in a json file</b><br/>" +
+        "Loading the json file <a href='" + url +"' target='_blank'>" +
+        "tree.json</a> and bind the items to the tree widget."
       );
       this.getRoot().add(description, {left: 10, top: 10});
-
     }
   }
 });

@@ -25,8 +25,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Blocker",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var input = qx.bom.Input.create("button", { value: "Block Document for 5s" });
@@ -35,14 +34,14 @@ qx.Class.define("qxl.demobrowser.demo.bom.Blocker",
                                               top: "100px",
                                               width: "200px" });
 
-      var blocker = new qx.bom.Blocker;
+      var blocker = new qx.bom.Blocker();
       blocker.setBlockerOpacity(0.5);
       blocker.setBlockerColor("red");
 
-      qx.event.Registration.addListener(input, "tap", function(e){
+      qx.event.Registration.addListener(input, "tap", function(e) {
         blocker.block();
 
-        qx.event.Timer.once(function(e){
+        qx.event.Timer.once(function(e) {
          blocker.unblock();
         }, window, 5000);
       });
@@ -66,14 +65,14 @@ qx.Class.define("qxl.demobrowser.demo.bom.Blocker",
                                                        zIndex: 500 });
       qx.dom.Element.insertBegin(elementToBlock, document.body);
 
-      var blocker2 = new qx.bom.Blocker;
+      var blocker2 = new qx.bom.Blocker();
       blocker2.setBlockerOpacity(0.5);
       blocker2.setBlockerColor("green");
 
-      qx.event.Registration.addListener(input2, "tap", function(e){
+      qx.event.Registration.addListener(input2, "tap", function(e) {
         blocker2.block(elementToBlock);
 
-        qx.event.Timer.once(function(e){
+        qx.event.Timer.once(function(e) {
          blocker2.unblock();
         }, window, 5000);
       });

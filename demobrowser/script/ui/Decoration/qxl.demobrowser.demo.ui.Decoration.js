@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var box = new qx.ui.layout.HBox();
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
     },
 
 
-    getDecorations : function()
-    {
+    getDecorations : function() {
       var theme = qx.theme.manager.Decoration.getInstance().getTheme();
 
       // auto size
@@ -61,8 +59,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
       var columns = 8;
 
       var i=0;
-      for (var key in decorations)
-      {
+      for (var key in decorations) {
         box.add(new qx.ui.basic.Label(key).set({
           rich: true,
           wrap: true,

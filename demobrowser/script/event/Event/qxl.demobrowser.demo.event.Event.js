@@ -37,8 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -115,27 +114,23 @@ qx.Class.define("qxl.demobrowser.demo.event.Event",
       this._log(["scroll:" + e.getTarget()]);
     },
 
-    _preventDefault : function(e)
-    {
+    _preventDefault : function(e) {
       this._log(["prevent default " + e.getType() + ": " + e]);
       e.preventDefault();
     },
 
-    _stopPropagation : function(e)
-    {
+    _stopPropagation : function(e) {
       this._log([e.getType() + " (inner): " + e]);
       e.stopPropagation();
     },
 
 
-    _onTap1 : function(e)
-    {
-      this._log([e.getType() + " 1: " +  e]);
+    _onTap1 : function(e) {
+      this._log([e.getType() + " 1: " + e]);
       qx.event.Registration.removeListener(this._juhu, "tap", this._onTap1);
     },
 
-    _onTap2 : function(e)
-    {
+    _onTap2 : function(e) {
       this._log([e.getType() + " 2: " + e]);
     }
   },

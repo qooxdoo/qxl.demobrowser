@@ -43,13 +43,12 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
     __copyCommand : null,
     __pasteCommand : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas);
+      var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
       container.setPadding(20);
       container.setAllowStretchX(false);
 
@@ -67,8 +66,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
     },
 
 
-    getRootContextMenu : function()
-    {
+    getRootContextMenu : function() {
       var menu = new qx.ui.menu.Menu();
 
       var sub = new qx.ui.menu.Menu();
@@ -104,8 +102,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
     },
 
 
-    createCommands : function()
-    {
+    createCommands : function() {
       this.__newCommand = new qx.ui.command.Command("Ctrl+N");
       this.__newCommand.addListener("execute", this.debugCommand);
 
@@ -134,17 +131,16 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
     },
 
 
-    getMenuButton : function()
-    {
+    getMenuButton : function() {
       // create sub menus
 
-      var optionMenu = new qx.ui.menu.Menu;
+      var optionMenu = new qx.ui.menu.Menu();
 
       optionMenu.add(new qx.ui.menu.RadioButton("Option 1"));
       optionMenu.add(new qx.ui.menu.RadioButton("Option 2"));
       optionMenu.add(new qx.ui.menu.RadioButton("Option 3"));
 
-      var actionMenu = new qx.ui.menu.Menu;
+      var actionMenu = new qx.ui.menu.Menu();
 
       actionMenu.add(new qx.ui.menu.RadioButton("Action 1"));
       actionMenu.add(new qx.ui.menu.RadioButton("Action 2"));
@@ -152,11 +148,11 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
 
 
       // create radio groups
-      var groupOptions = new qx.ui.form.RadioGroup;
+      var groupOptions = new qx.ui.form.RadioGroup();
       groupOptions.add.apply(groupOptions, optionMenu.getChildren());
       groupOptions.addListener("changeSelection", this.debugRadio);
 
-      var groupActions = new qx.ui.form.RadioGroup;
+      var groupActions = new qx.ui.form.RadioGroup();
       groupActions.add.apply(groupActions, actionMenu.getChildren());
       groupActions.addListener("changeSelection", this.debugRadio);
 
@@ -206,9 +202,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
 
 
 
-    getSplitButton : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getSplitButton : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var site1 = new qx.ui.menu.Button("Website 1");
       var site2 = new qx.ui.menu.Button("Website 2");
@@ -231,18 +226,17 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
     },
 
 
-    getMenuBar : function()
-    {
-      var frame = new qx.ui.container.Composite(new qx.ui.layout.Grow);
+    getMenuBar : function() {
+      var frame = new qx.ui.container.Composite(new qx.ui.layout.Grow());
       frame.setDecorator("main");
 
-      var toolbar = new qx.ui.toolbar.ToolBar;
+      var toolbar = new qx.ui.toolbar.ToolBar();
       toolbar.setWidth(600);
       frame.add(toolbar);
 
-      var basicPart = new qx.ui.toolbar.Part;
-      var menuPart = new qx.ui.toolbar.Part;
-      var helpPart = new qx.ui.toolbar.Part;
+      var basicPart = new qx.ui.toolbar.Part();
+      var menuPart = new qx.ui.toolbar.Part();
+      var helpPart = new qx.ui.toolbar.Part();
 
       toolbar.add(basicPart);
       toolbar.add(menuPart);
@@ -298,9 +292,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return frame;
     },
 
-    getBackMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getBackMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var button1 = new qx.ui.menu.Button("Line 313");
       var button2 = new qx.ui.menu.Button("Line 1039");
@@ -320,9 +313,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getForwardMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getForwardMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var button1 = new qx.ui.menu.Button("Line 431");
       var button2 = new qx.ui.menu.Button("Line 30");
@@ -336,9 +328,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getFileMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getFileMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var newButton = new qx.ui.menu.Button("New", "icon/16/actions/document-new.png", this.__newCommand);
       var openButton = new qx.ui.menu.Button("Open", "icon/16/actions/document-open.png", this.__openCommand);
@@ -367,9 +358,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getEditMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getEditMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var undoButton = new qx.ui.menu.Button("Undo", "icon/16/actions/edit-undo.png", this.__undoCommand);
       var redoButton = new qx.ui.menu.Button("Redo", "icon/16/actions/edit-redo.png", this.__redoCommand);
@@ -393,9 +383,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getSearchMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getSearchMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var searchButton = new qx.ui.menu.Button("Search...", "icon/16/actions/system-search.png");
       var nextButton = new qx.ui.menu.Button("Search next...");
@@ -424,9 +413,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getViewMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getViewMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var panesButton = new qx.ui.menu.Button("Panes", null, null, this.getPanesMenu());
       var syntaxButton = new qx.ui.menu.Button("Syntax", null, null, this.getSyntaxMenu());
@@ -449,9 +437,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getPanesMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getPanesMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var tabsCheckbox = new qx.ui.menu.CheckBox("Show tabs");
       var statusCheckbox = new qx.ui.menu.CheckBox("Show status bar");
@@ -483,9 +470,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getSyntaxMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getSyntaxMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var htmlButton = new qx.ui.menu.RadioButton("HTML");
       var xmlButton = new qx.ui.menu.RadioButton("XML");
@@ -502,7 +488,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       menu.add(pythonButton);
 
       // Configure and fill radio group
-      var langGroup = new qx.ui.form.RadioGroup;
+      var langGroup = new qx.ui.form.RadioGroup();
       langGroup.add(htmlButton, xmlButton, jsButton, perlButton, pythonButton);
       langGroup.add.apply(langGroup, cdialectButton.getMenu().getChildren());
 
@@ -511,9 +497,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getSyntaxCMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getSyntaxCMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var cButton = new qx.ui.menu.RadioButton("C");
       var csharpButton = new qx.ui.menu.RadioButton("C Sharp");
@@ -528,9 +513,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getFormatMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getFormatMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var paragraphButton = new qx.ui.menu.Button("Paragraph", null, null, this.getParagraphMenu());
       var spacesButton = new qx.ui.menu.Button("Tabs to spaces");
@@ -549,7 +533,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       ansiButton.addListener("execute", this.debugButton);
       oemButton.addListener("execute", this.debugButton);
 
-      menu.add(paragraphButton)
+      menu.add(paragraphButton);
       menu.add(spacesButton);
       menu.add(tabsButton);
       menu.addSeparator();
@@ -563,9 +547,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getParagraphMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getParagraphMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var leftButton = new qx.ui.menu.Button("Left aligned", "icon/16/actions/format-justify-left.png");
       var rightButton = new qx.ui.menu.Button("Right aligned", "icon/16/actions/format-justify-right.png");
@@ -585,9 +568,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getHelpMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getHelpMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var topicsButton = new qx.ui.menu.Button("Topics", "icon/16/apps/utilities-help.png");
       var quickButton = new qx.ui.menu.Button("Quickstart");
@@ -609,9 +591,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return menu;
     },
 
-    getList : function()
-    {
-      var list = new qx.ui.form.List;
+    getList : function() {
+      var list = new qx.ui.form.List();
       list.setContextMenu(this.getContextMenu());
 
       for (var i=0; i<20; i++) {
@@ -621,9 +602,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
       return list;
     },
 
-    getContextMenu : function()
-    {
-      var menu = new qx.ui.menu.Menu;
+    getContextMenu : function() {
+      var menu = new qx.ui.menu.Menu();
 
       var cutButton = new qx.ui.menu.Button("Cut", "icon/16/actions/edit-cut.png", this.__cutCommand);
       var copyButton = new qx.ui.menu.Button("Copy", "icon/16/actions/edit-copy.png", this.__copyCommand);
@@ -647,8 +627,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Menu",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__newCommand", "__openCommand", "__saveCommand",
       "__undoCommand", "__redoCommand", "__cutCommand", "__copyCommand",
       "__pasteCommand");

@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
   {
     count : 0,
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var root = {
@@ -45,7 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
         icon: "default",
         loaded: true
       };
-      root = qx.data.marshal.Json.createModel(root, true)
+      root = qx.data.marshal.Json.createModel(root, true);
       this.createRandomData(root);
 
       var tree = new qx.ui.tree.VirtualTree(root, "label", "children");
@@ -53,37 +52,30 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
 
       tree.setIconPath("icon");
       tree.setIconOptions({
-        converter : function(value, model)
-        {
+        converter : function(value, model) {
           if (value == "default") {
             if (model.getChildren != null) {
               return "icon/22/places/folder.png";
-            } else {
+            } 
               return "icon/22/mimetypes/office-document.png";
-            }
-          } else {
+          } 
             return "qxl/demobrowser/demo/icons/loading22.gif";
-          }
         }
       });
 
       var that = this;
       var delegate = {
-        bindItem : function(controller, item, index)
-        {
+        bindItem : function(controller, item, index) {
           controller.bindDefaultProperties(item, index);
 
           controller.bindProperty("", "open",
           {
-            converter : function(value, model, source, target)
-            {
+            converter : function(value, model, source, target) {
               var isOpen = target.isOpen();
-              if (isOpen && !value.getLoaded())
-              {
+              if (isOpen && !value.getLoaded()) {
                 value.setLoaded(true);
 
-                qx.event.Timer.once(function()
-                {
+                qx.event.Timer.once(function() {
                   tree.setAutoScrollIntoView(false);
                   value.getChildren().removeAll();
                   this.createRandomData(value);
@@ -99,8 +91,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
       tree.setDelegate(delegate);
     },
 
-    createRandomData : function(parent)
-    {
+    createRandomData : function(parent) {
       var items = parseInt(Math.random() * 50);
 
       for (var i = 0; i < items; i++) {
@@ -108,10 +99,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Dynamic",
           label: "Item " + this.count++,
           icon: "default",
           loaded: true
-        }
+        };
 
-        if (Math.random() > 0.3)
-        {
+        if (Math.random() > 0.3) {
           node["loaded"] = false;
           node["children"] = [{
             label: "Loading",

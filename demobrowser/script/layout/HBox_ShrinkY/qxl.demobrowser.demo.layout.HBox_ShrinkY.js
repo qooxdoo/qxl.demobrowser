@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_ShrinkY",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // auto size with limited height

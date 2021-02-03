@@ -29,8 +29,7 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -40,20 +39,18 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
       );
 
       var events = ["keydown", "keypress", "keyup", "keyinput"];
-      for (var i=0; i<events.length; i++)
-      {
+      for (var i=0; i<events.length; i++) {
         qx.bom.Element.addListener(
           document.documentElement,
           events[i],
           this.logKeyEvent,
           this
-        )
+        );
       }
     },
 
 
-    logKeyEvent: function(keyEvent)
-    {
+    logKeyEvent: function(keyEvent) {
       var type = keyEvent.getType();
       this._log([
         type,

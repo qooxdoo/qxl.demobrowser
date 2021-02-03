@@ -38,8 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
@@ -134,20 +133,16 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
       controls.add(mode4, {row: 4, column: 0});
 
       var rbm1 = new qx.ui.form.RadioGroup(mode1, mode2, mode3, mode4);
-      rbm1.addListener("changeSelection", function(e)
-      {
+      rbm1.addListener("changeSelection", function(e) {
         var value = e.getData()[0].getUserData("value");
         managers.forEach(function(manager) {
           manager.setMode(value);
         });
 
-        if (value == "single" || value == "one")
-        {
+        if (value == "single" || value == "one") {
           dragCheck.setEnabled(false);
           quickCheck.setEnabled(true);
-        }
-        else if (value == "multi" || value == "addaptive")
-        {
+        } else if (value == "multi" || value == "addaptive") {
           dragCheck.setEnabled(true);
           quickCheck.setEnabled(false);
         }
@@ -161,10 +156,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
 
       var dragCheck = new qx.ui.form.CheckBox("Enable drag selection");
       controls.add(dragCheck, {row: 1, column: 1});
-      dragCheck.addListener("changeValue", function(e)
-      {
-        if (e.getData())
-        {
+      dragCheck.addListener("changeValue", function(e) {
+        if (e.getData()) {
           var mode = managers[0].getMode();
           if (mode == "single" || mode == "one") {
             this.debug("Drag selection is only available for the modes multi or additive");
@@ -179,10 +172,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
         enabled : false
       });
       controls.add(quickCheck, {row: 2, column: 1});
-      quickCheck.addListener("changeValue", function(e)
-      {
-        if (e.getData())
-        {
+      quickCheck.addListener("changeValue", function(e) {
+        if (e.getData()) {
           var mode = managers[0].getMode();
           if (mode == "multi" || mode == "additive") {
             this.debug("Quick selection is only available for the modes multi or additive");
@@ -195,8 +186,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
     },
 
 
-    createRowSelectionScroller : function()
-    {
+    createRowSelectionScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 20, 100);
 
       var rowLayer = new qx.ui.virtual.layer.Row("white", "#EEE");
@@ -206,8 +196,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
 
       var cellRenderer = new qx.ui.virtual.cell.Cell();
       var cellLayer = new qx.ui.virtual.layer.HtmlCell({
-        getCellProperties : function(row, column)
-        {
+        getCellProperties : function(row, column) {
           var states = {};
           if (manager.isItemSelected(row)) {
             states.selected = true;
@@ -218,8 +207,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
       scroller.getPane().addLayer(cellLayer);
 
       var manager = new qx.ui.virtual.selection.Row(scroller.getPane(), {
-        styleSelectable : function(item, type, wasAdded)
-        {
+        styleSelectable : function(item, type, wasAdded) {
           if (type !== "selected") {
             return;
           }
@@ -244,8 +232,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
     },
 
 
-    createColumnSelectionScroller : function()
-    {
+    createColumnSelectionScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 20, 100);
 
       scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "#EEE"));
@@ -257,8 +244,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
 
       var cellRenderer = new qx.ui.virtual.cell.Cell();
       var cellLayer = new qx.ui.virtual.layer.HtmlCell({
-        getCellProperties : function(row, column)
-        {
+        getCellProperties : function(row, column) {
           var states = {};
           if (manager.isItemSelected(column)) {
             states.selected = true;
@@ -270,8 +256,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
       scroller.getPane().addLayer(cellLayer);
 
       var manager = new qx.ui.virtual.selection.Column(scroller.getPane(), {
-        styleSelectable : function(item, type, wasAdded)
-        {
+        styleSelectable : function(item, type, wasAdded) {
           if (type !== "selected") {
             return;
           }
@@ -296,8 +281,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
     },
 
 
-    createCellRectangleSelectionScroller : function()
-    {
+    createCellRectangleSelectionScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 20, 100);
 
       scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "#EEE"));
@@ -307,8 +291,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
         backgroundColor: "table-row-background-selected"
       });
       var cellLayer = new qx.ui.virtual.layer.HtmlCell({
-        getCellProperties : function(row, column)
-        {
+        getCellProperties : function(row, column) {
           var states = {};
           if (manager.isItemSelected({row: row, column: column})) {
             states.selected = true;
@@ -316,10 +299,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
 
           if (states.selected) {
             return selectedCell.getCellProperties(row + " / " + column, states);
-          } else {
+          } 
             cellRenderer.resetBackgroundColor();
             return cellRenderer.getCellProperties(row + " / " + column, states);
-          }
         }
       });
       scroller.getPane().addLayer(cellLayer);
@@ -343,8 +325,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
     },
 
 
-    createCellLineSelectionScroller : function()
-    {
+    createCellLineSelectionScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 20, 100);
 
       scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "#EEE"));
@@ -353,8 +334,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
         backgroundColor: "table-row-background-selected"
       });
       var cellLayer = new qx.ui.virtual.layer.HtmlCell({
-        getCellProperties : function(row, column)
-        {
+        getCellProperties : function(row, column) {
           var states = {};
           if (manager.isItemSelected({row: row, column: column})) {
             states.selected = true;
@@ -362,10 +342,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Selection",
 
           if (states.selected) {
             return selectedCell.getCellProperties(row + " / " + column, states);
-          } else {
+          } 
             cellRenderer.resetBackgroundColor();
             return cellRenderer.getCellProperties(row + " / " + column, states);
-          }
         }
       });
       scroller.getPane().addLayer(cellLayer);

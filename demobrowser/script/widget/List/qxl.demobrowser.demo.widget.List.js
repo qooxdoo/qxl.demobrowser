@@ -35,8 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // scroll container
@@ -52,14 +51,13 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
       configureLabel.setFont("bold");
       container.add(configureLabel, {left: 20, top: 20});
 
-      var configList = new qx.ui.form.List;
+      var configList = new qx.ui.form.List();
       configList.setScrollbarX("on");
 
       configList.set({ height: 280, width: 150, selectionMode : "multi" });
 
       var item;
-      for( var i=1; i<=25; i++ )
-      {
+      for (var i=1; i<=25; i++) {
         item = new qx.ui.form.ListItem("Item No " + i, "icon/" + ((i % 4) ? "16" : "48") + "/places/folder.png");
         configList.add(item);
 
@@ -69,7 +67,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
         if (i==20) {
           configList.setSelection([item]);
         }
-      };
+      }
 
       configList.addListener("changeSelection", function(e) {
         var selection = e.getData();
@@ -116,8 +114,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
       var rbm2 = new qx.ui.form.RadioGroup(show1, show2, show3);
 
-      rbm2.addListener("changeSelection", function(e)
-      {
+      rbm2.addListener("changeSelection", function(e) {
         for (var i = 0; i < configList.getChildren().length; i++) {
           configList.getChildren()[i].setShow(e.getData()[0].getUserData("value"));
         }
@@ -129,10 +126,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
       container.add(dragCheck, {left: 180, top: 220});
       container.add(quickCheck, {left: 180, top: 240});
 
-      dragCheck.addListener("changeValue", function(e)
-      {
-        if (e.getData())
-        {
+      dragCheck.addListener("changeValue", function(e) {
+        if (e.getData()) {
           var mode = configList.getSelectionMode();
           if (mode == "single" || mode == "one") {
             this.debug("Drag selection is only available for the modes multi or additive");
@@ -142,10 +137,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
         configList.setDragSelection(e.getData());
       });
 
-      quickCheck.addListener("changeValue", function(e)
-      {
-        if (e.getData())
-        {
+      quickCheck.addListener("changeValue", function(e) {
+        if (e.getData()) {
           var mode = configList.getSelectionMode();
           if (mode == "multi" || mode == "additive") {
             this.debug("Quick selection is only available for the modes multi or additive");
@@ -155,22 +148,17 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
         configList.setQuickSelection(e.getData());
       });
 
-      rbm1.addListener("changeSelection", function(e)
-      {
+      rbm1.addListener("changeSelection", function(e) {
         var value = e.getData()[0].getUserData("value");
         configList.setSelectionMode(value);
 
-        if (value == "single" || value == "one")
-        {
+        if (value == "single" || value == "one") {
           dragCheck.setEnabled(false);
           quickCheck.setEnabled(true);
-        }
-        else if (value == "multi" || value == "addaptive")
-        {
+        } else if (value == "multi" || value == "addaptive") {
           dragCheck.setEnabled(true);
           quickCheck.setEnabled(false);
         }
-
       });
 
       ////////////////////////////////////////////////////////////////
@@ -186,8 +174,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
       var oneList = new qx.ui.form.List();
       oneList.set({ height: 280, width: 150, selectionMode : "one" });
       var item;
-      for( var i=1; i<=25; i++ )
-      {
+      for (var i=1; i<=25; i++) {
         item = new qx.ui.form.ListItem("Item No " + i, "icon/16/places/folder.png");
         oneList.add(item);
 
@@ -195,7 +182,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
         if (i==16) {
           oneList.setSelection([item]);
         }
-      };
+      }
 
       container.add(oneList, {left: 330, top: 40});
       ////////////////////////////////////////////////////////////////
@@ -209,27 +196,26 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
       configureLabel.setFont("bold");
       container.add(configureLabel, {left: 520, top: 20});
 
-      var additiveList = new qx.ui.form.List;
+      var additiveList = new qx.ui.form.List();
       var item3;
 
       additiveList.set({ width: 150, selectionMode : "additive" });
 
-      var l3l = [ "Leon","Lukas","Luca","Finn","Tim","Felix","Jonas","Luis",
-      "Maximilian","Julian","Max","Paul","Niclas","Jan","Ben","Elias","Jannick",
-      "Philipp","Noah","Tom","Moritz","Nico","David","Nils","Simon","Fabian",
-      "Erik","Justin","Alexander","Jakob","Florian","Nick","Linus","Mika","Jason",
-      "Daniel","Lennard","Marvin","Jannis","Tobias","Dominic","Marlon","Marc",
-      "Johannes","Jonathan","Julius","Colin","Joel","Kevin","Vincent","Robin"];
+      var l3l = [ "Leon", "Lukas", "Luca", "Finn", "Tim", "Felix", "Jonas", "Luis",
+      "Maximilian", "Julian", "Max", "Paul", "Niclas", "Jan", "Ben", "Elias", "Jannick",
+      "Philipp", "Noah", "Tom", "Moritz", "Nico", "David", "Nils", "Simon", "Fabian",
+      "Erik", "Justin", "Alexander", "Jakob", "Florian", "Nick", "Linus", "Mika", "Jason",
+      "Daniel", "Lennard", "Marvin", "Jannis", "Tobias", "Dominic", "Marlon", "Marc",
+      "Johannes", "Jonathan", "Julius", "Colin", "Joel", "Kevin", "Vincent", "Robin"];
 
-      for (var i=0; i<l3l.length; i++)
-      {
+      for (var i=0; i<l3l.length; i++) {
         item3 = new qx.ui.form.ListItem(l3l[i]);
         additiveList.add(item3);
 
         if (i==10||i==12||i==16) {
           additiveList.addToSelection(item3);
         }
-      };
+      }
 
       container.add(additiveList, {left: 520, top: 40});
       ////////////////////////////////////////////////////////////////
@@ -248,28 +234,25 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
       l4.set({ width: 550, selectionMode : "multi", height : null });
 
-      var l4l = [ "audio-card.png","audio-input-microphone.png","battery.png",
-      "camera-photo.png","camera-web.png","computer.png","display.png",
-      "drive-harddisk.png","drive-optical.png","input-keyboard.png",
-      "input-mouse.png","media-flash.png","media-optical.png","multimedia-player.png",
-      "network-wired.png","network-wireless.png","pda.png","phone.png","printer.png" ];
+      var l4l = [ "audio-card.png", "audio-input-microphone.png", "battery.png",
+      "camera-photo.png", "camera-web.png", "computer.png", "display.png",
+      "drive-harddisk.png", "drive-optical.png", "input-keyboard.png",
+      "input-mouse.png", "media-flash.png", "media-optical.png", "multimedia-player.png",
+      "network-wired.png", "network-wireless.png", "pda.png", "phone.png", "printer.png" ];
 
-      var l4pre = "icon/48/devices/"
+      var l4pre = "icon/48/devices/";
 
-      for (var i=0; i<l4l.length; i++)
-      {
+      for (var i=0; i<l4l.length; i++) {
         item4 = new qx.ui.form.ListItem(null, l4pre + l4l[i]);
         l4.add(item4);
 
         if (i == 12) {
           l4.setSelection([item4]);
         }
-      };
+      }
 
       container.add(l4, {left: 20, top: 370});
       ////////////////////////////////////////////////////////////////
-
-
     }
   }
 });

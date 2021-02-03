@@ -26,15 +26,13 @@ qx.Class.define("qxl.demobrowser.demo.bom.Viewport",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       qx.bom.Element.addListener(
         document.body,
         "tap",
-        function()
-        {
+        function() {
           this.debug("Document Dimension: " + qx.bom.Document.getWidth() + "x" + qx.bom.Document.getHeight());
           this.debug("Viewport Dimension: " + qx.bom.Viewport.getWidth() + "x" + qx.bom.Viewport.getHeight());
           this.debug("Viewport Scroll: " + qx.bom.Viewport.getScrollLeft() + "x" + qx.bom.Viewport.getScrollTop());

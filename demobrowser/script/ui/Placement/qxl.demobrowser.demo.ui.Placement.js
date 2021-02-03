@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
   {
     __positions : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var root = this.getRoot();
@@ -63,19 +62,17 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
     },
 
 
-    createTestField : function(init)
-    {
+    createTestField : function(init) {
       var composite = new qx.ui.container.Composite(new qx.ui.layout.VBox(4));
 
-      var popup = new qx.ui.popup.Popup(new qx.ui.layout.Grow);
+      var popup = new qx.ui.popup.Popup(new qx.ui.layout.Grow());
       popup.add(new qx.ui.basic.Atom("Content"));
       popup.setPadding(20);
 
-      var selectBox = new qx.ui.form.SelectBox;
+      var selectBox = new qx.ui.form.SelectBox();
       var itemToSelect = null;
 
-      for (var i = 0; i < this.__positions.length; i++)
-      {
+      for (var i = 0; i < this.__positions.length; i++) {
         var item = new qx.ui.form.ListItem(this.__positions[i]);
         selectBox.add(item);
 
@@ -93,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
 
       var button = new qx.ui.form.Button("Open Popup");
       composite.add(button);
-      button.addListener("pointerdown", function(e)
-      {
+      button.addListener("pointerdown", function(e) {
         popup.placeToWidget(button);
         popup.show();
       });
@@ -103,18 +99,17 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
     },
 
 
-    createDomTest : function()
-    {
+    createDomTest : function() {
       var composite = new qx.ui.container.Composite(new qx.ui.layout.VBox(4));
 
       var label = new qx.ui.basic.Label("DOM align control");
       composite.add(label);
 
-      var popup = new qx.ui.popup.Popup(new qx.ui.layout.Grow);
+      var popup = new qx.ui.popup.Popup(new qx.ui.layout.Grow());
       popup.add(new qx.ui.basic.Atom("DOM Popup"));
       popup.setPadding(20);
 
-      var selectBox = new qx.ui.form.SelectBox;
+      var selectBox = new qx.ui.form.SelectBox();
       for (var i = 0; i < this.__positions.length; i++) {
         selectBox.add(new qx.ui.form.ListItem(this.__positions[i]));
       }
@@ -126,8 +121,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
 
       var button = new qx.ui.form.Button("Open DOM-Popup");
       composite.add(button);
-      button.addListener("pointerdown", function(e)
-      {
+      button.addListener("pointerdown", function(e) {
         popup.placeToElement(document.getElementById("domanchor"));
         popup.show();
       });

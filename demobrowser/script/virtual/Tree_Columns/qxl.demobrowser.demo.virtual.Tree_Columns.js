@@ -36,8 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroller = new qx.ui.container.Scroll();
@@ -92,7 +91,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
       };
 
       for (var i = 0; i < 50; i++) {
-        data.children[1].children[7].children[i] = {label: "Item " + i}
+        data.children[1].children[7].children[i] = {label: "Item " + i};
       }
 
       this.extendData(data);
@@ -107,8 +106,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
     },
 
 
-    extendData : function(data)
-    {
+    extendData : function(data) {
       data.date = "May " + Math.round(Math.random() * 30 + 1) + " 2010";
       data.size = Math.round(Math.random() * 100) + "kb";
       data.light = Math.floor(Math.random() * 4) == 0;
@@ -122,16 +120,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
     },
 
 
-    configureTriState : function(item)
-    {
+    configureTriState : function(item) {
       // Until [BUG #4290] in not fixed we need do add a getModel method for
       // the converter.
       item.getModel = function() {
         return this;
       };
 
-      if (item.getChildren != null)
-      {
+      if (item.getChildren != null) {
         var children = item.getChildren();
         for (var i = 0; i < children.getLength(); i++) {
           var child = children.getItem(i);
@@ -139,8 +135,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
 
           // bind parent with child
           item.bind("checked", child, "checked", {
-            converter: function(value, child)
-            {
+            converter: function(value, child) {
               // when parent is set to null than the child should keep it's value
               if (value === null) {
                 return child.getChecked();
@@ -165,9 +160,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
               // Set triState (on parent node) when one child is checked
               if (isOneChecked) {
                 return isAllChecked ? true : null;
-              } else {
+              } 
                 return false;
-              }
             }
           });
         }

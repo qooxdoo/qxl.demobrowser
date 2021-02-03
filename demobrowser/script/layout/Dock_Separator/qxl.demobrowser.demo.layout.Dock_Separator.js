@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Dock_Separator",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Dock_Separator",
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(container);
 
 
@@ -164,7 +163,6 @@ qx.Class.define("qxl.demobrowser.demo.layout.Dock_Separator",
       widget.add(w5, {edge:"center"});
 
       container.add(widget);
-
     }
   }
 });

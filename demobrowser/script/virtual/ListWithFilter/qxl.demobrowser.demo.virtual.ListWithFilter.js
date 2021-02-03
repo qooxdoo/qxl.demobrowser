@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ListWithFilter",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // Creates the model data
@@ -53,11 +52,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ListWithFilter",
       var options = {
         converter: function(data) {
           if (data == delegateEven) {
-            return "Show only even numbers."
+            return "Show only even numbers.";
           } else if (data == delegateOdd) {
-            return "Show only odd numbers."
+            return "Show only odd numbers.";
           }
-          return "Show all numbers."
+          return "Show all numbers.";
         }
       };
       list.bind("delegate", filterNameLabel, "value", options);
@@ -125,8 +124,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.ListWithFilter",
       description.setRich(true);
       description.setWidth(200);
       description.setValue(
-        "<b>Filtered List</b><br/>"
-        + "List showing numbered items, bound to a data array."
+        "<b>Filtered List</b><br/>" +
+        "List showing numbered items, bound to a data array."
       );
       this.getRoot().add(description, {left: 10, top: 10});
     }

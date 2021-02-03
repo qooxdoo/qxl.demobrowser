@@ -11,8 +11,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
       var te2 = dataModel.addBranch(null, "Inbox", true);
 
       te = dataModel.addBranch(te2, "Spam", false);
-      for (var i = 1; i < 3000; i++)
-      {
+      for (var i = 1; i < 3000; i++) {
         dataModel.addLeaf(te, "Spam Message #" + i);
       }
 
@@ -67,11 +65,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
        */
       tree.addListener("treeOpenWithContent",
                        /**
+                        * @param e
                         * @lint ignoreDeprecated(alert)
                         */
-                       function(e)
-                       {
-                         alert('treeOpenWithContent ');
+                       function(e) {
+                         alert("treeOpenWithContent ");
                          var node = e.getData();
                          dataModel.addLeaf(node.nodeId, newItem.toString());
                          newItem++;
@@ -79,11 +77,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
 
       tree.addListener("treeClose",
                        /**
+                        * @param e
                         * @lint ignoreDeprecated(alert)
                         */
-                       function(e)
-                       {
-                         alert('treeClose ');
+                       function(e) {
+                         alert("treeClose ");
                        });
 
       /*
@@ -95,11 +93,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
        */
       tree.addListener("treeOpenWhileEmpty",
                        /**
+                        * @param e
                         * @lint ignoreDeprecated(alert)
                         */
-                       function(e)
-                       {
-                         alert('treeOpenWhileEmpty');
+                       function(e) {
+                         alert("treeOpenWhileEmpty");
                          var node = e.getData();
                          tree.nodeSetHideOpenClose(node, true);
                        });
@@ -107,17 +105,16 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
 
       tree.addListener("changeSelection",
                        /**
+                        * @param e
                         * @lint ignoreDeprecated(alert)
                         */
-                       function(e)
-                       {
+                       function(e) {
                          var text = "Selected labels:";
                          var selectedNodes = e.getData();
-                         for (i = 0; i < selectedNodes.length; i++)
-                           {
+                         for (i = 0; i < selectedNodes.length; i++) {
                              text += "\n  " + selectedNodes[i].label;
                            }
-                         alert('changeSelection: ' + text);
+                         alert("changeSelection: " + text);
                        });
     }
   }

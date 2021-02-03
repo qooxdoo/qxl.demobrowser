@@ -43,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
       tableModel.setColumns([ "ID", "Number 1", "Number 2", "Image" ]);
@@ -71,8 +70,8 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional",
       table.getSelectionModel().setSelectionMode(selectionMode);
 
       var newRenderer = new qx.ui.table.cellrenderer.Conditional("right", "", "", "");
-      newRenderer.addNumericCondition(">", 0,   null, "#FF0000", null, null);
-      newRenderer.addNumericCondition(">", 50,  null, "#EE0011", null, null);
+      newRenderer.addNumericCondition(">", 0, null, "#FF0000", null, null);
+      newRenderer.addNumericCondition(">", 50, null, "#EE0011", null, null);
       newRenderer.addNumericCondition(">", 100, null, "#DD0022", null, null);
       newRenderer.addNumericCondition(">", 150, null, "#CC0033", null, null);
       newRenderer.addNumericCondition(">", 200, null, "#BB0044", null, null);

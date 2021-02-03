@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.FormController",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // create the UI ///////////////////

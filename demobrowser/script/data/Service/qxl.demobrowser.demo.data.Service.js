@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Service",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this.getRoot().add(new qxl.datademo.Demo());

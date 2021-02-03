@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormRendererCustom",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // create the form

@@ -22,8 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.RadioButton",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var label = new qx.ui.basic.Label("What is your favorite color?");
@@ -36,7 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.RadioButton",
       var container = new qx.ui.container.Composite(mainLayout);
       container.setPadding(20);
 
-      this.getRoot().add(container, {left:0,top:0});
+      this.getRoot().add(container, {left:0, top:0});
 
       container.add(label);
 
@@ -65,8 +64,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.RadioButton",
      * @param e {qx.event.type.Data} The incoming data event
      * @lint ignoreDeprecated(alert)
      */
-    _onChangeSelection : function(e)
-    {
+    _onChangeSelection : function(e) {
       var selectedButton = e.getData()[0];
       var color = selectedButton.getLabel();
       alert("Your favorite color is: " + color);

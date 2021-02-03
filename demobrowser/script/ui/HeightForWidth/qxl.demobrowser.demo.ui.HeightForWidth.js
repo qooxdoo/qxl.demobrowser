@@ -23,11 +23,10 @@ qx.Class.define("qxl.demobrowser.demo.ui.HeightForWidth",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
-      var vbox = new qx.ui.layout.VBox;
+      var vbox = new qx.ui.layout.VBox();
       vbox.setSpacing(20);
 
       var container = new qx.ui.container.Composite(vbox).set({

@@ -37,8 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._initLogger(
@@ -54,8 +53,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling",
       }
     },
 
-    _cascadeCapture : function(e)
-    {
+    _cascadeCapture : function(e) {
       this._log([
         e.getType(),
         e.getTarget().id,
@@ -64,8 +62,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling",
       ]);
     },
 
-    _cascadeBubble : function(e)
-    {
+    _cascadeBubble : function(e) {
       this._log([
        e.getType(),
        e.getTarget().id,

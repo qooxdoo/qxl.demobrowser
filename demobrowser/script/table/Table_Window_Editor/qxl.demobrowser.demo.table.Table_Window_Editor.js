@@ -37,8 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
     },
 
 
-    createTable : function()
-    {
+    createTable : function() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
@@ -72,7 +71,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
       var resizeBehavior = tcm.getBehavior();
 
       // This uses the set() method to set all attributes at once; uses flex
-      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80  });
+      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80 });
 
       // We could also set them individually:
       resizeBehavior.setWidth(1, "50%");
@@ -114,8 +113,7 @@ qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
   members :
   {
     // overridden
-    createCellEditor : function(cellInfo)
-    {
+    createCellEditor : function(cellInfo) {
       // Create the cell editor window, since we need to return it
       // immediately.
       var cellEditor = new qx.ui.window.Window("Cell Editor");
@@ -131,8 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
       cellEditor.moveTo(300, 250);
 
 
-      cellEditor.addListener("appear", function(e)
-      {
+      cellEditor.addListener("appear", function(e) {
         cellEditor.__cellEditor.focus();
         cellEditor.__cellEditor.setTextSelection(0, cellEditor.__cellEditor.getValue().length);
       });
@@ -153,8 +150,7 @@ qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
 
       // Let them press Enter from the cell editor text field to finish.
       var command = new qx.ui.command.Command("Enter");
-      command.addListener("execute", function(e)
-      {
+      command.addListener("execute", function(e) {
         save.execute();
         command.dispose();
         command = null;
@@ -164,8 +160,7 @@ qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
     },
 
     // overridden
-    getCellEditorValue : function(cellEditor)
-    {
+    getCellEditorValue : function(cellEditor) {
       // Return the value in the text field
       return parseFloat(cellEditor.__cellEditor.getValue());
     }

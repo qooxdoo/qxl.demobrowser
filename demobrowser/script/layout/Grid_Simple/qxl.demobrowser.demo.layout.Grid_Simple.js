@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(container);
 
       container.add(this.getGrid1());
@@ -44,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
     },
 
 
-    getGrid1 : function()
-    {
+    getGrid1 : function() {
       // auto size
       var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(10, 20)).set({
         decorator: "main",
@@ -78,8 +76,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
     },
 
 
-    getGrid2 : function()
-    {
+    getGrid2 : function() {
       var layout = new qx.ui.layout.Grid();
       layout.setColumnAlign(1, "center", "top");
       layout.setColumnAlign(0, "right", "middle");
@@ -129,8 +126,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
       }), {row: 2, column: 1});
 
       var increment = 10;
-      resizeWidget.addListener("tap", function(e)
-      {
+      resizeWidget.addListener("tap", function(e) {
         resizeWidget.setWidth(50 + increment);
         increment = -increment;
       });
@@ -139,8 +135,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
     },
 
 
-    getGrid3 : function()
-    {
+    getGrid3 : function() {
       // flex columns
       var container = new qx.ui.container.Composite().set({
         decorator: "main",

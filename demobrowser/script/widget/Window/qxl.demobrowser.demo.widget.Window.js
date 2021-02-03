@@ -39,8 +39,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       this.createWindow1();
@@ -49,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
     },
 
 
-    createWindow1 : function()
-    {
+    createWindow1 : function() {
       // Create the Window
       var win = new qx.ui.window.Window("First Window", "icon/16/apps/office-calendar.png");
       win.setLayout(new qx.ui.layout.VBox(10));
@@ -75,7 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
       win.add(atom);
 
       // Add a TabView
-      var tabView = new qx.ui.tabview.TabView;
+      var tabView = new qx.ui.tabview.TabView();
       win.add(tabView, {flex:1});
 
       var page1 = new qx.ui.tabview.Page("Page 1");
@@ -89,8 +87,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
     },
 
 
-    createWindow2 : function()
-    {
+    createWindow2 : function() {
       var win = new qx.ui.window.Window("Second Window", "icon/16/apps/internet-feed-reader.png");
       win.setLayout(new qx.ui.layout.VBox(10));
       win.setStatus("Application is ready");
@@ -101,7 +98,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
       win.add(atom);
 
 
-      var box = new qx.ui.container.Composite;
+      var box = new qx.ui.container.Composite();
       box.setLayout(new qx.ui.layout.HBox(10));
       win.add(box, {flex:1});
 
@@ -180,8 +177,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
       resize.add(resizeFrame);
 
       var edges = ["top", "right", "bottom", "left"];
-      for (var i=0; i<edges.length; i++)
-      {
+      for (var i=0; i<edges.length; i++) {
         var edge = edges[i];
         var resizable = new qx.ui.form.CheckBox("Resizable " + edge).set({
           value: true
@@ -209,10 +205,9 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
     },
 
 
-    createWindow3 : function()
-    {
+    createWindow3 : function() {
       var win = new qx.ui.window.Window("Third Window", "icon/16/apps/internet-telephony.png");
-      win.setLayout(new qx.ui.layout.VBox);
+      win.setLayout(new qx.ui.layout.VBox());
       win.setMinWidth(200);
       win.setMaxWidth(450);
       win.setMaxHeight(400);
@@ -227,8 +222,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
     },
 
 
-    getModalWindow1 : function()
-    {
+    getModalWindow1 : function() {
       var wm1 = new qx.ui.window.Window("First Modal Dialog");
       wm1.setLayout(new qx.ui.layout.VBox(10));
       wm1.setModal(true);
@@ -258,8 +252,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
      * @return {qx.ui.window.Window} modal window
      * @lint ignoreDeprecated(alert)
      */
-    getModalWindow2 : function()
-    {
+    getModalWindow2 : function() {
       var wm2 = new qx.ui.window.Window("Second Modal Dialog");
       wm2.setLayout(new qx.ui.layout.VBox(10));
       wm2.setModal(true);
@@ -270,7 +263,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Window",
       var warn1 = new qx.ui.basic.Atom("Do you want to fly to Berlin?", "icon/32/status/dialog-error.png");
       wm2.add(warn1);
 
-      var box = new qx.ui.container.Composite;
+      var box = new qx.ui.container.Composite();
       box.setLayout(new qx.ui.layout.HBox(10, "right"));
       wm2.add(box);
 

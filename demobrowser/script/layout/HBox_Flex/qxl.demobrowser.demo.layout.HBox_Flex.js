@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -48,8 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // different flex dimensions
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -69,8 +67,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // different flex dimensions + limits
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -90,8 +87,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // different flex dimensions + rounding issues
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -103,8 +99,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
 
       box.setSpacing(5);
 
-      for (var i=0; i<25; i++)
-      {
+      for (var i=0; i<25; i++) {
         var widget = new qx.ui.core.Widget();
         widget.set({decorator: "main", backgroundColor: "green", width:5});
         container.add(widget, {flex: 1});
@@ -114,8 +109,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // container width > layout max width
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -136,8 +130,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // container width < layout min width
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -158,8 +151,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Flex",
     },
 
 
-    getBox6 : function()
-    {
+    getBox6 : function() {
       // container width < layout min width, but minWidth = auto
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({

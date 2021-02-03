@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Separator",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Separator",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -45,8 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Separator",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5, null, "separator-vertical")).set({
         decorator: "main",
@@ -62,8 +60,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Separator",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // container wider, horizontal alignment
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5, null, "separator-vertical")).set({
         decorator: "main",
@@ -80,8 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Separator",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // auto size + vertical margins
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(5, null, "separator-vertical")).set({
         decorator: "main",

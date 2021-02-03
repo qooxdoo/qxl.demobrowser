@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // check for annimation support
@@ -36,7 +35,7 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d",
         !qx.core.Environment.get("css.transform.3d")
       ) {
         document.body.innerHTML = "";
-        var label = document.createElement('label');
+        var label = document.createElement("label");
         label.innerHTML = "CSS animations not supported, sorry!";
         document.body.appendChild(label);
         return;

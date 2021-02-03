@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Canvas_Percent",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var border = new qx.ui.decoration.Decorator().set({

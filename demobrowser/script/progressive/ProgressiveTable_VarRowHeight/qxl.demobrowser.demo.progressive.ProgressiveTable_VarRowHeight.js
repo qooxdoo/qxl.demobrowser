@@ -17,23 +17,22 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
   {
     __loadCount : null,
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
-      var base = "qxl/demobrowser/demo/icons/"
+      var base = "qxl/demobrowser/demo/icons/";
 
       this.imageData =
         [
           {
             url     : base + "format-justify-left.png",
-            height  : 4,        // will be overwritten by actual image height
+            height  : 4, // will be overwritten by actual image height
             tooltip : "small icon"
           },
 
           {
             url     : base + "multimedia-player.png",
-            height  : 4,        // will be overwritten by actual image height
+            height  : 4, // will be overwritten by actual image height
             tooltip : "TALL ICON"
           },
 
@@ -50,11 +49,9 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
       var resolved;
       var source;
 
-      for (var i = 0; i < this.imageData.length; i++)
-      {
+      for (var i = 0; i < this.imageData.length; i++) {
         // Skip null entries
-        if (! this.imageData[i])
-        {
+        if (!this.imageData[i]) {
           continue;
         }
 
@@ -70,16 +67,13 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
         // Pre-load the image.  Call doLoad() when images is loaded.
         qx.io.ImageLoader.load(
           source,
-          function(source, entry)
-          {
+          function(source, entry) {
             this.info("Searching for [" + source + "]");
 
             // Find this source entry
-            for (var j = 0; j < this.imageData.length; j++)
-            {
+            for (var j = 0; j < this.imageData.length; j++) {
               // Is this the one?
-              if (this.imageData[j].url == source)
-              {
+              if (this.imageData[j].url == source) {
                 // Yup. Save its height
                 this.imageData[j].height = entry.height;
 
@@ -89,8 +83,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
                 this.debug("Found [" + this.imageData[j].url + "].  loadCount=" + this.__loadCount + ", end=" + this.imageData.length);
 
                 // Have we loaded all images?
-                if (this.__loadCount == 0)
-                {
+                if (this.__loadCount == 0) {
                   // Yup.  Begin our loader.
                   this.doLoad();
                 }
@@ -106,17 +99,14 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_VarRowHeight"
       }
 
       // Catch the (nonexistent in this demo) case where no images need loading
-      if (this.__loadCount == 0)
-      {
+      if (this.__loadCount == 0) {
         this.doLoad();
       }
     },
 
-    doLoad : function()
-    {
+    doLoad : function() {
       var _this = this;
-      var createRow = function(imageNum, text)
-      {
+      var createRow = function(imageNum, text) {
         var ret =
         {
           renderer : "row",

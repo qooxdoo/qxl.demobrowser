@@ -43,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Gallery",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       // widget window
@@ -75,8 +74,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
   extend : qx.ui.window.Window,
   type : "abstract",
 
-  construct : function(title)
-  {
+  construct : function(title) {
     this.base(arguments, title);
 
     this.set({
@@ -124,15 +122,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
     },
 
     isItemSelectable : function(item) {
-      return !!this.getItemData(item.row, item.column)
+      return !!this.getItemData(item.row, item.column);
     },
 
     styleSelectable : function(item, type, wasAdded) {
       // abstract method
     },
 
-    _onPaneResize : function(e)
-    {
+    _onPaneResize : function(e) {
       var pane = e.getTarget();
       var width = e.getData().width;
 
@@ -148,8 +145,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
     },
 
 
-    _generateItems : function(count)
-    {
+    _generateItems : function(count) {
       var items = [];
       var iconImages = [
         "folder.png",
@@ -162,8 +158,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
       var aliasManager = qx.util.AliasManager.getInstance();
       var resourceManager = qx.util.ResourceManager.getInstance();
 
-      for (var i=0; i<count; i++)
-      {
+      for (var i=0; i<count; i++) {
         var icon = "icon/32/places/" + iconImages[Math.floor(Math.random() * iconImages.length)];
         var resolved = aliasManager.resolve(icon);
         var url = resourceManager.toUri(resolved);
@@ -179,8 +174,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
     }
   },
 
-  destruct : function()
-  {
+  destruct : function() {
     this.items = null;
     this._disposeObjects("manager");
   }
@@ -205,8 +199,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
 
   members :
   {
-    _createWidget : function()
-    {
+    _createWidget : function() {
       var widget = new qx.ui.basic.Atom().set({
         iconPosition: "top"
       });
@@ -220,8 +213,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
     },
 
 
-    updateData : function(widget, data)
-    {
+    updateData : function(widget, data) {
       widget.set({
         icon: data.icon,
         label: data.label
@@ -229,20 +221,16 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
     },
 
 
-    updateStates : function(widget, states)
-    {
+    updateStates : function(widget, states) {
       var label = widget.getChildControl("label");
       var icon = widget.getChildControl("icon");
 
-      if (states.selected)
-      {
+      if (states.selected) {
         label.setBackgroundColor("background-selected");
         label.setTextColor("text-selected");
         icon.setDecorator("white-box");
         icon.setBackgroundColor("background");
-      }
-      else
-      {
+      } else {
         label.resetBackgroundColor();
         label.resetTextColor();
         icon.resetDecorator();
@@ -272,8 +260,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
 {
   extend : qxl.demobrowser.demo.virtual.AbstractGallery,
 
-  construct : function(title)
-  {
+  construct : function(title) {
     this.base(arguments, title);
     this.__cell = new qxl.demobrowser.demo.virtual.GalleryCell();
   },
@@ -282,8 +269,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
   {
     __cell : null,
 
-    _createScroller : function()
-    {
+    _createScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(
         1, this.itemPerLine,
         this.itemHeight, this.itemWidth
@@ -312,15 +298,13 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
     },
 
 
-    styleSelectable : function(item, type, wasAdded)
-    {
+    styleSelectable : function(item, type, wasAdded) {
       if (type !== "selected") {
         return;
       }
 
       var widgets = this.layer.getChildren();
-      for (var i=0; i<widgets.length; i++)
-      {
+      for (var i=0; i<widgets.length; i++) {
         var widget = widgets[i];
         var cell = widget.getUserData("cell");
 
@@ -337,8 +321,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
     },
 
 
-    getCellWidget : function(row, column)
-    {
+    getCellWidget : function(row, column) {
       var itemData = this.getItemData(row, column);
 
       if (!itemData) {
@@ -368,8 +351,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__cell", "layer");
   }
 });
@@ -393,8 +375,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
 {
   extend : qxl.demobrowser.demo.virtual.AbstractGallery,
 
-  construct : function(title)
-  {
+  construct : function(title) {
     this.base(arguments, title);
 
     var fontStyles = qx.theme.manager.Font.getInstance().resolve("default").getStyles();
@@ -403,8 +384,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
 
   members :
   {
-    _createScroller : function()
-    {
+    _createScroller : function() {
       var scroller = new qx.ui.virtual.core.Scroller(
         1, this.itemPerLine,
         this.itemHeight, this.itemWidth
@@ -421,8 +401,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
       return scroller;
     },
 
-    _onPaneResize : function(e)
-    {
+    _onPaneResize : function(e) {
       this.base(arguments, e);
       this.manager.clearSelection();
     },
@@ -431,8 +410,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
       this.layer.updateLayerData();
     },
 
-    getCellProperties : function(row, column)
-    {
+    getCellProperties : function(row, column) {
       var itemData = this.getItemData(row, column);
 
       if (!itemData) {
@@ -465,8 +443,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("layer");
   }
 });

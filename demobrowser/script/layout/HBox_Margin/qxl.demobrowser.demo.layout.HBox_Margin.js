@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var scroll = new qx.ui.container.Scroll();
@@ -35,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
         padding: 20
-      })
+      });
       scroll.add(root);
 
 
@@ -47,8 +46,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
     },
 
 
-    getBox1 : function()
-    {
+    getBox1 : function() {
       // auto size + disabled y grow
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -78,8 +76,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
     },
 
 
-    getBox2 : function()
-    {
+    getBox2 : function() {
       // auto size + enabled y grow
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -105,8 +102,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
     },
 
 
-    getBox3 : function()
-    {
+    getBox3 : function() {
       // auto size + static height + middle aligned + disabled y grow (no effect)
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -138,8 +134,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
     },
 
 
-    getBox4 : function()
-    {
+    getBox4 : function() {
       // auto size + static height + middle aligned + enabled y grow
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -170,8 +165,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_Margin",
     },
 
 
-    getBox5 : function()
-    {
+    getBox5 : function() {
       // auto size + static height + middle aligned + enabled y grow + huge marginBottom
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({

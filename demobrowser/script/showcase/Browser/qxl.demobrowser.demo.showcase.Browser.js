@@ -36,15 +36,13 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
       this.getRoot().add(this._createBrowser(), {left: 40, top: 30});
     },
 
 
-    _createBrowser : function()
-    {
+    _createBrowser : function() {
       var win = new qx.ui.window.Window(
         "Web Browser",
         "icon/16/categories/internet.png"
@@ -80,8 +78,8 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
       btnForward.setEnabled(false);
       btnBack.setEnabled(false);
 
-      btnForward.setToolTipText("This feature is currently not supported.")
-      btnBack.setToolTipText("This feature is currently not supported.")
+      btnForward.setToolTipText("This feature is currently not supported.");
+      btnBack.setToolTipText("This feature is currently not supported.");
 
       this.txtUrl = new qx.ui.form.TextField().set({
         marginLeft: 1,
@@ -116,8 +114,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
       return win;
     },
 
-    surfTo : function(url)
-    {
+    surfTo : function(url) {
       if (url.indexOf("http://") !== 0) {
         url = "http://" + url;
         this.txtUrl.setValue(url);

@@ -9,8 +9,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
@@ -39,7 +38,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       var resizeBehavior = tree.getTableColumnModel().getBehavior();
 
       // Ensure that the tree column remains sufficiently wide
-      resizeBehavior.set(0, { width:"1*", minWidth:180  });
+      resizeBehavior.set(0, { width:"1*", minWidth:180 });
 
       hBox.add(tree);
 
@@ -73,8 +72,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
 
       te = dataModel.addBranch(te2, "Spam", false);
 
-      for (var i = 1; i < 3000; i++)
-      {
+      for (var i = 1; i < 3000; i++) {
         dataModel.addLeaf(te, "Spam Message #" + i);
       }
 
@@ -99,12 +97,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
 
       tree.addListener(
         "changeSelection",
-        function(e)
-        {
+        function(e) {
           // Get the list of selected nodes.  We're in single-selection mode,
           // so there will be only one of them.
           var nodes = e.getData();
-          this.setValue(tree.getHierarchy(nodes[0].nodeId).join('/'));
+          this.setValue(tree.getHierarchy(nodes[0].nodeId).join("/"));
           buttonRemove.setEnabled(true);
         },
         o);
@@ -114,11 +111,9 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       commandFrame.add(buttonRemove);
       buttonRemove.addListener(
         "execute",
-        function(e)
-        {
+        function(e) {
           var selectedNodes = tree.getSelectedNodes();
-          for (var i = 0; i < selectedNodes.length; i++)
-          {
+          for (var i = 0; i < selectedNodes.length; i++) {
             dataModel.prune(selectedNodes[i].nodeId, true);
             dataModel.setData();
           }
@@ -128,8 +123,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: true });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
+                    function(e) {
                       tree.setUseTreeLines(e.getData());
                     });
 
@@ -137,8 +131,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: false });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
+                    function(e) {
                       tree.setExcludeFirstLevelTreeLines(e.getData());
                     });
 
@@ -146,8 +139,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: true });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
+                    function(e) {
                       tree.setAlwaysShowOpenCloseSymbol(e.getData());
                     });
 
@@ -155,10 +147,8 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: true });
       commandFrame.add(o);
       tree.addListener("treeOpenWhileEmpty",
-                       function(e)
-                       {
-                         if (this.getValue())
-                         {
+                       function(e) {
+                         if (this.getValue()) {
                            var node = e.getData();
                            tree.nodeSetHideOpenClose(node, true);
                          }
@@ -169,8 +159,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: false });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
+                    function(e) {
                       tree.setOpenCloseClickSelectsRow(e.getData());
                     });
 
@@ -178,17 +167,15 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Multiple_Columns",
       o.set({ value: false });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
-                      tree.setEnabled(! e.getData());
+                    function(e) {
+                      tree.setEnabled(!e.getData());
                     });
 
       o = new qx.ui.form.CheckBox("Show column visibilty menu");
       o.set({ value: true });
       commandFrame.add(o);
       o.addListener("changeValue",
-                    function(e)
-                    {
+                    function(e) {
                       tree.setColumnVisibilityButtonVisible(e.getData());
                     });
     }

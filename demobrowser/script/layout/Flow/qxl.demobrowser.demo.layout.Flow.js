@@ -44,8 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._createGalleryWindow(20, 20);
@@ -53,8 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
     },
 
 
-    _createGalleryWindow : function(left, top)
-    {
+    _createGalleryWindow : function(left, top) {
       var win = new qx.ui.window.Window("Flow Layout").set({
         contentPadding: 0,
         width: 200
@@ -69,8 +67,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
       });
       scroller.add(container);
 
-      for (var i=0; i<30; i++)
-      {
+      for (var i=0; i<30; i++) {
         container.add(new qx.ui.basic.Atom("item #" + (i+1), "icon/48/devices/computer.png").set({
           iconPosition: "top",
           width: 60,
@@ -83,10 +80,9 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
     },
 
 
-    _createLineBreakWindow : function(left, top)
-    {
+    _createLineBreakWindow : function(left, top) {
       var fl = new qx.ui.layout.Flow();
-      fl.setAlignX( "center" ); // Align children to the X axis of the container (left|center|right)
+      fl.setAlignX("center"); // Align children to the X axis of the container (left|center|right)
       //fl.setReversed( true ); // draws children elements in reverse order.
 
       var container = new qx.ui.window.Window("Flow Layout with line breaks").set({
@@ -108,7 +104,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
 
 
       var button3 = new qx.ui.form.Button("3rd really, really, really long Button", icon);
-      button3.setHeight(100);  // tall button
+      button3.setHeight(100); // tall button
       container.add(button3);
 
       var button4 = new qx.ui.form.Button("Number 4", icon);
@@ -117,17 +113,17 @@ qx.Class.define("qxl.demobrowser.demo.layout.Flow",
 
 
       var button5 = new qx.ui.form.Button("20px Margins around the great big 5th button!");
-      button5.setHeight(100);  // tall button
+      button5.setHeight(100); // tall button
       button5.setMargin(20);
-      container.add(button5, {lineBreak: true});    // Line break after this button.
+      container.add(button5, {lineBreak: true}); // Line break after this button.
 
       var button6 = new qx.ui.form.Button("Number 6", icon);
-      button6.setAlignY("middle");  // Align this child to the vertical center of this line.
+      button6.setAlignY("middle"); // Align this child to the vertical center of this line.
       container.add(button6);
 
 
       var button7 = new qx.ui.form.Button("7th a wide, short button", icon);
-      button7.setMaxHeight(20);  // short button
+      button7.setMaxHeight(20); // short button
       container.add(button7);
 
 

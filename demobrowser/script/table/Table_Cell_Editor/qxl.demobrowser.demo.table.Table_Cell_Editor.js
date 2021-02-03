@@ -33,8 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
       return "Property editor table";
     },
 
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       this._container.resetWidth();
@@ -45,91 +44,88 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
      * @lint ignoreDeprecated(alert)
      * @return {qx.ui.table.Table} table
      */
-    createTable : function()
-    {
+    createTable : function() {
       // create some example data
       var tableData =
       [
         [
-          'username',
-          'User Name',
-          'jdoe',
-          {'required':true}
+          "username",
+          "User Name",
+          "jdoe",
+          {"required":true}
         ],
         [
-          'password',
-          'Password',
-          'secret',
+          "password",
+          "Password",
+          "secret",
           {
-            'type': 'password',
-            'required': true
+            "type": "password",
+            "required": true
           }
         ],
         [
-          'role',
-          'Role',
-          'editable combobox',
+          "role",
+          "Role",
+          "editable combobox",
           {
-            'options':
+            "options":
             [
-              'admin',
-              'manager',
-              'user'
+              "admin",
+              "manager",
+              "user"
             ],
-            'editable': true
+            "editable": true
           }
         ],
         [
-          'status',
-          'Status',
-          '0',
+          "status",
+          "Status",
+          "0",
           {
-            'options':
+            "options":
             [
               [
-                'Inactive',
+                "Inactive",
                 null,
-                '0'
+                "0"
               ],
               [
-                'Active',
+                "Active",
                 null,
-                '1'
+                "1"
               ],
               [
-                'Waiting',
+                "Waiting",
                 null,
-                '2'
+                "2"
               ]
             ]
           }
         ],
         [
-          'email',
-          'Email',
-          'enter valid email',
+          "email",
+          "Email",
+          "enter valid email",
           {
-            'type': 'email'
+            "type": "email"
           }
         ],
         [
-          'telephone',
-          'Telephone',
-          'enter valid telephone number',
+          "telephone",
+          "Telephone",
+          "enter valid telephone number",
           {
-            'regExp': '[0-9]+',
-            'failMsg': 'Use only numbers!'
+            "regExp": "[0-9]+",
+            "failMsg": "Use only numbers!"
           }
         ],
         [
-          'website',
-          'Website',
-          'enter website',
+          "website",
+          "Website",
+          "enter website",
           {
-            'validationFunc': function(newValue)
-            {
-              if (newValue.search(/^http:/)!=-1)
-              {
+            "validationFunc": function(newValue) {
+              if (newValue.search(/^http:/)!=-1) {
                 window.open(newValue);
               }
               return newValue;
@@ -137,47 +133,41 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
           }
         ],
         [
-          'newsletter',
-          'Newsletter',
+          "newsletter",
+          "Newsletter",
           true,
           {
-            'type': "checkbox"
+            "type": "checkbox"
           }
         ]
       ];
 
       // cell renderer factory function
       // returns a cell renderer instance
-      var propertyCellRendererFactoryFunc = function (cellInfo)
-      {
+      var propertyCellRendererFactoryFunc = function (cellInfo) {
         var table = cellInfo.table;
         var tableModel = table.getTableModel();
         var rowData = tableModel.getRowData(cellInfo.row);
         var metaData = rowData[3];
         var renderer;
 
-        for ( var cmd in metaData )
-        {
-
-          switch ( cmd )
-          {
+        for (var cmd in metaData) {
+          switch (cmd) {
           case "type":
-            switch ( metaData['type'])
-            {
+            switch (metaData["type"]) {
             case "checkbox":
-              return new qx.ui.table.cellrenderer.Boolean;
+              return new qx.ui.table.cellrenderer.Boolean();
 
             case "password":
-              return new qx.ui.table.cellrenderer.Password;
+              return new qx.ui.table.cellrenderer.Password();
             }
             break;
 
           case "options":
-            var renderer = new qx.ui.table.cellrenderer.Replace;
+            var renderer = new qx.ui.table.cellrenderer.Replace();
             var replaceMap = {};
-            metaData['options'].forEach(function(row){
-            if (row instanceof Array)
-              {
+            metaData["options"].forEach(function(row) {
+            if (row instanceof Array) {
                 replaceMap[row[0]]=row[2];
               }
             });
@@ -187,7 +177,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
           }
         }
         return new qx.ui.table.cellrenderer.Default();
-      }
+      };
 
       // create the  "meta" cell renderer object
       var propertyCellRendererFactory =
@@ -195,52 +185,43 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
 
       // cell editor factory function
       // returns a cellEditorFactory instance based on data in the row itself
-      var propertyCellEditorFactoryFunc = function (cellInfo)
-      {
+      var propertyCellEditorFactoryFunc = function (cellInfo) {
         var table = cellInfo.table;
         var tableModel = table.getTableModel();
         var rowData = tableModel.getRowData(cellInfo.row);
         var metaData = rowData[3];
-        var cellEditor = new qx.ui.table.celleditor.TextField;
+        var cellEditor = new qx.ui.table.celleditor.TextField();
         var validationFunc = null;
 
-        for ( var cmd in metaData )
-        {
-          switch ( cmd )
-          {
+        for (var cmd in metaData) {
+          switch (cmd) {
           case "options":
-            if (metaData.editable)
-            {
+            if (metaData.editable) {
               cellEditor = new qx.ui.table.celleditor.ComboBox();
-            }
-            else
-            {
+            } else {
               cellEditor = new qx.ui.table.celleditor.SelectBox();
             }
-            cellEditor.setListData( metaData['options'] );
+            cellEditor.setListData(metaData["options"]);
             break;
 
           case "editable":
             break;
 
           case "type":
-            switch ( metaData['type'] )
-            {
+            switch (metaData["type"]) {
             case "password":
-              cellEditor = new qx.ui.table.celleditor.PasswordField;
+              cellEditor = new qx.ui.table.celleditor.PasswordField();
               break;
 
             case "checkbox":
-              cellEditor = new qx.ui.table.celleditor.CheckBox;
+              cellEditor = new qx.ui.table.celleditor.CheckBox();
               break;
 
             case "email":
-              cellEditor.setValidationFunction (
-                function( newValue, oldValue )
-                {
+              cellEditor.setValidationFunction(
+                function(newValue, oldValue) {
                   var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*\.(\w{2}|(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum))$/;
-                  if ( re.test(newValue) )
-                  {
+                  if (re.test(newValue)) {
                     return newValue;
                   }
                   alert("You did not enter a valid email address");
@@ -251,28 +232,24 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
             break;
 
           case "regExp":
-            cellEditor.setValidationFunction (
-              function( newValue, oldValue )
-              {
-                var re = new RegExp(metaData['regExp']);
-                if ( re.test(newValue) )
-                {
+            cellEditor.setValidationFunction(
+              function(newValue, oldValue) {
+                var re = new RegExp(metaData["regExp"]);
+                if (re.test(newValue)) {
                   return newValue;
                 }
-                alert(metaData['failMsg']);
+                alert(metaData["failMsg"]);
                 return oldValue;
               });
             break;
 
           case "validationFunc":
-            cellEditor.setValidationFunction (metaData['validationFunc']);
+            cellEditor.setValidationFunction(metaData["validationFunc"]);
             break;
 
           case "required":
-            validationFunc = function( newValue, oldValue )
-            {
-              if (! newValue)
-              {
+            validationFunc = function(newValue, oldValue) {
+              if (!newValue) {
                 alert("You need to supply a value here");
                 return oldValue;
               }
@@ -282,7 +259,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
           }
         }
         return cellEditor;
-      }
+      };
 
       // create a "meta" cell editor object
       var propertyCellEditorFactory =
@@ -292,19 +269,18 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
       var propertyEditor_tableModel = new qx.ui.table.model.Simple();
       propertyEditor_tableModel.setColumns(
         [
-          'Property',
-          'Property',
-          'Doubletap on cell to edit value'
+          "Property",
+          "Property",
+          "Doubletap on cell to edit value"
         ]);
       var propertyEditor_resizeBehaviour =
         {
-          tableColumnModel : function(obj)
-          {
+          tableColumnModel : function(obj) {
             return new qx.ui.table.columnmodel.Resize(obj);
           }
         };
       var propertyEditor = new qx.ui.table.Table(
-        propertyEditor_tableModel,propertyEditor_resizeBehaviour);
+        propertyEditor_tableModel, propertyEditor_resizeBehaviour);
 
       // remove decor
       propertyEditor.setDecorator(null);
@@ -322,15 +298,15 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
       var tcm = propertyEditor.getTableColumnModel();
 
       // first table columns is not visible, has the key
-      tcm.setColumnVisible(0,false);
+      tcm.setColumnVisible(0, false);
 
       // second column has the label
-      tcm.getBehavior().setWidth(1,100);
+      tcm.getBehavior().setWidth(1, 100);
 
       // third column for editing the value and has special cell renderers
       // and cell editors
-      tcm.getBehavior().setWidth(2,300);
-      propertyEditor_tableModel.setColumnEditable(2,true);
+      tcm.getBehavior().setWidth(2, 300);
+      propertyEditor_tableModel.setColumnEditable(2, true);
       tcm.setDataCellRenderer(2, propertyCellRendererFactory);
       tcm.setCellEditorFactory(2, propertyCellEditorFactory);
 
@@ -343,10 +319,8 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
       // send the data back to the server etc.
       propertyEditor.getTableModel().addListener(
         "dataChanged",
-        function(event)
-        {
-          if ( !(event instanceof qx.event.type.Data))
-          {
+        function(event) {
+          if (!(event instanceof qx.event.type.Data)) {
             return;
           }
           var changedData = event.getData();
@@ -355,7 +329,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Cell_Editor",
           var model =
             this.getTableModel();
           var key =
-            model.getValue(0,changedData.firstRow);
+            model.getValue(0, changedData.firstRow);
           var value =
             model.getValue(changedData.firstColumn, changedData.firstRow);
 

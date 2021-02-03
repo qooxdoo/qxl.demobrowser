@@ -45,14 +45,12 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function()
-    {
+    main : function() {
       // Call super class
       this.base(arguments);
 
       // Enable logging in debug variant
-      if ((qx.core.Environment.get("qx.debug")))
-      {
+      if ((qx.core.Environment.get("qx.debug"))) {
         // support native logging capabilities, e.g. Firebug for Firefox
         qx.log.appender.Native;
         // support additional cross-browser console. Press F7 to toggle visibility
@@ -60,7 +58,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       }
 
 
-      var grid = new qx.ui.layout.Grid(10,10);
+      var grid = new qx.ui.layout.Grid(10, 10);
       grid.setColumnFlex(0, 1);
       grid.setColumnFlex(1, 1);
       grid.setRowFlex(3, 1);
@@ -71,7 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
         showMinimize: false
       });
       controls.setLayout(grid);
-      controls.moveTo(50,50);
+      controls.moveTo(50, 50);
       controls.open();
 
       var localeManager = qx.locale.Manager.getInstance();
@@ -79,7 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       var currentLocale = localeManager.getLocale();
 
       var l2 = new qx.ui.basic.Label(this.tr("Choose a locale:"));
-      controls.add(l2, {row:0,column:0});
+      controls.add(l2, {row:0, column:0});
 
       var select = new qx.ui.form.SelectBox();
       var defaultListItem = null;
@@ -92,8 +90,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
         }
       }
 
-      select.addListener("changeSelection", function(e)
-      {
+      select.addListener("changeSelection", function(e) {
         var locale = e.getData()[0].getLabel();
         qx.locale.Manager.getInstance().setLocale(locale);
       });
@@ -102,30 +99,30 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
         select.setSelection([defaultListItem]);
       }
 
-      controls.add(select, {row:0,column:1});
+      controls.add(select, {row:0, column:1});
 
-      controls.add(new qx.ui.basic.Label(this.tr("Localized ComboBox:")), {row:1,column:0});
+      controls.add(new qx.ui.basic.Label(this.tr("Localized ComboBox:")), {row:1, column:0});
 
       var s2 = new qx.ui.form.ComboBox();
       s2.add(new qx.ui.form.ListItem(this.tr("Cut")));
       s2.add(new qx.ui.form.ListItem(this.tr("Paste")));
       s2.add(new qx.ui.form.ListItem(this.tr("Copy")));
 
-      controls.add(s2, {row:1,column:1});
+      controls.add(s2, {row:1, column:1});
 
 
 
       // DateChooserButton
       var l1 = new qx.ui.basic.Label(this.tr("A date:"));
-      controls.add(l1,{row:2,column:0});
+      controls.add(l1, {row:2, column:0});
 
       var tf1 = new qx.ui.form.DateField();
-      tf1.setValue(new Date);
-      controls.add(tf1,{row:2,column:1});
+      tf1.setValue(new Date());
+      controls.add(tf1, {row:2, column:1});
 
       // DateChooser
-      var chooser = new qx.ui.control.DateChooser;
-      controls.add(chooser,{row:3,column:0,colSpan:2});
+      var chooser = new qx.ui.control.DateChooser();
+      controls.add(chooser, {row:3, column:0, colSpan:2});
 
       // Commands
       var undo_cmd = new qx.ui.command.Command("Ctrl+Z");
@@ -138,7 +135,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       var search_cmd = new qx.ui.command.Command("Ctrl+F");
       var search_again_cmd = new qx.ui.command.Command("F3");
 
-      var m1 = new qx.ui.menu.Menu;
+      var m1 = new qx.ui.menu.Menu();
       m1.add(new qx.ui.menu.Button(this.tr("Undo"), null, undo_cmd));
       m1.add(new qx.ui.menu.Button(this.tr("Redo"), null, redo_cmd));
       m1.add(new qx.ui.menu.Separator());
@@ -152,7 +149,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       m1.add(new qx.ui.menu.Button(this.tr("Search Again"), null, search_again_cmd));
 
       var w1 = new qx.ui.form.MenuButton(this.tr("Command Menu (keyboard shortcuts)"), null, m1);
-      controls.add(w1,{row:4,column:0,colSpan:2});
+      controls.add(w1, {row:4, column:0, colSpan:2});
 
       // ColorPopup
       var mypop = new qx.ui.control.ColorPopup();
@@ -160,17 +157,16 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       mypop.setValue("#23F3C1");
 
       var mybtn = new qx.ui.form.Button(this.tr("Open Color Popup"));
-      mybtn.addListener("pointerdown", function(e)
-      {
-        mypop.placeToPointer(e)
+      mybtn.addListener("pointerdown", function(e) {
+        mypop.placeToPointer(e);
         mypop.show();
       });
-      controls.add(mybtn, {row:5,column:0});
+      controls.add(mybtn, {row:5, column:0});
 
       var myview = new qx.ui.core.Widget().set({
         decorator : "main"
       });
-      controls.add(myview, {row:5,column:1});
+      controls.add(myview, {row:5, column:1});
 
       mypop.addListener("changeValue", function(e) {
         myview.setBackgroundColor(e.getData());
@@ -187,7 +183,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       colorWin.moveTo(150, 300);
       colorWin.open();
 
-      var mycolor = new qx.ui.control.ColorSelector;
+      var mycolor = new qx.ui.control.ColorSelector();
       colorWin.add(mycolor);
 
       // Info Box
@@ -213,8 +209,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       var info = [];
       info.push("<table style='font-size:11px'><tr><td>");
 
-      for (var i=0; i<15; i++)
-      {
+      for (var i=0; i<15; i++) {
         info.push("");
         info.push("</td><td>");
         info.push("");
@@ -226,8 +221,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Localization",
       info.push("");
       info.push("</td></tr></table>");
 
-      this.updateLocaleInformation = function()
-      {
+      this.updateLocaleInformation = function() {
         var i = 0;
         info[(i++ * 2) + 1] = this.tr("Locale:");
         info[(i++ * 2) + 1] = qx.locale.Manager.getInstance().getLocale();

@@ -12,8 +12,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var nextId = 0;
@@ -99,8 +98,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
 
   statics :
   {
-    onmouseover : function(cellDiv)
-    {
+    onmouseover : function(cellDiv) {
       // Save the original text color
       cellDiv.__oldcolor = qx.bom.element.Style.get(cellDiv, "color");
 
@@ -123,8 +121,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
       cellDiv.innerHTML = date.toUTCString() + "<br>" + date.toString();
     },
 
-    onmouseout : function(cellDiv)
-    {
+    onmouseout : function(cellDiv) {
       // Restore the original color
       cellDiv.style.color = cellDiv.__oldcolor;
 
@@ -139,8 +136,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
 
   members :
   {
-    _getCellExtras : function(cellInfo)
-    {
+    _getCellExtras : function(cellInfo) {
       var html = [ ];
 
       // Add superclass extras

@@ -23,8 +23,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Application",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var w1 = new qx.ui.core.Widget().set({

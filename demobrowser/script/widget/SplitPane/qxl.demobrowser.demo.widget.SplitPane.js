@@ -24,8 +24,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
   {
     __pane : null,
 
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       // Create a scroll container and an outer container
@@ -43,7 +42,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
       this.__pane = pane;
 
       // Create container with fixed dimensions for the left:
-      var container1 = new qx.ui.container.Composite(new qx.ui.layout.Grow).set({
+      var container1 = new qx.ui.container.Composite(new qx.ui.layout.Grow()).set({
         width : 200,
         height: 100,
         decorator : "main"
@@ -131,8 +130,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
     /**
      * Toggles the SplitPane's orientation
      */
-    _toggle : function()
-    {
+    _toggle : function() {
       var orientation = this.__pane.getOrientation();
       this.__pane.setOrientation(orientation == "horizontal" ? "vertical" : "horizontal");
     },
@@ -141,22 +139,16 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
      * Changes the SplitPane's children visibility
      * @param e {qx.event.type.Data} Incoming data event
      */
-    _changeVisiblity : function(e)
-    {
+    _changeVisiblity : function(e) {
       var data = e.getData()[0].getUserData("value");
 
-      if(data == "both")
-      {
+      if (data == "both") {
         this._container1.show();
         this._container2.show();
-      }
-      else if(data == "first")
-      {
+      } else if (data == "first") {
         this._container1.show();
         this._container2.exclude();
-      }
-      else if(data == "second")
-      {
+      } else if (data == "second") {
         this._container1.exclude();
         this._container2.show();
       }
@@ -166,8 +158,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
      * Returns a tree filled with dummy values.
      * @return {qx.ui.tree.Tree} The tree
      */
-    __createDummyTree : function()
-    {
+    __createDummyTree : function() {
       var tree = new qx.ui.tree.Tree();
       tree.setDecorator(null);
 
@@ -176,7 +167,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
       tree.setRoot(root);
 
       var te1 = new qx.ui.tree.TreeFolder("Desktop");
-      te1.setOpen(true)
+      te1.setOpen(true);
       root.add(te1);
 
       var te1_1 = new qx.ui.tree.TreeFolder("Files");
@@ -219,8 +210,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
    *****************************************************************************
    */
 
-  destruct : function()
-  {
+  destruct : function() {
     this._disposeObjects("__pane", "_container1", "_container2");
   }
 });

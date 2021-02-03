@@ -21,18 +21,16 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
   extend : qx.application.Standalone,
 
 
-  construct : function()
-  {
+  construct : function() {
     this.base(arguments);
   },
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(10,10));
+      var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(10, 10));
       this.getRoot().add(container, {top: 20, left: 20});
 
       // First block
@@ -116,12 +114,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
       container.add(subContainer, {row: 3, column: 2});
       subContainer.add(textAreaWrap, {row: 0, column: 0});
       subContainer.add(checkBox, {row: 1, column: 0});
-
     },
 
     __getLongValue: function() {
       var val = new qx.type.Array(2);
-      for(var i=0; i < val.length; i++) {
+      for (var i=0; i < val.length; i++) {
         val[i] = "The quick brown fox jumps over the lazy dog. ";
       }
       return val.join("");

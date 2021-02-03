@@ -34,8 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Dialog",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var layout = new qx.ui.layout.Grid(9, 5);
@@ -46,7 +45,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Dialog",
       layout.setColumnWidth(3, 108);
 
 
-      var container = new qx.ui.tabview.TabView;
+      var container = new qx.ui.tabview.TabView();
       var page = new qx.ui.tabview.Page("Page");
       page.setLayout(layout);
       page.setPadding(10);

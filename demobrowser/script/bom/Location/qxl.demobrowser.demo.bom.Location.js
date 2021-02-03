@@ -27,8 +27,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location",
 
   members :
   {
-    main : function()
-    {
+    main : function() {
       this.base(arguments);
 
       var links = document.getElementById("list").getElementsByTagName("a");
@@ -44,8 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location",
       return parseInt(qx.bom.element.Style.get(elem, style, qx.bom.element.Style.COMPUTED_MODE, false), 10);
     },
 
-    jump : function(event)
-    {
+    jump : function(event) {
       if (!event) {
         event = window.event;
       }
@@ -56,12 +54,16 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location",
         event.preventDefault();
       }
 
+      /**
+       * @param elem
+       * @param style
+       */
       function num(elem, style) {
         return parseInt(qx.bom.element.Style.get(elem, style, qx.bom.element.Style.COMPUTED_MODE, false), 10);
-      };
+      }
 
       var href = this.href;
-      var id = href.substr(href.indexOf('#')+1);
+      var id = href.substr(href.indexOf("#")+1);
 
       var elem = document.getElementById(id);
       var location = qx.bom.element.Location.get(elem, document.getElementById("mode").value);
@@ -70,13 +72,10 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location",
       moveable.style.left = location.left + "px";
       moveable.style.top = location.top + "px";
 
-      if (qx.core.Environment.get("css.boxmodel") == "border")
-      {
+      if (qx.core.Environment.get("css.boxmodel") == "border") {
         moveable.style.width = (location.right - location.left) + "px";
         moveable.style.height = (location.bottom - location.top) + "px";
-      }
-      else
-      {
+      } else {
         moveable.style.width = (location.right - location.left - num(moveable, "borderLeftWidth") - num(moveable, "borderRightWidth")) + "px";
         moveable.style.height = (location.bottom - location.top - num(moveable, "borderTopWidth") - num(moveable, "borderBottomWidth")) + "px";
       }
@@ -84,13 +83,10 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location",
       return false;
     },
 
-    randomize : function()
-    {
+    randomize : function() {
       var divs = document.body.getElementsByTagName("div");
-      for (var i=0, l=divs.length; i<l; i++)
-      {
-        if (divs[i].id && divs[i].id != "moveable")
-        {
+      for (var i=0, l=divs.length; i<l; i++) {
+        if (divs[i].id && divs[i].id != "moveable") {
           divs[i].style.margin = Math.round(Math.random()*10) + "px";
           divs[i].style.padding = Math.round(Math.random()*10) + "px";
           divs[i].style.borderWidth = Math.round(Math.random()*10) + "px";

@@ -26,8 +26,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.AttributeStyle_2",
 
   members :
   {
-    main: function()
-    {
+    main: function() {
       this.base(arguments);
 
       var chk = qx.dom.Element.create("input", {
