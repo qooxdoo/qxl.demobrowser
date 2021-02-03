@@ -58,10 +58,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       incrementalSearch.setPadding(20);
       incrementalSearch.add(this.createBox8());
       incrementalSearch.add(this.createBox9());
+      incrementalSearch.add(this.createBox10());
 
       container.add(standard, {left : 20, top : 20});
       container.add(advanced, {left : 20, top : 200});
-      container.add(incrementalSearch,   {left : 20, top : 380});
+      container.add(incrementalSearch, {left : 20, top : 380});
       this.getRoot().add(scroller, {edge : 0});
     },
 
@@ -286,7 +287,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     createBox8 : function()
     {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
-      container.add(new qx.ui.basic.Label("Incremental Search"));
+      container.add(new qx.ui.basic.Label("Incremental Search, plain highlighting"));
 
       // Creates the model data
       var rawData = [
@@ -296,8 +297,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var model   = qx.data.marshal.Json.createModel(rawData);
 
       // Creates the select box
-      var selectBox = new qx.ui.form.VirtualSelectBox(model);
-      selectBox.setIncrementalSearch(true);
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : 'plain'
+      };
       container.add(selectBox);
 
       return container;
@@ -307,7 +310,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
     createBox9 : function()
     {
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
-      container.add(new qx.ui.basic.Label("Incremental Search, rich labels"));
+      container.add(new qx.ui.basic.Label("Incremental Search, html highlighting"));
 
       // Creates the model data
       var rawData = [
@@ -317,10 +320,32 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var model   = qx.data.marshal.Json.createModel(rawData);
 
       // Creates the select box
-      var selectBox = new qx.ui.form.VirtualSelectBox(model);
-      selectBox.setIncrementalSearch(true);
-      // Set labels and highlighting rich (HTML formatting)
-      if (selectBox.setRich) selectBox.setRich(true);
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : 'html'
+      };
+      container.add(selectBox);
+
+      return container;
+    },
+
+    createBox10 : function()
+    {
+      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      container.add(new qx.ui.basic.Label("Incremental Search, no highlighting"));
+
+      // Creates the model data
+      var rawData = [
+        'Elm street', 'Abbey road', 'Route 61', 'Central station', 'Central Park',
+        'Park Avenue', 'Broadway', 'Hohle Gasse', 'Überlandstrasse'
+      ];
+      var model   = qx.data.marshal.Json.createModel(rawData);
+
+      // Creates the select box
+      var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
+        incrementalSearch : true,
+        highlightMode : 'none'
+      };
       container.add(selectBox);
 
       return container;
