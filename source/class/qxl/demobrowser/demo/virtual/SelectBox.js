@@ -300,7 +300,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
         incrementalSearch : true,
         highlightMode : 'plain'
-      };
+      });
       container.add(selectBox);
 
       return container;
@@ -323,7 +323,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
         incrementalSearch : true,
         highlightMode : 'html'
-      };
+      });
       container.add(selectBox);
 
       return container;
@@ -345,7 +345,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SelectBox",
       var selectBox = new qx.ui.form.VirtualSelectBox(model).set({
         incrementalSearch : true,
         highlightMode : 'none'
-      };
+      });
       container.add(selectBox);
 
       return container;
