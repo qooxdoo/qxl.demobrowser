@@ -479,29 +479,22 @@ qx.Class.define("qxl.demobrowser.DemoBrowser",
 
       if (qx.core.Environment.get("qx.contrib") == false)
       {
-        var themeMenu = new qx.ui.menu.Menu;
+        var themeMenu = this.__themeMenu = new qx.ui.menu.Menu;
+        var group = new qx.ui.form.RadioGroup();
 
-        this.__themeMenu = themeMenu;
-
-        var t1 = new qx.ui.menu.RadioButton("Modern Theme");
-        var t2 = new qx.ui.menu.RadioButton("Classic Theme");
-        var t3 = new qx.ui.menu.RadioButton("Simple Theme");
-        var t4 = new qx.ui.menu.RadioButton("Indigo Theme");
-
-        t1.setUserData("value", "qx.theme.Modern");
-        t2.setUserData("value", "qx.theme.Classic");
-        t3.setUserData("value", "qx.theme.Simple");
-        t4.setUserData("value", "qx.theme.Indigo");
-        t4.setValue(true);
-
-        var group = new qx.ui.form.RadioGroup(t1, t2, t3, t4);
+        var themes = qx.Theme.getAll();
+        var currentThemeItem;
+        var currentTheme = qx.theme.manager.Meta.getInstance().getTheme();
+        for (var key in themes) {
+          let theme = themes[key];
+          if (theme.type === "meta") {
+            var item = new qx.ui.menu.RadioButton(theme.title);
+            item.setUserData("value", theme.name);
+            themeMenu.add(item);
+            group.add(item);
+          }
+        }
         group.addListener("changeSelection", this.__onChangeTheme, this);
-
-        themeMenu.add(t4);
-        themeMenu.add(t1);
-        themeMenu.add(t2);
-        themeMenu.add(t3);
-
         var themeButton = new qx.ui.toolbar.MenuButton(this.tr("Theme"), "icon/22/apps/utilities-color-chooser.png", themeMenu);
         this.__themePart = menuPart;
         themeButton.setToolTipText("Choose theme");

@@ -56,7 +56,7 @@ qx.Class.define("qxl.demobrowser.demo.data.model.Node",
 
     number : {
       init:  10,
-      validate: "__validateNumber"
+      validate: "_validateNumber"
     },
 
     color : {
@@ -66,7 +66,7 @@ qx.Class.define("qxl.demobrowser.demo.data.model.Node",
   },
 
   members: {
-    __validateNumber: function(value) {
+    _validateNumber: function(value) {
       // check if its a number
       if(!isNaN(parseFloat(value))) {
         if(/^\d+$/.test(value)) {
