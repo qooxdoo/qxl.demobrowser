@@ -55,10 +55,10 @@ qx.Class.define("qxl.demobrowser.Tree",
      * TODOC
      *
      * @return {Array | var} TODOC
+     * aka 'dirname'
      */
-    pwd : function() // aka 'dirname'
-    {
-      if (this.parent == null) {
+    pwd : function() {
+      if (this.parent === null) {
         return [];
       } 
         return this.parent.pwd().concat(this.parent.label);
@@ -99,7 +99,7 @@ qx.Class.define("qxl.demobrowser.Tree",
       // apply to self
       var iter = this.getIterator(style);
 
-      while (curr = iter()) {
+      while ((curr = iter())) {
         fun.apply(curr, args);
       }
     },
@@ -111,6 +111,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @return {void}
      */
     print : function() {
+      /* eslint-disable-next-line array-callback-return */
       this.map(function() {
         this.debug(this.label);
       }, []);
@@ -124,8 +125,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param style {String} "depth"|"breadth" - traversal style
      * @return {Function} iterator {Function}
      */
-    getIterator : function(style) // returns an iterator function
-    {
+    getIterator : function(style) {
       var agenda = [ this ];
       var depthfirst = style == "depth" ? 1 : 0;
 
@@ -139,8 +139,8 @@ qx.Class.define("qxl.demobrowser.Tree",
           curr = agenda.shift();
           var children = curr.getChildren();
 
-          if (children.length) // expand container
-          {
+          if (children.length) {
+            // expand container
             if (depthfirst) {
               agenda = children.concat(agenda); // depth-first
             } else {
@@ -189,10 +189,7 @@ qx.Class.define("qxl.demobrowser.Tree",
       var sibs = this.parent.getChildren();
       var myIndex = this.self(arguments).indexOf(sibs, this);
       var sibIndex = myIndex + offset;
-
-      if (sibs[sibIndex]) {
-        return sibs[sibIndex];
-      }
+      return sibs[sibIndex];
     },
 
 
@@ -224,6 +221,7 @@ qx.Class.define("qxl.demobrowser.Tree",
           return i;
         }
       }
+      return -1;
     }
   },
 
