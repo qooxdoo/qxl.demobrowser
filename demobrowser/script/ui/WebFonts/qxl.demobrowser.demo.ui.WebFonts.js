@@ -54,9 +54,9 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
               family : "FinelinerScriptRegular",
               source:
               [
-                "demobrowser/demo/fonts/fineliner_script-webfont.eot",
-                "demobrowser/demo/fonts/fineliner_script-webfont.ttf",
-                "demobrowser/demo/fonts/fineliner_script-webfont.woff"
+                "qxl/demobrowser/demo/fonts/fineliner_script-webfont.eot",
+                "qxl/demobrowser/demo/fonts/fineliner_script-webfont.ttf",
+                "qxl/demobrowser/demo/fonts/fineliner_script-webfont.woff"
               ]
             }
           ]
@@ -72,9 +72,9 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
               family : "ToBeContinuedRegular",
               source:
               [
-                "demobrowser/demo/fonts/tobec___-webfont.eot",
-                "demobrowser/demo/fonts/tobec___-webfont.ttf",
-                "demobrowser/demo/fonts/tobec___-webfont.woff"
+                "qxl/demobrowser/demo/fonts/tobec___-webfont.eot",
+                "qxl/demobrowser/demo/fonts/tobec___-webfont.ttf",
+                "qxl/demobrowser/demo/fonts/tobec___-webfont.woff"
               ]
             }
           ]
@@ -90,9 +90,9 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
               family : "YanoneKaffeesatzRegular",
               source:
               [
-                "demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.eot",
-                "demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.ttf",
-                "demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.woff"
+                "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.eot",
+                "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.ttf",
+                "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.woff"
               ]
             }
           ]

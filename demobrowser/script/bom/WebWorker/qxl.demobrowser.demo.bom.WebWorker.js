@@ -36,7 +36,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.WebWorker",
       this.base(arguments);
       var doc = this.getRoot();
 
-      var url = qx.util.ResourceManager.getInstance().toUri("demobrowser/demo/webworker/webworker.js");
+      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/webworker/webworker.js");
       var worker = new qx.bom.WebWorker(url);
 
       var label1 = new qx.ui.basic.Label("Calculate Fibonacci Numbers in a Web Worker");
