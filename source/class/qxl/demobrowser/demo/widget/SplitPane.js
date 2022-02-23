@@ -16,55 +16,61 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.SplitPane", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    __pane : null,
+  members: {
+    __pane: null,
 
-    main: function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       // Create a scroll container and an outer container
       var scroller = new qx.ui.container.Scroll();
-      var outerContainer = new qx.ui.container.Composite(new qx.ui.layout.Basic());
+      var outerContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.Basic()
+      );
       outerContainer.setAllowStretchX(false);
       scroller.add(outerContainer);
 
       // Create a horizontal split pane
       var pane = new qx.ui.splitpane.Pane("horizontal").set({
-        width : 450,
-        height : 300
+        width: 450,
+        height: 300,
       });
 
       this.__pane = pane;
 
       // Create container with fixed dimensions for the left:
-      var container1 = new qx.ui.container.Composite(new qx.ui.layout.Grow()).set({
-        width : 200,
+      var container1 = new qx.ui.container.Composite(
+        new qx.ui.layout.Grow()
+      ).set({
+        width: 200,
         height: 100,
-        decorator : "main"
+        decorator: "main",
       });
 
       // Create container for the right:
-      var container2 = new qx.ui.container.Composite(new qx.ui.layout.VBox(10)).set({
-        padding : 10,
-        maxWidth : 450,
-        decorator : "main"
+      var container2 = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(10)
+      ).set({
+        padding: 10,
+        maxWidth: 450,
+        decorator: "main",
       });
 
       // Create some content here ...
       var tree = this.__createDummyTree();
       var button = new qx.ui.form.Button("Toggle Splitpane Orientation").set({
-        allowGrowX : false,
-        allowGrowY : false
+        allowGrowX: false,
+        allowGrowY: false,
       });
 
       // Add a listener to the button
       button.addListener("execute", this._toggle, this);
-      var label = new qx.ui.basic.Label("Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+      var label = new qx.ui.basic.Label(
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+      );
       label.setRich(true);
 
       // ... and add it to the containers
@@ -82,10 +88,10 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
       pane.add(container2, 1);
 
       // Add the pane to the outer container.
-      outerContainer.add(pane, {left:20, top:40});
+      outerContainer.add(pane, { left: 20, top: 40 });
 
       // Finally add the scroll container to the root widget.
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       var controlLayout = new qx.ui.layout.VBox(5);
       var controlContainer = new qx.ui.container.Composite(controlLayout);
@@ -108,38 +114,45 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
 
       rbm.addListener("changeSelection", this._changeVisiblity, this);
 
-      outerContainer.add(controlContainer, {left:490, top:42});
+      outerContainer.add(controlContainer, { left: 490, top: 42 });
 
       button.focus();
 
-
       // offset controll
       var offsetLabel = new qx.ui.basic.Label();
-      this.getRoot().add(offsetLabel, {left: 490, top: 120});
+      this.getRoot().add(offsetLabel, { left: 490, top: 120 });
       var offsetSlider = new qx.ui.form.Slider().set({
-        minimum: 0, maximum: 30, value: 6, width: 100
+        minimum: 0,
+        maximum: 30,
+        value: 6,
+        width: 100,
       });
-      this.getRoot().add(offsetSlider, {left: 490, top: 140});
+
+      this.getRoot().add(offsetSlider, { left: 490, top: 140 });
 
       offsetSlider.bind("value", pane, "offset");
-      offsetSlider.bind("value", offsetLabel, "value", {converter: function(data) {
-        return "Offset (" + data + "):";
-      }});
+      offsetSlider.bind("value", offsetLabel, "value", {
+        converter(data) {
+          return "Offset (" + data + "):";
+        },
+      });
     },
 
     /**
      * Toggles the SplitPane's orientation
      */
-    _toggle : function() {
+    _toggle() {
       var orientation = this.__pane.getOrientation();
-      this.__pane.setOrientation(orientation == "horizontal" ? "vertical" : "horizontal");
+      this.__pane.setOrientation(
+        orientation == "horizontal" ? "vertical" : "horizontal"
+      );
     },
 
     /**
      * Changes the SplitPane's children visibility
      * @param e {qx.event.type.Data} Incoming data event
      */
-    _changeVisiblity : function(e) {
+    _changeVisiblity(e) {
       var data = e.getData()[0].getUserData("value");
 
       if (data == "both") {
@@ -158,7 +171,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
      * Returns a tree filled with dummy values.
      * @return {qx.ui.tree.Tree} The tree
      */
-    __createDummyTree : function() {
+    __createDummyTree() {
       var tree = new qx.ui.tree.Tree();
       tree.setDecorator(null);
 
@@ -180,15 +193,13 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
       var te1_2_2 = new qx.ui.tree.TreeFile("Documents (D:)");
       te1_2.add(te1_2_1, te1_2_2);
 
-
-
       var te2 = new qx.ui.tree.TreeFolder("Inbox");
 
       var te2_1 = new qx.ui.tree.TreeFolder("Presets");
       var te2_2 = new qx.ui.tree.TreeFolder("Sent");
       var te2_3 = new qx.ui.tree.TreeFolder("Trash");
 
-      for (var i=0; i<100; i++) {
+      for (var i = 0; i < 100; i++) {
         te2_3.add(new qx.ui.tree.TreeFile("Junk #" + i));
       }
 
@@ -200,8 +211,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
       root.add(te2);
 
       return tree;
-    }
-
+    },
   },
 
   /*
@@ -210,7 +220,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.SplitPane",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("__pane", "_container1", "_container2");
-  }
+  },
 });

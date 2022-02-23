@@ -21,14 +21,12 @@
  * @tag databinding
  * @tag delegate
  */
-qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var colors = ["red", "blue", "green", "black", "gray", "yellow"];
 
@@ -45,52 +43,55 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree",
         }
       }
 
-
       // create the tree
       var tree = new qx.ui.tree.Tree();
-      this.getRoot().add(tree, {left: 10, top: 80});
+      this.getRoot().add(tree, { left: 10, top: 80 });
       tree.setWidth(250);
       tree.setHeight(300);
 
       // bind the widget to the data with the controller
-      var treeController = new qx.data.controller.Tree(nodes[0], tree, "children");
+      var treeController = new qx.data.controller.Tree(
+        nodes[0],
+        tree,
+        "children"
+      );
       treeController.setDelegate({
-        bindItem : function(controller, item, id) {
+        bindItem(controller, item, id) {
           controller.bindProperty("name", "label", null, item, id);
           controller.bindProperty("color", "textColor", null, item, id);
-        }
+        },
       });
 
       // open the root node
       tree.getRoot().setOpen(true);
-
-
-
 
       /* ***********************************************
        * Controlls: Do only work on the data array
        * ********************************************* */
       var colorButton = new qx.ui.form.Button("all boring black");
       colorButton.setWidth(120);
-      this.getRoot().add(colorButton, {left: 280, top: 80});
-      colorButton.addListener("execute", function() {
-        for (var i = 0; i < nodes.length; i++) {
-          nodes[i].setColor("black");
-        }
-      }, this);
+      this.getRoot().add(colorButton, { left: 280, top: 80 });
+      colorButton.addListener(
+        "execute",
+        function () {
+          for (var i = 0; i < nodes.length; i++) {
+            nodes[i].setColor("black");
+          }
+        },
+        this
+      );
 
       var logDataButton = new qx.ui.form.Button("Write data to log");
       logDataButton.setWidth(120);
-      this.getRoot().add(logDataButton, {left: 280, top: 115});
-      logDataButton.addListener("execute", function() {
-        // push the data in the consoleListController.html
-        this.info(nodes[0].toString());
-      }, this);
-
-
-
-
-
+      this.getRoot().add(logDataButton, { left: 280, top: 115 });
+      logDataButton.addListener(
+        "execute",
+        function () {
+          // push the data in the consoleListController.html
+          this.info(nodes[0].toString());
+        },
+        this
+      );
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -100,10 +101,11 @@ qx.Class.define("qxl.demobrowser.demo.data.ExtendedTree",
       description.setWidth(300);
       description.setValue(
         "<b>A tree configures with bindItem</b><br/>" +
-        "The tree has bound its label to the name of the modeln and its " +
-        "textColor to some random colors."
+          "The tree has bound its label to the name of the modeln and its " +
+          "textColor to some random colors."
       );
-      this.getRoot().add(description, {left: 10, top: 10});
-    }
-  }
+
+      this.getRoot().add(description, { left: 10, top: 10 });
+    },
+  },
 });

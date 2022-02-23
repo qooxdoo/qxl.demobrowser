@@ -1,36 +1,33 @@
 /**
  * Demonstrate providing initially-selected tree nodes.
  */
-qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
       // classes.  Include the mixin that provides them.
-      qx.Class.include(qx.ui.treevirtual.TreeVirtual,
-                       qx.ui.treevirtual.MNode);
+      qx.Class.include(qx.ui.treevirtual.TreeVirtual, qx.ui.treevirtual.MNode);
 
       // Use an HBox to hold the tree and the groupbox
       var hBox = new qx.ui.container.Composite(new qx.ui.layout.HBox(20));
-      this.getRoot().add(hBox, { edge : 30 });
+      this.getRoot().add(hBox, { edge: 30 });
 
       // tree
       var tree = new qx.ui.treevirtual.TreeVirtual("Tree");
-      tree.set(
-        {
-          width  : 400
-        });
+      tree.set({
+        width: 400,
+      });
 
       tree.setColumnWidth(0, 400);
       tree.setAlwaysShowOpenCloseSymbol(true);
 
       tree.setSelectionMode(
-                qx.ui.treevirtual.TreeVirtual.SelectionMode.MULTIPLE_INTERVAL);
+        qx.ui.treevirtual.TreeVirtual.SelectionMode.MULTIPLE_INTERVAL
+      );
 
       // Add the tree to the document
       hBox.add(tree);
@@ -90,33 +87,35 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Selections",
       o.setSelection([item]);
 
       // We want to be notified if the selection changes
-      o.addListener(
-        "changeSelection",
-        function(e) {
-          switch (e.getData()[0].getLabel()) {
+      o.addListener("changeSelection", function (e) {
+        switch (e.getData()[0].getLabel()) {
           case "No Selection":
             tree.setSelectionMode(
-              qx.ui.treevirtual.TreeVirtual.SelectionMode.NONE);
+              qx.ui.treevirtual.TreeVirtual.SelectionMode.NONE
+            );
             break;
 
           case "Single Selection":
             tree.setSelectionMode(
-              qx.ui.treevirtual.TreeVirtual.SelectionMode.SINGLE);
+              qx.ui.treevirtual.TreeVirtual.SelectionMode.SINGLE
+            );
             break;
 
           case "Single Interval Selection":
             tree.setSelectionMode(
-              qx.ui.treevirtual.TreeVirtual.SelectionMode.SINGLE_INTERVAL);
+              qx.ui.treevirtual.TreeVirtual.SelectionMode.SINGLE_INTERVAL
+            );
             break;
 
           case "Multiple Interval Selection":
             tree.setSelectionMode(
-              qx.ui.treevirtual.TreeVirtual.SelectionMode.MULTIPLE_INTERVAL);
+              qx.ui.treevirtual.TreeVirtual.SelectionMode.MULTIPLE_INTERVAL
+            );
             break;
-          }
-        });
+        }
+      });
 
       commandFrame.add(o);
-    }
-  }
+    },
+  },
 });

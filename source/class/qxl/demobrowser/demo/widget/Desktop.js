@@ -26,47 +26,49 @@
  * @asset(qx/icon/${qx.icontheme}/32/actions/go-home.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.Desktop",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Desktop", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var tabView = new qx.ui.tabview.TabView();
-      this.getRoot().add(tabView, {edge: 0});
+      this.getRoot().add(tabView, { edge: 0 });
 
-      var page = new qx.ui.tabview.Page("Desktop", "icon/32/actions/go-home.png");
+      var page = new qx.ui.tabview.Page(
+        "Desktop",
+        "icon/32/actions/go-home.png"
+      );
       page.setLayout(new qx.ui.layout.Grow());
       tabView.add(page);
 
       var windowManager = new qx.ui.window.Manager();
 
       var desktop = new qx.ui.window.Desktop(windowManager);
-      desktop.set({decorator: "main", backgroundColor: "background-pane"});
+      desktop.set({ decorator: "main", backgroundColor: "background-pane" });
       page.add(desktop);
 
       var winDefs = [
         [300, 200, 30, 50],
         [250, 250, 150, 70],
-        [400, 300, 300, 60]
+        [400, 300, 300, 60],
       ];
 
-      for (var i=0; i<winDefs.length; i++) {
+      for (var i = 0; i < winDefs.length; i++) {
         var def = winDefs[i];
-        var win = new qx.ui.window.Window("Window #" + (i+1)).set({
+        var win = new qx.ui.window.Window("Window #" + (i + 1)).set({
           width: def[0],
           height: def[1],
-          showClose : false,
-          showMinimize : false
+          showClose: false,
+          showMinimize: false,
         });
+
         win.moveTo(def[2], def[3]);
 
         desktop.add(win);
         win.open();
       }
-    }
-  }
+    },
+  },
 });

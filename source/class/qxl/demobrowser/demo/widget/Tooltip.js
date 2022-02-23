@@ -27,22 +27,21 @@
  * @asset(qx/icon/${qx.icontheme}/32/actions/help-about.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Tooltip", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       var layout = new qx.ui.layout.Grid(10, 10);
       this.container = new qx.ui.container.Composite(layout).set({
-        padding: 20
+        padding: 20,
       });
+
       scroller.add(this.container);
 
       this.createSharedToolTip();
@@ -55,22 +54,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
       this.createToolTipTextIcon();
     },
 
+    __columns: 4,
+    __index: 0,
 
-    __columns : 4,
-    __index : 0,
-
-    add : function(widget) {
+    add(widget) {
       this.container.add(widget, {
         row: Math.floor(this.__index / this.__columns),
-        column : this.__index % this.__columns
+        column: this.__index % this.__columns,
       });
+
       this.__index += 1;
     },
 
-
-    createSharedToolTip : function() {
+    createSharedToolTip() {
       var tooltip = new qx.ui.tooltip.ToolTip("Shared ToolTip");
-      tooltip.addListener("appear", function(e) {
+      tooltip.addListener("appear", function (e) {
         var label = "Shared tool tip of button #";
         if (this.getOpener() == button1) {
           label += "1";
@@ -89,30 +87,34 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
       this.add(button2);
     },
 
-
-    createIconToolTip : function() {
+    createIconToolTip() {
       var button = new qx.ui.form.Button("Icon only ToolTip").set({
-        toolTip: new qx.ui.tooltip.ToolTip(null, "icon/16/actions/help-about.png")
+        toolTip: new qx.ui.tooltip.ToolTip(
+          null,
+          "icon/16/actions/help-about.png"
+        ),
       });
+
       this.add(button);
     },
 
-
-    createToolTip : function() {
+    createToolTip() {
       var button = new qx.ui.form.Button("ToolTip with icon and label").set({
         toolTip: new qx.ui.tooltip.ToolTip(
-          "Hello World #3", "icon/16/actions/help-about.png"
-        )
+          "Hello World #3",
+          "icon/16/actions/help-about.png"
+        ),
       });
+
       this.add(button);
     },
 
-
-    createShortTimeoutToolTip : function() {
+    createShortTimeoutToolTip() {
       var tooltip = new qx.ui.tooltip.ToolTip(
         "Such a great tooltip with a (show) timeout of 50ms.",
         "icon/32/actions/help-about.png"
       );
+
       tooltip.setShowTimeout(50);
 
       var button = new qx.ui.form.Button("Short timeout ToolTip");
@@ -120,13 +122,13 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
       button.setToolTip(tooltip);
     },
 
-
-    createRichToolTip : function() {
+    createRichToolTip() {
       var tooltip = new qx.ui.tooltip.ToolTip(
         "A long label text with auto-wrapping. " +
           "This also may contain <b style='color:red'>rich HTML</b> markup " +
           "and with a (show) timeout of 50ms.",
-        "icon/32/actions/help-about.png");
+        "icon/32/actions/help-about.png"
+      );
 
       tooltip.setWidth(200);
       tooltip.setRich(true);
@@ -137,27 +139,32 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
       button.setToolTip(tooltip);
     },
 
-    createToolTipText : function() {
+    createToolTipText() {
       var button = new qx.ui.form.Button("Button with ToolTipText").set({
-        toolTipText : "Tooltip text"
+        toolTipText: "Tooltip text",
       });
+
       this.add(button);
     },
 
-    createToolTipIcon : function() {
+    createToolTipIcon() {
       var button = new qx.ui.form.Button("Button with ToolTipIcon").set({
-        toolTipIcon : "icon/16/actions/help-about.png"
+        toolTipIcon: "icon/16/actions/help-about.png",
       });
+
       this.add(button);
     },
 
-    createToolTipTextIcon : function() {
-      var button = new qx.ui.form.Button("Button with ToolTipText and ToolTipIcon").set({
-        toolTipText : "Tooltip text",
-        toolTipIcon : "icon/16/actions/help-about.png"
+    createToolTipTextIcon() {
+      var button = new qx.ui.form.Button(
+        "Button with ToolTipText and ToolTipIcon"
+      ).set({
+        toolTipText: "Tooltip text",
+        toolTipIcon: "icon/16/actions/help-about.png",
       });
+
       this.add(button);
-    }
+    },
   },
 
   /*
@@ -166,7 +173,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Tooltip",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("container");
-  }
+  },
 });

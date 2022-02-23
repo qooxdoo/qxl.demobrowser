@@ -18,35 +18,40 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.PageVisibility",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.PageVisibility", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var page = new qx.bom.PageVisibility();
       var log = this.log;
 
-      page.on("change", function() {
+      page.on("change", function () {
         log("----------- visibility change event -----------");
       });
 
       // poll for the states
-      setInterval(function() {
+      setInterval(function () {
         var hidden = page.isHidden();
         log(
-          +(new Date()) + " --- " +
-          "hidden: <span style='color:" + (hidden ? "red" : "green") + ";'>" + hidden + "</span> | " +
-          "state:" + page.getVisibilityState());
+          +new Date() +
+            " --- " +
+            "hidden: <span style='color:" +
+            (hidden ? "red" : "green") +
+            ";'>" +
+            hidden +
+            "</span> | " +
+            "state:" +
+            page.getVisibilityState()
+        );
       }, 1000);
     },
 
-    log : function(txt) {
+    log(txt) {
       var log = document.getElementById("log");
       log.innerHTML = txt + "<br>" + document.getElementById("log").innerHTML;
-    }
-  }
+    },
+  },
 });

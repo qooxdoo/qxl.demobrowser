@@ -20,38 +20,40 @@
  * @require(qx.module.event.GestureHandler)
  */
 
-qx.Class.define("qxl.demobrowser.demo.bom.Placeholder",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Placeholder", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // set the support label
       q("#support").setHtml(q.env.get("css.placeholder") + "");
 
       // add new textfields button
-      q("input[type=button]").setAttribute("disabled", null).on("tap", this.addTextField);
+      q("input[type=button]")
+        .setAttribute("disabled", null)
+        .on("tap", this.addTextField);
 
       q.placeholder.update();
     },
 
-
-    addTextField : function() {
+    addTextField() {
       var now = Date.now();
-      var input = q.create("<input type='text' placeholder='" + now + "'/><br>")
+      var input = q
+        .create("<input type='text' placeholder='" + now + "'/><br>")
         .appendTo(document.body);
 
       // set random styles
-      input.setStyles({
-        width: ((now % 100) + 50) + "px",
-        padding : (now % 20) + "px",
-        fontSize: ((now % 30) + 10) + "px",
-        fontWeight : now % 2 ? "bold" : "normal",
-        fontStyle : now % 2 ? "italic" : "normal",
-        fontFamily : ["monospace", "serif", "sans-serif", "cursive"][now % 4]
-      }).updatePlaceholder();
-    }
-  }
+      input
+        .setStyles({
+          width: (now % 100) + 50 + "px",
+          padding: (now % 20) + "px",
+          fontSize: (now % 30) + 10 + "px",
+          fontWeight: now % 2 ? "bold" : "normal",
+          fontStyle: now % 2 ? "italic" : "normal",
+          fontFamily: ["monospace", "serif", "sans-serif", "cursive"][now % 4],
+        })
+        .updatePlaceholder();
+    },
+  },
 });

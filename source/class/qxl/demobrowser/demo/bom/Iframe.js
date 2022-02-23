@@ -20,23 +20,26 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Iframe",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Iframe", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var iframe = qx.bom.Iframe.create({
-        name : "testFrame",
-        src : "http://www.qooxdoo.org"
+        name: "testFrame",
+        src: "http://www.qooxdoo.org",
       });
 
-      qx.bom.Element.addListener(iframe, "load", function(e) {
-        this.debug("Content loaded.");
-      }, this);
+      qx.bom.Element.addListener(
+        iframe,
+        "load",
+        function (e) {
+          this.debug("Content loaded.");
+        },
+        this
+      );
 
       document.body.appendChild(iframe);
 
@@ -47,6 +50,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.Iframe",
        * So we just change a small piece of content on this page:
        */
       document.getElementById("dummy").innerHTML = "";
-    }
-  }
+    },
+  },
 });

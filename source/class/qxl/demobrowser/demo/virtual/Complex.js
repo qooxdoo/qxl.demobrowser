@@ -20,11 +20,8 @@
 /**
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.Complex",
-{
-  extend : qx.application.Standalone,
-
-
+qx.Class.define("qxl.demobrowser.demo.virtual.Complex", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -32,44 +29,50 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Complex",
   *****************************************************************************
   */
 
-  members :
-  {
+  members: {
     /**
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       var scroller = new qx.ui.virtual.core.Scroller(100, 15, 32, 120);
       scroller.getPane().setWidth(450);
 
       // change 8 sizes
-      for (var i=2; i<10; i++) {
-        scroller.getPane().getRowConfig().setItemSize(i, 50 + Math.round(Math.random() * 40));
-        scroller.getPane().getColumnConfig().setItemSize(i, 50 + Math.round(Math.random() * 80));
+      for (var i = 2; i < 10; i++) {
+        scroller
+          .getPane()
+          .getRowConfig()
+          .setItemSize(i, 50 + Math.round(Math.random() * 40));
+        scroller
+          .getPane()
+          .getColumnConfig()
+          .setItemSize(i, 50 + Math.round(Math.random() * 80));
       }
 
-      this.getRoot().add(scroller, {left : 20, top : 10});
-      scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "rgb(238, 243, 255)"));
-      scroller.getPane().addLayer(new qx.ui.virtual.layer.GridLines("horizontal"));
+      this.getRoot().add(scroller, { left: 20, top: 10 });
+      scroller
+        .getPane()
+        .addLayer(new qx.ui.virtual.layer.Row("white", "rgb(238, 243, 255)"));
+      scroller
+        .getPane()
+        .addLayer(new qx.ui.virtual.layer.GridLines("horizontal"));
       scroller.getPane().addLayer(new qxl.demobrowser.demo.virtual.DemoLayer());
 
       // Creates the prefetch behavior
-      new qx.ui.virtual.behavior.Prefetch(
-        scroller,
-        {
-          minLeft : 500,
-          maxLeft : 600,
-          minRight : 1000,
-          maxRight : 1200,
-          minAbove : 0,
-          maxAbove : 0,
-          minBelow : 0,
-          maxBelow : 0
-        }
-      );
-    }
-  }
+      new qx.ui.virtual.behavior.Prefetch(scroller, {
+        minLeft: 500,
+        maxLeft: 600,
+        minRight: 1000,
+        maxRight: 1200,
+        minAbove: 0,
+        maxAbove: 0,
+        minBelow: 0,
+        maxBelow: 0,
+      });
+    },
+  },
 });

@@ -15,70 +15,69 @@
      * Martin Wittemann (martinwittemann)
 
 ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.data.model.Node",
-{
-  extend : qx.core.Object,
+qx.Class.define("qxl.demobrowser.demo.data.model.Node", {
+  extend: qx.core.Object,
 
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
 
     this.setChildren(new qx.data.Array());
   },
 
-  properties : {
-    children : {
+  properties: {
+    children: {
       check: "qx.data.Array",
-      event: "changeChildren"
+      event: "changeChildren",
     },
 
-    child : {
-      check : "qxl.demobrowser.demo.data.model.Node",
-      event : "changeChild",
-      nullable : true
+    child: {
+      check: "qxl.demobrowser.demo.data.model.Node",
+      event: "changeChild",
+      nullable: true,
     },
 
-    names : {
-      check : "qx.data.Array",
-      event : "changeNames",
-      init : new qx.data.Array("Homer", "Marge")
+    names: {
+      check: "qx.data.Array",
+      event: "changeNames",
+      init: new qx.data.Array("Homer", "Marge"),
     },
 
-    name : {
+    name: {
       check: "String",
       init: "AFFE",
-      event: "changeName"
+      event: "changeName",
     },
 
-    name2 : {
+    name2: {
       check: "String",
-      event: "changeName2"
+      event: "changeName2",
     },
 
-    number : {
-      init:  10,
-      validate: "_validateNumber"
+    number: {
+      init: 10,
+      validate: "_validateNumber",
     },
 
-    color : {
+    color: {
       event: "changeColor",
-      nullable: true
-    }
+      nullable: true,
+    },
   },
 
   members: {
-    _validateNumber: function(value) {
+    _validateNumber(value) {
       // check if its a number
       if (!isNaN(parseFloat(value))) {
         if (/^\d+$/.test(value)) {
           return;
         }
       }
-      throw new qx.core.ValidationError("Validation Error: " + value +
-        "is no number (parseFloat says so!).");
+      throw new qx.core.ValidationError(
+        "Validation Error: " + value + "is no number (parseFloat says so!)."
+      );
     },
 
-
-    toString: function(indent) {
+    toString(indent) {
       if (indent == undefined) {
         indent = 0;
       }
@@ -88,10 +87,13 @@ qx.Class.define("qxl.demobrowser.demo.data.model.Node",
       }
       returnString += this.getName();
       for (var i = 0; i < this.getChildren().length; i++) {
-        returnString += "\n" + this.getChildren().getItem(i).toString(indent + 1);
+        returnString +=
+          "\n" +
+          this.getChildren()
+            .getItem(i)
+            .toString(indent + 1);
       }
       return returnString;
-    }
-  }
-
+    },
+  },
 });

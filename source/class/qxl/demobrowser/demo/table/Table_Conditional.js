@@ -21,7 +21,6 @@
 
 ************************************************************************ */
 
-
 /**
  * Table using the ConditionalDataCellRenderer to display values in different
  * ranges using varying colors; and the ImageDataCellRenderer to display
@@ -32,31 +31,28 @@
  * @asset(qx/icon/${qx.icontheme}/16/actions/dialog-cancel.png)
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table using conditional cell renderer";
     },
 
-
-    createTable : function() {
+    createTable() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "Number 1", "Number 2", "Image" ]);
+      tableModel.setColumns(["ID", "Number 1", "Number 2", "Image"]);
 
       var image = [
-       "icon/16/actions/dialog-ok.png",
-       "icon/16/actions/dialog-cancel.png"
+        "icon/16/actions/dialog-ok.png",
+        "icon/16/actions/dialog-cancel.png",
       ];
 
       var rowData = [];
       for (var row = 0; row < 100; row++) {
         var x = Math.random() * 1000;
-        rowData.push([ row, x, x, image[Math.floor(x) % 2] ]);
+        rowData.push([row, x, x, image[Math.floor(x) % 2]]);
       }
       tableModel.setData(rowData);
       tableModel.setColumnEditable(1, true);
@@ -66,10 +62,16 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional",
       var table = new qx.ui.table.Table(tableModel);
 
       table.setMetaColumnCounts([1, -1]);
-      var selectionMode = qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION;
+      var selectionMode =
+        qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION;
       table.getSelectionModel().setSelectionMode(selectionMode);
 
-      var newRenderer = new qx.ui.table.cellrenderer.Conditional("right", "", "", "");
+      var newRenderer = new qx.ui.table.cellrenderer.Conditional(
+        "right",
+        "",
+        "",
+        ""
+      );
       newRenderer.addNumericCondition(">", 0, null, "#FF0000", null, null);
       newRenderer.addNumericCondition(">", 50, null, "#EE0011", null, null);
       newRenderer.addNumericCondition(">", 100, null, "#DD0022", null, null);
@@ -89,13 +91,20 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Conditional",
       newRenderer.addNumericCondition(">", 800, null, "#0033FF", null, null);
       newRenderer.addNumericCondition(">", 850, null, "#0066FF", null, null);
       newRenderer.addNumericCondition(">", 900, null, "#0099FF", null, null);
-      newRenderer.addNumericCondition(">", 950, "center", "#00CCFF", null, "bold");
+      newRenderer.addNumericCondition(
+        ">",
+        950,
+        "center",
+        "#00CCFF",
+        null,
+        "bold"
+      );
       table.getTableColumnModel().setDataCellRenderer(2, newRenderer);
 
       var renderer = new qx.ui.table.cellrenderer.Image();
       table.getTableColumnModel().setDataCellRenderer(3, renderer);
 
       return table;
-    }
-  }
+    },
+  },
 });

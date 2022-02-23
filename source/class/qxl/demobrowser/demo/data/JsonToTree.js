@@ -27,18 +27,16 @@
  * @asset(qx/icon/${qx.icontheme}/16/mimetypes/*)
  * @tag databinding
  */
-qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.JsonToTree", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create and add the tree
       var tree = new qx.ui.tree.Tree();
-      this.getRoot().add(tree, {left: 10, top: 80});
+      this.getRoot().add(tree, { left: 10, top: 80 });
       tree.setWidth(200);
       tree.setHeight(300);
 
@@ -46,12 +44,14 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
       var controller = new qx.data.controller.Tree(null, tree, "kids", "name");
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/tree.json");
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/data/tree.json"
+      );
       var store = new qx.data.store.Json(url);
 
       // create the status label
       var status = new qx.ui.basic.Label("Loading...");
-      this.getRoot().add(status, {left: 220, top: 80});
+      this.getRoot().add(status, { left: 220, top: 80 });
 
       // connect the store and the controller
       store.bind("model", controller, "model");
@@ -60,13 +60,13 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
       store.bind("state", status, "value");
 
       // show the data in the list when loaded
-      store.addListener("loaded", function(ev) {
-        tree.getRoot().setOpen(true);
-      }, this);
-
-
-
-
+      store.addListener(
+        "loaded",
+        function (ev) {
+          tree.getRoot().setOpen(true);
+        },
+        this
+      );
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -76,10 +76,13 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToTree",
       description.setWidth(260);
       description.setValue(
         "<b>Tree bound to data in a json file</b><br/>" +
-        "Loading the json file <a href='" + url +"' target='_blank'>" +
-        "tree.json</a> and bind the items to the tree widget."
+          "Loading the json file <a href='" +
+          url +
+          "' target='_blank'>" +
+          "tree.json</a> and bind the items to the tree widget."
       );
-      this.getRoot().add(description, {left: 10, top: 10});
-    }
-  }
+
+      this.getRoot().add(description, { left: 10, top: 10 });
+    },
+  },
 });

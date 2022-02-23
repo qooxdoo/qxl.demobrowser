@@ -21,11 +21,8 @@
  * @require(qx.bom.Element) // mark as load-time dependency so that the required
  * event dispatcher is loaded before listeners are registered
  */
-qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
-{
-  extend : qx.application.Native,
-
-
+qx.Class.define("qxl.demobrowser.demo.mobile.Fingers", {
+  extend: qx.application.Native,
 
   /*
   *****************************************************************************
@@ -33,18 +30,17 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
   *****************************************************************************
   */
 
-  members :
-  {
-    __startDivX : null,
-    __startDivY : null,
+  members: {
+    __startDivX: null,
+    __startDivY: null,
 
     /**
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       // Enable logging in debug variant
       if (qx.core.Environment.get("qx.debug")) {
@@ -54,15 +50,14 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
         qx.log.appender.Console;
       }
 
-
       // root element
       var backgroundStyles = {
-        "width" : "100%",
-        "height" : "100%",
-        "backgroundColor" : "black",
-        "margin" : "0px",
-        "touchAction" : "none",
-        "msTouchAction" : "none"
+        width: "100%",
+        height: "100%",
+        backgroundColor: "black",
+        margin: "0px",
+        touchAction: "none",
+        msTouchAction: "none",
       };
 
       var root = new qx.html.Element("div", backgroundStyles);
@@ -70,48 +65,58 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
       root.setRoot(true);
 
       var engine = qx.core.Environment.get("engine.name");
-      var modernIe = engine == "mshtml" && qx.core.Environment.get("browser.documentmode") > 10;
+      var modernIe =
+        engine == "mshtml" &&
+        qx.core.Environment.get("browser.documentmode") > 10;
       if (engine != "webkit" && !modernIe) {
         var warningLabelStyle = {
-          "color" : "green",
-          "position" : "absolute",
+          color: "green",
+          position: "absolute",
           "font-family": "Lucida Grande",
-          "font-size" : "12px",
-          "left" : "30px",
-          "top" : "20px"
+          "font-size": "12px",
+          left: "30px",
+          top: "20px",
         };
+
         var label = new qx.html.Element("div", warningLabelStyle);
         root.add(label);
-        label.setAttribute("innerHTML", "<b>This demo is intended for WebKit-based browsers and IE11+.</b>");
+        label.setAttribute(
+          "innerHTML",
+          "<b>This demo is intended for WebKit-based browsers and IE11+.</b>"
+        );
         return;
       }
 
-
       // description label
       var labelStyles = {
-        "color" : "white",
-        "position" : "absolute",
-        "left" : "30px",
-        "top" : "20px"
+        color: "white",
+        position: "absolute",
+        left: "30px",
+        top: "20px",
       };
+
       var label = new qx.html.Element("div", labelStyles);
       root.add(label);
-      label.setAttribute("innerHTML", "<b>Use your fingers to move the dots</b>");
+      label.setAttribute(
+        "innerHTML",
+        "<b>Use your fingers to move the dots</b>"
+      );
 
       // create some colored balls
       var colors = ["blue", "red", "green", "white", "yellow"];
       for (var i = 0; i < colors.length; i++) {
         var styles = {
-          "backgroundColor" : colors[i],
-          "width" : "100px",
-          "height" : "100px",
-          "position" : "absolute",
-          "-moz-border-radius" : "50px",
+          backgroundColor: colors[i],
+          width: "100px",
+          height: "100px",
+          position: "absolute",
+          "-moz-border-radius": "50px",
           "-webkit-border-radius": "50px",
-          "border-radius" : "50px",
-          "top" : ((i + 5) * 30) + "px",
-          "left" :  ((i + 1) * 150) + "px"
+          "border-radius": "50px",
+          top: (i + 5) * 30 + "px",
+          left: (i + 1) * 150 + "px",
         };
+
         var div = new qx.html.Element("div", styles);
         root.add(div);
       }
@@ -124,24 +129,24 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers",
       root.addListener("pointermove", this._onPointerMove, this);
     },
 
-
-    _onPointerDown : function(e) {
-      this.__startDivX[e.getPointerId()] = parseInt(e.getTarget().style.left) - e.getDocumentLeft();
-      this.__startDivY[e.getPointerId()] = parseInt(e.getTarget().style.top) - e.getDocumentTop();
+    _onPointerDown(e) {
+      this.__startDivX[e.getPointerId()] =
+        parseInt(e.getTarget().style.left) - e.getDocumentLeft();
+      this.__startDivY[e.getPointerId()] =
+        parseInt(e.getTarget().style.top) - e.getDocumentTop();
     },
 
-
-    _onPointerMove : function(e) {
+    _onPointerMove(e) {
       if (e.getTarget() == document.body) {
         return;
       }
 
       qx.bom.element.Style.setStyles(e.getTarget(), {
-        "left" : (e.getDocumentLeft() + this.__startDivX[e.getPointerId()]) + "px",
-        "top" : (e.getDocumentTop() + this.__startDivY[e.getPointerId()]) + "px"
+        left: e.getDocumentLeft() + this.__startDivX[e.getPointerId()] + "px",
+        top: e.getDocumentTop() + this.__startDivY[e.getPointerId()] + "px",
       });
 
       e.preventDefault();
-    }
-  }
+    },
+  },
 });

@@ -20,37 +20,36 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.HBox_ShrinkY",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.HBox_ShrinkY", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // auto size with limited height
       var box = new qx.ui.layout.HBox();
-      var container = (new qx.ui.container.Composite(box)).set(
-      {
+      var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
-        maxHeight : 100
+        maxHeight: 100,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
+
       var w2 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
+
       var w3 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
       w1.setHeight(200);
@@ -61,7 +60,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox_ShrinkY",
       container.add(w2);
       container.add(w3);
 
-      this.getRoot().add(container, {left:10, top:10});
-    }
-  }
+      this.getRoot().add(container, { left: 10, top: 10 });
+    },
+  },
 });

@@ -25,16 +25,16 @@
  */
 
 qx.Class.define("qxl.demobrowser.Readme", {
+  extend: qx.ui.container.Scroll,
 
-  extend : qx.ui.container.Scroll,
-
-  construct : function(title, readmeText) {
-    this.base(arguments);
+  construct(title, readmeText) {
+    super();
     this.__container = new qx.ui.container.Composite(new qx.ui.layout.VBox(10));
     this.__container.set({
       padding: 10,
-      decorator: "main"
+      decorator: "main",
     });
+
     this.add(this.__container);
 
     var title = title || "";
@@ -43,26 +43,22 @@ qx.Class.define("qxl.demobrowser.Readme", {
     this.setReadmeData(readme);
   },
 
-  properties :
-  {
-    title :
-    {
-      apply : "_applyTitle"
+  properties: {
+    title: {
+      apply: "_applyTitle",
     },
 
-    readmeData :
-    {
-      apply : "_applyReadmeData"
-    }
+    readmeData: {
+      apply: "_applyReadmeData",
+    },
   },
 
-  members :
-  {
-    __container : null,
-    __title : null,
-    __readme : null,
+  members: {
+    __container: null,
+    __title: null,
+    __readme: null,
 
-    _applyTitle : function(value, old) {
+    _applyTitle(value, old) {
       if (value === old) {
         return;
       }
@@ -72,12 +68,14 @@ qx.Class.define("qxl.demobrowser.Readme", {
         return;
       }
 
-      var titleLabel = this.__title = new qx.ui.basic.Label("<h1>" + value + "</h1>");
+      var titleLabel = (this.__title = new qx.ui.basic.Label(
+        "<h1>" + value + "</h1>"
+      ));
       titleLabel.setRich(true);
       this.__container.add(titleLabel);
     },
 
-    _applyReadmeData : function(value, old) {
+    _applyReadmeData(value, old) {
       if (value === old) {
         return;
       }
@@ -86,7 +84,7 @@ qx.Class.define("qxl.demobrowser.Readme", {
         this.__readme.destroy();
       }
 
-      var groupBox = this.__readme = new qx.ui.groupbox.GroupBox("Readme");
+      var groupBox = (this.__readme = new qx.ui.groupbox.GroupBox("Readme"));
       groupBox.setLayout(new qx.ui.layout.VBox(5));
 
       var readmeText = value.replace(/\\n/g, "<br/>");
@@ -94,8 +92,7 @@ qx.Class.define("qxl.demobrowser.Readme", {
       readmeLabel.setRich(true);
       groupBox.add(readmeLabel);
       this.__container.add(groupBox);
-    }
-
+    },
   },
 
   /*
@@ -104,8 +101,7 @@ qx.Class.define("qxl.demobrowser.Readme", {
   *****************************************************************************
   */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("__title", "__readme", "__container");
-  }
-
+  },
 });

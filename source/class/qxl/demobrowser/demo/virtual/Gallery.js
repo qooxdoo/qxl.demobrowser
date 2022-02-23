@@ -29,11 +29,8 @@
  * @ignore(qxl.demobrowser.demo.virtual.AbstractGallery)
  */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.Gallery",
-{
-  extend : qx.application.Standalone,
-
-
+qx.Class.define("qxl.demobrowser.demo.virtual.Gallery", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -41,21 +38,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Gallery",
   *****************************************************************************
   */
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // widget window
       new qxl.demobrowser.demo.virtual.WidgetGallery("Gallery (widgets)");
 
       // html window
-      var htmlWin = new qxl.demobrowser.demo.virtual.HtmlGallery("Gallery (HTML - divs)");
+      var htmlWin = new qxl.demobrowser.demo.virtual.HtmlGallery(
+        "Gallery (HTML - divs)"
+      );
       htmlWin.moveTo(400, 50);
-    }
-  }
+    },
+  },
 });
-
 
 /*
  * PLEASE NOTE:
@@ -69,21 +66,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Gallery",
    ABSTRACT GALLERY
 *****************************************************************************
 */
-qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
-{
-  extend : qx.ui.window.Window,
-  type : "abstract",
+qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery", {
+  extend: qx.ui.window.Window,
+  type: "abstract",
 
-  construct : function(title) {
-    this.base(arguments, title);
+  construct(title) {
+    super(title);
 
     this.set({
       contentPadding: 0,
       showClose: false,
       showMinimize: false,
       width: 320,
-      height: 400
+      height: 400,
     });
+
     this.setLayout(new qx.ui.layout.Grow());
     this.moveTo(30, 50);
     this.open();
@@ -97,89 +94,92 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
     var scroller = this._createScroller();
     scroller.set({
       scrollbarX: "off",
-      scrollbarY: "auto"
+      scrollbarY: "auto",
     });
+
     scroller.getPane().addListener("resize", this._onPaneResize, this);
     this.add(scroller);
 
-    this.manager = new qx.ui.virtual.selection.CellRectangle(scroller.getPane(), this).set({
+    this.manager = new qx.ui.virtual.selection.CellRectangle(
+      scroller.getPane(),
+      this
+    ).set({
       mode: "multi",
-      drag: true
+      drag: true,
     });
+
     this.manager.attachPointerEvents();
     this.manager.attachKeyEvents(scroller);
   },
 
-
-  members :
-  {
-    getItemData : function(row, column) {
+  members: {
+    getItemData(row, column) {
       return this.items[row * this.itemPerLine + column];
     },
 
-    _createScroller : function() {
+    _createScroller() {
       // abstract method
     },
 
-    isItemSelectable : function(item) {
+    isItemSelectable(item) {
       return !!this.getItemData(item.row, item.column);
     },
 
-    styleSelectable : function(item, type, wasAdded) {
+    styleSelectable(item, type, wasAdded) {
       // abstract method
     },
 
-    _onPaneResize : function(e) {
+    _onPaneResize(e) {
       var pane = e.getTarget();
       var width = e.getData().width;
 
-      var colCount = Math.max(1, Math.floor(width/this.itemWidth));
+      var colCount = Math.max(1, Math.floor(width / this.itemWidth));
       if (colCount == this.itemsPerLine) {
         return;
       }
       this.itemPerLine = colCount;
-      var rowCount = Math.ceil(this.itemCount/colCount);
+      var rowCount = Math.ceil(this.itemCount / colCount);
 
       pane.getColumnConfig().setItemCount(colCount);
       pane.getRowConfig().setItemCount(rowCount);
     },
 
-
-    _generateItems : function(count) {
+    _generateItems(count) {
       var items = [];
       var iconImages = [
         "folder.png",
         "user-trash.png",
         "network-server.png",
         "network-workgroup.png",
-        "user-desktop.png"
+        "user-desktop.png",
       ];
 
       var aliasManager = qx.util.AliasManager.getInstance();
       var resourceManager = qx.util.ResourceManager.getInstance();
 
-      for (var i=0; i<count; i++) {
-        var icon = "icon/32/places/" + iconImages[Math.floor(Math.random() * iconImages.length)];
+      for (var i = 0; i < count; i++) {
+        var icon =
+          "icon/32/places/" +
+          iconImages[Math.floor(Math.random() * iconImages.length)];
         var resolved = aliasManager.resolve(icon);
         var url = resourceManager.toUri(resolved);
 
         items[i] = {
-          label: "Icon #" + (i+1),
+          label: "Icon #" + (i + 1),
           icon: icon,
-          resolvedIcon: url
+          resolvedIcon: url,
         };
       }
 
       return items;
-    }
+    },
   },
 
-  destruct : function() {
+  destruct() {
     this.items = null;
     this._disposeObjects("manager");
-  }
+  },
 });
-
 
 /*
  * PLEASE NOTE:
@@ -193,35 +193,34 @@ qx.Class.define("qxl.demobrowser.demo.virtual.AbstractGallery",
    GALLERY CELL
 *****************************************************************************
 */
-qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
-{
-  extend : qx.ui.virtual.cell.AbstractWidget,
+qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell", {
+  extend: qx.ui.virtual.cell.AbstractWidget,
 
-  members :
-  {
-    _createWidget : function() {
+  members: {
+    _createWidget() {
       var widget = new qx.ui.basic.Atom().set({
-        iconPosition: "top"
+        iconPosition: "top",
       });
+
       widget.getChildControl("label").set({
-        padding : [0, 4]
+        padding: [0, 4],
       });
+
       widget.getChildControl("icon").set({
-        padding : 4
+        padding: 4,
       });
+
       return widget;
     },
 
-
-    updateData : function(widget, data) {
+    updateData(widget, data) {
       widget.set({
         icon: data.icon,
-        label: data.label
+        label: data.label,
       });
     },
 
-
-    updateStates : function(widget, states) {
+    updateStates(widget, states) {
       var label = widget.getChildControl("label");
       var icon = widget.getChildControl("icon");
 
@@ -236,10 +235,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
         icon.resetDecorator();
         icon.resetBackgroundColor();
       }
-    }
-  }
+    },
+  },
 });
-
 
 /*
  * PLEASE NOTE:
@@ -256,55 +254,52 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GalleryCell",
  * @ignore(qxl.demobrowser.demo.virtual.AbstractGallery)
  * @ignore(qxl.demobrowser.demo.virtual.GalleryCell)
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
-{
-  extend : qxl.demobrowser.demo.virtual.AbstractGallery,
+qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery", {
+  extend: qxl.demobrowser.demo.virtual.AbstractGallery,
 
-  construct : function(title) {
-    this.base(arguments, title);
+  construct(title) {
+    super(title);
     this.__cell = new qxl.demobrowser.demo.virtual.GalleryCell();
   },
 
-  members :
-  {
-    __cell : null,
+  members: {
+    __cell: null,
 
-    _createScroller : function() {
+    _createScroller() {
       var scroller = new qx.ui.virtual.core.Scroller(
-        1, this.itemPerLine,
-        this.itemHeight, this.itemWidth
+        1,
+        this.itemPerLine,
+        this.itemHeight,
+        this.itemWidth
       );
+
       this.layer = new qx.ui.virtual.layer.WidgetCell(this);
       scroller.getPane().addLayer(this.layer);
 
       // Creates the prefetch behavior
-      new qx.ui.virtual.behavior.Prefetch(
-        scroller,
-        {
-          minLeft : 0,
-          maxLeft : 0,
-          minRight : 0,
-          maxRight : 0,
-          minAbove : 200,
-          maxAbove : 300,
-          minBelow : 600,
-          maxBelow : 800
-        }
-      ).set({
-        interval: 500
+      new qx.ui.virtual.behavior.Prefetch(scroller, {
+        minLeft: 0,
+        maxLeft: 0,
+        minRight: 0,
+        maxRight: 0,
+        minAbove: 200,
+        maxAbove: 300,
+        minBelow: 600,
+        maxBelow: 800,
+      }).set({
+        interval: 500,
       });
 
       return scroller;
     },
 
-
-    styleSelectable : function(item, type, wasAdded) {
+    styleSelectable(item, type, wasAdded) {
       if (type !== "selected") {
         return;
       }
 
       var widgets = this.layer.getChildren();
-      for (var i=0; i<widgets.length; i++) {
+      for (var i = 0; i < widgets.length; i++) {
         var widget = widgets[i];
         var cell = widget.getUserData("cell");
 
@@ -313,22 +308,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
         }
 
         if (wasAdded) {
-          this.__cell.updateStates(widget, {selected: 1});
+          this.__cell.updateStates(widget, { selected: 1 });
         } else {
           this.__cell.updateStates(widget, {});
         }
       }
     },
 
-
-    getCellWidget : function(row, column) {
+    getCellWidget(row, column) {
       var itemData = this.getItemData(row, column);
 
       if (!itemData) {
         return null;
       }
 
-      var cell = {row: row, column: column};
+      var cell = { row: row, column: column };
       var states = {};
       if (this.manager.isItemSelected(cell)) {
         states.selected = true;
@@ -340,9 +334,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
       return widget;
     },
 
-    poolCellWidget : function(widget) {
+    poolCellWidget(widget) {
       this.__cell.pool(widget);
-    }
+    },
   },
 
   /*
@@ -351,11 +345,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("__cell", "layer");
-  }
+  },
 });
-
 
 /*
  * PLEASE NOTE:
@@ -371,24 +364,27 @@ qx.Class.define("qxl.demobrowser.demo.virtual.WidgetGallery",
  *
  * @ignore(qxl.demobrowser.demo.virtual.AbstractGallery)
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
-{
-  extend : qxl.demobrowser.demo.virtual.AbstractGallery,
+qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery", {
+  extend: qxl.demobrowser.demo.virtual.AbstractGallery,
 
-  construct : function(title) {
-    this.base(arguments, title);
+  construct(title) {
+    super(title);
 
-    var fontStyles = qx.theme.manager.Font.getInstance().resolve("default").getStyles();
+    var fontStyles = qx.theme.manager.Font.getInstance()
+      .resolve("default")
+      .getStyles();
     this._fontCss = qx.bom.element.Style.compile(fontStyles);
   },
 
-  members :
-  {
-    _createScroller : function() {
+  members: {
+    _createScroller() {
       var scroller = new qx.ui.virtual.core.Scroller(
-        1, this.itemPerLine,
-        this.itemHeight, this.itemWidth
+        1,
+        this.itemPerLine,
+        this.itemHeight,
+        this.itemWidth
       );
+
       this.layer = new qx.ui.virtual.layer.HtmlCell(this);
       scroller.getPane().addLayer(this.layer);
 
@@ -401,23 +397,26 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
       return scroller;
     },
 
-    _onPaneResize : function(e) {
-      this.base(arguments, e);
+    _onPaneResize(e) {
+      super._onPaneResize(e);
       this.manager.clearSelection();
     },
 
-    styleSelectable : function(item, type, wasAdded) {
+    styleSelectable(item, type, wasAdded) {
       this.layer.updateLayerData();
     },
 
-    getCellProperties : function(row, column) {
+    getCellProperties(row, column) {
       var itemData = this.getItemData(row, column);
 
       if (!itemData) {
         return "";
       }
 
-      var isSelected = this.manager.isItemSelected({row: row, column: column});
+      var isSelected = this.manager.isItemSelected({
+        row: row,
+        column: column,
+      });
       var color = isSelected ? "color: white; background-color: #00398D;" : "";
 
       return {
@@ -425,16 +424,18 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
           "position: absolute;",
           "text-align: center;",
           this._fontCss,
-          color
+          color,
         ].join(""),
 
         content: [
-          "<img src='", itemData.resolvedIcon, "'></img>",
+          "<img src='",
+          itemData.resolvedIcon,
+          "'></img>",
           "<br>",
-          itemData.label
-        ].join("")
+          itemData.label,
+        ].join(""),
       };
-    }
+    },
   },
 
   /*
@@ -443,7 +444,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.HtmlGallery",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("layer");
-  }
+  },
 });

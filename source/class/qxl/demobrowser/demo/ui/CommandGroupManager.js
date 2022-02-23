@@ -16,14 +16,11 @@
 
 ************************************************************************ */
 
-
 /**
  * @ignore(ColorSwitch)
  */
-qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
-{
-  extend : qx.application.Standalone,
-
+qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -31,17 +28,15 @@ qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
   *****************************************************************************
   */
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this._manager = new qx.ui.command.GroupManager();
       this._createWidgets();
     },
 
-
-    _createWidgets : function() {
+    _createWidgets() {
       var tabview = new qx.ui.tabview.TabView();
 
       var page1 = new qx.ui.tabview.Page("Page1 - press 5 to change color");
@@ -53,35 +48,31 @@ qx.Class.define("qxl.demobrowser.demo.ui.CommandGroupManager",
       var page3 = new qx.ui.tabview.Page("Page3 - press 5 to change color");
       page3.setLayout(new qx.ui.layout.Canvas());
 
-      page1.add(new ColorSwitch(this), {edge:0});
-      page2.add(new ColorSwitch(this), {edge:0});
-      page3.add(new ColorSwitch(this), {edge:0});
+      page1.add(new ColorSwitch(this), { edge: 0 });
+      page2.add(new ColorSwitch(this), { edge: 0 });
+      page3.add(new ColorSwitch(this), { edge: 0 });
 
       tabview.add(page1);
       tabview.add(page2);
       tabview.add(page3);
 
-      this.getRoot().add(tabview, {edge: 10});
+      this.getRoot().add(tabview, { edge: 10 });
     },
 
-
-    getGroupManager : function() {
+    getGroupManager() {
       return this._manager;
-    }
-  }
+    },
+  },
 });
-
 
 /**
  * View
  */
-qx.Class.define("ColorSwitch",
-{
-  extend : qx.ui.container.Composite,
+qx.Class.define("ColorSwitch", {
+  extend: qx.ui.container.Composite,
 
-
-  construct : function(controller) {
-    this.base(arguments);
+  construct(controller) {
+    super();
     this.setLayout(new qx.ui.layout.VBox(15));
     this.setPadding(25);
 
@@ -105,47 +96,46 @@ qx.Class.define("ColorSwitch",
     this._createWidgets();
   },
 
+  members: {
+    _group: null,
 
-  members :
-  {
-    _group : null,
-
-
-    _createWidgets : function() {
+    _createWidgets() {
       var btn = new qx.ui.form.TextField();
-      btn.setPlaceholder("If focused here, all commands will be disabled! Please press key \"5\"!");
+      btn.setPlaceholder(
+        'If focused here, all commands will be disabled! Please press key "5"!'
+      );
       btn.addListener("focusin", this._blockCommands, this);
       btn.addListener("focusout", this._unblockCommands, this);
 
       this.add(btn);
 
-      var label = new qx.ui.basic.Label("All tabview pages are holding a view class with same command shortcut! Press key  \"5\" on any page to change the color of the view. You will see that only the appeared page will change his color.");
+      var label = new qx.ui.basic.Label(
+        'All tabview pages are holding a view class with same command shortcut! Press key  "5" on any page to change the color of the view. You will see that only the appeared page will change his color.'
+      );
       label.set({
-        rich : true,
-        wrap : true
+        rich: true,
+        wrap: true,
       });
+
       this.add(label);
     },
 
-
-    toggleColor : function(target, command) {
-      this.setBackgroundColor(this.getBackgroundColor() == "#ABEFEF" ? "#ABEFAB" : "#ABEFEF");
+    toggleColor(target, command) {
+      this.setBackgroundColor(
+        this.getBackgroundColor() == "#ABEFEF" ? "#ABEFAB" : "#ABEFEF"
+      );
     },
 
-
-    _onAppear : function(e) {
+    _onAppear(e) {
       this._controller.getGroupManager().setActive(this._group);
     },
 
-
-    _blockCommands : function(e) {
+    _blockCommands(e) {
       this._controller.getGroupManager().block();
     },
 
-
-    _unblockCommands : function(e) {
+    _unblockCommands(e) {
       this._controller.getGroupManager().unblock();
-    }
-  }
+    },
+  },
 });
-

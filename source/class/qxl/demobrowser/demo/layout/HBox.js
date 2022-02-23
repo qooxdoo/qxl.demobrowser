@@ -20,23 +20,21 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.HBox",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.HBox", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
-        padding: 20
+        padding: 20,
       });
-      scroll.add(root);
 
+      scroll.add(root);
 
       root.add(this.getBox1());
       root.add(this.getBox2());
@@ -47,93 +45,169 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox",
       root.add(this.getBox7());
     },
 
-
-    getBox1 : function() {
+    getBox1() {
       // auto size
-      var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5)).set({
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.HBox(5)
+      ).set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowX: false
+        allowGrowX: false,
       });
 
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
 
       return container;
     },
 
-
-    getBox2 : function() {
+    getBox2() {
       // container higher, vertical alignment
-      var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5)).set({
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.HBox(5)
+      ).set({
         decorator: "main",
         backgroundColor: "yellow",
         minHeight: 60,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxHeight: 40, alignY:"top"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxHeight: 40, alignY:"middle"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxHeight: 40, alignY:"bottom"}));
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          maxHeight: 40,
+          alignY: "top",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          maxHeight: 40,
+          alignY: "middle",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          maxHeight: 40,
+          alignY: "bottom",
+        })
+      );
 
       return container;
     },
 
-
-    getBox3 : function() {
+    getBox3() {
       // container wider, horizontal alignment = right
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 500,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       box.setSpacing(5);
       box.setAlignX("right");
 
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
 
       return container;
     },
 
-
-    getBox4 : function() {
+    getBox4() {
       // container wider, horizontal alignment = center
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 500,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       box.setSpacing(5);
       box.setAlignX("center");
 
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
-      container.add(new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"}));
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        })
+      );
 
       return container;
     },
 
-
-    getBox5 : function() {
+    getBox5() {
       // auto size + horizontal margins
-      var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(5)).set({
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.HBox(5)
+      ).set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowX: false
+        allowGrowX: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
 
       container.add(w1);
       container.add(w2);
@@ -147,23 +221,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox",
       return container;
     },
 
-
-    getBox6 : function() {
+    getBox6() {
       // manual width + horizontal margins + alignment=right
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 500,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       box.setSpacing(5);
       box.setAlignX("right");
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
 
       container.add(w1);
       container.add(w2);
@@ -177,23 +259,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox",
       return container;
     },
 
-
-    getBox7 : function() {
+    getBox7() {
       // manual width + horizontal margins + alignment=center
       var box = new qx.ui.layout.HBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 500,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       box.setSpacing(5);
       box.setAlignX("center");
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
 
       container.add(w1);
       container.add(w2);
@@ -205,6 +295,6 @@ qx.Class.define("qxl.demobrowser.demo.layout.HBox",
       w3.setMarginRight(10);
 
       return container;
-    }
-  }
+    },
+  },
 });

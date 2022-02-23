@@ -35,21 +35,18 @@
  * @tag noPlayground
  * @tag showcase
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table";
     },
 
-
-    createTable : function() {
+    createTable() {
       // table model
-      var tableModel = this._tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "A number", "A date", "Boolean" ]);
+      var tableModel = (this._tableModel = new qx.ui.table.model.Simple());
+      tableModel.setColumns(["ID", "A number", "A date", "Boolean"]);
       tableModel.setData(this.createRandomRows(100));
 
       // make second column editable
@@ -57,7 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
 
       // table
       var table = new qx.ui.table.Table(tableModel).set({
-        decorator: null
+        decorator: null,
       });
 
       var tcm = table.getTableColumnModel();
@@ -66,8 +63,13 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
       tcm.setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
 
       // use a different header renderer
-      tcm.setHeaderCellRenderer(2, new qx.ui.table.headerrenderer.Icon("icon/16/apps/office-calendar.png", "A date"));
-
+      tcm.setHeaderCellRenderer(
+        2,
+        new qx.ui.table.headerrenderer.Icon(
+          "icon/16/apps/office-calendar.png",
+          "A date"
+        )
+      );
 
       table.setDraggable(true);
       table.setDroppable(true);
@@ -80,16 +82,14 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
       return table;
     },
 
-
-    _handleDragStart: function(e) {
+    _handleDragStart(e) {
       var focusedRow = this._table.getFocusedRow();
-      this._startRow = {maxIndex: focusedRow, minIndex: focusedRow};
+      this._startRow = { maxIndex: focusedRow, minIndex: focusedRow };
       e.addAction("move");
       e.addType("movetransfer");
     },
 
-
-    _handleDropRequest: function(e) {
+    _handleDropRequest(e) {
       var type = e.getCurrentType();
       var sel = this._table.getSelectionModel().getSelectedRanges();
 
@@ -100,7 +100,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
 
       var selMap = [];
 
-      for (var i=0; i<sel.length; i++) {
+      for (var i = 0; i < sel.length; i++) {
         for (var s = sel[i].minIndex; s <= sel[i].maxIndex; s++) {
           var rowdata = this._table.getTableModel().getRowData(s);
           if (rowdata == null) {
@@ -113,15 +113,14 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
       e.addData(type, selMap);
     },
 
-
-    _handleDrop: function(e) {
+    _handleDrop(e) {
       if (e.supportsType("movetransfer")) {
         var data = e.getData("movetransfer");
         var dm = this._table.getTableModel();
         dm.removeRows(data[0].rowId, data.length);
         dm.addRows(data, this._table.getFocusedRow());
       }
-    }
+    },
   },
 
   /*
@@ -130,8 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Drag_And_Drop",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_tableModel");
-  }
+  },
 });
-

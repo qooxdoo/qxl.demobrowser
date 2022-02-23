@@ -21,32 +21,29 @@
  * The Resizer widget acts as a wrapper of another widget. It allows the child
  * widget to be resized by the end user.
  */
-qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Resizer", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
-      this.getRoot().add(this._getResizer(), {left: 20, top: 20});
-      this.getRoot().add(this._getResizerList(), {left: 400, top: 20});
+      this.getRoot().add(this._getResizer(), { left: 20, top: 20 });
+      this.getRoot().add(this._getResizerList(), { left: 400, top: 20 });
     },
 
-
-    _getResizerList : function() {
+    _getResizerList() {
       var list = new qx.ui.form.List().set({
         width: 100,
         height: 200,
         minWidth: 50,
         minHeight: 100,
         maxHeight: 400,
-        maxWidth: 500
+        maxWidth: 500,
       });
 
       for (var i = 0; i < 100; i++) {
-        list.add(new qx.ui.form.ListItem("Option number "+i));
+        list.add(new qx.ui.form.ListItem("Option number " + i));
       }
 
       var resizer = new qx.ui.container.Resizer();
@@ -56,8 +53,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
       return resizer;
     },
 
-
-    _getResizer : function() {
+    _getResizer() {
       var tArea = new qx.ui.form.TextArea();
       tArea.setValue("Resize me\nI'm resizable");
 
@@ -66,14 +62,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.Resizer",
         minHeight: 50,
         width: 200,
         height: 100,
-        resizableTop : false,
-        resizableLeft : false
+        resizableTop: false,
+        resizableLeft: false,
       });
 
       resizer.setLayout(new qx.ui.layout.Canvas());
-      resizer.add(tArea, {top: 0, right: 0, bottom: 0, left: 0});
+      resizer.add(tArea, { top: 0, right: 0, bottom: 0, left: 0 });
 
       return resizer;
-    }
-  }
+    },
+  },
 });

@@ -26,14 +26,12 @@
  * @asset(qxl/demobrowser/demo/data/finder.json)
  * @tag databinding
  */
-qx.Class.define("qxl.demobrowser.demo.data.Finder",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.Finder", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create and configure a window
       var win = new qx.ui.window.Window("Finder");
@@ -53,7 +51,6 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
       var list3 = new qx.ui.form.List();
       win.add(list3);
 
-
       // create the controllers, one for each list
       // and set the name in the data for the label
       var controller1 = new qx.data.controller.List(null, list1);
@@ -64,7 +61,9 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
       controller3.setLabelPath("name");
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/finder.json");
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/data/finder.json"
+      );
       var store = new qx.data.store.Json(url);
 
       // connect the store and the first controller
@@ -72,6 +71,6 @@ qx.Class.define("qxl.demobrowser.demo.data.Finder",
       // connect the rest of the controllers
       controller1.bind("selection[0].files", controller2, "model");
       controller2.bind("selection[0].files", controller3, "model");
-    }
-  }
+    },
+  },
 });

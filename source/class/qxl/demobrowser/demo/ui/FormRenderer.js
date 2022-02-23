@@ -18,14 +18,12 @@
 /**
  * @lint ignoreDeprecated(alert)
  */
-qx.Class.define("qxl.demobrowser.demo.ui.FormRenderer",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.FormRenderer", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create the form
       var form = new qx.ui.form.Form();
@@ -58,22 +56,33 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormRenderer",
 
       // send button with validation
       var sendButton = new qx.ui.form.Button("Send");
-      sendButton.addListener("execute", function() {
-        if (form.validate()) {
-          alert("send...");
-        }
-      }, this);
+      sendButton.addListener(
+        "execute",
+        function () {
+          if (form.validate()) {
+            alert("send...");
+          }
+        },
+        this
+      );
       form.addButton(sendButton);
 
       // reset button
       var resetButton = new qx.ui.form.Button("Reset");
-      resetButton.addListener("execute", function() {
-        form.reset();
-      }, this);
+      resetButton.addListener(
+        "execute",
+        function () {
+          form.reset();
+        },
+        this
+      );
       form.addButton(resetButton);
 
       // create the form and add it to the document
-      this.getRoot().add(new qx.ui.form.renderer.Single(form), {left: 10, top: 10});
-    }
-  }
+      this.getRoot().add(new qx.ui.form.renderer.Single(form), {
+        left: 10,
+        top: 10,
+      });
+    },
+  },
 });

@@ -20,29 +20,27 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Canvas_MinMaxSizes",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Canvas_MinMaxSizes", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var border = new qx.ui.decoration.Decorator().set({
         width: 3,
         style: "solid",
-        color: "black"
+        color: "black",
       });
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
-        decorator: border
+        decorator: border,
       });
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
-        decorator: border
+        decorator: border,
       });
 
       var w3 = new qx.ui.basic.Label("maxHeight=300").set({
@@ -50,18 +48,18 @@ qx.Class.define("qxl.demobrowser.demo.layout.Canvas_MinMaxSizes",
         decorator: border,
         padding: 5,
         maxHeight: 300,
-        allowStretchX : true,
-        allowStretchY : true
+        allowStretchX: true,
+        allowStretchY: true,
       });
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
-        decorator: border
+        decorator: border,
       });
 
       var w5 = new qx.ui.core.Widget().set({
         backgroundColor: "orange",
-        decorator: border
+        decorator: border,
       });
 
       var w6 = new qx.ui.basic.Label("minWidth=400").set({
@@ -69,20 +67,54 @@ qx.Class.define("qxl.demobrowser.demo.layout.Canvas_MinMaxSizes",
         decorator: border,
         padding: 5,
         minWidth: 400,
-        allowStretchX : true,
-        allowStretchY : true
+        allowStretchX: true,
+        allowStretchY: true,
       });
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
-      container.add(w1, {left:"3%", top:"3%", right:"3%", bottom:"3%", width:"20%", height:"20%" });
-      container.add(w2, {left:"6%", top:"6%", right:"6%", width:"20%", height:"20%" });
-      container.add(w3, {left:"9%", top:"9%", bottom:"9%", width:"20%", height:"20%" });
-      container.add(w4, {left:"12%", top:"12%", width:"20%", height:"20%" });
-      container.add(w5, {top:"9%", right:"9%", width:"20%", height:"20%" });
-      container.add(w6, {right:"9%", bottom:"9%", width:"20%", height:"20%" });
+      container.add(w1, {
+        left: "3%",
+        top: "3%",
+        right: "3%",
+        bottom: "3%",
+        width: "20%",
+        height: "20%",
+      });
+      container.add(w2, {
+        left: "6%",
+        top: "6%",
+        right: "6%",
+        width: "20%",
+        height: "20%",
+      });
+      container.add(w3, {
+        left: "9%",
+        top: "9%",
+        bottom: "9%",
+        width: "20%",
+        height: "20%",
+      });
+      container.add(w4, {
+        left: "12%",
+        top: "12%",
+        width: "20%",
+        height: "20%",
+      });
+      container.add(w5, {
+        top: "9%",
+        right: "9%",
+        width: "20%",
+        height: "20%",
+      });
+      container.add(w6, {
+        right: "9%",
+        bottom: "9%",
+        width: "20%",
+        height: "20%",
+      });
 
-      this.getRoot().add(container, {edge: 0});
-    }
-  }
+      this.getRoot().add(container, { edge: 0 });
+    },
+  },
 });

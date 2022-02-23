@@ -20,16 +20,14 @@
  * @tag noPlayground
  * @require(qx.module.event.GestureHandler)
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Storage",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Storage", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    __storage : null,
+  members: {
+    __storage: null,
 
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       this.setUsing();
 
@@ -40,31 +38,30 @@ qx.Class.define("qxl.demobrowser.demo.bom.Storage",
       var removeButton = document.getElementById("remove");
 
       var self = this;
-      q(saveButton).on("tap", function() {
+      q(saveButton).on("tap", function () {
         var key = qx.bom.Input.getValue(document.getElementById("key"));
         var value = qx.bom.Input.getValue(document.getElementById("value"));
         self.__storage.setItem(key, value);
         self.updateList();
       });
 
-      q(clearButton).on("tap", function() {
+      q(clearButton).on("tap", function () {
         self.__storage.clear();
         self.updateList();
       });
 
-      q(removeButton).on("tap", function() {
+      q(removeButton).on("tap", function () {
         self.__storage.removeItem(self.__storage.getKey(0));
         self.updateList();
       });
 
-
       this.updateList();
     },
 
-    updateList : function() {
+    updateList() {
       var list = document.getElementById("list");
       list.innerHTML = "";
-      this.__storage.forEach(function(key, value) {
+      this.__storage.forEach(function (key, value) {
         list.innerHTML += key + ":" + value + "<br>";
       }, list);
       if (list.innerHTML == "") {
@@ -72,8 +69,7 @@ qx.Class.define("qxl.demobrowser.demo.bom.Storage",
       }
     },
 
-
-    setUsing : function() {
+    setUsing() {
       var label = document.getElementById("using");
       if (qx.core.Environment.get("html.storage.local")) {
         label.innerHTML = "Web Storage";
@@ -82,6 +78,6 @@ qx.Class.define("qxl.demobrowser.demo.bom.Storage",
       } else {
         label.innerHTML = "Memory Storage";
       }
-    }
-  }
+    },
+  },
 });

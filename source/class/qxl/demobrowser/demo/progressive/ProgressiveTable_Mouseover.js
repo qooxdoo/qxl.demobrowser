@@ -6,32 +6,25 @@
  *
  * @ignore(qxl.demobrowser.demo.progressive.DateCellRenderer)
  */
-qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var nextId = 0;
-      var createRandomRows = function(rowCount) {
+      var createRandomRows = function (rowCount) {
         var rowData = [];
         var now = new Date().getTime();
         var dateRange = 400 * 24 * 60 * 60 * 1000; // 400 days
         for (var row = 0; row < rowCount; row++) {
           var date = new Date(now + Math.random() * dateRange - dateRange / 2);
-          rowData.push(
-                       {
-                         renderer : "row",
-                         location : "end",
-                         data     : [
-                                     nextId++,
-                                     Math.random() * 10000,
-                                     date
-                                    ]
-                       });
+          rowData.push({
+            renderer: "row",
+            location: "end",
+            data: [nextId++, Math.random() * 10000, date],
+          });
         }
         return rowData;
       };
@@ -41,20 +34,22 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover",
       columnWidths.setWidth(1, "1*");
       columnWidths.setWidth(2, 300);
 
-      var columnNames = [ "Id", "Number", "Date" ];
+      var columnNames = ["Id", "Number", "Date"];
 
       // Instantiate a Progressive with a default structure with header
-      var header = new qx.ui.progressive.headfoot.TableHeading(columnWidths,
-                                                               columnNames);
-      var footer = new qx.ui.progressive.headfoot.Progress(columnWidths,
-                                                           columnNames);
-      var structure = new qx.ui.progressive.structure.Default(header,
-                                                              footer);
+      var header = new qx.ui.progressive.headfoot.TableHeading(
+        columnWidths,
+        columnNames
+      );
+      var footer = new qx.ui.progressive.headfoot.Progress(
+        columnWidths,
+        columnNames
+      );
+      var structure = new qx.ui.progressive.structure.Default(header, footer);
       var progressive = new qx.ui.progressive.Progressive(structure);
 
       // Add a message
-      var message =
-        new qx.ui.basic.Atom("Move your mouse over the Date field");
+      var message = new qx.ui.basic.Atom("Move your mouse over the Date field");
       message.setTextColor("red");
       message.setHeight(16);
       message.setRich(true);
@@ -69,21 +64,22 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover",
       progressive.setDataModel(dataModel);
 
       // Instantiate a table row renderer
-      var rowRenderer =
-        new qx.ui.progressive.renderer.table.Row(columnWidths);
+      var rowRenderer = new qx.ui.progressive.renderer.table.Row(columnWidths);
 
       // Give Progressive the renderer, and assign a name
       progressive.addRenderer("row", rowRenderer);
 
       // Tell the row renderer to use our custom date cell renderer
-      rowRenderer.addRenderer(2,
-        new qxl.demobrowser.demo.progressive.DateCellRenderer());
+      rowRenderer.addRenderer(
+        2,
+        new qxl.demobrowser.demo.progressive.DateCellRenderer()
+      );
 
-      this.getRoot().add(progressive, { edge : 50 });
+      this.getRoot().add(progressive, { edge: 50 });
 
       progressive.render();
-    }
-  }
+    },
+  },
 });
 
 /*
@@ -92,13 +88,11 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Mouseover",
  * the application class. For a regular qooxdoo application each class must live
  * in a file of its own. You may neglect any warnings when generating this demo.
  */
-qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
-{
-  extend     : qx.ui.progressive.renderer.table.cell.Default,
+qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer", {
+  extend: qx.ui.progressive.renderer.table.cell.Default,
 
-  statics :
-  {
-    onmouseover : function(cellDiv) {
+  statics: {
+    onmouseover(cellDiv) {
       // Save the original text color
       cellDiv.__oldcolor = qx.bom.element.Style.get(cellDiv, "color");
 
@@ -112,8 +106,9 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
       cellDiv.__innerHTML = cellDiv.innerHTML;
 
       // Generate an expanded date representation
-      var ms =
-        Date.parse(cellDiv.attributes.getNamedItem("celldata").nodeValue);
+      var ms = Date.parse(
+        cellDiv.attributes.getNamedItem("celldata").nodeValue
+      );
       var date = new Date(ms);
 
       // Opera displays both lines here but shouldn't, since the row height
@@ -121,7 +116,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
       cellDiv.innerHTML = date.toUTCString() + "<br>" + date.toString();
     },
 
-    onmouseout : function(cellDiv) {
+    onmouseout(cellDiv) {
       // Restore the original color
       cellDiv.style.color = cellDiv.__oldcolor;
 
@@ -130,26 +125,26 @@ qx.Class.define("qxl.demobrowser.demo.progressive.DateCellRenderer",
 
       // Restore the original cell data
       cellDiv.innerHTML = cellDiv.__innerHTML;
-    }
+    },
   },
 
-
-  members :
-  {
-    _getCellExtras : function(cellInfo) {
-      var html = [ ];
+  members: {
+    _getCellExtras(cellInfo) {
+      var html = [];
 
       // Add superclass extras
-      html.push(this.base(arguments));
+      html.push(super._getCellExtras());
 
       // Save the cell data for reformatting upon mouseover
       html.push("celldata='" + cellInfo.cellData.toUTCString() + "' ");
 
       // Create some event handlers
-      html.push("onmouseover='qxl.demobrowser.demo.progressive.DateCellRenderer.onmouseover(this);' ",
-                "onmouseout='qxl.demobrowser.demo.progressive.DateCellRenderer.onmouseout(this);' ");
+      html.push(
+        "onmouseover='qxl.demobrowser.demo.progressive.DateCellRenderer.onmouseover(this);' ",
+        "onmouseout='qxl.demobrowser.demo.progressive.DateCellRenderer.onmouseout(this);' "
+      );
 
       return html.join("");
-    }
-  }
+    },
+  },
 });

@@ -26,15 +26,14 @@
  * @asset(qx/icon/${qx.icontheme}/16/places/*)
  */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
-{
-  extend : qx.ui.virtual.layer.WidgetCell,
+qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer", {
+  extend: qx.ui.virtual.layer.WidgetCell,
 
-  construct : function() {
-    this.base(arguments, this);
+  construct() {
+    super(this);
     this._pool = {
-      atom : [],
-      checkbox : []
+      atom: [],
+      checkbox: [],
     };
 
     this.__rowData = [];
@@ -46,50 +45,62 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
   *****************************************************************************
   */
 
-  members :
-  {
-    _pool : null,
-    __rowData : null,
+  members: {
+    _pool: null,
+    __rowData: null,
 
-    getCellData : function(row, column) {
+    getCellData(row, column) {
       if (!this.__rowData[row]) {
         this.__rowData[row] = [];
       }
       if (!this.__rowData[row][column]) {
         this.__rowData[row][column] = {
           label: this.__generateName(),
-          icon: this.__getIcon()
+          icon: this.__getIcon(),
         };
       }
       return this.__rowData[row][column];
     },
 
-
-    getCellWidget : function(row, column) {
+    getCellWidget(row, column) {
       var widget;
 
       if (column % 2 == 0) {
         widget = this._pool.atom.pop();
         if (!widget) {
           widget = new qx.ui.basic.Atom();
-          widget.addListener("pointerover", function() {
-            var icon = this.__getIcon();
-            widget.setIcon(icon);
-            this.__rowData[row][column].icon = icon;
-          }, this);
+          widget.addListener(
+            "pointerover",
+            function () {
+              var icon = this.__getIcon();
+              widget.setIcon(icon);
+              this.__rowData[row][column].icon = icon;
+            },
+            this
+          );
         }
         widget.set(this.getCellData(row, column));
       } else {
         widget = this._pool.checkbox.pop();
         if (!widget) {
           widget = new qx.ui.form.CheckBox();
-          widget.addListener("changeValue", function() {
-            this.setLabel(this.getLabel() == "foobar!" ? widget.getUserData("row") + " / " + widget.getUserData("column") : "foobar!");
-          }, widget);
+          widget.addListener(
+            "changeValue",
+            function () {
+              this.setLabel(
+                this.getLabel() == "foobar!"
+                  ? widget.getUserData("row") +
+                      " / " +
+                      widget.getUserData("column")
+                  : "foobar!"
+              );
+            },
+            widget
+          );
         }
         widget.set({
-          value : row % 2 == 0,
-          label : row + " / " + column
+          value: row % 2 == 0,
+          label: row + " / " + column,
         });
       }
 
@@ -99,8 +110,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
       return widget;
     },
 
-
-    poolCellWidget: function(widget) {
+    poolCellWidget(widget) {
       if (widget.classname == "qx.ui.basic.Atom") {
         this._pool.atom.push(widget);
       } else {
@@ -108,16 +118,15 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
       }
     },
 
-
-    __generateName : function() {
+    __generateName() {
       var name = "";
-      for (var j=0; j<10; j++) {
-        name += String.fromCharCode(Math.floor(Math.random()*25)+65);
+      for (var j = 0; j < 10; j++) {
+        name += String.fromCharCode(Math.floor(Math.random() * 25) + 65);
       }
       return name;
     },
 
-    __getIcon : function() {
+    __getIcon() {
       var prefix = "icon/";
       var suffix = "places/";
 
@@ -126,13 +135,13 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
         "user-trash.png",
         "network-server.png",
         "network-workgroup.png",
-        "user-desktop.png"
+        "user-desktop.png",
       ];
 
-      var imageId = Math.floor(Math.random()*4);
+      var imageId = Math.floor(Math.random() * 4);
 
-      return (prefix + 16 + "/" + suffix + iconImages[imageId]);
-    }
+      return prefix + 16 + "/" + suffix + iconImages[imageId];
+    },
   },
 
   /*
@@ -141,7 +150,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.DemoLayer",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._pool = this.__rowData = null;
-  }
+  },
 });

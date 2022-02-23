@@ -15,12 +15,11 @@
      * Christian Hagendorn (chris_schmidt)
 
 ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.virtual.model.Item",
-{
-  extend : qx.core.Object,
+qx.Class.define("qxl.demobrowser.demo.virtual.model.Item", {
+  extend: qx.core.Object,
 
-  construct : function(label, icon) {
-    this.base(arguments);
+  construct(label, icon) {
+    super();
 
     if (label != null) {
       this.setLabel(label);
@@ -31,20 +30,17 @@ qx.Class.define("qxl.demobrowser.demo.virtual.model.Item",
     }
   },
 
-  properties :
-  {
-    label :
-    {
-      check : "String",
-      event : "changeLabel",
-      nullable : true
+  properties: {
+    label: {
+      check: "String",
+      event: "changeLabel",
+      nullable: true,
     },
 
-    icon :
-    {
-      check : "String",
-      event : "changeIcon",
-      nullable : true
-    }
-  }
+    icon: {
+      check: "String",
+      event: "changeIcon",
+      nullable: true,
+    },
+  },
 });

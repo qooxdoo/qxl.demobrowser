@@ -1,31 +1,26 @@
-(function()
-{
+(function () {
   var jsFileURL;
   var jsSourceURL;
   var jsBaseURL;
 
   /*
      This class contains code based on the following work:
-
-     * parseUri
+      * parseUri
        http://blog.stevenlevithan.com/archives/parseuri
        Version  1.2.1
-
-       Copyright:
+        Copyright:
          (c) 2007, Steven Levithan <http://stevenlevithan.com>
-
-       License:
+        License:
          MIT: http://www.opensource.org/licenses/mit-license.php
-
-       Authors:
+        Authors:
          * Steven Levithan
   */
 
-  function parseUri (str) {
-    var  o   = parseUri.options,
-      m   = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
+  function parseUri(str) {
+    var o = parseUri.options,
+      m = o.parser[o.strictMode ? "strict" : "loose"].exec(str),
       uri = {},
-      i   = 14;
+      i = 14;
 
     while (i--) uri[o.key[i]] = m[i] || "";
 
@@ -35,43 +30,59 @@
     });
 
     return uri;
-  };
+  }
 
   parseUri.options = {
     strictMode: false,
-    key: ["source","protocol","authority","userInfo","user","password","host","port","relative","path","directory","file","query","anchor"],
-    q:   {
-      name:   "queryKey",
-      parser: /(?:^|&)([^&=]*)=?([^&]*)/g
+    key: [
+      "source",
+      "protocol",
+      "authority",
+      "userInfo",
+      "user",
+      "password",
+      "host",
+      "port",
+      "relative",
+      "path",
+      "directory",
+      "file",
+      "query",
+      "anchor",
+    ],
+    q: {
+      name: "queryKey",
+      parser: /(?:^|&)([^&=]*)=?([^&]*)/g,
     },
+
     parser: {
-      strict: /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
-      loose:  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/
-    }
+      strict:
+        /^(?:([^:\/?#]+):)?(?:\/\/((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?))?((((?:[^?#\/]*\/)*)([^?#]*))(?:\?([^#]*))?(?:#(.*))?)/,
+      loose:
+        /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*):?([^:@]*))?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/,
+    },
   };
 
-  function init()
-  {
+  function init() {
     detachEvents();
   }
 
-  function getDataFromLocation()
-  {
+  function getDataFromLocation() {
     var uri = parseUri(location.href);
     var base = uri.file.substring(0, uri.file.indexOf("."));
     var directory = uri.directory.split("/");
-    var category = directory[directory.length-2];
+    var category = directory[directory.length - 2];
     // create the URI to the source script
     jsBaseURL = "../../script/" + category + "/" + base;
     jsFileURL = jsBaseURL + "/index.js";
-    jsSourceURL = jsBaseURL + "/qxl.demobrowser.demo." + category + "." + base + ".js";
+    jsSourceURL =
+      jsBaseURL + "/qxl.demobrowser.demo." + category + "." + base + ".js";
 
     // Apply document title
     document.title = base + " (" + category + ")";
   }
 
-  function attachEvents()
-  {
+  function attachEvents() {
     if (window.attachEvent) {
       window.attachEvent("onload", init);
     } else if (window.addEventListener) {
@@ -79,8 +90,7 @@
     }
   }
 
-  function detachEvents()
-  {
+  function detachEvents() {
     if (window.detachEvent) {
       window.detachEvent("onload", init);
     } else if (window.removeEventListener) {
@@ -88,17 +98,15 @@
     }
   }
 
-  function loadScript()
-  {
+  function loadScript() {
     var head = document.getElementsByTagName("head")[0];
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.src = jsFileURL;
     head.appendChild(script);
   }
-  
-  if (!window.qx) 
-    window.qx = {};
+
+  if (!window.qx) window.qx = {};
 
   getDataFromLocation();
   qx.$$appRoot = jsBaseURL;

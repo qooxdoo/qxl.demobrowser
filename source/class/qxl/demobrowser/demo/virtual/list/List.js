@@ -17,17 +17,13 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
-{
-  extend : qx.ui.virtual.core.Scroller,
+qx.Class.define("qxl.demobrowser.demo.virtual.list.List", {
+  extend: qx.ui.virtual.core.Scroller,
 
-  implement : [
-    qx.ui.virtual.core.IWidgetCellProvider
-  ],
+  implement: [qx.ui.virtual.core.IWidgetCellProvider],
 
-
-  construct : function() {
-    this.base(arguments, 0, 1, this.getItemHeight(), 10);
+  construct() {
+    super(0, 1, this.getItemHeight(), 10);
 
     this.__widgetLayer = new qx.ui.virtual.layer.WidgetCell(this);
     this.getPane().addLayer(this.__widgetLayer);
@@ -37,29 +33,29 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     this.__pool = [];
 
     this.__selectionManager = new qx.ui.virtual.selection.Row(this.getPane());
-    this.__selectionManager.addListener("changeSelection", this._onChangeSelection, this);
+    this.__selectionManager.addListener(
+      "changeSelection",
+      this._onChangeSelection,
+      this
+    );
     this.__selectionManager.attachPointerEvents();
     this.__selectionManager.attachKeyEvents(this);
     this.__selectionManager.attachListEvents(this);
 
     // Creates the prefetch behavior
-    new qx.ui.virtual.behavior.Prefetch(
-      this,
-      {
-        minLeft : 0,
-        maxLeft : 0,
-        minRight : 0,
-        maxRight : 0,
-        minAbove : 400,
-        maxAbove : 600,
-        minBelow : 400,
-        maxBelow : 600
-      }
-    ).set({
-      interval: 500
+    new qx.ui.virtual.behavior.Prefetch(this, {
+      minLeft: 0,
+      maxLeft: 0,
+      minRight: 0,
+      maxRight: 0,
+      minAbove: 400,
+      maxAbove: 600,
+      minBelow: 400,
+      maxBelow: 600,
+    }).set({
+      interval: 500,
     });
   },
-
 
   /*
   *****************************************************************************
@@ -67,35 +63,30 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
   *****************************************************************************
   */
 
-  events :
-  {
+  events: {
     /**
      * This event is fired after a list item was added to the list. The
      * {@link qx.event.type.Data#getData} method of the event returns the
      * added item.
      */
-    addItem : "qx.event.type.Data",
-
+    addItem: "qx.event.type.Data",
 
     /**
      * This event is fired after a list item has been removed from the list.
      * The {@link qx.event.type.Data#getData} method of the event returns the
      * removed item.
      */
-    removeItem : "qx.event.type.Data",
-
+    removeItem: "qx.event.type.Data",
 
     /**
      * Fired on every modification of the selection which also means that the
      * value has been modified.
      */
-    changeValue : "qx.event.type.Data",
-
+    changeValue: "qx.event.type.Data",
 
     /** Fires after the selection was modified */
-    changeSelection : "qx.event.type.Data"
+    changeSelection: "qx.event.type.Data",
   },
-
 
   /*
   *****************************************************************************
@@ -103,59 +94,46 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
   *****************************************************************************
   */
 
-  properties :
-  {
+  properties: {
     // overridden
-    appearance :
-    {
-      refine : true,
-      init : "list"
+    appearance: {
+      refine: true,
+      init: "list",
     },
 
-
     // overridden
-    focusable :
-    {
-      refine : true,
-      init : true
+    focusable: {
+      refine: true,
+      init: true,
     },
-
 
     /** Spacing between the items */
-    spacing :
-    {
-      check : "Integer",
-      init : 0,
-      apply : "_applySpacing",
-      themeable : true
+    spacing: {
+      check: "Integer",
+      init: 0,
+      apply: "_applySpacing",
+      themeable: true,
     },
-
 
     /** Controls whether the inline-find feature is activated or not */
-    enableInlineFind :
-    {
-      check : "Boolean",
-      init : true
+    enableInlineFind: {
+      check: "Boolean",
+      init: true,
     },
-
 
     /** The name of the list. Mainly used for serialization proposes. */
-    name :
-    {
-      check : "String",
-      nullable : true,
-      event : "changeName"
+    name: {
+      check: "String",
+      nullable: true,
+      event: "changeName",
     },
 
-
-    itemHeight :
-    {
-      init : 24,
-      themeable : true,
-      check : "Number",
-      apply : "_applyItemHeight"
+    itemHeight: {
+      init: 24,
+      themeable: true,
+      check: "Number",
+      apply: "_applyItemHeight",
     },
-
 
     /**
      * The selection mode to use.
@@ -163,13 +141,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * For further details please have a look at:
      * {@link qx.ui.core.selection.Abstract#mode}
      */
-    selectionMode :
-    {
-      check : [ "single", "multi", "additive", "one" ],
-      init : "single",
-      apply : "_applySelectionMode"
+    selectionMode: {
+      check: ["single", "multi", "additive", "one"],
+      init: "single",
+      apply: "_applySelectionMode",
     },
-
 
     /**
      * Enable drag selection (multi selection of items through
@@ -177,46 +153,40 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * Only possible for the selection modes <code>multi</code> and <code>additive</code>
      */
-    dragSelection :
-    {
-      check : "Boolean",
-      init : false,
-      apply : "_applyDragSelection"
+    dragSelection: {
+      check: "Boolean",
+      init: false,
+      apply: "_applyDragSelection",
     },
-
 
     /**
      * Enable quick selection mode, where no tap is needed to change the selection.
      *
      * Only possible for the modes <code>single</code> and <code>one</code>.
      */
-    quickSelection :
-    {
-      check : "Boolean",
-      init : false,
-      apply : "_applyQuickSelection"
-    }
+    quickSelection: {
+      check: "Boolean",
+      init: false,
+      apply: "_applyQuickSelection",
+    },
   },
 
+  members: {
+    __items: null,
+    __pool: null,
+    __selectionManager: null,
+    __widgetLayer: null,
 
-  members :
-  {
-    __items : null,
-    __pool : null,
-    __selectionManager : null,
-    __widgetLayer : null,
-
-    syncWidget : function() {
+    syncWidget() {
       this.update();
     },
 
-
-    update : function() {
+    update() {
       var rowConfig = this.getPane().getRowConfig();
       rowConfig.setItemCount(this.__items.length);
 
       rowConfig.resetItemSizes();
-      for (var i=0; i<this.__items.length; i++) {
+      for (var i = 0; i < this.__items.length; i++) {
         var height = this.__items[i].getHeight();
         if (height !== null) {
           rowConfig.setItemSize(i, height);
@@ -224,10 +194,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
       }
     },
 
-
-    updateSelection : function() {
+    updateSelection() {
       var widgets = this.__widgetLayer.getChildren();
-      for (var i=0; i<widgets.length; i++) {
+      for (var i = 0; i < widgets.length; i++) {
         var widget = widgets[i];
         var row = widget.getUserData("row");
 
@@ -239,27 +208,25 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
       }
     },
 
-
     /*
     ---------------------------------------------------------------------------
       EVENT HANDLER
     ---------------------------------------------------------------------------
     */
 
-    _onResize : function(e) {
+    _onResize(e) {
       this.getPane().getColumnConfig().setItemSize(0, e.getData().width);
       qx.ui.core.queue.Widget.add(this);
     },
 
-    _onChangeItemHeight : function(e) {
+    _onChangeItemHeight(e) {
       qx.ui.core.queue.Widget.add(this);
     },
 
-    _onChangeSelection : function(e) {
+    _onChangeSelection(e) {
       this.updateSelection();
       this.fireDataEvent("changeSelection", this.__rowsToItems(e.getData()));
     },
-
 
     /*
     ---------------------------------------------------------------------------
@@ -268,7 +235,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     */
 
     // interface implementation
-    getCellWidget : function(row, column) {
+    getCellWidget(row, column) {
       var data = this.__items[row];
       if (!data) {
         return null;
@@ -276,8 +243,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
 
       var widget = this.__pool.pop() || new qx.ui.form.ListItem();
       widget.set({
-        label : data.getLabel(),
-        icon : data.getIcon()
+        label: data.getLabel(),
+        icon: data.getIcon(),
       });
 
       if (this.__selectionManager.isItemSelected(row)) {
@@ -291,7 +258,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     },
 
     // interface implementation
-    poolCellWidget : function(widget) {
+    poolCellWidget(widget) {
       this.__pool.push(widget);
     },
 
@@ -307,12 +274,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @return {String} Value of the list
      */
-    getValue : function() {
+    getValue() {
       var selected = this.getSelection();
       var result = [];
       var value;
 
-      for (var i=0, l=selected.length; i<l; i++) {
+      for (var i = 0, l = selected.length; i < l; i++) {
         // Try value first
         value = selected[i].getValue();
 
@@ -327,21 +294,20 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
       return result.join(",");
     },
 
-
     /**
      * Applied new selection from a comma separated list of values (labels
      * as fallback) of the list items.
      *
      * @param value {String} Comma separated list
      */
-    setValue : function(value) {
+    setValue(value) {
       // Clear current selection
       var splitted = value.split(",");
 
       // Building result list
       var result = [];
       var item;
-      for (var i=0, l=splitted.length; i<l; i++) {
+      for (var i = 0, l = splitted.length; i < l; i++) {
         item = this.findItem(splitted[i]);
         if (item) {
           result.push(item);
@@ -351,7 +317,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
       // Replace current selection
       this.setSelection(result);
     },
-
 
     /*
     ---------------------------------------------------------------------------
@@ -365,34 +330,30 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @return {LayoutItem[]} The children array (Arrays are
      *   reference types, please do not modify them in-place)
      */
-    getChildren : function() {
+    getChildren() {
       return this.__items;
     },
-
 
     /**
      * Whether the widget contains children.
      *
      * @return {Boolean} Returns <code>true</code> when the widget has children.
      */
-    hasChildren : function() {
+    hasChildren() {
       return this.__items.length > 0;
     },
 
-
-    _addHelper : function(child) {
+    _addHelper(child) {
       this.fireDataEvent("addItem", child);
       child.addListener("changeHeight", this._onChangeItemHeight, this);
       qx.ui.core.queue.Widget.add(this);
     },
 
-
-    _removeHelper : function(child) {
+    _removeHelper(child) {
       this.fireDataEvent("removeItem", child);
       child.removeListener("changeHeight", this._onChangeItemHeight, this);
       qx.ui.core.queue.Widget.add(this);
     },
-
 
     /**
      * Adds a new child widget.
@@ -404,12 +365,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} the item to add.
      * @return {Widget} This object (for chaining support)
      */
-    add : function(child) {
+    add(child) {
       this.__items.push(child);
       this._addHelper(child);
       return this;
     },
-
 
     /**
      * Remove the given child item.
@@ -417,25 +377,23 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} the item to remove
      * @return {Widget} This object (for chaining support)
      */
-    remove : function(child) {
+    remove(child) {
       qx.lang.Array.remove(this.__items, child);
       this._removeHelper(child);
       return this;
     },
-
 
     /**
      * Remove all children.
      *
      * @return {void}
      */
-    removeAll : function() {
-      for (var i=0, j=this.__items.length; i<j; i++) {
+    removeAll() {
+      for (var i = 0, j = this.__items.length; i < j; i++) {
         this._removeHelper(this.__items[i]);
       }
       this.__items = [];
     },
-
 
     /**
      * Returns the index position of the given item if it is
@@ -450,10 +408,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @return {Integer} The index position or <code>-1</code> when
      *   the given item is no child of this layout.
      */
-    indexOf : function(child) {
+    indexOf(child) {
       return this.__items.indexOf(child);
     },
-
 
     /**
      * Add a child at the specified index
@@ -466,11 +423,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param index {Integer} Index, at which the item will be inserted
      */
-    addAt : function(child, index) {
+    addAt(child, index) {
       qx.lang.Array.insertAt(this.__items, child, index);
       this._addHelper(child);
     },
-
 
     /**
      * Add a item before another already inserted item
@@ -483,11 +439,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param before {LayoutItem} item before the new item will be inserted.
      */
-    addBefore : function(child, before) {
+    addBefore(child, before) {
       qx.lang.Array.insertBefore(this.__items, child, before);
       this._addHelper(child);
     },
-
 
     /**
      * Add a item after another already inserted item
@@ -500,11 +455,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param child {LayoutItem} item to add
      * @param after {LayoutItem} item, after which the new item will be inserted
      */
-    addAfter : function(child, after) {
+    addAfter(child, after) {
       qx.lang.Array.insertAfter(this.__items, child, after);
       this._addHelper(child);
     },
-
 
     /**
      * Remove the item at the specified index.
@@ -516,11 +470,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @param index {Integer} Index of the item to remove.
      */
-    removeAt : function(index) {
+    removeAt(index) {
       this.__items.splice(index, 1);
       this._removeHelper(this.__items[index]);
     },
-
 
     /*
     ---------------------------------------------------------------------------
@@ -528,46 +481,41 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
     ---------------------------------------------------------------------------
     */
 
-    __itemToRow : function(item) {
+    __itemToRow(item) {
       var row = this.__items.indexOf(item);
       if (row < 0) {
         return null;
-      } 
-        return row;
+      }
+      return row;
     },
 
-
-    __rowToItem : function(row) {
+    __rowToItem(row) {
       var item = this.__items[row];
       return item;
     },
 
-
-    __itemsToRows : function(items) {
+    __itemsToRows(items) {
       var rows = [];
-      for (var i=0; i<items.length; i++) {
+      for (var i = 0; i < items.length; i++) {
         rows.push(this.__itemToRow(items[i]));
       }
       return rows;
     },
 
-
-    __rowsToItems : function(rows) {
+    __rowsToItems(rows) {
       var items = [];
-      for (var i=0; i<rows.length; i++) {
+      for (var i = 0; i < rows.length; i++) {
         items.push(this.__items[rows[i]]);
       }
       return items;
     },
 
-
     /**
      * Selects all items of the managed object.
      */
-    selectAll : function() {
+    selectAll() {
       this.__selectionManager.selectAll();
     },
-
 
     /**
      * Selects the given item. Replaces current selection
@@ -576,10 +524,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param item {Object} Any valid item
      * @return {void}
      */
-    setSelected : function(item) {
+    setSelected(item) {
       this.__selectionManager.selectItem(this.__itemToRow(item));
     },
-
 
     /**
      * Detects whether the given item is currently selected.
@@ -587,10 +534,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param item {Object} Any valid selectable item
      * @return {Boolean} Whether the item is selected
      */
-    isSelected : function(item) {
+    isSelected(item) {
       return this.__selectionManager.isItemSelected(this.__itemToRow(item));
     },
-
 
     /**
      * Adds the given item to the existing selection.
@@ -601,10 +547,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param item {Object} Any valid item
      * @return {void}
      */
-    addToSelection : function(item) {
+    addToSelection(item) {
       this.__selectionManager.addItem(this.__itemToRow(item));
     },
-
 
     /**
      * Removes the given item from the selection.
@@ -615,10 +560,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param item {Object} Any valid item
      * @return {void}
      */
-    removeFromSelection : function(item) {
+    removeFromSelection(item) {
       this.__selectionManager.removeItem(this.__itemToRow(item));
     },
-
 
     /**
      * Selects an item range between two given items.
@@ -627,23 +571,21 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param end {Object} Item to end at
      * @return {void}
      */
-    selectRange : function(begin, end) {
+    selectRange(begin, end) {
       this.__selectionManager.selectItemRange(
         this.__itemToRow(begin),
         this.__itemToRow(end)
       );
     },
 
-
     /**
      * Clears the whole selection at once.
      *
      * @return {void}
      */
-    resetSelection : function() {
+    resetSelection() {
       this.__selectionManager.clearSelection();
     },
-
 
     /**
      * Replaces current selection with the given items.
@@ -651,10 +593,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @param items {Object} Items to select
      * @return {void}
      */
-    setSelection : function(items) {
+    setSelection(items) {
       this.__selectionManager.replaceSelection(this.__itemsToRows(items));
     },
-
 
     /**
      * Get the selected item. This method does only work in <code>single</code>
@@ -663,30 +604,27 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      * @deprecated {3.0} Use 'getSelected' instead!
      * @return {Object} The selected item.
      */
-    getSelectedItem : function() {
+    getSelectedItem() {
       return this.__items[this.getSelected()];
     },
-
 
     /**
      * Get the selected item.
      *
      * @return {Object} The selected item.
      */
-    getSelected : function() {
+    getSelected() {
       return this.__items[this.__selectionManager.getSelectedItem()];
     },
-
 
     /**
      * Returns an array of currently selected items.
      *
      * @return {Object[]} List of items.
      */
-    getSelection : function() {
+    getSelection() {
       return this.__rowsToItems(this.__selectionManager.getSelection());
     },
-
 
     /**
      * Returns an array of currently selected items sorted
@@ -694,56 +632,50 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.List",
      *
      * @return {Object[]} Sorted list of items
      */
-    getSortedSelection : function() {
+    getSortedSelection() {
       return this.__rowsToItems(this.__selectionManager.getSortedSelection());
     },
-
 
     /**
      * Whether the selection is empty
      *
      * @return {Boolean} Whether the selection is empty
      */
-    isSelectionEmpty : function() {
+    isSelectionEmpty() {
       return this.__selectionManager.isSelectionEmpty();
     },
-
 
     /**
      * Returns the last selection context. One of <code>tap</code>,
      * <code>quick</code>, <code>drag</code> or <code>key</code> or
      * <code>null</code>.
      */
-    getSelectionContext : function() {
+    getSelectionContext() {
       return this.__selectionManager.getSelectionContext();
     },
-
 
     /**
      * Returns all elements which are selectable.
      *
      * @return {LayoutItem[]} The contained items.
      */
-    getSelectables: function() {
+    getSelectables() {
       return this.__rowsToItems(this.__selectionManager.getSelectables());
     },
 
-
     // property apply
-    _applySelectionMode : function(value, old) {
+    _applySelectionMode(value, old) {
       this.__selectionManager.setMode(value);
     },
 
-
     // property apply
-    _applyDragSelection : function(value, old) {
+    _applyDragSelection(value, old) {
       this.__selectionManager.setDrag(value);
     },
 
-
     // property apply
-    _applyQuickSelection : function(value, old) {
+    _applyQuickSelection(value, old) {
       this.__selectionManager.setQuick(value);
-    }
-  }
+    },
+  },
 });

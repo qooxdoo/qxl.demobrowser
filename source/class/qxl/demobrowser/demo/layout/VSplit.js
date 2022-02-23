@@ -17,43 +17,47 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.layout.VSplit", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.Canvas()).set({
         padding: 20,
         allowShrinkX: false,
-        allowShrinkY: false
+        allowShrinkY: false,
       });
+
       scroll.add(root);
 
       // Two Flex Tests
-      root.add(this.getSplitPaneTwoFlexSimple(), {left: 0});
-      root.add(this.getSplitPaneTwoFlexWithOneMin(), {left: 210});
-      root.add(this.getSplitPaneTwoFlexWithOneMax(), {left: 420});
-      root.add(this.getSplitPaneTwoFlexWithTwoMin(), {left: 630});
-      root.add(this.getSplitPaneTwoFlexWithTwoMax(), {left: 840});
+      root.add(this.getSplitPaneTwoFlexSimple(), { left: 0 });
+      root.add(this.getSplitPaneTwoFlexWithOneMin(), { left: 210 });
+      root.add(this.getSplitPaneTwoFlexWithOneMax(), { left: 420 });
+      root.add(this.getSplitPaneTwoFlexWithTwoMin(), { left: 630 });
+      root.add(this.getSplitPaneTwoFlexWithTwoMax(), { left: 840 });
 
       // One Flex Test
-      root.add(this.getSplitPaneOneFlexSimple(), {top: 550, left: 0});
-      root.add(this.getSplitPaneOneFlexSimpleWithMax(), {top: 550, left: 210});
-      root.add(this.getSplitPaneOneFlexSimpleWithMin(), {top: 550, left: 420});
+      root.add(this.getSplitPaneOneFlexSimple(), { top: 550, left: 0 });
+      root.add(this.getSplitPaneOneFlexSimpleWithMax(), {
+        top: 550,
+        left: 210,
+      });
+      root.add(this.getSplitPaneOneFlexSimpleWithMin(), {
+        top: 550,
+        left: 420,
+      });
 
       // Auto Size
-      root.add(this.getSplitPaneAuto(), {top: 550, left: 630});
+      root.add(this.getSplitPaneAuto(), { top: 550, left: 630 });
     },
 
-
-    getSplitPaneTwoFlexSimple : function() {
+    getSplitPaneTwoFlexSimple() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -73,8 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneTwoFlexWithOneMin : function() {
+    getSplitPaneTwoFlexWithOneMin() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -95,8 +98,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneTwoFlexWithOneMax : function() {
+    getSplitPaneTwoFlexWithOneMax() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -117,8 +119,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneTwoFlexWithTwoMin : function() {
+    getSplitPaneTwoFlexWithTwoMin() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -140,8 +141,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneTwoFlexWithTwoMax : function() {
+    getSplitPaneTwoFlexWithTwoMax() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -163,8 +163,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneOneFlexSimple : function() {
+    getSplitPaneOneFlexSimple() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -183,8 +182,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneOneFlexSimpleWithMax : function() {
+    getSplitPaneOneFlexSimpleWithMax() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -205,8 +203,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneOneFlexSimpleWithMin : function() {
+    getSplitPaneOneFlexSimpleWithMin() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setHeight(400);
       splitpane.setDecorator("main");
@@ -227,8 +224,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       return splitpane;
     },
 
-
-    getSplitPaneAuto : function() {
+    getSplitPaneAuto() {
       var splitpane = new qx.ui.splitpane.Pane("vertical");
       splitpane.setDecorator("main");
 
@@ -245,6 +241,6 @@ qx.Class.define("qxl.demobrowser.demo.layout.VSplit",
       splitpane.add(bottomWidget);
 
       return splitpane;
-    }
-  }
+    },
+  },
 });

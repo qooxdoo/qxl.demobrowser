@@ -18,58 +18,50 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem",
-{
-  extend : qx.ui.tree.VirtualTreeItem,
+qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem", {
+  extend: qx.ui.tree.VirtualTreeItem,
 
-  properties :
-  {
-    leadIcon :
-    {
-      check : "String",
+  properties: {
+    leadIcon: {
+      check: "String",
       event: "changeLeadIcon",
-      nullable : true
+      nullable: true,
     },
 
-    checked :
-    {
-      check : "Boolean",
+    checked: {
+      check: "Boolean",
       event: "changeChecked",
-      nullable : true
+      nullable: true,
     },
 
-    size :
-    {
-      check : "String",
+    size: {
+      check: "String",
       event: "changeSize",
-      nullable : true
+      nullable: true,
     },
 
-    date :
-    {
-      check : "String",
+    date: {
+      check: "String",
       event: "changeDate",
-      nullable : true
+      nullable: true,
     },
 
-    mode :
-    {
-      check : "String",
+    mode: {
+      check: "String",
       event: "changeMode",
-      nullable : true
-    }
+      nullable: true,
+    },
   },
 
-  members :
-  {
-    __leadIcon : null,
-    __checkbox : null,
-    __size : null,
-    __date : null,
-    __mode : null,
+  members: {
+    __leadIcon: null,
+    __checkbox: null,
+    __size: null,
+    __date: null,
+    __mode: null,
 
-    _addWidgets : function() {
-      var leadIcon = this.__leadIcon = new qx.ui.basic.Image();
+    _addWidgets() {
+      var leadIcon = (this.__leadIcon = new qx.ui.basic.Image());
       this.bind("leadIcon", leadIcon, "source");
       leadIcon.setWidth(16);
       this.addWidget(leadIcon);
@@ -83,7 +75,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem",
       this.setIcon("icon/16/places/user-desktop.png");
 
       // A checkbox comes right after the tree icon
-      var checkbox = this.__checkbox = new qx.ui.form.CheckBox();
+      var checkbox = (this.__checkbox = new qx.ui.form.CheckBox());
       this.bind("checked", checkbox, "value");
       checkbox.bind("value", this, "checked");
       checkbox.setFocusable(false);
@@ -95,10 +87,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem",
       this.addLabel();
 
       // All else should be right justified
-      this.addWidget(new qx.ui.core.Spacer(), {flex: 1});
+      this.addWidget(new qx.ui.core.Spacer(), { flex: 1 });
 
       // Add a file size, date and mode
-      var text = this.__size = new qx.ui.basic.Label();
+      var text = (this.__size = new qx.ui.basic.Label());
       this.bind("size", text, "value");
       text.setWidth(50);
       this.addWidget(text);
@@ -112,6 +104,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.tree.TreeItem",
       this.bind("mode", text, "value");
       text.setWidth(80);
       this.addWidget(text);
-    }
-  }
+    },
+  },
 });

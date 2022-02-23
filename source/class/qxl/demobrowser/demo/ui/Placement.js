@@ -18,24 +18,30 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.Placement",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.Placement", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    __positions : null,
+  members: {
+    __positions: null,
 
-    main: function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       var root = this.getRoot();
 
       this.__positions = [
-        "bottom-left", "bottom-center", "bottom-right",
-        "top-left", "top-center", "top-right",
-        "right-top", "right-middle", "right-bottom",
-        "left-top", "left-middle", "left-bottom"
+        "bottom-left",
+        "bottom-center",
+        "bottom-right",
+        "top-left",
+        "top-center",
+        "top-right",
+        "right-top",
+        "right-middle",
+        "right-bottom",
+        "left-top",
+        "left-middle",
+        "left-bottom",
       ];
 
       // Corners
@@ -61,8 +67,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
       root.add(this.createDomTest(), { left: 200, top: 100 });
     },
 
-
-    createTestField : function(init) {
+    createTestField(init) {
       var composite = new qx.ui.container.Composite(new qx.ui.layout.VBox(4));
 
       var popup = new qx.ui.popup.Popup(new qx.ui.layout.Grow());
@@ -82,7 +87,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
       }
       composite.add(selectBox);
 
-      selectBox.addListener("changeSelection", function(e) {
+      selectBox.addListener("changeSelection", function (e) {
         popup.setPosition(e.getData()[0].getLabel());
       });
 
@@ -90,7 +95,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
 
       var button = new qx.ui.form.Button("Open Popup");
       composite.add(button);
-      button.addListener("pointerdown", function(e) {
+      button.addListener("pointerdown", function (e) {
         popup.placeToWidget(button);
         popup.show();
       });
@@ -98,8 +103,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
       return composite;
     },
 
-
-    createDomTest : function() {
+    createDomTest() {
       var composite = new qx.ui.container.Composite(new qx.ui.layout.VBox(4));
 
       var label = new qx.ui.basic.Label("DOM align control");
@@ -115,22 +119,22 @@ qx.Class.define("qxl.demobrowser.demo.ui.Placement",
       }
       composite.add(selectBox);
 
-      selectBox.addListener("changeSelection", function(e) {
+      selectBox.addListener("changeSelection", function (e) {
         popup.setPosition(e.getData()[0].getLabel());
       });
 
       var button = new qx.ui.form.Button("Open DOM-Popup");
       composite.add(button);
-      button.addListener("pointerdown", function(e) {
+      button.addListener("pointerdown", function (e) {
         popup.placeToElement(document.getElementById("domanchor"));
         popup.show();
       });
 
       return composite;
-    }
+    },
   },
 
-  destruct : function() {
+  destruct() {
     this.__positions = null;
-  }
+  },
 });

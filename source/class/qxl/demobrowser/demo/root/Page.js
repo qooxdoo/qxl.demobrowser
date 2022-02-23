@@ -19,36 +19,34 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.root.Page",
-{
-  extend : qx.application.Inline,
+qx.Class.define("qxl.demobrowser.demo.root.Page", {
+  extend: qx.application.Inline,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var box = new qx.ui.container.Composite(new qx.ui.layout.HBox());
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
         decorator: "main",
-        padding: 10
+        padding: 10,
       });
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
-        decorator: "main"
+        decorator: "main",
       });
 
       var w3 = new qx.ui.core.Widget().set({
         backgroundColor: "green",
-        decorator: "main"
+        decorator: "main",
       });
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
-        decorator: "main"
+        decorator: "main",
       });
 
       box.add(w1);
@@ -56,7 +54,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Page",
       box.add(w3);
       box.add(w4);
 
-      this.getRoot().add(box, {left: 30, top: 120});
-    }
-  }
+      this.getRoot().add(box, { left: 30, top: 120 });
+    },
+  },
 });

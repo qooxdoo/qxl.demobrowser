@@ -20,21 +20,18 @@
  * A really huge table
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Huge", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table";
     },
 
-    COL_COUNT : 50,
-    ROW_COUNT : 10000,
+    COL_COUNT: 50,
+    ROW_COUNT: 10000,
 
-
-    createRandomRows: function(rowCount) {
+    createRandomRows(rowCount) {
       var rowData = [];
       for (var row = 0; row < rowCount; row++) {
         var row1 = [];
@@ -46,12 +43,12 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
       return rowData;
     },
 
-    createTable: function() {
+    createTable() {
       // Create the initial data
       var rowData = this.createRandomRows(this.ROW_COUNT);
 
       // table model
-      var tableModel = this._tableModel = new qx.ui.table.model.Simple();
+      var tableModel = (this._tableModel = new qx.ui.table.model.Simple());
       var headers = [];
 
       for (var i = 0; i < this.COL_COUNT; i++) {
@@ -64,7 +61,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
       var table = new qx.ui.table.Table(tableModel);
 
       return table;
-    }
+    },
   },
 
   /*
@@ -73,7 +70,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Huge",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_tableModel");
-  }
+  },
 });

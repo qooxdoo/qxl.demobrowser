@@ -1,42 +1,39 @@
 /*
  * Demonstrate how to apply a filter to the SimpleTreeDataModel.
  */
-qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
       // classes.  Include the mixin that provides them.
-      qx.Class.include(qx.ui.treevirtual.TreeVirtual,
-                       qx.ui.treevirtual.MNode);
+      qx.Class.include(qx.ui.treevirtual.TreeVirtual, qx.ui.treevirtual.MNode);
 
       // Use an HBox to hold the tree and the groupbox
       var hBox = new qx.ui.container.Composite(new qx.ui.layout.HBox(20));
-      this.getRoot().add(hBox, { edge : 30 });
+      this.getRoot().add(hBox, { edge: 30 });
 
       // tree
-      var tree = new qx.ui.treevirtual.TreeVirtual(
-          [
-            "Tree",
-            "Permissions",
-            "Last Accessed"
-          ]);
-      tree.set(
-        {
-          width  : 400
-        });
+      var tree = new qx.ui.treevirtual.TreeVirtual([
+        "Tree",
+        "Permissions",
+        "Last Accessed",
+      ]);
+
+      tree.set({
+        width: 400,
+      });
+
       tree.setAlwaysShowOpenCloseSymbol(true);
 
       // Obtain the resize behavior object to manipulate
       var resizeBehavior = tree.getTableColumnModel().getBehavior();
 
       // Ensure that the tree column remains sufficiently wide
-      resizeBehavior.set(0, { width:"1*", minWidth:180 });
+      resizeBehavior.set(0, { width: "1*", minWidth: 180 });
 
       hBox.add(tree);
 
@@ -84,13 +81,17 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
 
       var textField = new qx.ui.form.TextField();
       textField.setValue("100");
-      textField.addListener("input", function() {
-        dataModel.setData();
-      }, this);
+      textField.addListener(
+        "input",
+        function () {
+          dataModel.setData();
+        },
+        this
+      );
       commandFrame.add(textField);
 
       // Set the filter
-      var filter = qx.lang.Function.bind(function(node) {
+      var filter = qx.lang.Function.bind(function (node) {
         if (node.type == qx.ui.treevirtual.MTreePrimitive.Type.LEAF) {
           var label = node.label;
           return label.indexOf(textField.getValue()) != -1;
@@ -98,6 +99,6 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Filter",
         return true;
       }, this);
       dataModel.setFilter(filter);
-    }
-  }
+    },
+  },
 });

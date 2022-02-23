@@ -19,14 +19,12 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Geolocation",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Geolocation", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var label1 = qx.bom.Label.create("Finding Your Location...", true);
       label1.style.width = "400px";
@@ -40,21 +38,38 @@ qx.Class.define("qxl.demobrowser.demo.bom.Geolocation",
 
       var geo = qx.bom.GeoLocation.getInstance();
 
-      geo.addListener("position", function(position) {
-        qx.bom.Label.setValue(label1,
-        "<p>Latitude: " + position.getLatitude() + "</p>" +
-        "<p>Longitude: " + position.getLongitude() + "</p>");
-      }, this);
+      geo.addListener(
+        "position",
+        function (position) {
+          qx.bom.Label.setValue(
+            label1,
+            "<p>Latitude: " +
+              position.getLatitude() +
+              "</p>" +
+              "<p>Longitude: " +
+              position.getLongitude() +
+              "</p>"
+          );
+        },
+        this
+      );
 
-      geo.addListener("error", function(error) {
-        var errors = ["Permission Denied", "Position Unavailable", "Timeout"];
-        var positionError = error.getData();
-        console.log(positionError);
-        qx.bom.Label.setValue(label1, "Failed: " + errors[positionError.code-1]);
-      }, this);
+      geo.addListener(
+        "error",
+        function (error) {
+          var errors = ["Permission Denied", "Position Unavailable", "Timeout"];
+          var positionError = error.getData();
+          console.log(positionError);
+          qx.bom.Label.setValue(
+            label1,
+            "Failed: " + errors[positionError.code - 1]
+          );
+        },
+        this
+      );
 
-        geo.getCurrentPosition();
-    }
+      geo.getCurrentPosition();
+    },
   },
 
   /*
@@ -63,6 +78,5 @@ qx.Class.define("qxl.demobrowser.demo.bom.Geolocation",
    *****************************************************************************
    */
 
-  destruct : function() {
-  }
+  destruct() {},
 });

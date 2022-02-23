@@ -27,14 +27,12 @@
  * @asset(qx/icon/${qx.icontheme}/16/apps/utilities-text-editor.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.GroupBox", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create the main layout
       var mainLayout = new qx.ui.layout.VBox();
@@ -43,21 +41,19 @@ qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
       // add the main layout to a container widget and to the document root
       var container = new qx.ui.container.Composite(mainLayout);
       container.setPadding(20);
-      this.getRoot().add(container, {left:0, top:0});
-
-
+      this.getRoot().add(container, { left: 0, top: 0 });
 
       // create the first group box
-      var box1 = new qx.ui.groupbox.GroupBox("Code Assist", "icon/16/apps/utilities-text-editor.png");
+      var box1 = new qx.ui.groupbox.GroupBox(
+        "Code Assist",
+        "icon/16/apps/utilities-text-editor.png"
+      );
       container.add(box1);
 
       box1.setLayout(new qx.ui.layout.VBox());
       box1.add(new qx.ui.form.CheckBox("Show debugging content"));
       box1.add(new qx.ui.form.CheckBox("Enable code completion"));
       box1.add(new qx.ui.form.CheckBox("Show debugging console"));
-
-
-
 
       // create the second group box
       var box2 = new qx.ui.groupbox.CheckGroupBox("Expert Settings");
@@ -70,9 +66,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
 
       var textField2 = new qx.ui.form.TextField("");
       box2.add(textField2);
-
-
-
 
       // create the third group box
       var box3Helper = new qx.ui.container.Composite(new qx.ui.layout.VBox());
@@ -100,6 +93,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.GroupBox",
 
       var textField3 = new qx.ui.form.TextField("");
       box3.add(textField3);
-    }
-  }
+    },
+  },
 });

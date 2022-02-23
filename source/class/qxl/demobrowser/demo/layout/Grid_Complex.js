@@ -20,68 +20,76 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
-        padding: 20
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(20)
+      ).set({
+        padding: 20,
       });
+
       scroll.add(container);
 
       container.add(this.getGrid1());
       container.add(this.getGrid2());
     },
 
-
-    getGrid1 : function() {
+    getGrid1() {
       // auto size
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       box.setLayout(new qx.ui.layout.Grid(5, 20));
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 0});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 0 }
+      );
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 1});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 1 }
+      );
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        width:150,
-        maxWidth:150
-      }), {row: 1, column: 0, rowSpan: 1, colSpan: 2});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          width: 150,
+          maxWidth: 150,
+        }),
+        { row: 1, column: 0, rowSpan: 1, colSpan: 2 }
+      );
 
       return box;
     },
 
-
-    getGrid2 : function() {
+    getGrid2() {
       // flex columns
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
-        width:500,
+        width: 500,
         allowShrinkX: false,
         allowShrinkY: false,
-        allowGrowX: false
+        allowGrowX: false,
       });
 
       var layout = new qx.ui.layout.Grid();
@@ -94,45 +102,62 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
       layout.setSpacing(5);
       box.setLayout(layout);
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 0});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 0 }
+      );
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 1, rowSpan: 1, colSpan: 2});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 1, rowSpan: 1, colSpan: 2 }
+      );
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 1, column: 0});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 1, column: 0 }
+      );
 
       var innerBox = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "orange",
-        width:400,
-        padding: 5
+        width: 400,
+        padding: 5,
       });
-      box.add(innerBox, {row: 1, column: 1, rowSpan: 2, colSpan: 2});
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 2, column: 0});
+      box.add(innerBox, { row: 1, column: 1, rowSpan: 2, colSpan: 2 });
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 3, column: 0, rowSpan: 1, colSpan: 2});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 2, column: 0 }
+      );
 
-      box.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 3, column: 2});
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 3, column: 0, rowSpan: 1, colSpan: 2 }
+      );
 
-
+      box.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 3, column: 2 }
+      );
 
       // set inner layout
       var innerLayout = new qx.ui.layout.Grid();
@@ -144,33 +169,45 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Complex",
       innerLayout.setSpacing(5);
       innerLayout.setColumnFlex(1, 1);
 
-      innerBox.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        width:150
-      }), {row: 0, column: 0});
+      innerBox.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          width: 150,
+        }),
+        { row: 0, column: 0 }
+      );
 
-      innerBox.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        height: 70,
-        allowGrowX: false
-      }), {row: 0, column: 1});
+      innerBox.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          height: 70,
+          allowGrowX: false,
+        }),
+        { row: 0, column: 1 }
+      );
 
-      innerBox.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        maxHeight: 60,
-        allowGrowX: false
-      }), {row: 1, column: 0});
+      innerBox.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          maxHeight: 60,
+          allowGrowX: false,
+        }),
+        { row: 1, column: 0 }
+      );
 
-      innerBox.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        minWidth:170
-      }), {row: 2, column: 0});
+      innerBox.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          minWidth: 170,
+        }),
+        { row: 2, column: 0 }
+      );
 
       return box;
-    }
-  }
+    },
+  },
 });

@@ -15,23 +15,21 @@
      * Martin Wittemann (martinwittemann)
 
 ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
+  members: {
     /**
      * @lint ignoreDeprecated(alert)
      */
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       // create the ui ///////////////////////
 
       // create the stack for the multi page view
       var stack = new qx.ui.container.Stack();
-      this.getRoot().add(stack, {left: 10, top: 10});
+      this.getRoot().add(stack, { left: 10, top: 10 });
 
       // page 1
       var grid1 = new qx.ui.layout.Grid();
@@ -41,21 +39,21 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
 
       // name
       var nameLabel = new qx.ui.basic.Label("Name:");
-      page1.add(nameLabel, {row: 0, column: 0});
+      page1.add(nameLabel, { row: 0, column: 0 });
       var name = new qx.ui.form.TextField();
       name.setRequired(true);
-      page1.add(name, {row: 0, column: 1});
+      page1.add(name, { row: 0, column: 1 });
 
       // password
       var passwordLabel = new qx.ui.basic.Label("Password:");
-      page1.add(passwordLabel, {row: 1, column: 0});
+      page1.add(passwordLabel, { row: 1, column: 0 });
       var password = new qx.ui.form.PasswordField();
       password.setRequired(true);
-      page1.add(password, {row: 1, column: 1});
+      page1.add(password, { row: 1, column: 1 });
 
       // nextbutton
       var nextButton = new qx.ui.form.Button("next");
-      page1.add(nextButton, {row: 2, column: 1});
+      page1.add(nextButton, { row: 2, column: 1 });
       nextButton.addListener("execute", stack.next, stack);
 
       // page 2
@@ -66,34 +64,38 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
 
       // email
       var emailLabel = new qx.ui.basic.Label("Email:");
-      page2.add(emailLabel, {row: 0, column: 0});
+      page2.add(emailLabel, { row: 0, column: 0 });
       var email = new qx.ui.form.TextField();
-      page2.add(email, {row: 0, column: 1});
+      page2.add(email, { row: 0, column: 1 });
 
       // birth date
       var birthDateLabel = new qx.ui.basic.Label("Birthdate:");
-      page2.add(birthDateLabel, {row: 1, column: 0});
+      page2.add(birthDateLabel, { row: 1, column: 0 });
       var birthDate = new qx.ui.form.DateField();
       birthDate.setRequired(true);
-      page2.add(birthDate, {row: 1, column: 1});
+      page2.add(birthDate, { row: 1, column: 1 });
 
       //backbutton
       var backButton = new qx.ui.form.Button("back");
-      page2.add(backButton, {row: 2, column: 0});
+      page2.add(backButton, { row: 2, column: 0 });
       backButton.addListener("execute", stack.previous, stack);
 
       // submit
       var submitButton = new qx.ui.form.Button("submit");
       submitButton;
-      page2.add(submitButton, {row: 2, column: 1});
+      page2.add(submitButton, { row: 2, column: 1 });
 
       ////////////////////////////////////////
-
 
       // serialization ///////////////////////
 
       // create the data model
-      var skeleton = {name: null, password: null, email: null, birthdate: null};
+      var skeleton = {
+        name: null,
+        password: null,
+        email: null,
+        birthdate: null,
+      };
       var model = qx.data.marshal.Json.createModel(skeleton, true);
 
       // create the controller and connect all fields
@@ -104,11 +106,14 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
       controller.addTarget(birthDate, "value", "birthdate", true);
 
       // invoke the serialization
-      submitButton.addListener("execute", function() {
-        alert(qx.util.Serializer.toUriParameter(model));
-      }, this);
+      submitButton.addListener(
+        "execute",
+        function () {
+          alert(qx.util.Serializer.toUriParameter(model));
+        },
+        this
+      );
       ////////////////////////////////////////
-
 
       // validation //////////////////////////
 
@@ -120,9 +125,13 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
       validator.add(birthDate);
 
       // validate on every change of the model
-      model.addListener("changeBubble", function(e) {
-        validator.validate();
-      }, this);
+      model.addListener(
+        "changeBubble",
+        function (e) {
+          validator.validate();
+        },
+        this
+      );
 
       // invoke the inital validate
       validator.validate();
@@ -131,6 +140,6 @@ qx.Class.define("qxl.demobrowser.demo.ui.MultiPageForm",
       validator.bind("valid", submitButton, "enabled");
 
       ////////////////////////////////////////
-    }
-  }
+    },
+  },
 });

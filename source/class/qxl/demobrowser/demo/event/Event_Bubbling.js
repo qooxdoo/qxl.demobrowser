@@ -30,15 +30,12 @@
  * @use(qx.event.handler.Pointer)
  * @use(qx.event.handler.Element)
  */
-qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
-
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this._initLogger(
         ["Event", "Target", "Current target", "Event phase"],
@@ -46,29 +43,41 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bubbling",
         50
       );
 
-      for (var i=1; i<10; i++) {
-        var div = document.getElementById("div"+i);
-        qx.event.Registration.addListener(div, "tap", this._cascadeCapture, this, true);
-        qx.event.Registration.addListener(div, "tap", this._cascadeBubble, this, false);
+      for (var i = 1; i < 10; i++) {
+        var div = document.getElementById("div" + i);
+        qx.event.Registration.addListener(
+          div,
+          "tap",
+          this._cascadeCapture,
+          this,
+          true
+        );
+        qx.event.Registration.addListener(
+          div,
+          "tap",
+          this._cascadeBubble,
+          this,
+          false
+        );
       }
     },
 
-    _cascadeCapture : function(e) {
+    _cascadeCapture(e) {
       this._log([
         e.getType(),
         e.getTarget().id,
         e.getCurrentTarget().id,
-        e.getEventPhase() == 2 ? "at target" : "capture"
+        e.getEventPhase() == 2 ? "at target" : "capture",
       ]);
     },
 
-    _cascadeBubble : function(e) {
+    _cascadeBubble(e) {
       this._log([
-       e.getType(),
-       e.getTarget().id,
-       e.getCurrentTarget().id,
-       e.getEventPhase() == 2 ? "at target" : "bubble"
-     ]);
-    }
-  }
+        e.getType(),
+        e.getTarget().id,
+        e.getCurrentTarget().id,
+        e.getEventPhase() == 2 ? "at target" : "bubble",
+      ]);
+    },
+  },
 });

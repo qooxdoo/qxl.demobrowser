@@ -27,33 +27,35 @@
  * @asset(qx/icon/${qx.icontheme}/32/status/dialog-information.png)
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
-{
-  extend : qx.application.Standalone,
-  include : qxl.demobrowser.demo.table.MUtil,
+qx.Class.define("qxl.demobrowser.demo.table.TableDemo", {
+  extend: qx.application.Standalone,
+  include: qxl.demobrowser.demo.table.MUtil,
 
-  members :
-  {
-    __dlg : null,
+  members: {
+    __dlg: null,
 
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       /* Set locale to english to avoid language mix if browser locale is
        * non-english. */
       qx.locale.Manager.getInstance().setLocale("en");
 
-      this._container = new qx.ui.window.Window(this.getCaption(), "icon/16/apps/office-spreadsheet.png").set({
+      this._container = new qx.ui.window.Window(
+        this.getCaption(),
+        "icon/16/apps/office-spreadsheet.png"
+      ).set({
         width: 600,
         height: 400,
-        contentPadding : [ 0, 0, 0, 0 ],
+        contentPadding: [0, 0, 0, 0],
         showClose: false,
-        showMinimize: false
+        showMinimize: false,
       });
+
       this._container.setLayout(new qx.ui.layout.VBox());
       this._container.open();
 
-      this.getRoot().add(this._container, {left: 50, top: 10});
+      this.getRoot().add(this._container, { left: 50, top: 10 });
 
       this._table = this.createTable();
       this._controls = this.createControls();
@@ -61,47 +63,48 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
       if (this._controls) {
         this._container.add(this._controls);
       }
-      this._container.add(this._table, {flex: 1});
+      this._container.add(this._table, { flex: 1 });
     },
 
-
-    nextId : 0,
-    createRandomRows : function(rowCount) {
+    nextId: 0,
+    createRandomRows(rowCount) {
       var rowData = [];
       var now = new Date().getTime();
       var dateRange = 400 * 24 * 60 * 60 * 1000; // 400 days
       for (var row = 0; row < rowCount; row++) {
         var date = new Date(now + Math.random() * dateRange - dateRange / 2);
-        rowData.push([ this.nextId++, Math.random() * 10000, date, (Math.random() > 0.5) ]);
+        rowData.push([
+          this.nextId++,
+          Math.random() * 10000,
+          date,
+          Math.random() > 0.5,
+        ]);
       }
       return rowData;
     },
 
-
-    getCaption : function() {
+    getCaption() {
       return "";
     },
 
-
-    createTable : function() {
+    createTable() {
       throw new Error("abstract method call");
     },
 
-
-    createControls : function() {
+    createControls() {
       return null;
     },
 
-
-    showDialog : function(text) {
+    showDialog(text) {
       if (!this.__dlg) {
-        var dlg = this.__dlg = new qx.ui.window.Window().set({
+        var dlg = (this.__dlg = new qx.ui.window.Window().set({
           modal: true,
           showMinimize: false,
           showMaximize: false,
           width: 180,
-          contentPadding: [10, 10, 10, 10]
-        });
+          contentPadding: [10, 10, 10, 10],
+        }));
+
         dlg.moveTo(315, 100);
 
         var layout = new qx.ui.layout.Grid(15, 15);
@@ -111,34 +114,40 @@ qx.Class.define("qxl.demobrowser.demo.table.TableDemo",
 
         dlg.add(
           new qx.ui.basic.Image("icon/32/status/dialog-information.png"),
-          {row: 0, column: 0}
+          { row: 0, column: 0 }
         );
 
-        dlg.add(new qx.ui.basic.Label().set({
-          rich: true,
-          allowGrowY: true
-        }), {row: 0, column: 1});
+        dlg.add(
+          new qx.ui.basic.Label().set({
+            rich: true,
+            allowGrowY: true,
+          }),
+          { row: 0, column: 1 }
+        );
 
         var button = new qx.ui.form.Button("OK").set({
           alignX: "center",
           allowGrowX: false,
-          padding: [2, 10]
+          padding: [2, 10],
         });
-        button.addListener("execute", function(e) {
-          dlg.close();
-        }, this);
-        dlg.add(button, {row: 1, column: 0, colSpan: 2});
+
+        button.addListener(
+          "execute",
+          function (e) {
+            dlg.close();
+          },
+          this
+        );
+        dlg.add(button, { row: 1, column: 0, colSpan: 2 });
       }
 
       this.__dlg.getChildren()[1].setValue(text);
       this.__dlg.open();
       this.__dlg.getChildren()[2].focus();
-    }
+    },
   },
 
-
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_table", "_controls", "_container");
-  }
+  },
 });
-

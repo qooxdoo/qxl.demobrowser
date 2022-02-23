@@ -20,14 +20,12 @@
  * @tag noPlayground
  * @require(qx.module.event.PointerHandler)
  */
-qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // check for annimation support
       if (
@@ -42,10 +40,14 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d",
       }
 
       // test transform style
-      var spin = {duration: 10000, repeat: "infinite", keyFrames: {
-        0 : {rotate: [null, "0deg"]},
-        100 : {rotate: [null, "360deg"]}
-      }};
+      var spin = {
+        duration: 10000,
+        repeat: "infinite",
+        keyFrames: {
+          0: { rotate: [null, "0deg"] },
+          100: { rotate: [null, "360deg"] },
+        },
+      };
 
       var parent = document.getElementById("parent");
       qx.bom.element.Animation.animate(parent, spin);
@@ -54,24 +56,25 @@ qx.Class.define("qxl.demobrowser.demo.animation.Animation_3d",
 
       qx.bom.element.Transform.transform(parent.children[0], {
         translate: [null, null, "-100px"],
-        rotate : [null, "45deg"]
+        rotate: [null, "45deg"],
       });
 
       qx.bom.element.Transform.transform(parent.children[1], {
         translate: [null, null, "50px"],
-        rotate : ["20deg"]
+        rotate: ["20deg"],
       });
+
       qx.bom.element.Transform.setOrigin(parent.children[1], "center top");
 
       // pointer handler
       var container = document.getElementById("container");
       qx.bom.element.Transform.setPerspective(container, 500);
-      qxWeb(container).on("pointerover", function() {
+      qxWeb(container).on("pointerover", function () {
         qx.bom.element.Transform.setStyle(parent, "flat");
       });
-      qxWeb(container).on("pointerout", function() {
+      qxWeb(container).on("pointerout", function () {
         qx.bom.element.Transform.setStyle(parent, "preserve-3d");
       });
-    }
-  }
+    },
+  },
 });

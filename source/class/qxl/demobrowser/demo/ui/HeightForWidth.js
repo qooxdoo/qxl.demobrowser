@@ -17,45 +17,49 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.HeightForWidth",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.HeightForWidth", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var vbox = new qx.ui.layout.VBox();
       vbox.setSpacing(20);
 
       var container = new qx.ui.container.Composite(vbox).set({
         decorator: "main",
-        width: 300
+        width: 300,
       });
-      this.getRoot().add(container, {left:20, top:20});
+
+      this.getRoot().add(container, { left: 20, top: 20 });
 
       var label1 = new qx.ui.basic.Label().set({
         decorator: "main",
-        rich : true,
-        value: "Screenshots #1 and #2 show that the label can be reduced in size to 102 pixels horizontally or to 55 pixels vertically, so long as there is enough space in the other direction. Screenshot #3 shows what happens when the label is squeezed down to its minimum height and minimum width."
+        rich: true,
+        value:
+          "Screenshots #1 and #2 show that the label can be reduced in size to 102 pixels horizontally or to 55 pixels vertically, so long as there is enough space in the other direction. Screenshot #3 shows what happens when the label is squeezed down to its minimum height and minimum width.",
       });
+
       container.add(label1);
 
       var label2 = new qx.ui.basic.Label().set({
         decorator: "main",
-        rich : true,
-        value: "We would like QLabel to tell the layout that screenshot #1 and screenshot #2 are acceptable but that screenshot #3 is not. The sizeHint() and minimumSizeHint() functions cannot do this, so Qt provides a complementary mechanism: height-for-width."
+        rich: true,
+        value:
+          "We would like QLabel to tell the layout that screenshot #1 and screenshot #2 are acceptable but that screenshot #3 is not. The sizeHint() and minimumSizeHint() functions cannot do this, so Qt provides a complementary mechanism: height-for-width.",
       });
+
       container.add(label2);
 
       var label3 = new qx.ui.basic.Label().set({
         decorator: "main",
-        rich : true,
-        value: "Every widget's QSizePolicy contains a boolean height-for-width flag that indicates whether or not the widget is able to trade width for height and height for width. The layout will call the virtual function QWidget::heightForWidth() as necessary to determine the desired height for a height-for-width widget with a given width."
+        rich: true,
+        value:
+          "Every widget's QSizePolicy contains a boolean height-for-width flag that indicates whether or not the widget is able to trade width for height and height for width. The layout will call the virtual function QWidget::heightForWidth() as necessary to determine the desired height for a height-for-width widget with a given width.",
       });
 
       container.add(label3);
-    }
-  }
+    },
+  },
 });

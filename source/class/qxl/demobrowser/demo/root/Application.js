@@ -17,34 +17,32 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.root.Application",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.root.Application", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
         decorator: "main",
-        padding: 10
+        padding: 10,
       });
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
-        decorator: "main"
+        decorator: "main",
       });
 
       var w3 = new qx.ui.core.Widget().set({
         backgroundColor: "green",
-        decorator: "main"
+        decorator: "main",
       });
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
-        decorator: "main"
+        decorator: "main",
       });
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox());
@@ -55,7 +53,7 @@ qx.Class.define("qxl.demobrowser.demo.root.Application",
       container.add(w3);
       container.add(w4);
 
-      this.getRoot().add(container, {edge:0});
-    }
-  }
+      this.getRoot().add(container, { edge: 0 });
+    },
+  },
 });

@@ -17,48 +17,50 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.layout.ManualLayout",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.layout.ManualLayout", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var borderColor = "black";
       var border = new qx.ui.decoration.Decorator().set({
         width: 3,
         style: "solid",
-        color: borderColor
+        color: borderColor,
       });
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
         decorator: border,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
       });
+
       w1.setUserBounds(10, 10, 100, 30);
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
-        decorator: border
+        decorator: border,
       });
+
       w2.setUserBounds(200, 20, 150, 100);
 
       var w3 = new qx.ui.core.Widget().set({
         backgroundColor: "green",
         decorator: border,
-        padding: 3
+        padding: 3,
       });
+
       w3.setUserBounds(380, 50, 150, 100);
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
         decorator: border,
-        padding: 10
+        padding: 10,
       });
+
       w4.setUserBounds(50, 200, 150, 100);
 
       var container = new qx.ui.container.Composite();
@@ -68,7 +70,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.ManualLayout",
       container.add(w3);
       container.add(w4);
 
-      this.getRoot().add(container, {edge:0});
-    }
-  }
+      this.getRoot().add(container, { edge: 0 });
+    },
+  },
 });

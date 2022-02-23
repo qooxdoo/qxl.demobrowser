@@ -20,30 +20,28 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.AttributeStyle_2",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.AttributeStyle_2", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var chk = qx.dom.Element.create("input", {
-        type : "checkbox",
-        checked : true,
-        id : "chk"
+        type: "checkbox",
+        checked: true,
+        id: "chk",
       });
 
       document.body.appendChild(chk);
 
       var lab = qx.dom.Element.create("label", {
-        "for" : "chk"
+        for: "chk",
       });
 
       qx.bom.element.Attribute.set(lab, "text", "Checkbox #1");
 
       document.body.appendChild(lab);
-    }
-  }
+    },
+  },
 });

@@ -19,9 +19,8 @@
 /**
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.CellEvents",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.virtual.CellEvents", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -29,20 +28,16 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellEvents",
   *****************************************************************************
   */
 
-  members :
-  {
-
-    main : function() {
+  members: {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
-      var scroller = new qx.ui.virtual.core.Scroller(
-        20, 20,
-        40, 40
-      ).set({
-        width : 400,
-        height : 300
+      var scroller = new qx.ui.virtual.core.Scroller(20, 20, 40, 40).set({
+        width: 400,
+        height: 300,
       });
+
       this.layer = new qx.test.ui.virtual.layer.LayerSimple(this);
 
       var pane = scroller.getPane();
@@ -53,38 +48,50 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellEvents",
 
       pane.addLayer(this.layer);
 
-
       this.logger = new qx.ui.embed.Html().set({
-        width : 400,
-        height : 300,
-        html : "",
-        decorator : "main"
+        width: 400,
+        height: 300,
+        html: "",
+        decorator: "main",
       });
 
-      this.getRoot().add(scroller, {left : 20, top : 10});
-      this.getRoot().add(this.logger, {left : 450, top : 10});
+      this.getRoot().add(scroller, { left: 20, top: 10 });
+      this.getRoot().add(this.logger, { left: 450, top: 10 });
     },
 
-    _onCellTap : function(e) {
-      var msg = "<p style=\"color:green;\">You tappeded on cell " + e.getRow() + " / " + e.getColumn() + "</p>";
+    _onCellTap(e) {
+      var msg =
+        '<p style="color:green;">You tappeded on cell ' +
+        e.getRow() +
+        " / " +
+        e.getColumn() +
+        "</p>";
       this.__fillLog(msg);
     },
 
-    _onContextMenu : function(e) {
-      var msg = "<p style=\"color:yellow;\">You rightclicked cell " + e.getRow() + " / " + e.getColumn() + "</p>";
+    _onContextMenu(e) {
+      var msg =
+        '<p style="color:yellow;">You rightclicked cell ' +
+        e.getRow() +
+        " / " +
+        e.getColumn() +
+        "</p>";
       this.__fillLog(msg);
     },
 
-
-    _onDbltapPane : function(e) {
-      var msg = "<p style=\"color:red;\">You double tapped cell " + e.getRow() + " / " + e.getColumn() + "</p>";
+    _onDbltapPane(e) {
+      var msg =
+        '<p style="color:red;">You double tapped cell ' +
+        e.getRow() +
+        " / " +
+        e.getColumn() +
+        "</p>";
       this.__fillLog(msg);
     },
 
-    __fillLog : function(msg) {
+    __fillLog(msg) {
       this.logger.setHtml(this.logger.getHtml() + msg);
-    }
-
+    },
   },
 
   /*
@@ -93,7 +100,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellEvents",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("layer", "logger");
-  }
+  },
 });

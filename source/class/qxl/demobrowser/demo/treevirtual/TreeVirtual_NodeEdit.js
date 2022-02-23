@@ -1,23 +1,20 @@
 /*
  * Demonstrate how to edit nodes in the TreeVirtual
  */
-qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
       // classes.  Include the mixin that provides them.
-      qx.Class.include(qx.ui.treevirtual.TreeVirtual,
-                       qx.ui.treevirtual.MNode);
+      qx.Class.include(qx.ui.treevirtual.TreeVirtual, qx.ui.treevirtual.MNode);
 
       // Use an HBox to hold the tree and the groupbox
       var hBox = new qx.ui.container.Composite(new qx.ui.layout.HBox(20));
-      this.getRoot().add(hBox, { edge : 30 });
+      this.getRoot().add(hBox, { edge: 30 });
 
       // tree
       var tree = new qx.ui.treevirtual.TreeVirtual("Tree");
@@ -59,25 +56,31 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_NodeEdit",
 
       dataModel.setData();
 
-     /**
+      /**
        * Capture the dateEdited event to show a message that the node label has changed
        */
-      tree.addListener("dataEdited",
-                       /**
-                        * @param e
-                        * @lint ignoreDeprecated(alert)
-                        */
-                       function(e) {
-                         var data = e.getData();
-                         alert(`dataEdited from ${data.oldValue.label} to ${data.value.label}`);
-                       });
+      tree.addListener(
+        "dataEdited",
+        /**
+         * @param e
+         * @lint ignoreDeprecated(alert)
+         */
+        function (e) {
+          var data = e.getData();
+          alert(
+            `dataEdited from ${data.oldValue.label} to ${data.value.label}`
+          );
+        }
+      );
 
       var instructionGroup = new qx.ui.groupbox.GroupBox("Instructions");
       instructionGroup.setLayout(new qx.ui.layout.VBox(2));
       hBox.add(instructionGroup);
 
-      var filterLabel = new qx.ui.basic.Label("Double-click any node to begin the editing");
+      var filterLabel = new qx.ui.basic.Label(
+        "Double-click any node to begin the editing"
+      );
       instructionGroup.add(filterLabel);
-    }
-  }
+    },
+  },
 });

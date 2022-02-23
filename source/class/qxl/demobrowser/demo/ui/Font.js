@@ -17,26 +17,27 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.Font",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.Font", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var label = new qx.ui.basic.Label("Hello World").set({
         decorator: new qx.ui.decoration.Decorator().set({
           width: 1,
           style: "solid",
-          color: "red"
-        })
+          color: "red",
+        }),
       });
-      this.getRoot().add(label, {left:20, top:20});
 
-      var controls = new qx.ui.container.Composite(new qx.ui.layout.VBox().set({spacing: 10}));
-      this.getRoot().add(controls, {left:200, top:20});
+      this.getRoot().add(label, { left: 20, top: 20 });
+
+      var controls = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox().set({ spacing: 10 })
+      );
+      this.getRoot().add(controls, { left: 200, top: 20 });
 
       var b1 = new qx.ui.form.Button("Serif, 16px");
       controls.add(b1);
@@ -53,25 +54,25 @@ qx.Class.define("qxl.demobrowser.demo.ui.Font",
       var b5 = new qx.ui.form.Button("Sans Serif, 24px bold");
       controls.add(b5);
 
-      b1.addListener("execute", function() {
+      b1.addListener("execute", function () {
         label.setFont(qx.bom.Font.fromString("16px serif"));
       });
 
-      b2.addListener("execute", function() {
+      b2.addListener("execute", function () {
         label.setFont(qx.bom.Font.fromString("24px serif"));
       });
 
-      b3.addListener("execute", function() {
+      b3.addListener("execute", function () {
         label.setFont(qx.bom.Font.fromString("16px sans-serif"));
       });
 
-      b4.addListener("execute", function() {
+      b4.addListener("execute", function () {
         label.setFont(qx.bom.Font.fromString("24px sans-serif"));
       });
 
-      b5.addListener("execute", function() {
+      b5.addListener("execute", function () {
         label.setFont(qx.bom.Font.fromString("24px sans-serif bold"));
       });
-    }
-  }
+    },
+  },
 });

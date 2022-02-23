@@ -21,21 +21,19 @@
  * @tag databinding
  * @tag serialization
  */
-qx.Class.define("qxl.demobrowser.demo.data.FormController",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.FormController", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create the UI ///////////////////
 
       // groupbox
       var groupBox = new qx.ui.groupbox.GroupBox("Simple Form");
       groupBox.setLayout(new qx.ui.layout.Canvas());
-      this.getRoot().add(groupBox, {left: 10, top: 10});
+      this.getRoot().add(groupBox, { left: 10, top: 10 });
 
       // form
       var form = new qx.ui.form.Form();
@@ -62,21 +60,23 @@ qx.Class.define("qxl.demobrowser.demo.data.FormController",
       groupBox.add(new qx.ui.form.renderer.Single(form));
       ////////////////////////////////////
 
-
       // binding /////////////////////////
       var controller = new qx.data.controller.Form(null, form);
       var model = controller.createModel();
       ////////////////////////////////////
 
-
       // serialization and reset /////////
-      saveButton.addListener("execute", function() {
-        if (form.validate()) {
-          alert("You are saving: " + qx.util.Serializer.toJson(model));
-        }
-      }, this);
+      saveButton.addListener(
+        "execute",
+        function () {
+          if (form.validate()) {
+            alert("You are saving: " + qx.util.Serializer.toJson(model));
+          }
+        },
+        this
+      );
       cancelButton.addListener("execute", form.reset, form);
       ////////////////////////////////////
-    }
-  }
+    },
+  },
 });

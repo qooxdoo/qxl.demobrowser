@@ -19,15 +19,12 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.event.Event_Bus",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.Event_Bus", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
-
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this._initLogger(
         ["Subscribe", "Dispatch", "Receiving", "Message", "Callback"],
@@ -57,56 +54,67 @@ qx.Class.define("qxl.demobrowser.demo.event.Event_Bus",
       eventBus.subscribe("finished", this._anotherFinishedCallback, this);
       this._log(["X", "", "", "finished", "_anotherFinishedCallback"]);
 
-
       // send messages in timeouts
 
       // 'start' message
-      qx.event.Timer.once(function(e) {
-        this._log(["", "X", "", "start", ""]);
-        eventBus.getInstance().dispatchByName("start");
-      }, this, 1000);
-
-
-      // 'loading' message
-      qx.event.Timer.once(function(e) {
-        this._log(["", "X", "", "loading", ""]);
-        eventBus.getInstance().dispatchByName("loading");
-      }, this, 2500);
-
+      qx.event.Timer.once(
+        function (e) {
+          this._log(["", "X", "", "start", ""]);
+          eventBus.getInstance().dispatchByName("start");
+        },
+        this,
+        1000
+      );
 
       // 'loading' message
-      qx.event.Timer.once(function(e) {
-        this._log(["", "X", "", "loading", ""]);
-        eventBus.getInstance().dispatchByName("loading");
-      }, this, 4000);
+      qx.event.Timer.once(
+        function (e) {
+          this._log(["", "X", "", "loading", ""]);
+          eventBus.getInstance().dispatchByName("loading");
+        },
+        this,
+        2500
+      );
 
+      // 'loading' message
+      qx.event.Timer.once(
+        function (e) {
+          this._log(["", "X", "", "loading", ""]);
+          eventBus.getInstance().dispatchByName("loading");
+        },
+        this,
+        4000
+      );
 
       // 'finished' message
-      qx.event.Timer.once(function(e) {
-        this._log(["", "X", "", "finished", ""]);
-        eventBus.getInstance().dispatchByName("finished");
-      }, this, 5000);
+      qx.event.Timer.once(
+        function (e) {
+          this._log(["", "X", "", "finished", ""]);
+          eventBus.getInstance().dispatchByName("finished");
+        },
+        this,
+        5000
+      );
     },
 
-
-    _startCallback : function(e) {
+    _startCallback(e) {
       this._log(["", "", "X", "start", "_startCallback"]);
     },
 
-    _anotherStartCallback : function(e) {
+    _anotherStartCallback(e) {
       this._log(["", "", "X", "start", "_anotherStartCallback"]);
     },
 
-    _loadingCallback : function(e) {
+    _loadingCallback(e) {
       this._log(["", "", "X", "loading", "_loadingCallback"]);
     },
 
-    _finishedCallback : function(e) {
+    _finishedCallback(e) {
       this._log(["", "", "X", "finished", "_finishedCallback"]);
     },
 
-    _anotherFinishedCallback : function(e) {
+    _anotherFinishedCallback(e) {
       this._log(["", "", "X", "finished", "_anotherFinishedCallback"]);
-    }
-  }
+    },
+  },
 });

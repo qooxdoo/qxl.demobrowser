@@ -32,31 +32,31 @@
  * @asset(qx/icon/${qx.icontheme}/16/actions/edit-copy.png)
  * @asset(qx/icon/${qx.icontheme}/16/actions/edit-paste.png)
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Events", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table";
     },
 
+    main() {
+      super.main();
 
-    main : function() {
-      this.base(arguments);
-
-      var eventsWin = this._eventsWin = new qx.ui.window.Window("Event log").set({
+      var eventsWin = (this._eventsWin = new qx.ui.window.Window(
+        "Event log"
+      ).set({
         height: 400,
         width: 290,
         showClose: false,
         showMinimize: false,
-        contentPadding: 0
-      });
+        contentPadding: 0,
+      }));
+
       eventsWin.setLayout(new qx.ui.layout.Canvas());
       eventsWin.open();
 
-      this.getRoot().add(eventsWin, {left: 670, top: 10});
+      this.getRoot().add(eventsWin, { left: 670, top: 10 });
 
       this._events = new qx.ui.table.model.Simple();
       this._events.setColumns(["Name", "Row", "Column"]);
@@ -67,49 +67,48 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
       table.getTableColumnModel().setColumnWidth(1, 60);
       table.getTableColumnModel().setColumnWidth(2, 60);
 
-      eventsWin.add(table, {edge: 0});
+      eventsWin.add(table, { edge: 0 });
     },
 
-
-    createTable : function() {
+    createTable() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
       // table model
-      var tableModel = this._tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "A number", "A date", "Boolean" ]);
+      var tableModel = (this._tableModel = new qx.ui.table.model.Simple());
+      tableModel.setColumns(["ID", "A number", "A date", "Boolean"]);
       tableModel.setData(rowData);
       tableModel.setColumnEditable(1, true);
       tableModel.setColumnEditable(2, true);
 
-
       // table
       var table = new qx.ui.table.Table(tableModel);
-      table.getSelectionModel().setSelectionMode(qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION);
+      table
+        .getSelectionModel()
+        .setSelectionMode(
+          qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION
+        );
 
       // Display a checkbox in column 3
       var tcm = table.getTableColumnModel();
 
       tcm.setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
 
-      var logTableEvent = function(e) {
+      var logTableEvent = function (e) {
         this._events.addRows([[e.getType(), "", "", ""]], 0);
       };
 
-      var logCellEvent = function(e) {
+      var logCellEvent = function (e) {
         this._events.addRows([[e.getType(), e.getRow(), e.getColumn()]], 0);
       };
 
-      var logSortedEvent = function(e) {
+      var logSortedEvent = function (e) {
         var data = e.getData();
         this._events.addRows(
-          [
-            [
-              e.getType(),
-              data.ascending ? "asc" : "desc",
-              data.columnIndex
-            ]
-          ], 0);
+          [[e.getType(), data.ascending ? "asc" : "desc", data.columnIndex]],
+
+          0
+        );
       };
 
       table.addListener("columnVisibilityMenuCreateStart", logTableEvent, this);
@@ -128,45 +127,61 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
       return table;
     },
 
-
-    createControls : function() {
+    createControls() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button; var part;
+      var button;
+      var part;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
 
-      button = new qx.ui.toolbar.CheckBox("Capture events", "icon/22/actions/media-record.png").set({
-        value: true
+      button = new qx.ui.toolbar.CheckBox(
+        "Capture events",
+        "icon/22/actions/media-record.png"
+      ).set({
+        value: true,
       });
+
       part.add(button);
 
-      button.addListener("changeValue", function(e) {
-        if (button.isValue()) {
-          this._events.setData([]);
-          this._eventsWin.open();
-        } else {
-          this._eventsWin.close();
-        }
-      }, this);
+      button.addListener(
+        "changeValue",
+        function (e) {
+          if (button.isValue()) {
+            this._events.setData([]);
+            this._eventsWin.open();
+          } else {
+            this._eventsWin.close();
+          }
+        },
+        this
+      );
 
       return bar;
     },
 
-
-    getContextMenu : function() {
+    getContextMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var cutButton = new qx.ui.menu.Button("Cut", "icon/16/actions/edit-cut.png");
-      var copyButton = new qx.ui.menu.Button("Copy", "icon/16/actions/edit-copy.png");
-      var pasteButton = new qx.ui.menu.Button("Paste", "icon/16/actions/edit-paste.png");
+      var cutButton = new qx.ui.menu.Button(
+        "Cut",
+        "icon/16/actions/edit-cut.png"
+      );
+      var copyButton = new qx.ui.menu.Button(
+        "Copy",
+        "icon/16/actions/edit-copy.png"
+      );
+      var pasteButton = new qx.ui.menu.Button(
+        "Paste",
+        "icon/16/actions/edit-paste.png"
+      );
 
       menu.add(cutButton);
       menu.add(copyButton);
       menu.add(pasteButton);
 
       return menu;
-    }
+    },
   },
 
   /*
@@ -175,8 +190,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Events",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_tableModel", "_eventsWin", "_events");
-  }
+  },
 });
-

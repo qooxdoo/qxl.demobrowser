@@ -19,11 +19,8 @@
 /**
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
-{
-  extend : qx.application.Standalone,
-
-
+qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -31,15 +28,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
   *****************************************************************************
   */
 
-  members :
-  {
+  members: {
     /**
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       var layout = new qx.ui.layout.Grid(5, 5);
       layout.setRowFlex(0, 1);
@@ -48,7 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
       layout.setColumnFlex(2, 1);
 
       var container = new qx.ui.container.Composite(layout);
-      this.getRoot().add(container, {edge: 5});
+      this.getRoot().add(container, { edge: 5 });
 
       var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);
 
@@ -61,7 +57,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
 
       scroller.getPane().addLayer(gl1);
       scroller.getPane().addLayer(gl2);
-      container.add(scroller, {row: 0, column: 0});
+      container.add(scroller, { row: 0, column: 0 });
 
       var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);
       var gl3 = new qx.ui.virtual.layer.GridLines("vertical");
@@ -69,15 +65,14 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Pane_GridLines",
       gl3.setLineSize(1, 5);
       gl3.setLineColor(1, "blue");
 
-
       scroller.getPane().addLayer(gl3);
-      container.add(scroller, {row: 0, column: 1});
+      container.add(scroller, { row: 0, column: 1 });
 
       var scroller = new qx.ui.virtual.core.Scroller(100, 10000, 60, 100);
       var gl4 = new qx.ui.virtual.layer.GridLines("horizontal");
 
       scroller.getPane().addLayer(gl4);
-      container.add(scroller, {row: 0, column: 2});
-    }
-  }
+      container.add(scroller, { row: 0, column: 2 });
+    },
+  },
 });

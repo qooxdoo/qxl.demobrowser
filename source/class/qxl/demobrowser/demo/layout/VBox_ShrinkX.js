@@ -20,29 +20,35 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.VBox_ShrinkX",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.VBox_ShrinkX", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // auto size with limited height
       var box = new qx.ui.layout.VBox();
-      var container = (new qx.ui.container.Composite(box)).set(
-      {
+      var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
-        maxWidth : 100
+        maxWidth: 100,
       });
 
       box.setSpacing(5);
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
 
       w1.setWidth(200);
       w2.setWidth(300);
@@ -52,7 +58,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_ShrinkX",
       container.add(w2);
       container.add(w3);
 
-      this.getRoot().add(container, {left:10, top:10});
-    }
-  }
+      this.getRoot().add(container, { left: 10, top: 10 });
+    },
+  },
 });

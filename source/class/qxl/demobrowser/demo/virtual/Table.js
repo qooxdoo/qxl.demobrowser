@@ -19,11 +19,8 @@
 /**
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.Table",
-{
-  extend : qx.application.Standalone,
-
-
+qx.Class.define("qxl.demobrowser.demo.virtual.Table", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -31,32 +28,41 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Table",
   *****************************************************************************
   */
 
-  members :
-  {
-    __cellRenderer : null,
+  members: {
+    __cellRenderer: null,
 
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       var scroller = new qx.ui.virtual.core.Scroller(10000, 10000, 20, 100);
       // change all cell sizes!!
-      for (var i=0; i<10000; i++) {
-        scroller.getPane().getRowConfig().setItemSize(i, 20 + Math.round(Math.random() * 40));
-        scroller.getPane().getColumnConfig().setItemSize(i, 50 + Math.round(Math.random() * 80));
+      for (var i = 0; i < 10000; i++) {
+        scroller
+          .getPane()
+          .getRowConfig()
+          .setItemSize(i, 20 + Math.round(Math.random() * 40));
+        scroller
+          .getPane()
+          .getColumnConfig()
+          .setItemSize(i, 50 + Math.round(Math.random() * 80));
       }
-      this.getRoot().add(scroller, {edge: 20});
+      this.getRoot().add(scroller, { edge: 20 });
       scroller.getPane().addLayer(new qx.ui.virtual.layer.Row("white", "#EEE"));
-      scroller.getPane().addLayer(new qx.ui.virtual.layer.GridLines("horizontal"));
-      scroller.getPane().addLayer(new qx.ui.virtual.layer.GridLines("vertical"));
+      scroller
+        .getPane()
+        .addLayer(new qx.ui.virtual.layer.GridLines("horizontal"));
+      scroller
+        .getPane()
+        .addLayer(new qx.ui.virtual.layer.GridLines("vertical"));
       scroller.getPane().addLayer(new qx.ui.virtual.layer.HtmlCell(this));
 
       this.__cellRenderer = new qx.ui.virtual.cell.Cell();
     },
 
-    getCellProperties : function(row, column) {
+    getCellProperties(row, column) {
       return this.__cellRenderer.getCellProperties(row + " / " + column);
-    }
+    },
   },
 
   /*
@@ -65,7 +71,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Table",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("__cellRenderer");
-  }
+  },
 });

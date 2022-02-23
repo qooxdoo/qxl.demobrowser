@@ -16,12 +16,8 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.Tree",
-{
-  extend : qx.core.Object,
-
-
-
+qx.Class.define("qxl.demobrowser.Tree", {
+  extend: qx.core.Object,
 
   /*
   *****************************************************************************
@@ -29,8 +25,8 @@ qx.Class.define("qxl.demobrowser.Tree",
   *****************************************************************************
   */
 
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
 
     this.label = arguments[0] || "";
     this.children = [];
@@ -40,50 +36,43 @@ qx.Class.define("qxl.demobrowser.Tree",
     this.readme = null;
   },
 
-
-
-
   /*
   *****************************************************************************
      MEMBERS
   *****************************************************************************
   */
 
-  members :
-  {
+  members: {
     /**
      * TODOC
      *
      * @return {Array | var} TODOC
      * aka 'dirname'
      */
-    pwd : function() {
+    pwd() {
       if (this.parent === null) {
         return [];
-      } 
-        return this.parent.pwd().concat(this.parent.label);
+      }
+      return this.parent.pwd().concat(this.parent.label);
     },
-
 
     /**
      * TODOC
      *
      * @return {var} TODOC
      */
-    hasChildren : function() {
+    hasChildren() {
       return this.children.length;
     },
 
-
     /**
      * TODOC
      *
      * @return {var} TODOC
      */
-    getChildren : function() {
+    getChildren() {
       return this.children;
     },
-
 
     /**
      * TODOC
@@ -92,7 +81,7 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param args {var} TODOC
      * @return {void}
      */
-    map : function(fun, args) {
+    map(fun, args) {
       var style = "depth";
       var curr = this;
 
@@ -104,19 +93,17 @@ qx.Class.define("qxl.demobrowser.Tree",
       }
     },
 
-
     /**
      * TODOC
      *
      * @return {void}
      */
-    print : function() {
+    print() {
       /* eslint-disable-next-line array-callback-return */
-      this.map(function() {
+      this.map(function () {
         this.debug(this.label);
       }, []);
     },
-
 
     /**
      * returns an iterator function for the tree from this.
@@ -125,8 +112,8 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param style {String} "depth"|"breadth" - traversal style
      * @return {Function} iterator {Function}
      */
-    getIterator : function(style) {
-      var agenda = [ this ];
+    getIterator(style) {
+      var agenda = [this];
       var depthfirst = style == "depth" ? 1 : 0;
 
       /**
@@ -158,26 +145,23 @@ qx.Class.define("qxl.demobrowser.Tree",
       return f;
     },
 
-
     /**
      * TODOC
      *
      * @return {var} TODOC
      */
-    getPrevSibling : function() {
+    getPrevSibling() {
       return this.getSibling(-1);
     },
 
-
     /**
      * TODOC
      *
      * @return {var} TODOC
      */
-    getNextSibling : function() {
+    getNextSibling() {
       return this.getSibling(1);
     },
-
 
     /**
      * TODOC
@@ -185,13 +169,12 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param offset {var} TODOC
      * @return {var} TODOC
      */
-    getSibling : function(offset) {
+    getSibling(offset) {
       var sibs = this.parent.getChildren();
       var myIndex = this.self(arguments).indexOf(sibs, this);
       var sibIndex = myIndex + offset;
       return sibs[sibIndex];
     },
-
 
     /**
      * TODOC
@@ -199,14 +182,13 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param node {Node} TODOC
      * @return {void}
      */
-    add : function(node) {
+    add(node) {
       this.children.push(node);
       node.parent = this;
-    }
+    },
   },
 
-  statics :
-  {
+  statics: {
     // compute the index of an array element
     /**
      * TODOC
@@ -215,18 +197,15 @@ qx.Class.define("qxl.demobrowser.Tree",
      * @param obj {Object} TODOC
      * @return {var} TODOC
      */
-    indexOf : function(arr, obj) {
-      for (var i=0; i<arr.length; i++) {
+    indexOf(arr, obj) {
+      for (var i = 0; i < arr.length; i++) {
         if (arr[i] == obj) {
           return i;
         }
       }
       return -1;
-    }
+    },
   },
-
-
-
 
   /*
   *****************************************************************************
@@ -234,10 +213,10 @@ qx.Class.define("qxl.demobrowser.Tree",
   *****************************************************************************
   */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("widgetLinkFull", "widgetLinkFlat", "parent");
     this._disposeArray("children");
     this._disposeArray("tags");
     this._disposeMap("manifest");
-  }
+  },
 });

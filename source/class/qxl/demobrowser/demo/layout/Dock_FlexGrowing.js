@@ -20,108 +20,143 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Dock_FlexGrowing",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Dock_FlexGrowing", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
-        padding: 20
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(20)
+      ).set({
+        padding: 20,
       });
+
       scroll.add(container);
 
-
       // default layout, flex growing
-      var widget = new qx.ui.container.Composite(new qx.ui.layout.Dock()).set(
-      {
+      var widget = new qx.ui.container.Composite(new qx.ui.layout.Dock()).set({
         decorator: "main",
         backgroundColor: "yellow",
-        width:450,
-        height:250,
-        allowGrowX : false
+        width: 450,
+        height: 250,
+        allowGrowX: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "red"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "orange"});
-      var w4 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w5 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "fuchsia"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "red",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "orange",
+      });
+      var w4 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w5 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "fuchsia",
+      });
 
-      widget.add(w1, {edge:"north"});
-      widget.add(w2, {edge:"west"});
-      widget.add(w3, {edge:"south"});
-      widget.add(w4, {edge:"east"});
-      widget.add(w5, {edge:"center"});
+      widget.add(w1, { edge: "north" });
+      widget.add(w2, { edge: "west" });
+      widget.add(w3, { edge: "south" });
+      widget.add(w4, { edge: "east" });
+      widget.add(w5, { edge: "center" });
 
       container.add(widget);
-
-
-
 
       // y-axis first, flex growing
       var dock = new qx.ui.layout.Dock();
       dock.setSort("y");
 
-      var widget = (new qx.ui.container.Composite(dock)).set(
-      {
+      var widget = new qx.ui.container.Composite(dock).set({
         decorator: "main",
         backgroundColor: "yellow",
-        width:450,
-        height:250,
-        allowGrowX : false
+        width: 450,
+        height: 250,
+        allowGrowX: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "red"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "orange"});
-      var w4 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w5 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "fuchsia"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "red",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "orange",
+      });
+      var w4 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w5 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "fuchsia",
+      });
 
-      widget.add(w1, {edge:"north"});
-      widget.add(w2, {edge:"west"});
-      widget.add(w3, {edge:"south"});
-      widget.add(w4, {edge:"east"});
-      widget.add(w5, {edge:"center"});
+      widget.add(w1, { edge: "north" });
+      widget.add(w2, { edge: "west" });
+      widget.add(w3, { edge: "south" });
+      widget.add(w4, { edge: "east" });
+      widget.add(w5, { edge: "center" });
 
       container.add(widget);
-
-
-
-
 
       // x-axis first, flex growing
       var dock = new qx.ui.layout.Dock();
       dock.setSort("x");
 
-      var widget = (new qx.ui.container.Composite(dock)).set(
-      {
+      var widget = new qx.ui.container.Composite(dock).set({
         decorator: "main",
         backgroundColor: "yellow",
-        width:450,
-        height:250,
-        allowGrowX : false
+        width: 450,
+        height: 250,
+        allowGrowX: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "red"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "orange"});
-      var w4 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green"});
-      var w5 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "fuchsia"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "red",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "orange",
+      });
+      var w4 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+      var w5 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "fuchsia",
+      });
 
-      widget.add(w1, {edge:"north"});
-      widget.add(w2, {edge:"west"});
-      widget.add(w3, {edge:"south"});
-      widget.add(w4, {edge:"east"});
-      widget.add(w5, {edge:"center"});
+      widget.add(w1, { edge: "north" });
+      widget.add(w2, { edge: "west" });
+      widget.add(w3, { edge: "south" });
+      widget.add(w4, { edge: "east" });
+      widget.add(w5, { edge: "center" });
 
       container.add(widget);
-    }
-  }
+    },
+  },
 });

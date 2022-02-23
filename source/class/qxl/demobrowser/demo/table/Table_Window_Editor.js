@@ -26,40 +26,40 @@
  * @tag noPlayground
  * @ignore(qxl.demobrowser.demo.table.ModalCellEditorFactory)
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table with window cell editor";
     },
 
-
-    createTable : function() {
+    createTable() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
       // table model
       var tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "A number", "A date", "A boolean" ]);
+      tableModel.setColumns(["ID", "A number", "A date", "A boolean"]);
       tableModel.setData(rowData);
       tableModel.setColumnEditable(1, true);
 
       // Customize the table column model.  We want one that automatically
       // resizes columns.
-      var custom =
-      {
-        tableColumnModel : function(obj) {
+      var custom = {
+        tableColumnModel(obj) {
           return new qx.ui.table.columnmodel.Resize(obj);
-        }
+        },
       };
 
       // table
       var table = new qx.ui.table.Table(tableModel, custom);
 
-      table.getSelectionModel().setSelectionMode(qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION);
+      table
+        .getSelectionModel()
+        .setSelectionMode(
+          qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION
+        );
 
       //
       // Specify the resize behavior...  First, get the table column model,
@@ -71,7 +71,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
       var resizeBehavior = tcm.getBehavior();
 
       // This uses the set() method to set all attributes at once; uses flex
-      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80 });
+      resizeBehavior.set(0, { width: "1*", minWidth: 40, maxWidth: 80 });
 
       // We could also set them individually:
       resizeBehavior.setWidth(1, "50%");
@@ -79,7 +79,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
       resizeBehavior.setMaxWidth(1, 320);
 
       // Set one fixed width column
-      resizeBehavior.set(3, { width:100 });
+      resizeBehavior.set(3, { width: 100 });
 
       // Display a checkbox in column 3
       tcm.setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
@@ -92,11 +92,14 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
       // We'll instead use a modal cell editor.  Its cell editor factory
       // class, ModalCellEditorFactory(), is declared towards the end of
       // this file.
-      tcm.setCellEditorFactory(1, new qxl.demobrowser.demo.table.ModalCellEditorFactory());
+      tcm.setCellEditorFactory(
+        1,
+        new qxl.demobrowser.demo.table.ModalCellEditorFactory()
+      );
 
       return table;
-    }
-  }
+    },
+  },
 });
 
 /*
@@ -105,52 +108,54 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Window_Editor",
  * the application class. For a regular qooxdoo application each class must live
  * in a file of its own. You may neglect any warnings when generating this demo.
  */
-qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
-{
-  extend : qx.core.Object,
-  implement : qx.ui.table.ICellEditorFactory,
+qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory", {
+  extend: qx.core.Object,
+  implement: qx.ui.table.ICellEditorFactory,
 
-  members :
-  {
+  members: {
     // overridden
-    createCellEditor : function(cellInfo) {
+    createCellEditor(cellInfo) {
       // Create the cell editor window, since we need to return it
       // immediately.
       var cellEditor = new qx.ui.window.Window("Cell Editor");
       cellEditor.setLayout(new qx.ui.layout.HBox(4));
-      cellEditor.set(
-      {
+      cellEditor.set({
         padding: 3,
         modal: true,
         showClose: false,
         showMaximize: false,
-        showMinimize: false
+        showMinimize: false,
       });
+
       cellEditor.moveTo(300, 250);
 
-
-      cellEditor.addListener("appear", function(e) {
+      cellEditor.addListener("appear", function (e) {
         cellEditor.__cellEditor.focus();
-        cellEditor.__cellEditor.setTextSelection(0, cellEditor.__cellEditor.getValue().length);
+        cellEditor.__cellEditor.setTextSelection(
+          0,
+          cellEditor.__cellEditor.getValue().length
+        );
       });
-
 
       // Create a text field in which to edit the data
-      cellEditor.__cellEditor = new qx.ui.form.TextField(cellInfo.value + "").set({
-        allowGrowY: true
+      cellEditor.__cellEditor = new qx.ui.form.TextField(
+        cellInfo.value + ""
+      ).set({
+        allowGrowY: true,
       });
+
       cellEditor.add(cellEditor.__cellEditor);
 
       // Create the "Save" button to close the cell editor
       var save = new qx.ui.form.Button("Save");
-      save.addListener("execute", function(e) {
+      save.addListener("execute", function (e) {
         cellEditor.close();
       });
       cellEditor.add(save);
 
       // Let them press Enter from the cell editor text field to finish.
       var command = new qx.ui.command.Command("Enter");
-      command.addListener("execute", function(e) {
+      command.addListener("execute", function (e) {
         save.execute();
         command.dispose();
         command = null;
@@ -160,9 +165,9 @@ qx.Class.define("qxl.demobrowser.demo.table.ModalCellEditorFactory",
     },
 
     // overridden
-    getCellEditorValue : function(cellEditor) {
+    getCellEditorValue(cellEditor) {
       // Return the value in the text field
       return parseFloat(cellEditor.__cellEditor.getValue());
-    }
-  }
+    },
+  },
 });

@@ -16,13 +16,10 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-
+  members: {
     __data: null,
 
     /*
@@ -31,8 +28,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
     *****************************************************************************
     */
 
-    main: function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       //
       // Data
@@ -43,9 +40,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       var names = ["Apple", "Orange", "Potato", "Carrot"];
       for (var i = 0; i < names.length; i++) {
         data[i] = {
-          name : names[i],
-          checked : i < 2,
-          group: null
+          name: names[i],
+          checked: i < 2,
+          group: null,
         };
       }
       this.__data = qx.data.marshal.Json.createModel(data, true);
@@ -55,7 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       for (var i = 0; i < 2; i++) {
         groups[i] = {
           name: null,
-          checked: false
+          checked: false,
         };
       }
       groups = qx.data.marshal.Json.createModel(groups, true);
@@ -63,7 +60,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       groups.getItem(1).setName("Vegetables");
 
       // Assign group
-      this.__data.toArray().forEach(function(item, index) {
+      this.__data.toArray().forEach(function (item, index) {
         index = index < 2 ? 0 : 1;
         item.setGroup(groups.getItem(index));
       });
@@ -71,7 +68,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       // Widgets
       var list = new qx.ui.list.List();
       list.setWidth(150);
-      this.getRoot().add(list, {left: 20, top: 20});
+      this.getRoot().add(list, { left: 20, top: 20 });
 
       // Let the magic happen
       list.setDelegate(this);
@@ -89,19 +86,19 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
     // Therefore, "this" is a valid delegate for qx.ui.list.List.
     //
 
-    createItem : function() {
+    createItem() {
       return new qx.ui.form.CheckBox();
     },
 
-    configureItem : function(item) {
+    configureItem(item) {
       item.setPadding(3);
     },
 
-    createGroupItem : function() {
+    createGroupItem() {
       return new qx.ui.form.CheckBox();
     },
 
-    configureGroupItem : function(group) {
+    configureGroupItem(group) {
       // Background
       group.setBackgroundColor("#ddd");
 
@@ -109,25 +106,29 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       group.setTriState(true);
 
       // Sync value of items with value of group
-      group.addListener("changeValue", function(e) {
-        // Ignore change when triState was set. Avoids infinite loop.
-        if (group.getValue() === null) {
-          return;
-        }
-
-        var value = e.getData();
-
-        // Find model entries where group matches label,
-        // i.e. all entries that belong to group
-        this.__data.forEach(function(entry) {
-          if (group.getLabel() == entry.getGroup().getName()) {
-            entry.setChecked(value);
+      group.addListener(
+        "changeValue",
+        function (e) {
+          // Ignore change when triState was set. Avoids infinite loop.
+          if (group.getValue() === null) {
+            return;
           }
-        });
-      }, this);
+
+          var value = e.getData();
+
+          // Find model entries where group matches label,
+          // i.e. all entries that belong to group
+          this.__data.forEach(function (entry) {
+            if (group.getLabel() == entry.getGroup().getName()) {
+              entry.setChecked(value);
+            }
+          });
+        },
+        this
+      );
     },
 
-    bindItem : function(controller, item, id) {
+    bindItem(controller, item, id) {
       // Bind name -> label
       controller.bindProperty("name", "label", null, item, id);
 
@@ -139,33 +140,39 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       //
       // Check group when all items that belong to group are checked
       var data = this.__data;
-      controller.bindPropertyReverse("group.checked", "value", {
-        converter: function(value, model) {
-          var item = model.getItem(id);
-          var group = item.getGroup();
+      controller.bindPropertyReverse(
+        "group.checked",
+        "value",
+        {
+          converter(value, model) {
+            var item = model.getItem(id);
+            var group = item.getGroup();
 
-          var itemsOfGroup = data.toArray().filter(function(item) {
-            return item.getGroup() == group;
-          });
+            var itemsOfGroup = data.toArray().filter(function (item) {
+              return item.getGroup() == group;
+            });
 
-          var isAllChecked = itemsOfGroup.every(function(item) {
-            return item.getChecked();
-          });
+            var isAllChecked = itemsOfGroup.every(function (item) {
+              return item.getChecked();
+            });
 
-          var isOneChecked = itemsOfGroup.some(function(item) {
-            return item.getChecked();
-          });
+            var isOneChecked = itemsOfGroup.some(function (item) {
+              return item.getChecked();
+            });
 
-          // Set triState when one item in group is checked
-          if (isOneChecked) {
-            return isAllChecked ? true : null;
-          } 
+            // Set triState when one item in group is checked
+            if (isOneChecked) {
+              return isAllChecked ? true : null;
+            }
             return false;
-        }
-      }, item, id);
+          },
+        },
+        item,
+        id
+      );
     },
 
-    bindGroupItem : function(controller, group, id) {
+    bindGroupItem(controller, group, id) {
       // Bind name -> label
       controller.bindProperty("name", "label", null, group, id);
 
@@ -174,8 +181,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.SettingsList",
       controller.bindPropertyReverse("checked", "value", null, group, id);
     },
 
-    group : function(model) {
+    group(model) {
       return model.getGroup();
-    }
-  }
+    },
+  },
 });

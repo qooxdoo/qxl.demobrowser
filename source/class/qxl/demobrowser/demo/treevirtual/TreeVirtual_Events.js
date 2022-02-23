@@ -5,20 +5,16 @@
  *
  * Allows controlling selection mode.  Labels of selected items are displayed.
  */
-qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
       // classes.  Include the mixin that provides them.
-      qx.Class.include(qx.ui.treevirtual.TreeVirtual,
-                       qx.ui.treevirtual.MNode);
-
+      qx.Class.include(qx.ui.treevirtual.TreeVirtual, qx.ui.treevirtual.MNode);
 
       // tree
       var tree = new qx.ui.treevirtual.TreeVirtual("Tree");
@@ -26,7 +22,7 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
       tree.setAlwaysShowOpenCloseSymbol(true);
 
       // Add the tree
-      this.getRoot().add(tree, { edge : 30 });
+      this.getRoot().add(tree, { edge: 30 });
 
       // tree data model
       var dataModel = tree.getDataModel();
@@ -63,26 +59,30 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
        * Each time we get a treeOpenWithContent event, add yet another leaf
        * node to the node being opened.
        */
-      tree.addListener("treeOpenWithContent",
-                       /**
-                        * @param e
-                        * @lint ignoreDeprecated(alert)
-                        */
-                       function(e) {
-                         alert("treeOpenWithContent ");
-                         var node = e.getData();
-                         dataModel.addLeaf(node.nodeId, newItem.toString());
-                         newItem++;
-                       });
+      tree.addListener(
+        "treeOpenWithContent",
+        /**
+         * @param e
+         * @lint ignoreDeprecated(alert)
+         */
+        function (e) {
+          alert("treeOpenWithContent ");
+          var node = e.getData();
+          dataModel.addLeaf(node.nodeId, newItem.toString());
+          newItem++;
+        }
+      );
 
-      tree.addListener("treeClose",
-                       /**
-                        * @param e
-                        * @lint ignoreDeprecated(alert)
-                        */
-                       function(e) {
-                         alert("treeClose ");
-                       });
+      tree.addListener(
+        "treeClose",
+        /**
+         * @param e
+         * @lint ignoreDeprecated(alert)
+         */
+        function (e) {
+          alert("treeClose ");
+        }
+      );
 
       /*
        * We handle opening an empty folder specially.  We demonstrate how to
@@ -91,31 +91,34 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual_Events",
        * contents of the folder, and if nothing is available, indicate it by
        * removing the open/close symbol.
        */
-      tree.addListener("treeOpenWhileEmpty",
-                       /**
-                        * @param e
-                        * @lint ignoreDeprecated(alert)
-                        */
-                       function(e) {
-                         alert("treeOpenWhileEmpty");
-                         var node = e.getData();
-                         tree.nodeSetHideOpenClose(node, true);
-                       });
+      tree.addListener(
+        "treeOpenWhileEmpty",
+        /**
+         * @param e
+         * @lint ignoreDeprecated(alert)
+         */
+        function (e) {
+          alert("treeOpenWhileEmpty");
+          var node = e.getData();
+          tree.nodeSetHideOpenClose(node, true);
+        }
+      );
 
-
-      tree.addListener("changeSelection",
-                       /**
-                        * @param e
-                        * @lint ignoreDeprecated(alert)
-                        */
-                       function(e) {
-                         var text = "Selected labels:";
-                         var selectedNodes = e.getData();
-                         for (i = 0; i < selectedNodes.length; i++) {
-                             text += "\n  " + selectedNodes[i].label;
-                           }
-                         alert("changeSelection: " + text);
-                       });
-    }
-  }
+      tree.addListener(
+        "changeSelection",
+        /**
+         * @param e
+         * @lint ignoreDeprecated(alert)
+         */
+        function (e) {
+          var text = "Selected labels:";
+          var selectedNodes = e.getData();
+          for (i = 0; i < selectedNodes.length; i++) {
+            text += "\n  " + selectedNodes[i].label;
+          }
+          alert("changeSelection: " + text);
+        }
+      );
+    },
+  },
 });

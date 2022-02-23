@@ -20,23 +20,21 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
-        padding: 20
+        padding: 20,
       });
-      scroll.add(root);
 
+      scroll.add(root);
 
       root.add(this.getBox1());
       root.add(this.getBox2());
@@ -47,20 +45,34 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       root.add(this.getBox7());
     },
 
-
-    getBox1 : function() {
+    getBox1() {
       // auto size + negative margins
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 140,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
       container.add(w1);
       container.add(w2);
@@ -72,20 +84,34 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox2 : function() {
+    getBox2() {
       // auto size + negative margins + collapsing
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         width: 140,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
       container.add(w1);
       container.add(w2);
@@ -98,8 +124,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox3 : function() {
+    getBox3() {
       // auto size + negative margins + flex (growing)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -107,16 +132,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
         backgroundColor: "yellow",
         width: 140,
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
-      container.add(w1, { flex : 1 });
-      container.add(w2, { flex : 1 });
-      container.add(w3, { flex : 1 });
+      container.add(w1, { flex: 1 });
+      container.add(w2, { flex: 1 });
+      container.add(w3, { flex: 1 });
 
       w2.setMarginTop(-10);
       w3.setMarginTop(-10);
@@ -124,8 +164,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox4 : function() {
+    getBox4() {
       // auto size + negative margins + different flex (growing)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -133,16 +172,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
         backgroundColor: "yellow",
         width: 140,
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
-      container.add(w1, { flex : 1 });
-      container.add(w2, { flex : 2 });
-      container.add(w3, { flex : 3 });
+      container.add(w1, { flex: 1 });
+      container.add(w2, { flex: 2 });
+      container.add(w3, { flex: 3 });
 
       w2.setMarginTop(-10);
       w3.setMarginTop(-10);
@@ -150,8 +204,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox5 : function() {
+    getBox5() {
       // zero height + negative margins + different flex (growing)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -159,16 +212,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
         backgroundColor: "yellow",
         width: 140,
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
-      container.add(w1, { flex : 1 });
-      container.add(w2, { flex : 2 });
-      container.add(w3, { flex : 3 });
+      container.add(w1, { flex: 1 });
+      container.add(w2, { flex: 2 });
+      container.add(w3, { flex: 3 });
 
       w2.setMarginTop(-10);
       w3.setMarginTop(-10);
@@ -180,8 +248,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox6 : function() {
+    getBox6() {
       // auto size + negative margins + flex (shrinking)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -189,16 +256,31 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
         backgroundColor: "yellow",
         width: 140,
         height: 100,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
-      container.add(w1, { flex : 1 });
-      container.add(w2, { flex : 1 });
-      container.add(w3, { flex : 1 });
+      container.add(w1, { flex: 1 });
+      container.add(w2, { flex: 1 });
+      container.add(w3, { flex: 1 });
 
       w2.setMarginTop(-10);
       w3.setMarginTop(-10);
@@ -206,8 +288,7 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
       return container;
     },
 
-
-    getBox7 : function() {
+    getBox7() {
       // auto size + negative margins + different flex (shrinking)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
@@ -215,21 +296,36 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_NegativeMargin",
         backgroundColor: "yellow",
         width: 140,
         height: 100,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      var w1 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "blue", maxWidth:100, alignX:"left"});
-      var w2 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "green", maxWidth:100, alignX:"center"});
-      var w3 = new qx.ui.core.Widget().set({decorator: "main", backgroundColor: "gray", maxWidth:100, alignX:"right"});
+      var w1 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "blue",
+        maxWidth: 100,
+        alignX: "left",
+      });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+        maxWidth: 100,
+        alignX: "center",
+      });
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "gray",
+        maxWidth: 100,
+        alignX: "right",
+      });
 
-      container.add(w1, { flex : 1 });
-      container.add(w2, { flex : 2 });
-      container.add(w3, { flex : 3 });
+      container.add(w1, { flex: 1 });
+      container.add(w2, { flex: 2 });
+      container.add(w3, { flex: 3 });
 
       w2.setMarginTop(-10);
       w3.setMarginTop(-10);
 
       return container;
-    }
-  }
+    },
+  },
 });

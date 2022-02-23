@@ -1,28 +1,22 @@
 /*
  * Example of using the Boolean cell renderer with Progressive's Table.
  */
-qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var nextId = 0;
-      var createRandomRows = function(rowCount) {
+      var createRandomRows = function (rowCount) {
         var rowData = [];
         for (var row = 0; row < rowCount; row++) {
-          rowData.push(
-                       {
-                         renderer : "row",
-                         location : "end",
-                         data     : [
-                                     nextId++,
-                                     (Math.floor(Math.random() * 2) != 0)
-                                    ]
-                       });
+          rowData.push({
+            renderer: "row",
+            location: "end",
+            data: [nextId++, Math.floor(Math.random() * 2) != 0],
+          });
         }
         return rowData;
       };
@@ -31,15 +25,18 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
       columnWidths.setWidth(0, 100);
       columnWidths.setWidth(1, 100);
 
-      var columnNames = [ "Id", "Boolean" ];
+      var columnNames = ["Id", "Boolean"];
 
       // Instantiate a Progressive with a default structure with header
-      var header = new qx.ui.progressive.headfoot.TableHeading(columnWidths,
-                                                               columnNames);
-      var footer = new qx.ui.progressive.headfoot.Progress(columnWidths,
-                                                           columnNames);
-      var structure = new qx.ui.progressive.structure.Default(header,
-                                                              footer);
+      var header = new qx.ui.progressive.headfoot.TableHeading(
+        columnWidths,
+        columnNames
+      );
+      var footer = new qx.ui.progressive.headfoot.Progress(
+        columnWidths,
+        columnNames
+      );
+      var structure = new qx.ui.progressive.structure.Default(header, footer);
       var progressive = new qx.ui.progressive.Progressive(structure);
 
       // Instantiate a data model and populate it.
@@ -51,8 +48,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
       progressive.setDataModel(dataModel);
 
       // Instantiate a table row renderer
-      var rowRenderer =
-        new qx.ui.progressive.renderer.table.Row(columnWidths);
+      var rowRenderer = new qx.ui.progressive.renderer.table.Row(columnWidths);
 
       // Give Progressive the renderer, and assign a name
       progressive.addRenderer("row", rowRenderer);
@@ -62,14 +58,14 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Boolean",
       boolRenderer.setAllowToggle(true);
       rowRenderer.addRenderer(1, boolRenderer);
 
-      progressive.set(
-        {
-          width : 200 + qx.bom.element.Scroll.getScrollbarWidth(),
-          maxWidth : 200 + qx.bom.element.Scroll.getScrollbarWidth()
-        });
-      this.getRoot().add(progressive, { left : 50, top : 50, bottom : 50 });
+      progressive.set({
+        width: 200 + qx.bom.element.Scroll.getScrollbarWidth(),
+        maxWidth: 200 + qx.bom.element.Scroll.getScrollbarWidth(),
+      });
+
+      this.getRoot().add(progressive, { left: 50, top: 50, bottom: 50 });
 
       progressive.render();
-    }
-  }
+    },
+  },
 });

@@ -16,22 +16,21 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea", {
+  extend: qx.application.Standalone,
 
-
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
   },
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(10, 10));
-      this.getRoot().add(container, {top: 20, left: 20});
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.Grid(10, 10)
+      );
+      this.getRoot().add(container, { top: 20, left: 20 });
 
       // First block
 
@@ -40,10 +39,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
       var textArea = new qx.ui.form.TextArea();
       textArea.set({
         allowStretchY: false,
-        value: this.__getLongValue()
+        value: this.__getLongValue(),
       });
-      container.add(label, {row: 0, column: 0});
-      container.add(textArea, {row: 1, column: 0});
+
+      container.add(label, { row: 0, column: 0 });
+      container.add(textArea, { row: 1, column: 0 });
 
       label = new qx.ui.basic.Label();
       label.setValue("Auto-Size");
@@ -51,10 +51,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
       textAreaAuto.set({
         allowStretchY: false,
         value: this.__getLongValue(),
-        autoSize: true
+        autoSize: true,
       });
-      container.add(label, {row: 0, column: 1});
-      container.add(textAreaAuto, {row: 1, column: 1});
+
+      container.add(label, { row: 0, column: 1 });
+      container.add(textAreaAuto, { row: 1, column: 1 });
 
       label = new qx.ui.basic.Label();
       label.setValue("Non-default minimal line height");
@@ -64,10 +65,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
         value: "The quick brown fox…",
         autoSize: true,
         minimalLineHeight: 1,
-        maxHeight : 300
+        maxHeight: 300,
       });
-      container.add(label, {row: 0, column: 2});
-      container.add(textAreaSmall, {row: 1, column: 2});
+
+      container.add(label, { row: 0, column: 2 });
+      container.add(textAreaSmall, { row: 1, column: 2 });
 
       // Second block
 
@@ -78,10 +80,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
         allowStretchY: false,
         value: this.__getLongValue(),
         autoSize: true,
-        minHeight: 200
+        minHeight: 200,
       });
-      container.add(label, {row: 2, column: 0});
-      container.add(textAreaMin, {row: 3, column: 0});
+
+      container.add(label, { row: 2, column: 0 });
+      container.add(textAreaMin, { row: 3, column: 0 });
 
       label = new qx.ui.basic.Label();
       label.setValue("Maximal height");
@@ -91,10 +94,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
         value: this.__getLongValue(),
         autoSize: true,
         minHeight: 200,
-        maxHeight: 300
+        maxHeight: 300,
       });
-      container.add(label, {row: 2, column: 1});
-      container.add(textAreaMax, {row: 3, column: 1});
+
+      container.add(label, { row: 2, column: 1 });
+      container.add(textAreaMax, { row: 3, column: 1 });
 
       label = new qx.ui.basic.Label();
       label.setValue("Wrap handling");
@@ -103,25 +107,28 @@ qx.Class.define("qxl.demobrowser.demo.ui.AutoSizeTextArea",
         allowStretchY: false,
         value: this.__getLongValue(),
         autoSize: true,
-        minimalLineHeight: 2
+        minimalLineHeight: 2,
       });
+
       var checkBox = new qx.ui.form.CheckBox("Wrap");
       checkBox.setValue(false);
       checkBox.setAllowStretchX(false);
       checkBox.bind("value", textAreaWrap, "wrap");
-      container.add(label, {row: 2, column: 2});
-      var subContainer = new qx.ui.container.Composite(new qx.ui.layout.Grid(10, 10));
-      container.add(subContainer, {row: 3, column: 2});
-      subContainer.add(textAreaWrap, {row: 0, column: 0});
-      subContainer.add(checkBox, {row: 1, column: 0});
+      container.add(label, { row: 2, column: 2 });
+      var subContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.Grid(10, 10)
+      );
+      container.add(subContainer, { row: 3, column: 2 });
+      subContainer.add(textAreaWrap, { row: 0, column: 0 });
+      subContainer.add(checkBox, { row: 1, column: 0 });
     },
 
-    __getLongValue: function() {
+    __getLongValue() {
       var val = new qx.type.Array(2);
-      for (var i=0; i < val.length; i++) {
+      for (var i = 0; i < val.length; i++) {
         val[i] = "The quick brown fox jumps over the lazy dog. ";
       }
       return val.join("");
-    }
-  }
+    },
+  },
 });

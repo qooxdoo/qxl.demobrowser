@@ -30,56 +30,84 @@
  * @use(qx.event.handler.Pointer)
  * @use(qx.event.handler.Element)
  */
-qx.Class.define("qxl.demobrowser.demo.event.Event",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.Event", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
+  members: {
+    main() {
+      super.main();
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
-
-      this._initLogger(
-        ["Events"],
-        document.getElementById("logger"),
-        50
-      );
+      this._initLogger(["Events"], document.getElementById("logger"), 50);
 
       qx.event.Registration.addListener(window, "resize", this._onResize, this);
 
       var cmd = new qx.ui.command.Command("Shift-Meta-F1");
-      cmd.addListener("execute", function() {
-        this.debug(cmd.toString());
-      }, this);
+      cmd.addListener(
+        "execute",
+        function () {
+          this.debug(cmd.toString());
+        },
+        this
+      );
 
       var cmd2 = new qx.ui.command.Command("Ctrl-A");
-      cmd2.addListener("execute", function() {
-        this.debug(cmd2.toString());
-      }, this);
+      cmd2.addListener(
+        "execute",
+        function () {
+          this.debug(cmd2.toString());
+        },
+        this
+      );
 
       this._juhu = document.getElementById("juhu");
       this._inner = document.getElementById("inner");
 
-      qx.event.Registration.addListener(this._juhu, "contextmenu", this._preventDefault, this);
-      qx.event.Registration.addListener(this._inner, "tap", this._stopPropagation, this);
+      qx.event.Registration.addListener(
+        this._juhu,
+        "contextmenu",
+        this._preventDefault,
+        this
+      );
+      qx.event.Registration.addListener(
+        this._inner,
+        "tap",
+        this._stopPropagation,
+        this
+      );
       qx.event.Registration.addListener(this._juhu, "tap", this._onTap1, this);
       qx.event.Registration.addListener(this._juhu, "tap", this._onTap2, this);
-      qx.event.Registration.addListener(this._juhu, "keydown", this._onTap2, this);
+      qx.event.Registration.addListener(
+        this._juhu,
+        "keydown",
+        this._onTap2,
+        this
+      );
 
-      qx.event.Registration.addListener(this._juhu, "pointerover", this._onpointerover, this);
-      qx.event.Registration.addListener(this._juhu, "pointerout", this._onpointerout, this);
+      qx.event.Registration.addListener(
+        this._juhu,
+        "pointerover",
+        this._onpointerover,
+        this
+      );
+      qx.event.Registration.addListener(
+        this._juhu,
+        "pointerout",
+        this._onpointerout,
+        this
+      );
 
       qx.event.Registration.addListener(
         document.getElementById("input"),
         "keydown",
-        this._onKeydown, this
+        this._onKeydown,
+        this
       );
 
       qx.event.Registration.addListener(
         document.getElementById("input"),
         "keyinput",
-        this._onKeyinput, this
+        this._onKeyinput,
+        this
       );
 
       qx.event.Registration.addListener(
@@ -90,49 +118,48 @@ qx.Class.define("qxl.demobrowser.demo.event.Event",
       );
     },
 
-    _onResize : function(e) {
+    _onResize(e) {
       this._log(["Resize:" + e]);
     },
 
-    _onKeydown: function(e) {
+    _onKeydown(e) {
       this._log(["keydown: " + e.getKeyIdentifier()]);
     },
 
-    _onKeyinput: function(e) {
+    _onKeyinput(e) {
       this._log(["keyinput: " + e.getCharCode()]);
     },
 
-    _onpointerover : function(e) {
+    _onpointerover(e) {
       this._log(["pointer over"]);
     },
 
-    _onpointerout : function(e) {
+    _onpointerout(e) {
       this._log(["pointer out"]);
     },
 
-    _scroll: function(e) {
+    _scroll(e) {
       this._log(["scroll:" + e.getTarget()]);
     },
 
-    _preventDefault : function(e) {
+    _preventDefault(e) {
       this._log(["prevent default " + e.getType() + ": " + e]);
       e.preventDefault();
     },
 
-    _stopPropagation : function(e) {
+    _stopPropagation(e) {
       this._log([e.getType() + " (inner): " + e]);
       e.stopPropagation();
     },
 
-
-    _onTap1 : function(e) {
+    _onTap1(e) {
       this._log([e.getType() + " 1: " + e]);
       qx.event.Registration.removeListener(this._juhu, "tap", this._onTap1);
     },
 
-    _onTap2 : function(e) {
+    _onTap2(e) {
       this._log([e.getType() + " 2: " + e]);
-    }
+    },
   },
 
   /*
@@ -141,7 +168,7 @@ qx.Class.define("qxl.demobrowser.demo.event.Event",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._juhu = this._inner = null;
-  }
+  },
 });

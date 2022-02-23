@@ -27,23 +27,25 @@
  *
  * @asset(qx/icon/${qx.icontheme}/16/actions/document-save.png)
  */
-qx.Class.define("qxl.demobrowser.demo.ui.Command",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.Command", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create and configure the command
       var command = new qx.ui.command.Command("CTRL+S");
       command.setLabel("Save");
       command.setIcon("icon/16/actions/document-save.png");
       command.setToolTipText("Save the current file.");
-      command.addListener("execute", function() {
-        alert("Saving...");
-      }, this);
+      command.addListener(
+        "execute",
+        function () {
+          alert("Saving...");
+        },
+        this
+      );
 
       // create a window
       var win = new qx.ui.window.Window("Editor");
@@ -76,11 +78,11 @@ qx.Class.define("qxl.demobrowser.demo.ui.Command",
       // add a container for the content
       var content = new qx.ui.container.Composite();
       content.setLayout(new qx.ui.layout.VBox());
-      win.add(content, {flex: 1});
+      win.add(content, { flex: 1 });
 
       // add a textarea
       var textarea = new qx.ui.form.TextArea();
-      content.add(textarea, {flex: 1});
+      content.add(textarea, { flex: 1 });
 
       // add a save button
       var saveButton = new qx.ui.form.Button();
@@ -88,17 +90,17 @@ qx.Class.define("qxl.demobrowser.demo.ui.Command",
       saveButton.setShow("label");
       content.add(saveButton);
 
-
       /**
        * Description
        */
-      var desc = "You can see three buttons in this window:\n" +
-                 "  Button in the menu\n" +
-                 "  Button in the toolbar\n" +
-                 "  Button in the content at the bottom\n" +
-                 "Each of the buttons is configured using the same command " +
-                 "and have the same execute listener.";
+      var desc =
+        "You can see three buttons in this window:\n" +
+        "  Button in the menu\n" +
+        "  Button in the toolbar\n" +
+        "  Button in the content at the bottom\n" +
+        "Each of the buttons is configured using the same command " +
+        "and have the same execute listener.";
       textarea.setValue(desc);
-    }
-  }
+    },
+  },
 });

@@ -22,15 +22,13 @@
  * @asset(qxl/demobrowser/demo/fonts/*)
  */
 
-qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.WebFonts", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
+  members: {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       // Enable logging in debug variant
       if (qx.core.Environment.get("qx.debug")) {
@@ -42,61 +40,51 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
 
       // The font configuration would normally be defined in the application's
       // font theme ($APPLICATION.theme.Font).
-      var fontsConfig =
-      {
-        "webFont0" :
-        {
+      var fontsConfig = {
+        webFont0: {
           size: 16,
           family: ["sans-serif"],
-          sources:
-          [
+          sources: [
             {
-              family : "FinelinerScriptRegular",
-              source:
-              [
+              family: "FinelinerScriptRegular",
+              source: [
                 "qxl/demobrowser/demo/fonts/fineliner_script-webfont.eot",
                 "qxl/demobrowser/demo/fonts/fineliner_script-webfont.ttf",
-                "qxl/demobrowser/demo/fonts/fineliner_script-webfont.woff"
-              ]
-            }
-          ]
+                "qxl/demobrowser/demo/fonts/fineliner_script-webfont.woff",
+              ],
+            },
+          ],
         },
 
-        "webFont1" :
-        {
+        webFont1: {
           size: 13,
           family: ["sans-serif"],
-          sources:
-          [
+          sources: [
             {
-              family : "ToBeContinuedRegular",
-              source:
-              [
+              family: "ToBeContinuedRegular",
+              source: [
                 "qxl/demobrowser/demo/fonts/tobec___-webfont.eot",
                 "qxl/demobrowser/demo/fonts/tobec___-webfont.ttf",
-                "qxl/demobrowser/demo/fonts/tobec___-webfont.woff"
-              ]
-            }
-          ]
+                "qxl/demobrowser/demo/fonts/tobec___-webfont.woff",
+              ],
+            },
+          ],
         },
 
-        "webFont2" :
-        {
+        webFont2: {
           size: 16,
           family: ["sans-serif"],
-          sources:
-          [
+          sources: [
             {
-              family : "YanoneKaffeesatzRegular",
-              source:
-              [
+              family: "YanoneKaffeesatzRegular",
+              source: [
                 "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.eot",
                 "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.ttf",
-                "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.woff"
-              ]
-            }
-          ]
-        }
+                "qxl/demobrowser/demo/fonts/yanonekaffeesatz-regular-webfont.woff",
+              ],
+            },
+          ],
+        },
       };
 
       var createdFonts = {};
@@ -111,19 +99,24 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
       */
 
       var demoTextShort = "The quick brown fox jumps over the lazy dog";
-      var demoTextLong = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
-      "Nam lectus justo, porttitor ac, ullamcorper ac, cursus in, ante. Duis mi ante," +
-      "sodales in, auctor vel, vehicula eget, sapien. Proin iaculis dui vitae leo. " +
-      "Integer blandit tempus leo. Morbi turpis. Suspendisse turpis. Nulla eget leo." +
-      "Cras interdum sollicitudin ante. Sed placerat scelerisque magna. Vestibulum " +
-      "rutrum nibh a eros. Cum sociis natoque penatibus et magnis dis parturient " +
-      "montes, nascetur ridiculus mus.";
+      var demoTextLong =
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit." +
+        "Nam lectus justo, porttitor ac, ullamcorper ac, cursus in, ante. Duis mi ante," +
+        "sodales in, auctor vel, vehicula eget, sapien. Proin iaculis dui vitae leo. " +
+        "Integer blandit tempus leo. Morbi turpis. Suspendisse turpis. Nulla eget leo." +
+        "Cras interdum sollicitudin ante. Sed placerat scelerisque magna. Vestibulum " +
+        "rutrum nibh a eros. Cum sociis natoque penatibus et magnis dis parturient " +
+        "montes, nascetur ridiculus mus.";
       var textWidgets = [];
 
-      var mainContainer = new qx.ui.container.Composite(new qx.ui.layout.HBox(10));
-      this.getRoot().add(mainContainer, {edge : 10});
+      var mainContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.HBox(10)
+      );
+      this.getRoot().add(mainContainer, { edge: 10 });
 
-      var menuContainer = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
+      var menuContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(2)
+      );
       mainContainer.add(menuContainer);
 
       var menuLabel = new qx.ui.basic.Label("Select Font");
@@ -138,16 +131,22 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
         item.setUserData("fontId", key);
         fontMenu.add(item);
       }
-      fontMenu.addListener("changeSelection", function(ev) {
-        var value = ev.getData()[0];
-        var fontId = value.getUserData("fontId");
-        for (var i=0, l=textWidgets.length; i<l; i++) {
-          textWidgets[i].setFont(createdFonts[fontId]);
-        }
-      }, this);
+      fontMenu.addListener(
+        "changeSelection",
+        function (ev) {
+          var value = ev.getData()[0];
+          var fontId = value.getUserData("fontId");
+          for (var i = 0, l = textWidgets.length; i < l; i++) {
+            textWidgets[i].setFont(createdFonts[fontId]);
+          }
+        },
+        this
+      );
       menuContainer.add(fontMenu);
 
-      var widgetContainer = new qx.ui.container.Composite(new qx.ui.layout.VBox(10));
+      var widgetContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(10)
+      );
       mainContainer.add(widgetContainer);
       var label = new qx.ui.basic.Label(demoTextShort);
       textWidgets.push(label);
@@ -163,6 +162,6 @@ qx.Class.define("qxl.demobrowser.demo.ui.WebFonts",
       textWidgets.push(area);
       area.setFont(createdFonts.webFont0);
       widgetContainer.add(area);
-    }
-  }
+    },
+  },
 });

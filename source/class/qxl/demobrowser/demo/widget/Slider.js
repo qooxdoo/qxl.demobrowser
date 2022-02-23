@@ -17,50 +17,67 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.Slider",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Slider", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
-      this.getRoot().add(this._createVerticalLayout(), {left:20, top:20});
-      this.getRoot().add(this._createHorizontalLayout(), {left:20, top:340});
+      this.getRoot().add(this._createVerticalLayout(), { left: 20, top: 20 });
+      this.getRoot().add(this._createHorizontalLayout(), {
+        left: 20,
+        top: 340,
+      });
     },
 
-    _createVerticalLayout : function() {
+    _createVerticalLayout() {
       var sliders = [];
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        maximum: 1000,
-        value: 100
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            maximum: 1000,
+            value: 100,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: -100,
-        maximum: 100,
-        singleStep: 5,
-        pageStep: 20,
-        value: 0
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: -100,
+            maximum: 100,
+            singleStep: 5,
+            pageStep: 20,
+            value: 0,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: -600,
-        maximum: -200,
-        singleStep: 10,
-        pageStep: 50,
-        value: -300
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: -600,
+            maximum: -200,
+            singleStep: 10,
+            pageStep: 50,
+            value: -300,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: 25,
-        maximum: 75,
-        singleStep: 5,
-        pageStep: 10,
-        value: 25
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: 25,
+            maximum: 75,
+            singleStep: 5,
+            pageStep: 10,
+            value: 25,
+          })
+        )
+      );
 
       var grid = new qx.ui.layout.Grid();
       var container = new qx.ui.container.Composite(grid);
@@ -80,18 +97,23 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
 
       var col = 0;
 
-      for (var i=0; i<sliders.length; i++) {
+      for (var i = 0; i < sliders.length; i++) {
         var group = sliders[i];
         group.slider.setOrientation("vertical");
 
-        container.add(group.slider, {row: 0, column: col, rowSpan: 3, colSpan: 1});
+        container.add(group.slider, {
+          row: 0,
+          column: col,
+          rowSpan: 3,
+          colSpan: 1,
+        });
 
-        container.add(group.minimum, {row: 0, column: col+1});
-        container.add(group.value, {row: 1, column: col+1});
-        container.add(group.maximum, {row: 2, column: col+1});
+        container.add(group.minimum, { row: 0, column: col + 1 });
+        container.add(group.value, { row: 1, column: col + 1 });
+        container.add(group.maximum, { row: 2, column: col + 1 });
 
-        grid.setColumnMinWidth(col+1, 80);
-        grid.setColumnWidth(col+2, 20);
+        grid.setColumnMinWidth(col + 1, 80);
+        grid.setColumnWidth(col + 2, 20);
 
         col += 3;
       }
@@ -99,38 +121,53 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
       return container;
     },
 
-
-    _createHorizontalLayout : function() {
+    _createHorizontalLayout() {
       var sliders = [];
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        maximum: 1000,
-        value: 100
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            maximum: 1000,
+            value: 100,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: -100,
-        maximum: 100,
-        singleStep: 5,
-        pageStep: 20,
-        value: 0
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: -100,
+            maximum: 100,
+            singleStep: 5,
+            pageStep: 20,
+            value: 0,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: -600,
-        maximum: -200,
-        singleStep: 10,
-        pageStep: 50,
-        value: -300
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: -600,
+            maximum: -200,
+            singleStep: 10,
+            pageStep: 50,
+            value: -300,
+          })
+        )
+      );
 
-      sliders.push(this._createSliderGroup(new qx.ui.form.Slider().set({
-        minimum: 25,
-        maximum: 75,
-        singleStep: 5,
-        pageStep: 10,
-        value: 25
-      })));
+      sliders.push(
+        this._createSliderGroup(
+          new qx.ui.form.Slider().set({
+            minimum: 25,
+            maximum: 75,
+            singleStep: 5,
+            pageStep: 10,
+            value: 25,
+          })
+        )
+      );
 
       var grid = new qx.ui.layout.Grid();
       var container = new qx.ui.container.Composite(grid);
@@ -149,20 +186,25 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
       grid.setColumnAlign(2, "right", "bottom");
 
       var row = 0;
-      for (var i=0; i<sliders.length; i++) {
+      for (var i = 0; i < sliders.length; i++) {
         var group = sliders[i];
         group.slider.setOrientation("horizontal");
 
         group.value.setWidth(100);
         group.value.setTextAlign("center");
 
-        container.add(group.minimum, {row: row, column: 0});
-        container.add(group.value, {row: row, column: 1});
-        container.add(group.maximum, {row: row, column: 2});
+        container.add(group.minimum, { row: row, column: 0 });
+        container.add(group.value, { row: row, column: 1 });
+        container.add(group.maximum, { row: row, column: 2 });
 
-        container.add(group.slider, {row: row+1, column: 0, colSpan: 3, rowSpan: 1});
+        container.add(group.slider, {
+          row: row + 1,
+          column: 0,
+          colSpan: 3,
+          rowSpan: 1,
+        });
 
-        grid.setRowHeight(row+2, 20);
+        grid.setRowHeight(row + 2, 20);
 
         row += 3;
       }
@@ -170,22 +212,23 @@ qx.Class.define("qxl.demobrowser.demo.widget.Slider",
       return container;
     },
 
-
-    _createSliderGroup : function(slider) {
-      var group =
-      {
+    _createSliderGroup(slider) {
+      var group = {
         slider: slider,
-        minimum: new qx.ui.basic.Label("Min: " + slider.getMinimum().toString()),
-        maximum: new qx.ui.basic.Label("Max: " + slider.getMaximum().toString()),
-        value: new qx.ui.basic.Label(slider.getValue().toString())
+        minimum: new qx.ui.basic.Label(
+          "Min: " + slider.getMinimum().toString()
+        ),
+        maximum: new qx.ui.basic.Label(
+          "Max: " + slider.getMaximum().toString()
+        ),
+        value: new qx.ui.basic.Label(slider.getValue().toString()),
       };
 
-      slider.addListener("changeValue", function(e) {
+      slider.addListener("changeValue", function (e) {
         group.value.setValue(slider.getValue().toString());
       });
 
       return group;
-    }
-
-  }
+    },
+  },
 });

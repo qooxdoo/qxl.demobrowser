@@ -28,10 +28,8 @@
  * @asset(qxl/demobrowser/demo/fonts/fontawesome-webfont*)
  * @asset(qx/icon/${qx.icontheme}/16/*)
  */
-qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
-{
-  extend : qx.application.Standalone,
-
+qx.Class.define("qxl.demobrowser.demo.showcase.IconFont", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -39,18 +37,17 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
   *****************************************************************************
   */
 
-  members :
-  {
-    _table : null,
-    _container : null,
+  members: {
+    _table: null,
+    _container: null,
 
     /**
      * This method contains the initial application code and gets called
      * during startup of the application
      */
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       this._initFont();
 
@@ -58,34 +55,42 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
        * non-english. */
       qx.locale.Manager.getInstance().setLocale("en");
 
-      this._container = new qx.ui.window.Window("Icon table for FontAwesome", "icon/16/apps/office-spreadsheet.png").set({
+      this._container = new qx.ui.window.Window(
+        "Icon table for FontAwesome",
+        "icon/16/apps/office-spreadsheet.png"
+      ).set({
         width: 600,
         height: 400,
-        contentPadding : [ 0, 0, 0, 0 ],
+        contentPadding: [0, 0, 0, 0],
         showClose: false,
-        showMinimize: false
+        showMinimize: false,
       });
+
       this._container.setLayout(new qx.ui.layout.VBox());
       this._container.open();
 
-      this.getRoot().add(this._container, {left: 50, top: 10});
+      this.getRoot().add(this._container, { left: 50, top: 10 });
 
       this._table = this._createTable();
 
-      this._container.add(this._table, {flex: 1});
+      this._container.add(this._table, { flex: 1 });
     },
 
-    _createTable : function() {
+    _createTable() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "Unicode", "Glyph", "Image" ]);
+      tableModel.setColumns(["Unicode", "Glyph", "Image"]);
 
       var res = qx.$$resources;
 
       var rowData = [];
       for (var key in res) {
         if (res.hasOwnProperty(key) && key.startsWith("@FontAwesome/")) {
-          rowData.push([ "0x" + res[key][2].toString(16), key.split("/")[1], key]);
+          rowData.push([
+            "0x" + res[key][2].toString(16),
+            key.split("/")[1],
+            key,
+          ]);
         }
       }
 
@@ -98,35 +103,37 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont",
       return table;
     },
 
-    _initFont : function() {
+    _initFont() {
       var currentFont = qx.theme.manager.Font.getInstance().getTheme();
 
       // Add font definitions
       var config = {
         fonts: {
-          "FontAwesome": {
+          FontAwesome: {
             size: 40,
             lineHeight: 1,
-            comparisonString : "\uf1e3\uf1f7\uf11b\uf19d",
+            comparisonString: "\uf1e3\uf1f7\uf11b\uf19d",
             family: ["FontAwesome"],
             sources: [
               {
                 family: "FontAwesome",
                 source: [
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff", "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2", "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot"
-                ]
-              }
-            ]
-          }
-        }
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf",
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff",
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2",
+                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot",
+                ],
+              },
+            ],
+          },
+        },
       };
 
       qx.Theme.define("qxl.demobrowser.theme.icon.Font", config);
-    }
+    },
   },
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_table", "_container");
-  }
+  },
 });
-

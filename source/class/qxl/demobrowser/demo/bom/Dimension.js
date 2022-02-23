@@ -20,22 +20,26 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Dimension",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Dimension", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
-      for (var i=1; i<1000; i++) {
+      for (var i = 1; i < 1000; i++) {
         var el = document.getElementById("block" + i);
         if (!el) {
           break;
         }
 
-        var msg = "Block " + i + ": Box=" + boxSize(el) + "; Content=" + contentSize(el);
+        var msg =
+          "Block " +
+          i +
+          ": Box=" +
+          boxSize(el) +
+          "; Content=" +
+          contentSize(el);
         this.debug(msg);
       }
 
@@ -52,8 +56,10 @@ qx.Class.define("qxl.demobrowser.demo.bom.Dimension",
        */
       function contentSize(el) {
         var Dimension = qx.bom.element.Dimension;
-        return Dimension.getContentWidth(el) + "x" + Dimension.getContentHeight(el);
+        return (
+          Dimension.getContentWidth(el) + "x" + Dimension.getContentHeight(el)
+        );
       }
-    }
-  }
+    },
+  },
 });

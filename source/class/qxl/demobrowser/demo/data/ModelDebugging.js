@@ -21,17 +21,17 @@
  * @tag debugging
  * @ignore(qxl.demobrowser.demo.data.store.Identica)
  */
-qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // fetch some data from Twitter
-      var store = new qxl.demobrowser.demo.data.store.Identica("linuxfoundation");
+      var store = new qxl.demobrowser.demo.data.store.Identica(
+        "linuxfoundation"
+      );
 
       // create an html embed to view the model
       var embed = new qx.ui.embed.Html();
@@ -40,22 +40,20 @@ qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
       embed.setWidth(500);
       embed.setHeight(200);
       embed.setOverflow("auto", "auto");
-      this.getRoot().add(embed, {left: 10, top: 110});
+      this.getRoot().add(embed, { left: 10, top: 110 });
 
       // after the data has been loaded
-      store.addListener("loaded", function() {
-        var model = store.getModel();
-        // display the model in the log
-        this.debug(qx.dev.Debug.debugProperties(model));
-        // display the model in an html embed
-        embed.setHtml(qx.dev.Debug.debugProperties(model, 10, true));
-      }, this);
-
-
-
-
-
-
+      store.addListener(
+        "loaded",
+        function () {
+          var model = store.getModel();
+          // display the model in the log
+          this.debug(qx.dev.Debug.debugProperties(model));
+          // display the model in an html embed
+          embed.setHtml(qx.dev.Debug.debugProperties(model, 10, true));
+        },
+        this
+      );
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -66,18 +64,15 @@ qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
       description.setWidth(500);
       description.setValue(
         "<b>Debugging models</b><br/>" +
-        "Every model created by the data stores consists only of qooxdoo " +
-        "objects with properties. To see the properties, you can use the " +
-        "debugModel function in qx.dev.Debug."
+          "Every model created by the data stores consists only of qooxdoo " +
+          "objects with properties. To see the properties, you can use the " +
+          "debugModel function in qx.dev.Debug."
       );
-      this.getRoot().add(description, {left: 10, top: 10});
-    }
-  }
+
+      this.getRoot().add(description, { left: 10, top: 10 });
+    },
+  },
 });
-
-
-
-
 
 /*
  * PLEASE NOTE:
@@ -86,12 +81,11 @@ qx.Class.define("qxl.demobrowser.demo.data.ModelDebugging",
  * in a file of its own. You may neglect any warnings when generating this demo.
  */
 
-qx.Class.define("qxl.demobrowser.demo.data.store.Identica",
- {
-   extend : qx.data.store.Jsonp,
+qx.Class.define("qxl.demobrowser.demo.data.store.Identica", {
+  extend: qx.data.store.Jsonp,
 
-   construct : function(user) {
-     var url = "http://identi.ca/api/statuses/user_timeline/" + user + ".json";
-     this.base(arguments, url);
-   }
- });
+  construct(user) {
+    var url = "http://identi.ca/api/statuses/user_timeline/" + user + ".json";
+    super(url);
+  },
+});

@@ -17,14 +17,12 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.Cursor", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
 
@@ -35,15 +33,14 @@ qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
       container.setPadding(20);
 
       scroller.add(container);
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       container.add(this.getGrid1());
     },
 
-
-    getGrid1 : function() {
+    getGrid1() {
       var container = new qx.ui.container.Composite().set({
-        textColor: "#DDD"
+        textColor: "#DDD",
       });
 
       var layout = new qx.ui.layout.Grid();
@@ -67,22 +64,25 @@ qx.Class.define("qxl.demobrowser.demo.ui.Cursor",
         "nwse-resize",
         "text",
         "wait",
-        "help "
+        "help ",
       ];
 
-      var i=0;
-      for (var i=0; i<cursors.length; i++) {
-        container.add(new qx.ui.basic.Label(cursors[i]).set({
-          decorator: "main",
-          backgroundColor: "#555",
-          cursor: cursors[i],
-          padding: 5,
-          height: 100,
-          width: 100
-        }), {row: Math.floor(i/5), column: i%5});
+      var i = 0;
+      for (var i = 0; i < cursors.length; i++) {
+        container.add(
+          new qx.ui.basic.Label(cursors[i]).set({
+            decorator: "main",
+            backgroundColor: "#555",
+            cursor: cursors[i],
+            padding: 5,
+            height: 100,
+            width: 100,
+          }),
+          { row: Math.floor(i / 5), column: i % 5 }
+        );
       }
 
       return container;
-    }
-  }
+    },
+  },
 });

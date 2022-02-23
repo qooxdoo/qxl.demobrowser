@@ -20,12 +20,11 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
-{
-  extend : qx.ui.core.scroll.AbstractScrollArea,
+qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor", {
+  extend: qx.ui.core.scroll.AbstractScrollArea,
 
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
 
     // Force ScrollArea to have an auto-width
     this.setWidth(null);
@@ -35,61 +34,62 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
     var decor = new qx.ui.decoration.Decorator().set({
       widthLeft: 1,
       styleLeft: "solid",
-      colorLeft: "black"
+      colorLeft: "black",
     });
 
     this.setDecorator(decor);
     this.setBackgroundColor("white");
 
     var pane = new qx.ui.container.Composite().set({
-      padding: [20, 14]
+      padding: [20, 14],
     });
+
     this.getChildControl("pane").add(pane);
     this._pane = pane;
 
-
     var layout = new qx.ui.layout.VBox().set({
-      spacing: 5
+      spacing: 5,
     });
-    pane.setLayout(layout);
 
+    pane.setLayout(layout);
 
     pane.add(this._createWidgetIndicator());
 
-    pane.add(new qx.ui.basic.Label("Widget Properties").set({
-      font: "bold",
-      padding: [1, 0, 5, 0]
-    }));
+    pane.add(
+      new qx.ui.basic.Label("Widget Properties").set({
+        font: "bold",
+        padding: [1, 0, 5, 0],
+      })
+    );
 
-    var props = qx.lang.Object.clone(qxl.demobrowser.demo.util.PropertyGroup.WIDGET_PROPERTIES);
-    props.value = {type:"string", nullable: true};
+    var props = qx.lang.Object.clone(
+      qxl.demobrowser.demo.util.PropertyGroup.WIDGET_PROPERTIES
+    );
+    props.value = { type: "string", nullable: true };
 
     this._layoutControls = new qxl.demobrowser.demo.util.PropertyGroup(props);
     pane.add(this._layoutControls);
   },
 
-
-  properties :
-  {
-    widget :
-    {
+  properties: {
+    widget: {
       check: "qx.ui.core.Widget",
-      apply : "_applyWidget"
-    }
+      apply: "_applyWidget",
+    },
   },
 
-  members :
-  {
-    handleWidgetTap : function(e) {
+  members: {
+    handleWidgetTap(e) {
       var widget = e.getTarget();
       this.setWidget(widget);
     },
 
-
-    _createWidgetIndicator : function() {
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox().set({
-        spacing: 5
-      }));
+    _createWidgetIndicator() {
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox().set({
+          spacing: 5,
+        })
+      );
 
       container.add(this._createLabel("Selected Widget"));
 
@@ -97,27 +97,28 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
         height: 30,
         allowGrowX: true,
         allowGrowY: true,
-        padding: 5
+        padding: 5,
       });
+
       container._add(this._widgetIndicator);
 
       return container;
     },
 
-
-    _createLabel : function(text) {
+    _createLabel(text) {
       return new qx.ui.basic.Label(text).set({
         font: "bold",
         allowGrowX: true,
-        padding: [5, 0, 5, 0]
+        padding: [5, 0, 5, 0],
       });
     },
 
-
-    _createContainer : function(label, mainWidget) {
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox().set({
-        spacing: 5
-      }));
+    _createContainer(label, mainWidget) {
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox().set({
+          spacing: 5,
+        })
+      );
 
       container.add(this._createLabel(label));
       container.add(mainWidget);
@@ -125,9 +126,10 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
       return container;
     },
 
-
-    updateWidgetLayoutPropertyEditor : function(widget) {
-      var layout = widget.getLayoutParent() ? widget.getLayoutParent()._getLayout() : null;
+    updateWidgetLayoutPropertyEditor(widget) {
+      var layout = widget.getLayoutParent()
+        ? widget.getLayoutParent()._getLayout()
+        : null;
       var wlpe = this.getWidgetLayoutPropertyEditor(layout);
 
       if (wlpe) {
@@ -152,8 +154,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
       this._wlpe = wlpe;
     },
 
-
-    updateLayoutPropertyEditor : function(widget) {
+    updateLayoutPropertyEditor(widget) {
       var layout = widget.getLayout ? widget.getLayout() : null;
       var lpe = this.getLayoutPropertyEditor(layout);
 
@@ -179,8 +180,7 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
       this._lpe = lpe;
     },
 
-
-    getWidgetLayoutPropertyEditor : function(layout) {
+    getWidgetLayoutPropertyEditor(layout) {
       if (!layout) {
         return null;
       }
@@ -198,30 +198,35 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
             qxl.demobrowser.demo.util.LayoutPropertyGroup.BOX_PROPERTIES
           );
+
           break;
 
         case "wlpe_qx.ui.layout.Canvas":
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
             qxl.demobrowser.demo.util.LayoutPropertyGroup.CANVAS_PROPERTIES
           );
+
           break;
 
         case "wlpe_qx.ui.layout.Basic":
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
             qxl.demobrowser.demo.util.LayoutPropertyGroup.BASIC_PROPERTIES
           );
+
           break;
 
         case "wlpe_qx.ui.layout.Dock":
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
             qxl.demobrowser.demo.util.LayoutPropertyGroup.DOCK_PROPERTIES
           );
+
           break;
 
         case "wlpe_qx.ui.layout.Grid":
           group = new qxl.demobrowser.demo.util.LayoutPropertyGroup(
             qxl.demobrowser.demo.util.LayoutPropertyGroup.GRID_PROPERTIES
           );
+
           break;
       }
 
@@ -229,12 +234,14 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
         return null;
       }
 
-      this._editorGroups[name] = this._createContainer(layout.constructor.classname + " layout properties", group);
+      this._editorGroups[name] = this._createContainer(
+        layout.constructor.classname + " layout properties",
+        group
+      );
       return this._editorGroups[name];
     },
 
-
-    getLayoutPropertyEditor : function(layout) {
+    getLayoutPropertyEditor(layout) {
       if (!layout) {
         return null;
       }
@@ -251,18 +258,21 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
           group = new qxl.demobrowser.demo.util.PropertyGroup(
             qxl.demobrowser.demo.util.PropertyGroup.HBOX_PROPERTIES
           );
+
           break;
 
         case "lpe_qx.ui.layout.Dock":
           group = new qxl.demobrowser.demo.util.PropertyGroup(
             qxl.demobrowser.demo.util.PropertyGroup.DOCK_PROPERTIES
           );
+
           break;
 
         case "lpe_qx.ui.layout.Grid":
           group = new qxl.demobrowser.demo.util.PropertyGroup(
             qxl.demobrowser.demo.util.PropertyGroup.GRID_PROPERTIES
           );
+
           break;
       }
 
@@ -270,12 +280,14 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
         return null;
       }
 
-      this._editorGroups[name] = this._createContainer(layout.constructor.classname + " properties", group);
+      this._editorGroups[name] = this._createContainer(
+        layout.constructor.classname + " properties",
+        group
+      );
       return this._editorGroups[name];
     },
 
-
-    _applyWidget : function(value, old) {
+    _applyWidget(value, old) {
       this._layoutControls.setSelected(value);
 
       this._widgetIndicator.setBackgroundColor(value.getBackgroundColor());
@@ -284,12 +296,14 @@ qx.Class.define("qxl.demobrowser.demo.util.PropertyEditor",
 
       this.updateLayoutPropertyEditor(value);
       this.updateWidgetLayoutPropertyEditor(value);
-    }
+    },
   },
 
-
-  destruct : function() {
-    this._pane = this._editorGroups = this._widgetIndicator =
-      this._layoutControls = null;
-  }
+  destruct() {
+    this._pane =
+      this._editorGroups =
+      this._widgetIndicator =
+      this._layoutControls =
+        null;
+  },
 });

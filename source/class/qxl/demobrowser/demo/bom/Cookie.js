@@ -19,48 +19,62 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Cookie",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.bom.Cookie", {
+  extend: qx.application.Standalone,
 
-  statics :
-  {
-    COOKIE_KEY : "TextFieldContent"
+  statics: {
+    COOKIE_KEY: "TextFieldContent",
   },
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.HBox(8));
-      this.getRoot().add(container, {left: 20, top: 20});
+      this.getRoot().add(container, { left: 20, top: 20 });
 
       var textField = new qx.ui.form.TextField();
       container.add(textField);
 
       var saveButton = new qx.ui.form.Button("Save");
       container.add(saveButton);
-      saveButton.addListener("execute", function(e) {
-        if (textField.getValue() != "") {
-          qx.bom.Cookie.set(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY, textField.getValue());
-          textField.setValue("");
-        }
-      }, this);
+      saveButton.addListener(
+        "execute",
+        function (e) {
+          if (textField.getValue() != "") {
+            qx.bom.Cookie.set(
+              qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY,
+              textField.getValue()
+            );
+            textField.setValue("");
+          }
+        },
+        this
+      );
 
       var restoreButton = new qx.ui.form.Button("Restore");
       container.add(restoreButton);
-      restoreButton.addListener("execute", function(e) {
-        var restoredValue = qx.bom.Cookie.get(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY);
-        textField.setValue(restoredValue != null ? restoredValue : "");
-      }, this);
+      restoreButton.addListener(
+        "execute",
+        function (e) {
+          var restoredValue = qx.bom.Cookie.get(
+            qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY
+          );
+          textField.setValue(restoredValue != null ? restoredValue : "");
+        },
+        this
+      );
 
       var deleteButton = new qx.ui.form.Button("Delete");
       container.add(deleteButton);
-      deleteButton.addListener("execute", function(e) {
-        qx.bom.Cookie.del(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY);
-        textField.setValue("");
-      }, this);
-    }
-  }
+      deleteButton.addListener(
+        "execute",
+        function (e) {
+          qx.bom.Cookie.del(qxl.demobrowser.demo.bom.Cookie.COOKIE_KEY);
+          textField.setValue("");
+        },
+        this
+      );
+    },
+  },
 });

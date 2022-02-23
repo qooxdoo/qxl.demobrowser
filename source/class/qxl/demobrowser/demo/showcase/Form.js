@@ -21,16 +21,14 @@
  * @tag showcase
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.showcase.Form",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.showcase.Form", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this.getRoot().add(new qxl.formdemo.FormItems());
-    }
-  }
+    },
+  },
 });

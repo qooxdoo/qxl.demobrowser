@@ -19,11 +19,8 @@
 /**
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
-{
-  extend : qx.application.Standalone,
-
-
+qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -31,13 +28,12 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
   *****************************************************************************
   */
 
-  members :
-  {
-    __cellRenderer : null,
+  members: {
+    __cellRenderer: null,
 
-    main : function() {
+    main() {
       // Call super class
-      this.base(arguments);
+      super.main();
 
       var layout = new qx.ui.layout.Grid(5, 0);
       layout.setRowFlex(1, 1);
@@ -45,34 +41,38 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
       layout.setColumnFlex(1, 1);
 
       var container = new qx.ui.container.Composite(layout);
-      this.getRoot().add(container, {edge: 0});
+      this.getRoot().add(container, { edge: 0 });
 
-      container.add(new qx.ui.basic.Label("HTML Cells").set({
-        font: "bold",
-        decorator: "table-scroller-header",
-        padding: 3,
-        allowGrowX: true
-      }), {row: 0, column: 0});
+      container.add(
+        new qx.ui.basic.Label("HTML Cells").set({
+          font: "bold",
+          decorator: "table-scroller-header",
+          padding: 3,
+          allowGrowX: true,
+        }),
+        { row: 0, column: 0 }
+      );
 
       var scroller = this.getHtmlCellSpanScroller();
-      container.add(scroller, {row: 1, column: 0});
+      container.add(scroller, { row: 1, column: 0 });
 
-
-      container.add(new qx.ui.basic.Label("Widget Cells").set({
-        font: "bold",
-        decorator: "table-scroller-header",
-        padding: 3,
-        allowGrowX: true
-      }), {row: 0, column: 1});
+      container.add(
+        new qx.ui.basic.Label("Widget Cells").set({
+          font: "bold",
+          decorator: "table-scroller-header",
+          padding: 3,
+          allowGrowX: true,
+        }),
+        { row: 0, column: 1 }
+      );
 
       var scroller = this.getWidgetCellSpanScroller();
-      container.add(scroller, {row: 1, column: 1});
+      container.add(scroller, { row: 1, column: 1 });
 
       this.__cellRenderer = new qx.ui.virtual.cell.Cell();
     },
 
-
-    getHtmlCellSpanScroller : function() {
+    getHtmlCellSpanScroller() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 50, 120);
       var pane = scroller.getPane();
 
@@ -81,6 +81,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
         pane.getRowConfig(),
         pane.getColumnConfig()
       );
+
       spanLayer.setCellSpan(1, 1, 2, 2);
       spanLayer.setCellSpan(1, 5, 3, 3);
       spanLayer.setCellSpan(7, 4, 2, 4);
@@ -92,15 +93,13 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
       return scroller;
     },
 
-
-    getCellProperties : function(row, column) {
+    getCellProperties(row, column) {
       var color = (row + column) % 2 == 0 ? "yellow" : "green";
       this.__cellRenderer.setBackgroundColor(color);
       return this.__cellRenderer.getCellProperties(row + " / " + column);
     },
 
-
-    getWidgetCellSpanScroller : function() {
+    getWidgetCellSpanScroller() {
       var scroller = new qx.ui.virtual.core.Scroller(1000, 100, 50, 120);
       var pane = scroller.getPane();
 
@@ -109,6 +108,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
         pane.getRowConfig(),
         pane.getColumnConfig()
       );
+
       spanLayer.setCellSpan(1, 1, 2, 2);
       spanLayer.setCellSpan(1, 5, 3, 3);
       spanLayer.setCellSpan(7, 4, 2, 4);
@@ -123,21 +123,25 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
       return scroller;
     },
 
-    getCellWidget : function(row, column) {
-      var widget = this._pool.pop() || new qx.ui.basic.Label().set({
-        allowGrowX: true
-      });
+    getCellWidget(row, column) {
+      var widget =
+        this._pool.pop() ||
+        new qx.ui.basic.Label().set({
+          allowGrowX: true,
+        });
+
       widget.set({
         backgroundColor: (row + column) % 2 == 0 ? "yellow" : "green",
         value: row + "x" + column,
-        padding: 3
+        padding: 3,
       });
+
       return widget;
     },
 
-    poolCellWidget : function(widget) {
+    poolCellWidget(widget) {
       this._pool.push(widget);
-    }
+    },
   },
 
   /*
@@ -146,8 +150,8 @@ qx.Class.define("qxl.demobrowser.demo.virtual.CellSpan",
   *****************************************************************************
   */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("__cellRenderer");
     this._pool = null;
-  }
+  },
 });

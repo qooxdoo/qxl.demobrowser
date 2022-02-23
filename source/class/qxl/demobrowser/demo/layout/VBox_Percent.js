@@ -20,23 +20,21 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
       var root = new qx.ui.container.Composite(new qx.ui.layout.HBox(20)).set({
-        padding: 20
+        padding: 20,
       });
-      scroll.add(root);
 
+      scroll.add(root);
 
       root.add(this.getBox1());
       root.add(this.getBox2());
@@ -46,41 +44,41 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
       root.add(this.getBox6());
     },
 
-
-    getBox1 : function() {
+    getBox1() {
       // one percent child which is not flexible
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
-      });
-      var w2 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      });
-      var w3 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "50%" });
-      container.add(w2, { flex : 1 });
-      container.add(w3, { flex : 1 });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      container.add(w1, { height: "50%" });
+      container.add(w2, { flex: 1 });
+      container.add(w3, { flex: 1 });
 
       return container;
     },
 
-
-    getBox2 : function() {
+    getBox2() {
       // all percent child, using 99% in sum, flex enabled for last
       // child (=> perfect result, last one a bit bigger)
       var box = new qx.ui.layout.VBox();
@@ -88,159 +86,165 @@ qx.Class.define("qxl.demobrowser.demo.layout.VBox_Percent",
         decorator: "main",
         backgroundColor: "yellow",
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
-      });
-      var w2 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      });
-      var w3 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "33%" });
-      container.add(w2, { height : "33%" });
-      container.add(w3, { height : "33%", flex : 1 });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      container.add(w1, { height: "33%" });
+      container.add(w2, { height: "33%" });
+      container.add(w3, { height: "33%", flex: 1 });
 
       return container;
     },
 
-
-    getBox3 : function() {
+    getBox3() {
       // one percent child which is not flexible + auto sizing
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
-      });
-      var w2 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      });
-      var w3 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "50%" });
-      container.add(w2, { flex : 1 });
-      container.add(w3, { flex : 1 });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      container.add(w1, { height: "50%" });
+      container.add(w2, { flex: 1 });
+      container.add(w3, { flex: 1 });
 
       return container;
     },
 
-
-    getBox4 : function() {
+    getBox4() {
       // all child in percents + auto sizing + flex enabled
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
-      });
-      var w2 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      });
-      var w3 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "33%", flex : 1 });
-      container.add(w2, { height : "33%", flex : 1 });
-      container.add(w3, { height : "33%", flex : 1 });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      container.add(w1, { height: "33%", flex: 1 });
+      container.add(w2, { height: "33%", flex: 1 });
+      container.add(w3, { height: "33%", flex: 1 });
 
       return container;
     },
 
-
-    getBox5 : function() {
+    getBox5() {
       // all child in percents + flex enabled (shrinking)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         height: 100,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
-      });
-      var w2 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      });
-      var w3 = new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "33%", flex : 1 });
-      container.add(w2, { height : "33%", flex : 1 });
-      container.add(w3, { height : "33%", flex : 1 });
+      var w2 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      var w3 = new qx.ui.core.Widget().set({
+        decorator: "main",
+        backgroundColor: "green",
+      });
+
+      container.add(w1, { height: "33%", flex: 1 });
+      container.add(w2, { height: "33%", flex: 1 });
+      container.add(w3, { height: "33%", flex: 1 });
 
       return container;
     },
 
-
-    getBox6 : function() {
+    getBox6() {
       // all child in percents + flex enabled (growing)
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box).set({
         decorator: "main",
         backgroundColor: "yellow",
         height: 300,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       box.setSpacing(5);
 
       var w1 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
+
       var w2 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
+
       var w3 = new qx.ui.core.Widget().set({
         decorator: "main",
-        backgroundColor: "green"
+        backgroundColor: "green",
       });
 
-      container.add(w1, { height : "33%", flex : 1 });
-      container.add(w2, { height : "33%", flex : 1 });
-      container.add(w3, { height : "33%", flex : 1 });
+      container.add(w1, { height: "33%", flex: 1 });
+      container.add(w2, { height: "33%", flex: 1 });
+      container.add(w3, { height: "33%", flex: 1 });
 
       return container;
-    }
-  }
+    },
+  },
 });

@@ -4,39 +4,36 @@
  * @asset(qx/icon/${qx.icontheme}/22/apps/internet-mail.png)
  */
 
- /* ************************************************************************
+/* ************************************************************************
 
+************************************************************************ */
 
- ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       // We want to use some of the high-level node operation convenience
       // methods rather than manually digging into the TreeVirtual helper
       // classes.  Include the mixin that provides them.
-      qx.Class.include(qx.ui.treevirtual.TreeVirtual,
-                       qx.ui.treevirtual.MNode);
+      qx.Class.include(qx.ui.treevirtual.TreeVirtual, qx.ui.treevirtual.MNode);
 
       // tree
       var tree = new qx.ui.treevirtual.TreeVirtual("Tree");
       tree.set({
-              width  : 400,
-              rowHeight: 22
-            });
+        width: 400,
+        rowHeight: 22,
+      });
+
       tree.setColumnWidth(0, 400);
       tree.setAlwaysShowOpenCloseSymbol(true);
 
-      this.getRoot().add(tree,
-                         {
-                           left : 10,
-                           top : 30,
-                           bottom : 30
-                         });
+      this.getRoot().add(tree, {
+        left: 10,
+        top: 30,
+        bottom: 30,
+      });
 
       // tree data model
       var dataModel = tree.getDataModel();
@@ -58,7 +55,11 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual",
       tree.nodeSetCellStyle(te, "background-color: cyan;");
 
       var te2 = dataModel.addBranch(
-        null, "Inbox", true, false, "icon/22/apps/internet-mail.png"
+        null,
+        "Inbox",
+        true,
+        false,
+        "icon/22/apps/internet-mail.png"
       );
 
       te = dataModel.addBranch(te2, "Spam", false);
@@ -73,6 +74,6 @@ qx.Class.define("qxl.demobrowser.demo.treevirtual.TreeVirtual",
       dataModel.addBranch(te2, "Edit", true);
 
       dataModel.setData();
-    }
-  }
+    },
+  },
 });

@@ -20,58 +20,57 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Canvas_LeftRight",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Canvas_LeftRight", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var border = new qx.ui.decoration.Decorator().set({
         width: 3,
         style: "solid",
-        color: "black"
+        color: "black",
       });
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
         decorator: border,
-        width: 400
+        width: 400,
       });
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
         decorator: border,
-        minWidth: 400
+        minWidth: 400,
       });
 
       var w3 = new qx.ui.core.Widget().set({
         backgroundColor: "green",
         decorator: border,
-        width: 400
+        width: 400,
       });
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
         decorator: border,
-        minWidth: 400
+        minWidth: 400,
       });
 
-
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas()).set({
-        decorator: border
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.Canvas()
+      ).set({
+        decorator: border,
       });
 
       this.getRoot().setPadding(20);
 
-      container.add(w1, {left:10, top:10});
-      container.add(w2, {left:10, top:80});
-      container.add(w3, {top:150, right:10});
-      container.add(w4, {top:220, right:10});
+      container.add(w1, { left: 10, top: 10 });
+      container.add(w2, { left: 10, top: 80 });
+      container.add(w3, { top: 150, right: 10 });
+      container.add(w4, { top: 220, right: 10 });
 
-      this.getRoot().add(container, {edge: 0});
-    }
-  }
+      this.getRoot().add(container, { edge: 0 });
+    },
+  },
 });

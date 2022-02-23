@@ -26,14 +26,12 @@
  * @asset(qx/icon/${qx.icontheme}/16/apps/utilities-help.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.MenuBar", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
 
@@ -41,38 +39,36 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       container.setPadding(20);
       container.setAllowStretchX(false);
       scroller.add(container);
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       this.createCommands();
 
       var bar = this.getMenuBar();
-      container.add(bar, {left: 20, top: 50});
+      container.add(bar, { left: 20, top: 50 });
 
       var button = new qx.ui.form.ToggleButton("Enabled");
       button.setValue(true);
-      container.add(button, {left: 20, top: 10});
+      container.add(button, { left: 20, top: 10 });
       button.bind("value", bar, "enabled");
     },
 
-
-    debugRadio : function(e) {
+    debugRadio(e) {
       this.debug("Change selection: " + e.getData()[0].getLabel());
     },
 
-    debugCommand : function(e) {
+    debugCommand(e) {
       this.debug("Execute command: " + this.getShortcut());
     },
 
-    debugButton : function(e) {
+    debugButton(e) {
       this.debug("Execute button: " + this.getLabel());
     },
 
-    debugCheckBox : function(e) {
+    debugCheckBox(e) {
       this.debug("Change checked: " + this.getLabel() + " = " + e.getData());
     },
 
-
-    createCommands : function() {
+    createCommands() {
       this._newCommand = new qx.ui.command.Command("Ctrl+N");
       this._newCommand.addListener("execute", this.debugCommand);
 
@@ -100,8 +96,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       this._pasteCommand.setEnabled(false);
     },
 
-
-    getMenuBar : function() {
+    getMenuBar() {
       var frame = new qx.ui.container.Composite(new qx.ui.layout.Grow());
 
       var menubar = new qx.ui.menubar.MenuBar();
@@ -110,9 +105,17 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
 
       var fileMenu = new qx.ui.menubar.Button("File", null, this.getFileMenu());
       var editMenu = new qx.ui.menubar.Button("Edit", null, this.getEditMenu());
-      var searchMenu = new qx.ui.menubar.Button("Search", null, this.getSearchMenu());
+      var searchMenu = new qx.ui.menubar.Button(
+        "Search",
+        null,
+        this.getSearchMenu()
+      );
       var viewMenu = new qx.ui.menubar.Button("View", null, this.getViewMenu());
-      var formatMenu = new qx.ui.menubar.Button("Format", null, this.getFormatMenu());
+      var formatMenu = new qx.ui.menubar.Button(
+        "Format",
+        null,
+        this.getFormatMenu()
+      );
       var helpMenu = new qx.ui.menubar.Button("Help", null, this.getHelpMenu());
 
       menubar.add(fileMenu);
@@ -125,16 +128,37 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return frame;
     },
 
-    getFileMenu : function() {
+    getFileMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var newButton = new qx.ui.menu.Button("New", "icon/16/actions/document-new.png", this._newCommand);
-      var openButton = new qx.ui.menu.Button("Open", "icon/16/actions/document-open.png", this._openCommand);
+      var newButton = new qx.ui.menu.Button(
+        "New",
+        "icon/16/actions/document-new.png",
+        this._newCommand
+      );
+      var openButton = new qx.ui.menu.Button(
+        "Open",
+        "icon/16/actions/document-open.png",
+        this._openCommand
+      );
       var closeButton = new qx.ui.menu.Button("Close");
-      var saveButton = new qx.ui.menu.Button("Save", "icon/16/actions/document-save.png", this._saveCommand);
-      var saveAsButton = new qx.ui.menu.Button("Save as...", "icon/16/actions/document-save-as.png");
-      var printButton = new qx.ui.menu.Button("Print", "icon/16/actions/document-print.png");
-      var exitButton = new qx.ui.menu.Button("Exit", "icon/16/actions/application-exit.png");
+      var saveButton = new qx.ui.menu.Button(
+        "Save",
+        "icon/16/actions/document-save.png",
+        this._saveCommand
+      );
+      var saveAsButton = new qx.ui.menu.Button(
+        "Save as...",
+        "icon/16/actions/document-save-as.png"
+      );
+      var printButton = new qx.ui.menu.Button(
+        "Print",
+        "icon/16/actions/document-print.png"
+      );
+      var exitButton = new qx.ui.menu.Button(
+        "Exit",
+        "icon/16/actions/application-exit.png"
+      );
 
       newButton.addListener("execute", this.debugButton);
       openButton.addListener("execute", this.debugButton);
@@ -155,14 +179,34 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getEditMenu : function() {
+    getEditMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var undoButton = new qx.ui.menu.Button("Undo", "icon/16/actions/edit-undo.png", this._undoCommand);
-      var redoButton = new qx.ui.menu.Button("Redo", "icon/16/actions/edit-redo.png", this._redoCommand);
-      var cutButton = new qx.ui.menu.Button("Cut", "icon/16/actions/edit-cut.png", this._cutCommand);
-      var copyButton = new qx.ui.menu.Button("Copy", "icon/16/actions/edit-copy.png", this._copyCommand);
-      var pasteButton = new qx.ui.menu.Button("Paste", "icon/16/actions/edit-paste.png", this._pasteCommand);
+      var undoButton = new qx.ui.menu.Button(
+        "Undo",
+        "icon/16/actions/edit-undo.png",
+        this._undoCommand
+      );
+      var redoButton = new qx.ui.menu.Button(
+        "Redo",
+        "icon/16/actions/edit-redo.png",
+        this._redoCommand
+      );
+      var cutButton = new qx.ui.menu.Button(
+        "Cut",
+        "icon/16/actions/edit-cut.png",
+        this._cutCommand
+      );
+      var copyButton = new qx.ui.menu.Button(
+        "Copy",
+        "icon/16/actions/edit-copy.png",
+        this._copyCommand
+      );
+      var pasteButton = new qx.ui.menu.Button(
+        "Paste",
+        "icon/16/actions/edit-paste.png",
+        this._pasteCommand
+      );
 
       undoButton.addListener("execute", this.debugButton);
       redoButton.addListener("execute", this.debugButton);
@@ -180,14 +224,20 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getSearchMenu : function() {
+    getSearchMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var searchButton = new qx.ui.menu.Button("Search...", "icon/16/actions/system-search.png");
+      var searchButton = new qx.ui.menu.Button(
+        "Search...",
+        "icon/16/actions/system-search.png"
+      );
       var nextButton = new qx.ui.menu.Button("Search next...");
       var previousButton = new qx.ui.menu.Button("Search previous...");
       var replaceButton = new qx.ui.menu.Button("Replace");
-      var searchFilesButton = new qx.ui.menu.Button("Search in files", "icon/16/actions/system-search.png");
+      var searchFilesButton = new qx.ui.menu.Button(
+        "Search in files",
+        "icon/16/actions/system-search.png"
+      );
       var replaceFilesButton = new qx.ui.menu.Button("Replace in files");
 
       previousButton.setEnabled(false);
@@ -210,11 +260,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getViewMenu : function() {
+    getViewMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var panesButton = new qx.ui.menu.Button("Panes", null, null, this.getPanesMenu());
-      var syntaxButton = new qx.ui.menu.Button("Syntax", null, null, this.getSyntaxMenu());
+      var panesButton = new qx.ui.menu.Button(
+        "Panes",
+        null,
+        null,
+        this.getPanesMenu()
+      );
+      var syntaxButton = new qx.ui.menu.Button(
+        "Syntax",
+        null,
+        null,
+        this.getSyntaxMenu()
+      );
       var rulerButton = new qx.ui.menu.CheckBox("Show ruler");
       var numbersButton = new qx.ui.menu.CheckBox("Show line numbers");
       var asciiButton = new qx.ui.menu.Button("ASCII table");
@@ -234,7 +294,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getPanesMenu : function() {
+    getPanesMenu() {
       var menu = new qx.ui.menu.Menu();
 
       var tabsCheckbox = new qx.ui.menu.CheckBox("Show tabs");
@@ -267,13 +327,18 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getSyntaxMenu : function() {
+    getSyntaxMenu() {
       var menu = new qx.ui.menu.Menu();
 
       var htmlButton = new qx.ui.menu.RadioButton("HTML");
       var xmlButton = new qx.ui.menu.RadioButton("XML");
       var jsButton = new qx.ui.menu.RadioButton("JavaScript");
-      var cdialectButton = new qx.ui.menu.Button("C Dialect", null, null, this.getSyntaxCMenu());
+      var cdialectButton = new qx.ui.menu.Button(
+        "C Dialect",
+        null,
+        null,
+        this.getSyntaxCMenu()
+      );
       var perlButton = new qx.ui.menu.RadioButton("Perl");
       var pythonButton = new qx.ui.menu.RadioButton("Python");
 
@@ -294,7 +359,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getSyntaxCMenu : function() {
+    getSyntaxCMenu() {
       var menu = new qx.ui.menu.Menu();
 
       var cButton = new qx.ui.menu.RadioButton("C");
@@ -310,10 +375,15 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getFormatMenu : function() {
+    getFormatMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var paragraphButton = new qx.ui.menu.Button("Paragraph", null, null, this.getParagraphMenu());
+      var paragraphButton = new qx.ui.menu.Button(
+        "Paragraph",
+        null,
+        null,
+        this.getParagraphMenu()
+      );
       var spacesButton = new qx.ui.menu.Button("Tabs to spaces");
       var tabsButton = new qx.ui.menu.Button("Spaces to tabs");
       var upperButton = new qx.ui.menu.Button("Uppercase");
@@ -344,13 +414,25 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getParagraphMenu : function() {
+    getParagraphMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var leftButton = new qx.ui.menu.Button("Left aligned", "icon/16/actions/format-justify-left.png");
-      var rightButton = new qx.ui.menu.Button("Right aligned", "icon/16/actions/format-justify-right.png");
-      var centeredButton = new qx.ui.menu.Button("Centered", "icon/16/actions/format-justify-center.png");
-      var justifyButton = new qx.ui.menu.Button("Justified", "icon/16/actions/format-justify-fill.png");
+      var leftButton = new qx.ui.menu.Button(
+        "Left aligned",
+        "icon/16/actions/format-justify-left.png"
+      );
+      var rightButton = new qx.ui.menu.Button(
+        "Right aligned",
+        "icon/16/actions/format-justify-right.png"
+      );
+      var centeredButton = new qx.ui.menu.Button(
+        "Centered",
+        "icon/16/actions/format-justify-center.png"
+      );
+      var justifyButton = new qx.ui.menu.Button(
+        "Justified",
+        "icon/16/actions/format-justify-fill.png"
+      );
 
       leftButton.addListener("execute", this.debugButton);
       rightButton.addListener("execute", this.debugButton);
@@ -365,10 +447,13 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       return menu;
     },
 
-    getHelpMenu : function() {
+    getHelpMenu() {
       var menu = new qx.ui.menu.Menu();
 
-      var topicsButton = new qx.ui.menu.Button("Topics", "icon/16/apps/utilities-help.png");
+      var topicsButton = new qx.ui.menu.Button(
+        "Topics",
+        "icon/16/apps/utilities-help.png"
+      );
       var quickButton = new qx.ui.menu.Button("Quickstart");
       var onlineButton = new qx.ui.menu.Button("Online Forum");
       var infoButton = new qx.ui.menu.Button("Info...");
@@ -386,7 +471,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
       menu.add(infoButton);
 
       return menu;
-    }
+    },
   },
 
   /*
@@ -395,9 +480,16 @@ qx.Class.define("qxl.demobrowser.demo.widget.MenuBar",
    *****************************************************************************
    */
 
-  destruct : function() {
-    this._disposeObjects("_newCommand", "_openCommand", "_saveCommand",
-      "_undoCommand", "_redoCommand", "_cutCommand", "_copyCommand",
-      "_pasteCommand");
-  }
+  destruct() {
+    this._disposeObjects(
+      "_newCommand",
+      "_openCommand",
+      "_saveCommand",
+      "_undoCommand",
+      "_redoCommand",
+      "_cutCommand",
+      "_copyCommand",
+      "_pasteCommand"
+    );
+  },
 });

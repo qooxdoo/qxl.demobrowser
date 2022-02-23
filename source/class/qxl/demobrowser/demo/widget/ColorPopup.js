@@ -16,14 +16,12 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var doc = this.getRoot();
 
@@ -36,47 +34,48 @@ qx.Class.define("qxl.demobrowser.demo.widget.ColorPopup",
       mypop.setValue("#23F3C1");
 
       var mybtn = new qx.ui.form.Button("Open Popup");
-      mybtn.addListener("execute", function(e) {
+      mybtn.addListener("execute", function (e) {
         mypop.placeToWidget(mybtn);
         mypop.show();
       });
 
       var myview = new qx.ui.basic.Label("Selected Color").set({
         marginLeft: 10,
-        padding : [3, 6],
-        decorator : "main"
+        padding: [3, 6],
+        decorator: "main",
       });
 
       doc.add(myview, {
-        left : 120,
-        top : 20
+        left: 120,
+        top: 20,
       });
 
       doc.add(mybtn, {
-        left : 20,
-        top : 20
-      });
-      doc.add(mypop, {
-        left : 100,
-        top : 100
+        left: 20,
+        top: 20,
       });
 
-      mypop.addListener("changeValue", function(e) {
+      doc.add(mypop, {
+        left: 100,
+        top: 100,
+      });
+
+      mypop.addListener("changeValue", function (e) {
         this.debug("Value Listener: " + e.getData());
         myview.setBackgroundColor(e.getData());
       });
 
-      mypop.addListener("changeRed", function(e) {
+      mypop.addListener("changeRed", function (e) {
         this.debug("Red Listener: " + e.getData());
       });
 
-      mypop.addListener("changeGreen", function(e) {
+      mypop.addListener("changeGreen", function (e) {
         this.debug("Green Listener: " + e.getData());
       });
 
-      mypop.addListener("changeBlue", function(e) {
+      mypop.addListener("changeBlue", function (e) {
         this.debug("Blue Listener: " + e.getData());
       });
-    }
-  }
+    },
+  },
 });

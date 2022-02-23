@@ -15,12 +15,11 @@
      * Martin Wittemann (martinwittemann)
 
 ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.data.TreeColumn",
-{
-  extend : qx.ui.tree.TreeFolder,
+qx.Class.define("qxl.demobrowser.demo.data.TreeColumn", {
+  extend: qx.ui.tree.TreeFolder,
 
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
 
     // fist item: light bulb image
     var img = new qx.ui.basic.Image();
@@ -44,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeColumn",
     this.addLabel("");
 
     // Anything else should be right justified
-    this.addWidget(new qx.ui.core.Spacer(), {flex: 1});
+    this.addWidget(new qx.ui.core.Spacer(), { flex: 1 });
 
     // Add a file size label
     var size = new qx.ui.basic.Label();
@@ -64,10 +63,11 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeColumn",
     // set up the connection between the treefolders properties and the
     // properties of the children
     this.bind("light", img, "source", {
-      converter : function(data) {
+      converter(data) {
         return data ? "icon/16/status/dialog-information.png" : "";
-      }
+      },
     });
+
     this.bind("checked", checkbox, "value");
     checkbox.bind("value", this, "checked");
     this.bind("size", size, "value");
@@ -75,31 +75,30 @@ qx.Class.define("qxl.demobrowser.demo.data.TreeColumn",
     this.bind("mode", mode, "value");
   },
 
-
-  properties : {
-    size : {
+  properties: {
+    size: {
       event: "changeSize",
-      nullable: true
+      nullable: true,
     },
 
-    checked : {
+    checked: {
       event: "changeChecked",
-      nullable: true
+      nullable: true,
     },
 
-    date : {
+    date: {
       event: "changeDate",
-      nullable: true
+      nullable: true,
     },
 
-    mode : {
+    mode: {
       event: "changeMode",
-      nullable: true
+      nullable: true,
     },
 
-    light : {
+    light: {
       event: "changeLight",
-      nullable: true
-    }
-  }
+      nullable: true,
+    },
+  },
 });

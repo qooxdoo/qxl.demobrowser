@@ -25,23 +25,21 @@
  * @require(qx.module.Template)
  * @require(qx.module.event.GestureHandler)
  */
-qx.Class.define("qxl.demobrowser.demo.animation.Scroll",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.animation.Scroll", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create an array with 30 numbers in it
-      var data = {items : []};
-      for (var i=0; i < 30; i++) {
+      var data = { items: [] };
+      for (var i = 0; i < 30; i++) {
         data.items.push(i);
       }
 
       // add 5 lists to the body
-      for (var j=0; j < 5; j++) {
+      for (var j = 0; j < 5; j++) {
         q.template.get("list-template", data).appendTo(document.body);
       }
 
@@ -49,18 +47,20 @@ qx.Class.define("qxl.demobrowser.demo.animation.Scroll",
       this.reset();
       q("#resetbutton").on("tap", this.reset, this);
 
-      q("#startbutton").on("tap", function() {
-        q(".list").addClass("scrolling").setScrollTop(250, 2000).once("animationEnd", function() {
-          q(".list").removeClass("scrolling");
-        });
+      q("#startbutton").on("tap", function () {
+        q(".list")
+          .addClass("scrolling")
+          .setScrollTop(250, 2000)
+          .once("animationEnd", function () {
+            q(".list").removeClass("scrolling");
+          });
       });
     },
 
-
-    reset : function() {
-      q(".list").forEach(function(item, i) {
+    reset() {
+      q(".list").forEach(function (item, i) {
         item.scrollTop = i * 100;
       });
-    }
-  }
+    },
+  },
 });

@@ -30,14 +30,12 @@
  * @asset(qx/icon/${qx.icontheme}/16/apps/utilities-help.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.TabView",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.TabView", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
 
@@ -47,57 +45,65 @@ qx.Class.define("qxl.demobrowser.demo.widget.TabView",
 
       scroller.add(container);
 
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       container.add(this.getTabView1());
       container.add(this.getTabView2());
       container.add(this.getTabView3());
     },
 
-    getTabView1 : function() {
+    getTabView1() {
       var tabView = new qx.ui.tabview.TabView();
       tabView.setWidth(500);
 
-
       ////////////////// TEST PAGE 1 ////////////////////
-      var page1 = new qx.ui.tabview.Page("Layout", "icon/16/apps/utilities-terminal.png");
+      var page1 = new qx.ui.tabview.Page(
+        "Layout",
+        "icon/16/apps/utilities-terminal.png"
+      );
       page1.setLayout(new qx.ui.layout.VBox());
       page1.add(new qx.ui.basic.Label("Layout-Settings"));
       tabView.add(page1);
 
-
-
       ////////////////// TEST PAGE 2 ////////////////////
-      var page2 = new qx.ui.tabview.Page("Notes", "icon/16/apps/utilities-notes.png");
+      var page2 = new qx.ui.tabview.Page(
+        "Notes",
+        "icon/16/apps/utilities-notes.png"
+      );
       page2.setLayout(new qx.ui.layout.VBox());
       page2.add(new qx.ui.basic.Label("Notes..."));
       tabView.add(page2);
 
-
       ////////////////// TEST PAGE 3 ////////////////////
-      var page3 = new qx.ui.tabview.Page("Calculator", "icon/16/apps/utilities-calculator.png");
+      var page3 = new qx.ui.tabview.Page(
+        "Calculator",
+        "icon/16/apps/utilities-calculator.png"
+      );
       page3.setLayout(new qx.ui.layout.VBox());
       page3.add(new qx.ui.basic.Label("Calculator..."));
       tabView.add(page3);
 
-
       ////////////////// TEST PAGE 4 ////////////////////
-      var page4 = new qx.ui.tabview.Page("Help", "icon/16/apps/utilities-help.png");
+      var page4 = new qx.ui.tabview.Page(
+        "Help",
+        "icon/16/apps/utilities-help.png"
+      );
       page4.setLayout(new qx.ui.layout.VBox());
       page4.add(new qx.ui.basic.Label("Help..."));
       tabView.add(page4);
 
-
       return tabView;
     },
 
-
-    getTabView2 : function() {
+    getTabView2() {
       var tabView = new qx.ui.tabview.TabView();
       tabView.setWidth(500);
 
-      for (var i=1; i<=20; i++) {
-        var page = new qx.ui.tabview.Page("Page #" + i, "icon/16/apps/utilities-terminal.png");
+      for (var i = 1; i <= 20; i++) {
+        var page = new qx.ui.tabview.Page(
+          "Page #" + i,
+          "icon/16/apps/utilities-terminal.png"
+        );
         page.setLayout(new qx.ui.layout.VBox());
         page.setShowCloseButton(true);
         page.add(new qx.ui.basic.Label("Page #" + i + " with close button."));
@@ -106,22 +112,22 @@ qx.Class.define("qxl.demobrowser.demo.widget.TabView",
       return tabView;
     },
 
-
-    getTabView3 : function() {
+    getTabView3() {
       var tabView = new qx.ui.tabview.TabView();
       tabView.setWidth(500);
       tabView.setHeight(300);
 
-      for (var i=1; i<=3; i++) {
-        var page = new qx.ui.tabview.Page("Page #" + i, "icon/32/apps/utilities-terminal.png");
+      for (var i = 1; i <= 3; i++) {
+        var page = new qx.ui.tabview.Page(
+          "Page #" + i,
+          "icon/32/apps/utilities-terminal.png"
+        );
         page.setLayout(new qx.ui.layout.VBox(4));
         tabView.add(page);
         page.add(new qx.ui.basic.Label("Page #" + i));
       }
 
       var firstPage = tabView.getChildren()[0];
-
-
 
       // CONTROL BAR POSITION
 
@@ -139,13 +145,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.TabView",
       firstPage.add(barLeftButton);
       firstPage.add(barRightButton);
 
-      var group = new qx.ui.form.RadioGroup(barTopButton, barBottomButton, barLeftButton, barRightButton);
-      group.addListener("changeSelection", function(e) {
-        this.setBarPosition(e.getData()[0].getLabel());
-      }, tabView);
+      var group = new qx.ui.form.RadioGroup(
+        barTopButton,
+        barBottomButton,
+        barLeftButton,
+        barRightButton
+      );
+      group.addListener(
+        "changeSelection",
+        function (e) {
+          this.setBarPosition(e.getData()[0].getLabel());
+        },
+        tabView
+      );
 
       barLeftButton.setValue(true);
-
 
       // ADD/REMOVE BUTTONS
 
@@ -158,28 +172,31 @@ qx.Class.define("qxl.demobrowser.demo.widget.TabView",
       firstPage.add(buttonRemoveFirst);
       firstPage.add(buttonRemoveLast);
 
-      buttonAdd.addListener("execute", function(e) {
-        var count = tabView.getChildren().length+1;
-        var page = new qx.ui.tabview.Page("Page #" + count, "icon/32/apps/utilities-terminal.png");
+      buttonAdd.addListener("execute", function (e) {
+        var count = tabView.getChildren().length + 1;
+        var page = new qx.ui.tabview.Page(
+          "Page #" + count,
+          "icon/32/apps/utilities-terminal.png"
+        );
 
         tabView.add(page);
       });
 
-      buttonRemoveFirst.addListener("execute", function(e) {
+      buttonRemoveFirst.addListener("execute", function (e) {
         var children = tabView.getChildren();
         if (children.length > 0) {
           tabView.remove(children[0]);
         }
       });
 
-      buttonRemoveLast.addListener("execute", function(e) {
+      buttonRemoveLast.addListener("execute", function (e) {
         var children = tabView.getChildren();
         if (children.length > 0) {
-          tabView.remove(children[children.length-1]);
+          tabView.remove(children[children.length - 1]);
         }
       });
 
       return tabView;
-    }
-  }
+    },
+  },
 });

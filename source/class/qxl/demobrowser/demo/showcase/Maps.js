@@ -20,54 +20,59 @@
  * @tag showcase
  * @ignore(google.*, L)
  */
-qx.Class.define("qxl.demobrowser.demo.showcase.Maps",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.showcase.Maps", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       var LeafletMap = this._createLeafletMap();
       var googleMap = this._createGoogleMap();
 
-      this.getRoot().add(this._createMapContainer("LeafletMap Maps", LeafletMap), {
-        left : 20,
-        top  : 20
-      });
+      this.getRoot().add(
+        this._createMapContainer("LeafletMap Maps", LeafletMap),
+        {
+          left: 20,
+          top: 20,
+        }
+      );
+
       this.getRoot().add(this._createMapContainer("Google Maps", googleMap), {
-        left : 490,
-        top  : 20
+        left: 490,
+        top: 20,
       });
     },
 
-    _createMapContainer : function(title, map) {
+    _createMapContainer(title, map) {
       var comp = new qx.ui.container.Composite();
-      comp.setLayout(new qx.ui.layout.VBox().set({spacing: 10}));
+      comp.setLayout(new qx.ui.layout.VBox().set({ spacing: 10 }));
       comp.setWidth(450);
       comp.setHeight(400);
 
       var headline = new qx.ui.basic.Label("<b>" + title + "</b>").set({
-        rich: true
+        rich: true,
       });
+
       comp.add(headline);
       comp.add(map);
       return comp;
     },
 
-    _createLeafletMap : function() {
+    _createLeafletMap() {
       var isle = new qx.ui.core.Widget().set({
         width: 450,
         height: 400,
-        decorator: "main"
+        decorator: "main",
       });
 
-      isle.addListenerOnce("appear", function() {
+      isle.addListenerOnce("appear", function () {
         try {
           var map = new L.Map(isle.getContentElement().getDomElement(), {
-            center: new L.LatLng(43.6400, 3.9658),
-              zoom: 14,
-              layers: new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+            center: new L.LatLng(43.64, 3.9658),
+            zoom: 14,
+            layers: new L.TileLayer(
+              "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            ),
           });
         } catch (ex) {
           var msg = "Could not create Leaflet map!<br/>" + ex.toString();
@@ -77,10 +82,10 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Maps",
       return isle;
     },
 
-    _createGoogleMap : function() {
+    _createGoogleMap() {
       var isle = new qx.ui.core.Widget().set({
         width: 450,
-        height: 400
+        height: 400,
       });
 
       // Since the decorator requires a bit of extra code, we set
@@ -88,19 +93,22 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Maps",
       // you may not need a decorator.
       isle.setDecorator("main");
 
-      isle.addListenerOnce("appear", function() {
+      isle.addListenerOnce("appear", function () {
         try {
-          var map = new google.maps.Map(isle.getContentElement().getDomElement(), {
+          var map = new google.maps.Map(
+            isle.getContentElement().getDomElement(),
+            {
               zoom: 13,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-          });
+              mapTypeId: google.maps.MapTypeId.ROADMAP,
+            }
+          );
 
           // Fix for [BUG #4178]
           // Make sure zIndex of map element is higher than zIndex of decorator
           // (Maps apparently resets zIndex on init)
-          google.maps.event.addListenerOnce(map, "center_changed", function() {
+          google.maps.event.addListenerOnce(map, "center_changed", function () {
             // Wait for DOM
-            window.setTimeout(function() {
+            window.setTimeout(function () {
               var zIndex = isle.getContentElement().getStyle("zIndex");
               isle.getContentElement().getDomElement().style.zIndex = zIndex;
             }, 500);
@@ -113,6 +121,6 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Maps",
         }
       });
       return isle;
-    }
-  }
+    },
+  },
 });

@@ -1,87 +1,95 @@
 /*
  * Example of using the Conditional cell renderer with Progressive's Table.
  */
-qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveTable_Conditional",
-{
-  extend : qx.application.Standalone,
-
-  members :
+qx.Class.define(
+  "qxl.demobrowser.demo.progressive.ProgressiveTable_Conditional",
   {
-    main : function() {
-      this.base(arguments);
+    extend: qx.application.Standalone,
 
-      var createRandomRows = function(rowCount) {
-        var rowData = [ ];
-        for (var row = 0; row < rowCount; row++) {
-          var x = Math.random() * 1000;
-          rowData.push(
-                       {
-                         renderer : "row",
-                         location : "end",
-                         data     : [ row, x, x ]
-                       });
-        }
+    members: {
+      main() {
+        super.main();
 
-        return rowData;
-      };
+        var createRandomRows = function (rowCount) {
+          var rowData = [];
+          for (var row = 0; row < rowCount; row++) {
+            var x = Math.random() * 1000;
+            rowData.push({
+              renderer: "row",
+              location: "end",
+              data: [row, x, x],
+            });
+          }
 
-      var columnWidths = new qx.ui.progressive.renderer.table.Widths(3);
-      var columnNames = [ "ID", "Number 1", "Number 2" ];
+          return rowData;
+        };
 
-      // Instantiate a Progressive with a default structure with header
-      var header = new qx.ui.progressive.headfoot.TableHeading(columnWidths,
-                                                               columnNames);
-      var footer = new qx.ui.progressive.headfoot.Progress(columnWidths,
-                                                           columnNames);
-      var structure = new qx.ui.progressive.structure.Default(header,
-                                                              footer);
-      var progressive = new qx.ui.progressive.Progressive(structure);
+        var columnWidths = new qx.ui.progressive.renderer.table.Widths(3);
+        var columnNames = ["ID", "Number 1", "Number 2"];
 
-      // Instantiate a data model and populate it.
-      var dataModel = new qx.ui.progressive.model.Default();
-      var rowData = createRandomRows(100);
-      dataModel.addElements(rowData);
+        // Instantiate a Progressive with a default structure with header
+        var header = new qx.ui.progressive.headfoot.TableHeading(
+          columnWidths,
+          columnNames
+        );
+        var footer = new qx.ui.progressive.headfoot.Progress(
+          columnWidths,
+          columnNames
+        );
+        var structure = new qx.ui.progressive.structure.Default(header, footer);
+        var progressive = new qx.ui.progressive.Progressive(structure);
 
-      // Tell Progressive about its data model
-      progressive.setDataModel(dataModel);
+        // Instantiate a data model and populate it.
+        var dataModel = new qx.ui.progressive.model.Default();
+        var rowData = createRandomRows(100);
+        dataModel.addElements(rowData);
 
-      // Instantiate a table row renderer
-      var rowRenderer =
-        new qx.ui.progressive.renderer.table.Row(columnWidths);
+        // Tell Progressive about its data model
+        progressive.setDataModel(dataModel);
 
-      // Give Progressive the renderer, and assign a name
-      progressive.addRenderer("row", rowRenderer);
+        // Instantiate a table row renderer
+        var rowRenderer = new qx.ui.progressive.renderer.table.Row(
+          columnWidths
+        );
 
-      // Tell the row renderer to use a conditional renderer for column 2
-      var r = new qx.ui.progressive.renderer.table.cell.Conditional(
-        "right", "", "", "");
+        // Give Progressive the renderer, and assign a name
+        progressive.addRenderer("row", rowRenderer);
 
-      r.addNumericCondition(">", 0, null, "FF0000", null, null);
-      r.addNumericCondition(">", 50, null, "EE0011", null, null);
-      r.addNumericCondition(">", 100, null, "DD0022", null, null);
-      r.addNumericCondition(">", 150, null, "CC0033", null, null);
-      r.addNumericCondition(">", 200, null, "BB0044", null, null);
-      r.addNumericCondition(">", 250, null, "AA0055", null, null);
-      r.addNumericCondition(">", 300, null, "990066", null, null);
-      r.addNumericCondition(">", 350, null, "880077", null, null);
-      r.addNumericCondition(">", 400, null, "770088", null, null);
-      r.addNumericCondition(">", 450, null, "660099", null, null);
-      r.addNumericCondition(">", 500, null, "5500AA", null, null);
-      r.addNumericCondition(">", 550, null, "4400BB", null, null);
-      r.addNumericCondition(">", 600, null, "3300CC", null, null);
-      r.addNumericCondition(">", 650, null, "2200DD", null, null);
-      r.addNumericCondition(">", 700, null, "1100EE", null, null);
-      r.addNumericCondition(">", 750, null, "0000FF", null, null);
-      r.addNumericCondition(">", 800, null, "0033FF", null, null);
-      r.addNumericCondition(">", 850, null, "0066FF", null, null);
-      r.addNumericCondition(">", 900, null, "0099FF", null, null);
-      r.addNumericCondition(">", 950, "center", "00CCFF", null, "bold");
+        // Tell the row renderer to use a conditional renderer for column 2
+        var r = new qx.ui.progressive.renderer.table.cell.Conditional(
+          "right",
+          "",
+          "",
+          ""
+        );
 
-      rowRenderer.addRenderer(2, r);
+        r.addNumericCondition(">", 0, null, "FF0000", null, null);
+        r.addNumericCondition(">", 50, null, "EE0011", null, null);
+        r.addNumericCondition(">", 100, null, "DD0022", null, null);
+        r.addNumericCondition(">", 150, null, "CC0033", null, null);
+        r.addNumericCondition(">", 200, null, "BB0044", null, null);
+        r.addNumericCondition(">", 250, null, "AA0055", null, null);
+        r.addNumericCondition(">", 300, null, "990066", null, null);
+        r.addNumericCondition(">", 350, null, "880077", null, null);
+        r.addNumericCondition(">", 400, null, "770088", null, null);
+        r.addNumericCondition(">", 450, null, "660099", null, null);
+        r.addNumericCondition(">", 500, null, "5500AA", null, null);
+        r.addNumericCondition(">", 550, null, "4400BB", null, null);
+        r.addNumericCondition(">", 600, null, "3300CC", null, null);
+        r.addNumericCondition(">", 650, null, "2200DD", null, null);
+        r.addNumericCondition(">", 700, null, "1100EE", null, null);
+        r.addNumericCondition(">", 750, null, "0000FF", null, null);
+        r.addNumericCondition(">", 800, null, "0033FF", null, null);
+        r.addNumericCondition(">", 850, null, "0066FF", null, null);
+        r.addNumericCondition(">", 900, null, "0099FF", null, null);
+        r.addNumericCondition(">", 950, "center", "00CCFF", null, "bold");
 
-      this.getRoot().add(progressive, { edge : 50 });
+        rowRenderer.addRenderer(2, r);
 
-      progressive.render();
-    }
+        this.getRoot().add(progressive, { edge: 50 });
+
+        progressive.render();
+      },
+    },
   }
-});
+);

@@ -29,9 +29,8 @@
  * @asset(qx/icon/${qx.icontheme}/16/emotes/face-sad.png)
  * @tag test
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.virtual.Cells", {
+  extend: qx.application.Standalone,
 
   /*
   *****************************************************************************
@@ -39,11 +38,9 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
   *****************************************************************************
   */
 
-  members :
-  {
-
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var layout = new qx.ui.layout.HBox(5);
       this.topContainer = new qx.ui.container.Composite(layout);
@@ -60,169 +57,226 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
         this.runTest("testBooleanCellCustomImage");
       }
 
-      this.getRoot().add(this.topContainer, {edge : 5});
+      this.getRoot().add(this.topContainer, { edge: 5 });
     },
 
-
-    runTest : function(testName) {
+    runTest(testName) {
       this.setUp();
       this[testName]();
       //this.tearDown();
     },
 
-
-    setUp : function() {
+    setUp() {
       this.container = new qx.ui.container.Composite(new qx.ui.layout.VBox(2));
       this.topContainer.add(this.container);
     },
 
-
-    tearDown : function() {
+    tearDown() {
       this.container.destroy();
     },
 
-
-    testStringCell : function() {
+    testStringCell() {
       var cellData = {
-        value : ["Juhu", "<b>HTML</b>", "", null],
-        states : [{}, {selected: 1}]
+        value: ["Juhu", "<b>HTML</b>", "", null],
+        states: [{}, { selected: 1 }],
       };
+
       var stringCell = new qx.ui.virtual.cell.String();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        var cell = this.__renderCell(stringCell, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          var cell = this.__renderCell(
+            stringCell,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testNumberCell : function() {
+    testNumberCell() {
       var cellData = {
-        value : [-1.666666, 0, null],
-        format : [
+        value: [-1.666666, 0, null],
+        format: [
           null,
           new qx.util.format.NumberFormat().set({
-            maximumFractionDigits : 2
-          })
+            maximumFractionDigits: 2,
+          }),
         ],
-        states : [{}, {selected: 1}]
+
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Number();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        if (cellData.format) {
-          cellRenderer.setNumberFormat(cellData.format);
-        } else {
-          cellRenderer.resetNumberFormat();
-        }
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          if (cellData.format) {
+            cellRenderer.setNumberFormat(cellData.format);
+          } else {
+            cellRenderer.resetNumberFormat();
+          }
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testDateCell : function() {
+    testDateCell() {
       var cellData = {
-        value : [new Date(), null],
-        format : [
+        value: [new Date(), null],
+        format: [
           null,
-          new qx.util.format.DateFormat(qx.locale.Date.getDateFormat("medium"))
+          new qx.util.format.DateFormat(qx.locale.Date.getDateFormat("medium")),
         ],
-        states : [{}, {selected: 1}]
+
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Date();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        if (cellData.format) {
-          cellRenderer.setDateFormat(cellData.format);
-        } else {
-          cellRenderer.resetDateFormat();
-        }
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          if (cellData.format) {
+            cellRenderer.setDateFormat(cellData.format);
+          } else {
+            cellRenderer.resetDateFormat();
+          }
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testHtmlCell : function() {
+    testHtmlCell() {
       var cellData = {
-        value : ["Juhu", "<b>HTML</b>", "", null],
-        states : [{}, {selected: 1}]
+        value: ["Juhu", "<b>HTML</b>", "", null],
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Html();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testImageCell : function() {
+    testImageCell() {
       var cellData = {
-        value : [
+        value: [
           {
-            url : "icon/16/apps/internet-feed-reader.png",
-            tooltip : "This is a feed reader!"
+            url: "icon/16/apps/internet-feed-reader.png",
+            tooltip: "This is a feed reader!",
           },
+
           {
-            url : "icon/32/apps/utilities-notes.png",
-            tooltip : "foobar!"
+            url: "icon/32/apps/utilities-notes.png",
+            tooltip: "foobar!",
           },
-          null
+
+          null,
         ],
-        states : [{}, {selected: 1}]
+
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Image();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testBooleanCell : function() {
+    testBooleanCell() {
       var cellData = {
-        value : [true, false, null],
-        states : [{}, {selected: 1}]
+        value: [true, false, null],
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Boolean();
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    testBooleanCellCustomImage : function() {
+    testBooleanCellCustomImage() {
       var cellData = {
-        value : [true, false, null],
-        states : [{}, {selected: 1}]
+        value: [true, false, null],
+        states: [{}, { selected: 1 }],
       };
+
       var cellRenderer = new qx.ui.virtual.cell.Boolean();
       cellRenderer.setIconFalse("icon/16/emotes/face-sad.png");
       cellRenderer.setIconTrue("icon/16/emotes/face-smile.png");
 
-      qx.util.Permutation.permute(cellData, function(cellData) {
-        var cell = this.__renderCell(cellRenderer, cellData.value, cellData.states);
-        this.container.add(cell);
-      }, this);
+      qx.util.Permutation.permute(
+        cellData,
+        function (cellData) {
+          var cell = this.__renderCell(
+            cellRenderer,
+            cellData.value,
+            cellData.states
+          );
+          this.container.add(cell);
+        },
+        this
+      );
     },
 
-
-    __renderCell : function(cell, value, states) {
+    __renderCell(cell, value, states) {
       var width = 100;
       var height = 30;
 
       var embed = new qx.ui.embed.Html().set({
         width: width,
         height: height,
-        decorator : states.selected ? null : "main"
+        decorator: states.selected ? null : "main",
       });
-//      decorator : states.selected ? "selected" : "main"
 
+      //      decorator : states.selected ? "selected" : "main"
 
       var cellProperties = cell.getCellProperties(value, states);
       var insets = cellProperties.insets;
@@ -231,19 +285,22 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
         "<div ",
         "style='",
         this._getCellSizeStyle(width, height, insets[0], insets[1]),
-        cellProperties.style, "' ",
-        "class='", cellProperties.classes, "' ",
-        cellProperties.attributes, ">",
+        cellProperties.style,
+        "' ",
+        "class='",
+        cellProperties.classes,
+        "' ",
+        cellProperties.attributes,
+        ">",
         cellProperties.content,
-        "</div>"
+        "</div>",
       ].join("");
 
       embed.setHtml(html);
       return embed;
     },
 
-
-    _getCellSizeStyle : function(width, height, insetX, insetY) {
+    _getCellSizeStyle(width, height, insetX, insetY) {
       var style = "";
       if (qx.core.Environment.get("css.boxmodel") == "content") {
         width -= insetX;
@@ -254,6 +311,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Cells",
       style += "height:" + height + "px;";
 
       return style;
-    }
-  }
+    },
+  },
 });

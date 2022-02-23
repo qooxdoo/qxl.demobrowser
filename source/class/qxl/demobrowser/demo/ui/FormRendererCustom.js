@@ -20,14 +20,12 @@
  * @lint ignoreDeprecated(alert)
  * @ignore(qxl.demobrowser.demo.ui.CustomRenderer)
  */
-qx.Class.define("qxl.demobrowser.demo.ui.FormRendererCustom",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.FormRendererCustom", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create the form
       var form = new qx.ui.form.Form();
@@ -49,45 +47,56 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormRendererCustom",
 
       // add some additional widgets
       form.add(
-        new qx.ui.form.TextField(), "Email", qx.util.Validate.email(), "email",
-        null, {placeholder: "abc@def.gh"}
+        new qx.ui.form.TextField(),
+        "Email",
+        qx.util.Validate.email(),
+        "email",
+        null,
+        { placeholder: "abc@def.gh" }
       );
-      form.add(
-        new qx.ui.form.TextField(), "Phone", null, "phone", null,
-        {placeholder: "+01 234 56789"}
-      );
+
+      form.add(new qx.ui.form.TextField(), "Phone", null, "phone", null, {
+        placeholder: "+01 234 56789",
+      });
 
       // third group
       form.addGroupHeader("Personal Information");
 
       // add some additional widgets
       form.add(new qx.ui.form.TextField(), "Country");
-      form.add(
-        new qx.ui.form.TextArea(), "Bio", null, "bio", null,
-        {placeholder: "Please tell us some details about you..."}
-      );
+      form.add(new qx.ui.form.TextArea(), "Bio", null, "bio", null, {
+        placeholder: "Please tell us some details about you...",
+      });
 
       // send button with validation
       var sendButton = new qx.ui.form.Button("Send");
-      sendButton.addListener("execute", function() {
-        if (form.validate()) {
-          alert("send...");
-        }
-      }, this);
+      sendButton.addListener(
+        "execute",
+        function () {
+          if (form.validate()) {
+            alert("send...");
+          }
+        },
+        this
+      );
       form.addButton(sendButton);
 
       // reset button
       var resetButton = new qx.ui.form.Button("Reset");
-      resetButton.addListener("execute", function() {
-        form.reset();
-      }, this);
+      resetButton.addListener(
+        "execute",
+        function () {
+          form.reset();
+        },
+        this
+      );
       form.addButton(resetButton);
 
       // create the form and add it to the document
       var formView = new qxl.demobrowser.demo.ui.CustomRenderer(form);
-      this.getRoot().add(formView, {left: 10, top: 10});
-    }
-  }
+      this.getRoot().add(formView, { left: 10, top: 10 });
+    },
+  },
 });
 
 /*
@@ -98,33 +107,34 @@ qx.Class.define("qxl.demobrowser.demo.ui.FormRendererCustom",
  */
 // create the custom renderer which aligns the groups horizontally
 qx.Class.define("qxl.demobrowser.demo.ui.CustomRenderer", {
-  extend : qx.ui.form.renderer.Single,
-  members : {
-    __column : 0,
-    __maxRow : 0,
+  extend: qx.ui.form.renderer.Single,
+  members: {
+    __column: 0,
+    __maxRow: 0,
 
-    addItems : function(items, names, title, options) {
+    addItems(items, names, title, options) {
       var row = 0;
       // add the header
       if (title != null) {
-        this._add(
-          this._createHeader(title), {
-            row: row, column: this.__column, colSpan: 2
-          }
-        );
+        this._add(this._createHeader(title), {
+          row: row,
+          column: this.__column,
+          colSpan: 2,
+        });
+
         row++;
       }
 
       // add the items
       for (var i = 0; i < items.length; i++) {
         var label = this._createLabel(names[i], items[i]);
-        this._add(label, {row: row, column: this.__column});
+        this._add(label, { row: row, column: this.__column });
         var item = items[i];
         label.setBuddy(item);
         if (item instanceof qx.ui.form.RadioGroup) {
           item = this._createWidgetForRadioGroup(item);
         }
-        this._add(item, {row: row, column: this.__column + 1});
+        this._add(item, { row: row, column: this.__column + 1 });
         // use the options
         if (options[i] && options[i].placeholder) {
           item.setPlaceholder(options[i].placeholder);
@@ -134,10 +144,10 @@ qx.Class.define("qxl.demobrowser.demo.ui.CustomRenderer", {
       }
       this.__column += 2;
       // save the max row height for the buttons
-      this.__maxRow < row ? this.__maxRow = row : null;
+      this.__maxRow < row ? (this.__maxRow = row) : null;
     },
 
-    addButton : function(button) {
+    addButton(button) {
       if (this._buttonRow == null) {
         // create button row
         this._buttonRow = new qx.ui.container.Composite();
@@ -148,12 +158,14 @@ qx.Class.define("qxl.demobrowser.demo.ui.CustomRenderer", {
         this._buttonRow.setLayout(hbox);
         // add the button row
         this._add(this._buttonRow, {
-          row: this.__maxRow, column: 0, colSpan: this.__column
+          row: this.__maxRow,
+          column: 0,
+          colSpan: this.__column,
         });
       }
 
       // add the button
       this._buttonRow.add(button);
-    }
-  }
+    },
+  },
 });

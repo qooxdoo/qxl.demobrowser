@@ -27,17 +27,14 @@
  * @use(feature-checks)
  * @require(qx.lang.normalize.Object)
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Environment",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Environment", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var output = new qx.util.StringBuilder();
-
 
       // SYNC CHECKS
 
@@ -67,10 +64,14 @@ qx.Class.define("qxl.demobrowser.demo.bom.Environment",
           // be serialized due to circular references.
           value.target = value.target.toString();
         }
-        output.add("<tr><td>", key, "</td><td>",
-          qx.lang.Json.stringify(value, null, 2), "</td></tr>");
+        output.add(
+          "<tr><td>",
+          key,
+          "</td><td>",
+          qx.lang.Json.stringify(value, null, 2),
+          "</td></tr>"
+        );
       }
-
 
       // ASYNC CHECKS
 
@@ -84,21 +85,31 @@ qx.Class.define("qxl.demobrowser.demo.bom.Environment",
       if (numberOfChecks) {
         for (var i = 0; i < keys.length; i++) {
           var key = keys[i];
-          qx.core.Environment.getAsync(key, function(result) {
-            output.add("<tr><td>", this, "</td><td>", qx.lang.Json.stringify(result, null, 2), "</td></tr>");
-            numberOfChecks--;
-            if (numberOfChecks === 0) {
-              output.add("</table>");
-              var isle = document.getElementById("output");
-              isle.innerHTML = output.get();
-            }
-          }, key);
+          qx.core.Environment.getAsync(
+            key,
+            function (result) {
+              output.add(
+                "<tr><td>",
+                this,
+                "</td><td>",
+                qx.lang.Json.stringify(result, null, 2),
+                "</td></tr>"
+              );
+              numberOfChecks--;
+              if (numberOfChecks === 0) {
+                output.add("</table>");
+                var isle = document.getElementById("output");
+                isle.innerHTML = output.get();
+              }
+            },
+            key
+          );
         }
       } else {
         output.add("</table>");
         var isle = document.getElementById("output");
         isle.innerHTML = output.get();
       }
-    }
-  }
+    },
+  },
 });

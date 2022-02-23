@@ -23,75 +23,73 @@
 
 ************************************************************************ */
 
-
 /**
  * @tag noPlayground
  *
  * @asset(qx/icon/${qx.icontheme}/16/places/user-desktop.png)
  * @asset(qx/icon/${qx.icontheme}/16/status/dialog-information.png)
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
       var container = new qx.ui.container.Composite(new qx.ui.layout.Basic());
       container.setAllowGrowX(false);
       container.setAllowStretchX(false);
       scroller.add(container);
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       var tree = new qx.ui.tree.VirtualTree(null, "label", "children").set({
         width: 600,
-        height: 500
+        height: 500,
       });
 
-      container.add(tree, {left: 20, top: 48});
-
+      container.add(tree, { left: 20, top: 48 });
 
       // build the data
       var data = {
         label: "Root",
-        children : [
+        children: [
           {
             label: "Desktop",
             children: [
-              {label: "Files"},
+              { label: "Files" },
               {
                 label: "Workspace",
-                children : [
-                  {label: "Windows (C:)"},
-                  {label: "Documents (D:)"}
-                ]
+                children: [
+                  { label: "Windows (C:)" },
+                  { label: "Documents (D:)" },
+                ],
               },
-              {label: "Network"},
-              {label: "Trash"}
-            ]
+
+              { label: "Network" },
+              { label: "Trash" },
+            ],
           },
+
           {
             label: "Inbox",
             children: [
-              {label: "Presets"},
-              {label: "Sent"},
-              {label: "Trash"},
-              {label: "Data"},
-              {label: "Edit"},
-              {label: "Lists"},
-              {label: "Personal"},
-              {label: "Big", children: []},
-              {label: "Spam"}
-            ]
-          }
-        ]
+              { label: "Presets" },
+              { label: "Sent" },
+              { label: "Trash" },
+              { label: "Data" },
+              { label: "Edit" },
+              { label: "Lists" },
+              { label: "Personal" },
+              { label: "Big", children: [] },
+              { label: "Spam" },
+            ],
+          },
+        ],
       };
 
       for (var i = 0; i < 50; i++) {
-        data.children[1].children[7].children[i] = {label: "Item " + i};
+        data.children[1].children[7].children[i] = { label: "Item " + i };
       }
 
       this.extendData(data);
@@ -105,8 +103,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
       tree.setDelegate(this);
     },
 
-
-    extendData : function(data) {
+    extendData(data) {
       data.date = "May " + Math.round(Math.random() * 30 + 1) + " 2010";
       data.size = Math.round(Math.random() * 100) + "kb";
       data.light = Math.floor(Math.random() * 4) == 0;
@@ -119,11 +116,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
       }
     },
 
-
-    configureTriState : function(item) {
+    configureTriState(item) {
       // Until [BUG #4290] in not fixed we need do add a getModel method for
       // the converter.
-      item.getModel = function() {
+      item.getModel = function () {
         return this;
       };
 
@@ -135,59 +131,63 @@ qx.Class.define("qxl.demobrowser.demo.virtual.Tree_Columns",
 
           // bind parent with child
           item.bind("checked", child, "checked", {
-            converter: function(value, child) {
+            converter(value, child) {
               // when parent is set to null than the child should keep it's value
               if (value === null) {
                 return child.getChecked();
               }
               return value;
-            }
+            },
           });
 
           // bind child with parent
           child.bind("checked", item, "checked", {
-            converter: function(value, parent) {
+            converter(value, parent) {
               var children = parent.getChildren().toArray();
 
-              var isAllChecked = children.every(function(item) {
+              var isAllChecked = children.every(function (item) {
                 return item.getChecked();
               });
 
-              var isOneChecked = children.some(function(item) {
+              var isOneChecked = children.some(function (item) {
                 return item.getChecked() || item.getChecked() == null;
               });
 
               // Set triState (on parent node) when one child is checked
               if (isOneChecked) {
                 return isAllChecked ? true : null;
-              } 
-                return false;
-            }
+              }
+              return false;
+            },
           });
         }
       }
     },
 
-
     // delegate implementation
-    bindItem : function(controller, item, id) {
+    bindItem(controller, item, id) {
       controller.bindDefaultProperties(item, id);
       controller.bindProperty("size", "size", null, item, id);
       controller.bindProperty("checked", "checked", null, item, id);
       controller.bindPropertyReverse("checked", "checked", null, item, id);
       controller.bindProperty("date", "date", null, item, id);
       controller.bindProperty("mode", "mode", null, item, id);
-      controller.bindProperty("light", "leadIcon", {
-        converter : function(data) {
-          return data ? "icon/16/status/dialog-information.png" : "";
-        }
-      }, item, id);
+      controller.bindProperty(
+        "light",
+        "leadIcon",
+        {
+          converter(data) {
+            return data ? "icon/16/status/dialog-information.png" : "";
+          },
+        },
+        item,
+        id
+      );
     },
 
-
     // delegate implementation
-    createItem : function() {
+    createItem() {
       return new qxl.demobrowser.demo.virtual.tree.TreeItem();
-    }
-  }
+    },
+  },
 });

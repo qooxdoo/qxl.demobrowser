@@ -20,62 +20,60 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Canvas_Fixed",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Canvas_Fixed", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var border = new qx.ui.decoration.Decorator().set({
         width: 3,
         style: "solid",
-        color: "black"
+        color: "black",
       });
 
       var w1 = new qx.ui.core.Widget().set({
         backgroundColor: "red",
-        decorator: border
+        decorator: border,
       });
 
       var w2 = new qx.ui.core.Widget().set({
         backgroundColor: "blue",
-        decorator: border
+        decorator: border,
       });
 
       var w3 = new qx.ui.core.Widget().set({
         backgroundColor: "green",
-        decorator: border
+        decorator: border,
       });
 
       var w4 = new qx.ui.core.Widget().set({
         backgroundColor: "yellow",
-        decorator: border
+        decorator: border,
       });
 
       var w5 = new qx.ui.core.Widget().set({
         backgroundColor: "orange",
-        decorator: border
+        decorator: border,
       });
 
       var w6 = new qx.ui.core.Widget().set({
         backgroundColor: "teal",
-        decorator: border
+        decorator: border,
       });
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
       container.setPadding(10);
 
-      container.add(w1, {left:10, top:10, right:10, bottom:10});
-      container.add(w2, {left:30, top:30, right:30});
-      container.add(w3, {left:50, top:50, bottom:50});
-      container.add(w4, {left:70, top:70});
-      container.add(w5, {top:50, right:50});
-      container.add(w6, {right:50, bottom:50});
+      container.add(w1, { left: 10, top: 10, right: 10, bottom: 10 });
+      container.add(w2, { left: 30, top: 30, right: 30 });
+      container.add(w3, { left: 50, top: 50, bottom: 50 });
+      container.add(w4, { left: 70, top: 70 });
+      container.add(w5, { top: 50, right: 50 });
+      container.add(w6, { right: 50, bottom: 50 });
 
-      this.getRoot().add(container, {edge:0});
-    }
-  }
+      this.getRoot().add(container, { edge: 0 });
+    },
+  },
 });

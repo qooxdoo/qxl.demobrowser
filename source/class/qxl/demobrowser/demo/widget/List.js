@@ -29,54 +29,55 @@
  * @asset(qx/icon/${qx.icontheme}/48/devices/*)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.List",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.List", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // scroll container
       var scroller = new qx.ui.container.Scroll();
       var container = new qx.ui.container.Composite(new qx.ui.layout.Basic());
       container.setAllowStretchX(false);
       scroller.add(container);
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       ////////////////////////////////////////////////////////////////
       // Configurable list
       var configureLabel = new qx.ui.basic.Label("Configurable");
       configureLabel.setFont("bold");
-      container.add(configureLabel, {left: 20, top: 20});
+      container.add(configureLabel, { left: 20, top: 20 });
 
       var configList = new qx.ui.form.List();
       configList.setScrollbarX("on");
 
-      configList.set({ height: 280, width: 150, selectionMode : "multi" });
+      configList.set({ height: 280, width: 150, selectionMode: "multi" });
 
       var item;
-      for (var i=1; i<=25; i++) {
-        item = new qx.ui.form.ListItem("Item No " + i, "icon/" + ((i % 4) ? "16" : "48") + "/places/folder.png");
+      for (var i = 1; i <= 25; i++) {
+        item = new qx.ui.form.ListItem(
+          "Item No " + i,
+          "icon/" + (i % 4 ? "16" : "48") + "/places/folder.png"
+        );
         configList.add(item);
 
-        !(i % 9) && (item.setEnabled(false));
+        !(i % 9) && item.setEnabled(false);
 
         // Pre-Select "Item No 20"
-        if (i==20) {
+        if (i == 20) {
           configList.setSelection([item]);
         }
       }
 
-      configList.addListener("changeSelection", function(e) {
+      configList.addListener("changeSelection", function (e) {
         var selection = e.getData();
         if (selection[0]) {
           this.debug("Value: " + selection[0].getLabel());
         }
       });
 
-      container.add(configList, {left: 20, top: 40});
+      container.add(configList, { left: 20, top: 40 });
 
       // Configure Elements
       var mode1 = new qx.ui.form.RadioButton("Single Selection");
@@ -91,10 +92,10 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
       mode2.setValue(true);
 
-      container.add(mode1, {left: 180, top: 40});
-      container.add(mode2, {left: 180, top: 60});
-      container.add(mode3, {left: 180, top: 80});
-      container.add(mode4, {left: 180, top: 100});
+      container.add(mode1, { left: 180, top: 40 });
+      container.add(mode2, { left: 180, top: 60 });
+      container.add(mode3, { left: 180, top: 80 });
+      container.add(mode4, { left: 180, top: 100 });
 
       var rbm1 = new qx.ui.form.RadioGroup(mode1, mode2, mode3, mode4);
 
@@ -108,47 +109,55 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
       show3.setValue(true);
 
-      container.add(show1, {left: 180, top: 140});
-      container.add(show2, {left: 180, top: 160});
-      container.add(show3, {left: 180, top: 180});
+      container.add(show1, { left: 180, top: 140 });
+      container.add(show2, { left: 180, top: 160 });
+      container.add(show3, { left: 180, top: 180 });
 
       var rbm2 = new qx.ui.form.RadioGroup(show1, show2, show3);
 
-      rbm2.addListener("changeSelection", function(e) {
+      rbm2.addListener("changeSelection", function (e) {
         for (var i = 0; i < configList.getChildren().length; i++) {
-          configList.getChildren()[i].setShow(e.getData()[0].getUserData("value"));
+          configList
+            .getChildren()
+            [i].setShow(e.getData()[0].getUserData("value"));
         }
       });
 
       var dragCheck = new qx.ui.form.CheckBox("Enable drag selection");
-      var quickCheck = new qx.ui.form.CheckBox("Enable quick selection").set({enabled : false});
+      var quickCheck = new qx.ui.form.CheckBox("Enable quick selection").set({
+        enabled: false,
+      });
 
-      container.add(dragCheck, {left: 180, top: 220});
-      container.add(quickCheck, {left: 180, top: 240});
+      container.add(dragCheck, { left: 180, top: 220 });
+      container.add(quickCheck, { left: 180, top: 240 });
 
-      dragCheck.addListener("changeValue", function(e) {
+      dragCheck.addListener("changeValue", function (e) {
         if (e.getData()) {
           var mode = configList.getSelectionMode();
           if (mode == "single" || mode == "one") {
-            this.debug("Drag selection is only available for the modes multi or additive");
+            this.debug(
+              "Drag selection is only available for the modes multi or additive"
+            );
           }
         }
 
         configList.setDragSelection(e.getData());
       });
 
-      quickCheck.addListener("changeValue", function(e) {
+      quickCheck.addListener("changeValue", function (e) {
         if (e.getData()) {
           var mode = configList.getSelectionMode();
           if (mode == "multi" || mode == "additive") {
-            this.debug("Quick selection is only available for the modes multi or additive");
+            this.debug(
+              "Quick selection is only available for the modes multi or additive"
+            );
           }
         }
 
         configList.setQuickSelection(e.getData());
       });
 
-      rbm1.addListener("changeSelection", function(e) {
+      rbm1.addListener("changeSelection", function (e) {
         var value = e.getData()[0].getUserData("value");
         configList.setSelectionMode(value);
 
@@ -163,86 +172,145 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
 
       ////////////////////////////////////////////////////////////////
 
-
-
       ////////////////////////////////////////////////////////////////
       // Selection mode "one" demo list
       var oneLabel = new qx.ui.basic.Label("One as selection mode");
       oneLabel.setFont("bold");
-      container.add(oneLabel, {left: 330, top: 20});
+      container.add(oneLabel, { left: 330, top: 20 });
 
       var oneList = new qx.ui.form.List();
-      oneList.set({ height: 280, width: 150, selectionMode : "one" });
+      oneList.set({ height: 280, width: 150, selectionMode: "one" });
       var item;
-      for (var i=1; i<=25; i++) {
-        item = new qx.ui.form.ListItem("Item No " + i, "icon/16/places/folder.png");
+      for (var i = 1; i <= 25; i++) {
+        item = new qx.ui.form.ListItem(
+          "Item No " + i,
+          "icon/16/places/folder.png"
+        );
         oneList.add(item);
 
         // Pre-Select "Item No 16"
-        if (i==16) {
+        if (i == 16) {
           oneList.setSelection([item]);
         }
       }
 
-      container.add(oneList, {left: 330, top: 40});
+      container.add(oneList, { left: 330, top: 40 });
       ////////////////////////////////////////////////////////////////
-
-
 
       ////////////////////////////////////////////////////////////////
 
       // additive selecion list
       var configureLabel = new qx.ui.basic.Label("Additive selection");
       configureLabel.setFont("bold");
-      container.add(configureLabel, {left: 520, top: 20});
+      container.add(configureLabel, { left: 520, top: 20 });
 
       var additiveList = new qx.ui.form.List();
       var item3;
 
-      additiveList.set({ width: 150, selectionMode : "additive" });
+      additiveList.set({ width: 150, selectionMode: "additive" });
 
-      var l3l = [ "Leon", "Lukas", "Luca", "Finn", "Tim", "Felix", "Jonas", "Luis",
-      "Maximilian", "Julian", "Max", "Paul", "Niclas", "Jan", "Ben", "Elias", "Jannick",
-      "Philipp", "Noah", "Tom", "Moritz", "Nico", "David", "Nils", "Simon", "Fabian",
-      "Erik", "Justin", "Alexander", "Jakob", "Florian", "Nick", "Linus", "Mika", "Jason",
-      "Daniel", "Lennard", "Marvin", "Jannis", "Tobias", "Dominic", "Marlon", "Marc",
-      "Johannes", "Jonathan", "Julius", "Colin", "Joel", "Kevin", "Vincent", "Robin"];
+      var l3l = [
+        "Leon",
+        "Lukas",
+        "Luca",
+        "Finn",
+        "Tim",
+        "Felix",
+        "Jonas",
+        "Luis",
+        "Maximilian",
+        "Julian",
+        "Max",
+        "Paul",
+        "Niclas",
+        "Jan",
+        "Ben",
+        "Elias",
+        "Jannick",
+        "Philipp",
+        "Noah",
+        "Tom",
+        "Moritz",
+        "Nico",
+        "David",
+        "Nils",
+        "Simon",
+        "Fabian",
+        "Erik",
+        "Justin",
+        "Alexander",
+        "Jakob",
+        "Florian",
+        "Nick",
+        "Linus",
+        "Mika",
+        "Jason",
+        "Daniel",
+        "Lennard",
+        "Marvin",
+        "Jannis",
+        "Tobias",
+        "Dominic",
+        "Marlon",
+        "Marc",
+        "Johannes",
+        "Jonathan",
+        "Julius",
+        "Colin",
+        "Joel",
+        "Kevin",
+        "Vincent",
+        "Robin",
+      ];
 
-      for (var i=0; i<l3l.length; i++) {
+      for (var i = 0; i < l3l.length; i++) {
         item3 = new qx.ui.form.ListItem(l3l[i]);
         additiveList.add(item3);
 
-        if (i==10||i==12||i==16) {
+        if (i == 10 || i == 12 || i == 16) {
           additiveList.addToSelection(item3);
         }
       }
 
-      container.add(additiveList, {left: 520, top: 40});
+      container.add(additiveList, { left: 520, top: 40 });
       ////////////////////////////////////////////////////////////////
-
-
-
 
       ////////////////////////////////////////////////////////////////
       // Horizontal list
       var configureLabel = new qx.ui.basic.Label("Horizontal, Icons only");
       configureLabel.setFont("bold");
-      container.add(configureLabel, {left: 20, top: 350});
+      container.add(configureLabel, { left: 20, top: 350 });
 
       var l4 = new qx.ui.form.List(true);
       var item4;
 
-      l4.set({ width: 550, selectionMode : "multi", height : null });
+      l4.set({ width: 550, selectionMode: "multi", height: null });
 
-      var l4l = [ "audio-card.png", "audio-input-microphone.png", "battery.png",
-      "camera-photo.png", "camera-web.png", "computer.png", "display.png",
-      "drive-harddisk.png", "drive-optical.png", "input-keyboard.png",
-      "input-mouse.png", "media-flash.png", "media-optical.png", "multimedia-player.png",
-      "network-wired.png", "network-wireless.png", "pda.png", "phone.png", "printer.png" ];
+      var l4l = [
+        "audio-card.png",
+        "audio-input-microphone.png",
+        "battery.png",
+        "camera-photo.png",
+        "camera-web.png",
+        "computer.png",
+        "display.png",
+        "drive-harddisk.png",
+        "drive-optical.png",
+        "input-keyboard.png",
+        "input-mouse.png",
+        "media-flash.png",
+        "media-optical.png",
+        "multimedia-player.png",
+        "network-wired.png",
+        "network-wireless.png",
+        "pda.png",
+        "phone.png",
+        "printer.png",
+      ];
 
       var l4pre = "icon/48/devices/";
 
-      for (var i=0; i<l4l.length; i++) {
+      for (var i = 0; i < l4l.length; i++) {
         item4 = new qx.ui.form.ListItem(null, l4pre + l4l[i]);
         l4.add(item4);
 
@@ -251,8 +319,8 @@ qx.Class.define("qxl.demobrowser.demo.widget.List",
         }
       }
 
-      container.add(l4, {left: 20, top: 370});
+      container.add(l4, { left: 20, top: 370 });
       ////////////////////////////////////////////////////////////////
-    }
-  }
+    },
+  },
 });

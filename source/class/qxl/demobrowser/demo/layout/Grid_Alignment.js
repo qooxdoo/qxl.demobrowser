@@ -21,49 +21,49 @@
  * This example demonstrates how alignment is supported in the grid.
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(20)).set({
-        padding: 20
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.Grid(20)
+      ).set({
+        padding: 20,
       });
+
       scroll.add(container);
 
-      container.add(this.getCellAlignGrid(), {row: 0, column: 0});
-      container.add(this.getRowColumnAlignGrid(), {row: 0, column: 1});
-      container.add(this.getColumnAlignGrid(), {row: 0, column: 2});
-      container.add(this.getRowAlignGrid(), {row: 1, column: 0});
+      container.add(this.getCellAlignGrid(), { row: 0, column: 0 });
+      container.add(this.getRowColumnAlignGrid(), { row: 0, column: 1 });
+      container.add(this.getColumnAlignGrid(), { row: 0, column: 2 });
+      container.add(this.getRowAlignGrid(), { row: 1, column: 0 });
     },
 
-
-    getNewWidget : function() {
+    getNewWidget() {
       var widget = new qx.ui.core.Widget().set({
         decorator: "main",
         backgroundColor: "green",
         allowGrowX: false,
         allowGrowY: false,
-        height: Math.round((Math.random()*30)+30),
-        width: Math.round((Math.random()*30)+30)
+        height: Math.round(Math.random() * 30 + 30),
+        width: Math.round(Math.random() * 30 + 30),
       });
+
       return widget;
     },
 
-
-    getColumnAlignGrid : function() {
+    getColumnAlignGrid() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
         allowGrowX: false,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       var layout = new qx.ui.layout.Grid();
@@ -73,22 +73,21 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
       layout.setColumnAlign(2, "right", "bottom");
       box.setLayout(layout);
 
-      for (var x=0; x<3; x++) {
-        for (var y=0; y<6; y++) {
-          box.add(this.getNewWidget(), {row: y, column: x});
+      for (var x = 0; x < 3; x++) {
+        for (var y = 0; y < 6; y++) {
+          box.add(this.getNewWidget(), { row: y, column: x });
         }
       }
 
       return box;
     },
 
-
-    getRowAlignGrid : function() {
+    getRowAlignGrid() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
         allowGrowX: false,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       var layout = new qx.ui.layout.Grid();
@@ -98,63 +97,62 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
       layout.setRowAlign(2, "right", "bottom");
       box.setLayout(layout);
 
-      for (var x=0; x<6; x++) {
-        for (var y=0; y<3; y++) {
-          box.add(this.getNewWidget(), {row: y, column: x});
+      for (var x = 0; x < 6; x++) {
+        for (var y = 0; y < 3; y++) {
+          box.add(this.getNewWidget(), { row: y, column: x });
         }
       }
 
       return box;
     },
 
-
-    getCellAlignGrid : function() {
+    getCellAlignGrid() {
       var box = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
         allowGrowX: false,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       var layout = new qx.ui.layout.Grid();
       layout.setSpacing(3);
       box.setLayout(layout);
 
-      for (var x=0; x<5; x++) {
+      for (var x = 0; x < 5; x++) {
         layout.setColumnAlign(x, "center", "middle");
-        for (var y=0; y<5; y++) {
-          box.add(this.getNewWidget(), {row: y, column: x});
+        for (var y = 0; y < 5; y++) {
+          box.add(this.getNewWidget(), { row: y, column: x });
         }
       }
 
       var widget = layout.getCellWidget(0, 0);
       widget.set({
         alignX: "left",
-        alignY: "top"
+        alignY: "top",
       });
+
       widget.set({
-        backgroundColor : "orange",
+        backgroundColor: "orange",
         width: 20,
-        height: 20
+        height: 20,
       });
 
       var widget = layout.getCellWidget(4, 4);
       widget.set({
         alignX: "right",
-        alignY: "bottom"
+        alignY: "bottom",
       });
 
       widget.set({
-        backgroundColor : "orange",
+        backgroundColor: "orange",
         width: 20,
-        height: 20
+        height: 20,
       });
 
       return box;
     },
 
-
-    getRowColumnAlignGrid : function() {
+    getRowColumnAlignGrid() {
       // Ambiguous alignment of the center widget
       // hAlign is taken from the row
       // vAlign is taken from the column
@@ -163,35 +161,35 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Alignment",
         decorator: "main",
         backgroundColor: "yellow",
         allowGrowX: false,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
       var layout = new qx.ui.layout.Grid();
       layout.setSpacing(3);
       box.setLayout(layout);
 
-      for (var x=0; x<5; x++) {
-        for (var y=0; y<5; y++) {
-          box.add(this.getNewWidget(), {row: y, column: x});
+      for (var x = 0; x < 5; x++) {
+        for (var y = 0; y < 5; y++) {
+          box.add(this.getNewWidget(), { row: y, column: x });
         }
       }
 
       layout.setColumnAlign(2, "left", "top");
       layout.setRowAlign(2, "right", "bottom");
 
-      for (var i=0; i<5; i++) {
+      for (var i = 0; i < 5; i++) {
         layout.getCellWidget(2, i).setBackgroundColor("gray");
         layout.getCellWidget(i, 2).setBackgroundColor("gray");
       }
 
       var widget = layout.getCellWidget(2, 2);
       widget.set({
-        backgroundColor : "orange",
+        backgroundColor: "orange",
         width: 20,
-        height: 20
+        height: 20,
       });
 
       return box;
-    }
-  }
+    },
+  },
 });

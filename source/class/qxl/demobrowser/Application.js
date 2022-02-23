@@ -29,22 +29,24 @@
  * @asset(qxl/demobrowser/*)
  *
  * @ignore (qx.$$appRoot)
- * 
+ *
  */
-qx.Class.define("qxl.demobrowser.Application",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.Application", {
+  extend: qx.application.Standalone,
 
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
 
     // Include CSS files
-    var uri = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/css/style.css");
+    var uri = qx.util.ResourceManager.getInstance().toUri(
+      "qxl/demobrowser/css/style.css"
+    );
     qx.bom.Stylesheet.includeFile(uri);
-    uri = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/css/sourceview.css");
+    uri = qx.util.ResourceManager.getInstance().toUri(
+      "qxl/demobrowser/css/sourceview.css"
+    );
     qx.bom.Stylesheet.includeFile(uri);
   },
-
 
   /*
   *****************************************************************************
@@ -52,11 +54,10 @@ qx.Class.define("qxl.demobrowser.Application",
   *****************************************************************************
   */
 
-  members :
-  {
+  members: {
     // overridden
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       // Enable logging in source (or debug build)
       if (qx.core.Environment.get("qx.debug")) {
@@ -66,16 +67,15 @@ qx.Class.define("qxl.demobrowser.Application",
 
       // Initialize the viewer
       this.viewer = new qxl.demobrowser.DemoBrowser();
-      this.getRoot().add(this.viewer, {edge:0});
+      this.getRoot().add(this.viewer, { edge: 0 });
     },
 
     // overridden
-    finalize : function() {
-      this.base(arguments);
+    finalize() {
+      super.finalize();
       this.viewer.dataLoader(qx.$$appRoot + "script/demodata.json");
-    }
+    },
   },
-
 
   /*
   *****************************************************************************
@@ -83,7 +83,7 @@ qx.Class.define("qxl.demobrowser.Application",
   *****************************************************************************
   */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("viewer");
-  }
+  },
 });

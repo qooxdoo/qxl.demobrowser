@@ -28,25 +28,47 @@
  *
  * @use(qx.event.handler.Input)
  */
-qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.PointerEvent", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this._initLogger(
-        ["Target", "Event", "button", "pageX", "pageY", "clientX", "clientY", "screenX", "screenY", "relatedTarget"],
+        [
+          "Target",
+          "Event",
+          "button",
+          "pageX",
+          "pageY",
+          "clientX",
+          "clientY",
+          "screenX",
+          "screenY",
+          "relatedTarget",
+        ],
         document.getElementById("logger"),
         50
       );
 
       var pointerDiv = document.getElementById("pointer");
 
-      var events = ["pointerdown", "pointerup", "tap", "dbltap", "longtap", "pointermove", "pointerover", "pointerout", "swipe", "track", "rotate", "pinch"];
-      for (var i=0; i<events.length; i++) {
+      var events = [
+        "pointerdown",
+        "pointerup",
+        "tap",
+        "dbltap",
+        "longtap",
+        "pointermove",
+        "pointerover",
+        "pointerout",
+        "swipe",
+        "track",
+        "rotate",
+        "pinch",
+      ];
+      for (var i = 0; i < events.length; i++) {
         var elem = document.getElementById("check_" + events[i]);
         if (elem.checked) {
           qx.bom.Element.addListener(
@@ -61,28 +83,31 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
 
       var captureDiv = document.getElementById("capture");
       captureDiv.checked = false;
-      qx.bom.Element.addListener(captureDiv, "change", function(e) {
-        var checked = e.getTarget().checked;
-        if (checked) {
-          qx.bom.Element.capture(pointerDiv);
-        } else {
-          qx.bom.Element.releaseCapture(pointerDiv);
-        }
-      }, this);
-
+      qx.bom.Element.addListener(
+        captureDiv,
+        "change",
+        function (e) {
+          var checked = e.getTarget().checked;
+          if (checked) {
+            qx.bom.Element.capture(pointerDiv);
+          } else {
+            qx.bom.Element.releaseCapture(pointerDiv);
+          }
+        },
+        this
+      );
 
       qx.bom.Element.addListener(
         pointerDiv,
         "losecapture",
-        function(e) {
- captureDiv.checked = false; 
-},
+        function (e) {
+          captureDiv.checked = false;
+        },
         this
       );
     },
 
-
-    __changeCheckbox : function(e) {
+    __changeCheckbox(e) {
       var type = e.getTarget().id.split("_")[1];
       var checked = e.getTarget().checked;
       var pointerDiv = document.getElementById("pointer");
@@ -104,8 +129,7 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
       }
     },
 
-
-    logPointerEvent: function(pointerEvent) {
+    logPointerEvent(pointerEvent) {
       pointerEvent.preventDefault();
 
       this._log([
@@ -118,9 +142,10 @@ qx.Class.define("qxl.demobrowser.demo.event.PointerEvent",
         pointerEvent.getScreenTop(),
         pointerEvent.getViewportLeft(),
         pointerEvent.getViewportTop(),
-        pointerEvent.getRelatedTarget() ? pointerEvent.getRelatedTarget().id : ""
+        pointerEvent.getRelatedTarget()
+          ? pointerEvent.getRelatedTarget().id
+          : "",
       ]);
-    }
-
-  }
+    },
+  },
 });

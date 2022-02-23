@@ -23,14 +23,12 @@
  * @tag noPlayground
  * @tag showcase
  */
-qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.KeyEvent", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this._initLogger(
         ["Event", "Key identifier", "Char code", "Shift", "Ctrl", "Alt"],
@@ -39,7 +37,7 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
       );
 
       var events = ["keydown", "keypress", "keyup", "keyinput"];
-      for (var i=0; i<events.length; i++) {
+      for (var i = 0; i < events.length; i++) {
         qx.bom.Element.addListener(
           document.documentElement,
           events[i],
@@ -49,8 +47,7 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
       }
     },
 
-
-    logKeyEvent: function(keyEvent) {
+    logKeyEvent(keyEvent) {
       var type = keyEvent.getType();
       this._log([
         type,
@@ -58,9 +55,10 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent",
         type == "keyinput" ? keyEvent.getCharCode() : "",
         keyEvent.isShiftPressed(),
         keyEvent.isCtrlPressed(),
-        keyEvent.isAltPressed()
+        keyEvent.isAltPressed(),
       ]);
+
       keyEvent.preventDefault();
-    }
-  }
+    },
+  },
 });

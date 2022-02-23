@@ -32,40 +32,37 @@
  * @asset(qx/icon/${qx.icontheme}/22/actions/edit-undo.png)
  * @asset(qx/icon/${qx.icontheme}/22/status/dialog-information.png)
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    main : function() {
+  members: {
+    main() {
       // Add the context menu mixin to the Table class
       qx.Class.include(qx.ui.table.Table, qx.ui.table.MTableContextMenu);
 
-      this.base(arguments);
+      super.main();
 
       // Allow showing the native contextmenu
       this.getRoot().setNativeContextMenu(true);
     },
 
-    getCaption : function() {
+    getCaption() {
       return "Table";
     },
 
-
-    createTable : function() {
+    createTable() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
       // table model
-      var tableModel = this._tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns(
-        [
-          "Default ctx menu #1",
-          "Default ctx menu #2",
-          "Disabled ctx menu",
-          "Context-menu selectable"
-        ]);
+      var tableModel = (this._tableModel = new qx.ui.table.model.Simple());
+      tableModel.setColumns([
+        "Default ctx menu #1",
+        "Default ctx menu #2",
+        "Disabled ctx menu",
+        "Context-menu selectable",
+      ]);
+
       tableModel.setData(rowData);
 
       // table
@@ -74,9 +71,8 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
       table.set({
         width: 600,
         height: 400,
-        decorator : null
+        decorator: null,
       });
-
 
       var tcm = table.getTableColumnModel();
 
@@ -92,7 +88,6 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
 
       return table;
     },
-
 
     /**
      * Context menu handler for a right-click in the boolean column.
@@ -112,28 +107,21 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
      * @param contextMenu {qx.ui.menu.Menu}
      *   Menu in which buttons can be added to implement this context menu.
      */
-    _contextMenuHandlerBoolean : function(col,
-                                          row,
-                                          table,
-                                          dataModel,
-                                          contextMenu) {
+    _contextMenuHandlerBoolean(col, row, table, dataModel, contextMenu) {
       // Add our two choices
       var menuEntry;
       for (var i = 0; i <= 1; i++) {
         menuEntry = new qx.ui.menu.Button(i ? "On" : "Off");
         menuEntry.setUserData("value", !!i);
-        menuEntry.addListener(
-          "execute",
-          function(e) {
-            // Toggle the value
-            dataModel.setValue(col, row, this.getUserData("value"));
-          });
+        menuEntry.addListener("execute", function (e) {
+          // Toggle the value
+          dataModel.setValue(col, row, this.getUserData("value"));
+        });
         contextMenu.add(menuEntry);
       }
 
       return true;
     },
-
 
     /**
      * Context menu handler to ignore right-click in a column.
@@ -153,59 +141,83 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
      * @param contextMenu {qx.ui.menu.Menu}
      *   Menu in which buttons can be added to implement this context menu.
      */
-    _contextMenuHandlerNull : function(col,
-                                       row,
-                                       table,
-                                       dataModel,
-                                       contextMenu) {
+    _contextMenuHandlerNull(col, row, table, dataModel, contextMenu) {
       // Provide an empty context menu
       return true;
     },
 
-
-    createControls : function() {
+    createControls() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button; var part; var checkBox;
+      var button;
+      var part;
+      var checkBox;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
 
-      button = new qx.ui.toolbar.Button("Change row with ID 10", "icon/22/actions/edit-undo.png");
-      button.addListener("execute", function(evt) {
-        var rowData = this.createRandomRows(1);
-        for (var i = 1; i < this._tableModel.getColumnCount(); i++) {
-          this._tableModel.setValue(i, 10, rowData[0][i]);
-        }
-        this.info("Row 10 changed");
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Change row with ID 10",
+        "icon/22/actions/edit-undo.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var rowData = this.createRandomRows(1);
+          for (var i = 1; i < this._tableModel.getColumnCount(); i++) {
+            this._tableModel.setValue(i, 10, rowData[0][i]);
+          }
+          this.info("Row 10 changed");
+        },
+        this
+      );
       part.add(button);
 
-      button = new qx.ui.toolbar.Button("Add 10 rows", "icon/22/actions/list-add.png");
-      button.addListener("execute", function(evt) {
-        var rowData = this.createRandomRows(10);
-        this._tableModel.addRows(rowData);
-        this.info("10 rows added");
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Add 10 rows",
+        "icon/22/actions/list-add.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var rowData = this.createRandomRows(10);
+          this._tableModel.addRows(rowData);
+          this.info("10 rows added");
+        },
+        this
+      );
       part.add(button);
 
-      button = new qx.ui.toolbar.Button("Remove 5 rows", "icon/22/actions/list-remove.png");
-      button.addListener("execute", function(evt) {
-        var rowCount = this._tableModel.getRowCount();
-        this._tableModel.removeRows(rowCount-5, 5);
-        this.info("5 rows removed");
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Remove 5 rows",
+        "icon/22/actions/list-remove.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var rowCount = this._tableModel.getRowCount();
+          this._tableModel.removeRows(rowCount - 5, 5);
+          this.info("5 rows removed");
+        },
+        this
+      );
       part.add(button);
 
-      button = new qx.ui.toolbar.Button("Show selection", "icon/22/status/dialog-information.png");
-      button.addListener("execute", function(evt) {
-        var selection = [];
-        table.getSelectionModel().iterateSelection(function(ind) {
-          selection.push(ind + "");
-        });
-        this.showDialog("Selected rows:<br>" + selection.join(", "));
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Show selection",
+        "icon/22/status/dialog-information.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var selection = [];
+          table.getSelectionModel().iterateSelection(function (ind) {
+            selection.push(ind + "");
+          });
+          this.showDialog("Selected rows:<br>" + selection.join(", "));
+        },
+        this
+      );
       part.add(button);
-
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
@@ -217,58 +229,69 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
         value: table.getKeepFirstVisibleRowComplete(),
         toolTip: new qx.ui.tooltip.ToolTip(
           "Whether the the first visible row should " +
-          "be rendered completely when scrolling."
-        )
+            "be rendered completely when scrolling."
+        ),
       });
-      checkBox.addListener("changeValue", function(evt) {
-        table.setKeepFirstVisibleRowComplete(this.getValue());
-      },
-      checkBox);
+
+      checkBox.addListener(
+        "changeValue",
+        function (evt) {
+          table.setKeepFirstVisibleRowComplete(this.getValue());
+        },
+        checkBox
+      );
       part.add(checkBox);
 
       checkBox = new qx.ui.toolbar.CheckBox("Change ID sort method");
       checkBox.set({
         value: table.getKeepFirstVisibleRowComplete(),
-        toolTip: new qx.ui.tooltip.ToolTip("Demonstrate use of alternate sorting algorithm.")
+        toolTip: new qx.ui.tooltip.ToolTip(
+          "Demonstrate use of alternate sorting algorithm."
+        ),
       });
-      checkBox.addListener("changeValue", function(evt) {
-        if (evt.getData()) {
-          var ascending = function(row1, row2, columnIndex) {
-            var obj1 = row1[columnIndex];
-            var obj2 = row2[columnIndex];
-            if (obj1 % 2 == 1 && obj2 % 2 == 0) {
-              return 1;
-            }
-            if (obj2 % 2 == 1 && obj1 % 2 == 0) {
-              return -1;
-            }
-            return (obj1 > obj2) ? 1 : ((obj1 == obj2) ? 0 : -1);
-          };
 
-          var descending = function(row1, row2, columnIndex) {
-            var obj1 = row1[columnIndex];
-            var obj2 = row2[columnIndex];
-            if (obj1 % 2 == 1 && obj2 % 2 == 0) {
-              return -1;
-            }
-            if (obj2 % 2 == 1 && obj1 % 2 == 0) {
-              return 1;
-            }
-            return (obj1 < obj2) ? 1 : ((obj1 == obj2) ? 0 : -1);
-          };
+      checkBox.addListener(
+        "changeValue",
+        function (evt) {
+          if (evt.getData()) {
+            var ascending = function (row1, row2, columnIndex) {
+              var obj1 = row1[columnIndex];
+              var obj2 = row2[columnIndex];
+              if (obj1 % 2 == 1 && obj2 % 2 == 0) {
+                return 1;
+              }
+              if (obj2 % 2 == 1 && obj1 % 2 == 0) {
+                return -1;
+              }
+              return obj1 > obj2 ? 1 : obj1 == obj2 ? 0 : -1;
+            };
 
-          table.getTableModel().setSortMethods(0, {
-            ascending  : ascending,
-            descending : descending
-          });
-        } else {
-          table.getTableModel().setSortMethods(0, null);
-        }
-      }, checkBox);
+            var descending = function (row1, row2, columnIndex) {
+              var obj1 = row1[columnIndex];
+              var obj2 = row2[columnIndex];
+              if (obj1 % 2 == 1 && obj2 % 2 == 0) {
+                return -1;
+              }
+              if (obj2 % 2 == 1 && obj1 % 2 == 0) {
+                return 1;
+              }
+              return obj1 < obj2 ? 1 : obj1 == obj2 ? 0 : -1;
+            };
+
+            table.getTableModel().setSortMethods(0, {
+              ascending: ascending,
+              descending: descending,
+            });
+          } else {
+            table.getTableModel().setSortMethods(0, null);
+          }
+        },
+        checkBox
+      );
       part.add(checkBox);
 
       return bar;
-    }
+    },
   },
 
   /*
@@ -277,8 +300,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Context_Menu",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_tableModel");
-  }
+  },
 });
-

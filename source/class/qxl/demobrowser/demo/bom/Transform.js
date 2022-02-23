@@ -19,14 +19,12 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Transform",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Transform", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // check for transform support
       if (qx.core.Environment.get("css.transform") == null) {
@@ -54,96 +52,109 @@ qx.Class.define("qxl.demobrowser.demo.bom.Transform",
       qx.bom.element.Transform.transform(box, {
         rotate: "25deg",
         scale: [1.2, 0.6],
-        skew: ["20deg", "10deg"]
+        skew: ["20deg", "10deg"],
       });
-
-
 
       // Show the origin property
       box = document.getElementById("origin-c");
       qx.bom.element.Transform.setOrigin(box, "50% 50%");
-      qx.bom.element.Transform.transform(box, {rotate: "15deg"});
+      qx.bom.element.Transform.transform(box, { rotate: "15deg" });
 
       box = document.getElementById("origin-lb");
       qx.bom.element.Transform.setOrigin(box, "left bottom");
-      qx.bom.element.Transform.transform(box, {rotate: "15deg"});
+      qx.bom.element.Transform.transform(box, { rotate: "15deg" });
 
       box = document.getElementById("origin-rt");
       qx.bom.element.Transform.setOrigin(box, "right top");
-      qx.bom.element.Transform.transform(box, {rotate: "15deg"});
-
-
-
+      qx.bom.element.Transform.transform(box, { rotate: "15deg" });
 
       // only do that if 3d transforms are supported
       if (qx.core.Environment.get("css.transform.3d")) {
         // Show the style property
         box = document.getElementById("flat");
         qx.bom.element.Transform.setStyle(box, "flat");
-        qx.bom.element.Transform.transform(box, {rotate: ["20deg", "40deg"]});
-        qx.bom.element.Transform.transform(box.children[0], {translate : [null, null, "50px"]});
+        qx.bom.element.Transform.transform(box, { rotate: ["20deg", "40deg"] });
+        qx.bom.element.Transform.transform(box.children[0], {
+          translate: [null, null, "50px"],
+        });
 
         box = document.getElementById("3d");
         qx.bom.element.Transform.setStyle(box, "preserve-3d");
-        qx.bom.element.Transform.transform(box, {rotate: ["20deg", "40deg"]});
-        qx.bom.element.Transform.transform(box.children[0], {translate : [null, null, "50px"]});
-
+        qx.bom.element.Transform.transform(box, { rotate: ["20deg", "40deg"] });
+        qx.bom.element.Transform.transform(box.children[0], {
+          translate: [null, null, "50px"],
+        });
 
         // Show the perspective property
         box = document.getElementById("perspective30");
         qx.bom.element.Transform.setPerspective(box, 30);
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         box = document.getElementById("perspective100");
         qx.bom.element.Transform.setPerspective(box, 100);
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         box = document.getElementById("perspective500");
         qx.bom.element.Transform.setPerspective(box, 500);
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         box = document.getElementById("perspective1000");
         qx.bom.element.Transform.setPerspective(box, 1000);
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
-
-
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         // Show the perspective-origin property
         box = document.getElementById("perorig-c");
         qx.bom.element.Transform.setPerspective(box, 100);
         qx.bom.element.Transform.setPerspectiveOrigin(box, "center");
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         box = document.getElementById("perorig-bl");
         qx.bom.element.Transform.setPerspective(box, 100);
         qx.bom.element.Transform.setPerspectiveOrigin(box, "bottom left");
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         box = document.getElementById("perorig-br");
         qx.bom.element.Transform.setPerspective(box, 100);
         qx.bom.element.Transform.setPerspectiveOrigin(box, "bottom right");
-        qx.bom.element.Transform.transform(box.children[0], {rotate: ["45deg"]});
-
-
+        qx.bom.element.Transform.transform(box.children[0], {
+          rotate: ["45deg"],
+        });
 
         // Show the backface-visibility property
         box = document.getElementById("visible");
         qx.bom.element.Transform.setPerspective(box, 50);
         qx.bom.element.Transform.setBackfaceVisibility(box, true);
-        qx.bom.element.Transform.transform(box, {rotate: [null, "150deg", "10deg"]});
+        qx.bom.element.Transform.transform(box, {
+          rotate: [null, "150deg", "10deg"],
+        });
 
         box = document.getElementById("hidden");
         qx.bom.element.Transform.setPerspective(box, 100);
         qx.bom.element.Transform.setBackfaceVisibility(box, false);
-        qx.bom.element.Transform.transform(box, {rotate: [null, "150deg", "10deg"]});
+        qx.bom.element.Transform.transform(box, {
+          rotate: [null, "150deg", "10deg"],
+        });
       } else {
         // mark all 3d stuff as not working
         document.getElementById("3dpart").style["display"] = "none";
 
         var label = document.createElement("label");
-        label.innerHTML = "<br><br>Your browser does not support 3D CSS transforms, sorry!";
+        label.innerHTML =
+          "<br><br>Your browser does not support 3D CSS transforms, sorry!";
         document.body.appendChild(label);
       }
-    }
-  }
+    },
+  },
 });

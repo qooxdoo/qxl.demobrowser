@@ -17,20 +17,18 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.Decoration", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var box = new qx.ui.layout.HBox();
       box.setSpacing(10);
 
       var scroller = new qx.ui.container.Scroll();
-      this.getRoot().add(scroller, {edge: 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       var container = new qx.ui.container.Composite(box);
       container.setPadding(20);
@@ -38,15 +36,18 @@ qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
 
       container.add(this.getDecorations());
 
-      qx.theme.manager.Decoration.getInstance().addListener("changeTheme", function() {
-        container.getChildren()[0].destroy();
-        qx.ui.core.queue.Dispose.flush();
-        container.add(this.getDecorations());
-      }, this);
+      qx.theme.manager.Decoration.getInstance().addListener(
+        "changeTheme",
+        function () {
+          container.getChildren()[0].destroy();
+          qx.ui.core.queue.Dispose.flush();
+          container.add(this.getDecorations());
+        },
+        this
+      );
     },
 
-
-    getDecorations : function() {
+    getDecorations() {
       var theme = qx.theme.manager.Decoration.getInstance().getTheme();
 
       // auto size
@@ -58,20 +59,23 @@ qx.Class.define("qxl.demobrowser.demo.ui.Decoration",
       var decorations = theme.decorations;
       var columns = 8;
 
-      var i=0;
+      var i = 0;
       for (var key in decorations) {
-        box.add(new qx.ui.basic.Label(key).set({
-          rich: true,
-          wrap: true,
-          decorator: key,
-          padding: 5,
-          height: 80,
-          width: 80
-        }), {row: Math.floor(i/columns), column: i%columns});
+        box.add(
+          new qx.ui.basic.Label(key).set({
+            rich: true,
+            wrap: true,
+            decorator: key,
+            padding: 5,
+            height: 80,
+            width: 80,
+          }),
+          { row: Math.floor(i / columns), column: i % columns }
+        );
         i += 1;
       }
 
       return box;
-    }
-  }
+    },
+  },
 });

@@ -21,27 +21,27 @@
  * @tag list controller
  * @tag form controller
  */
-qx.Class.define("qxl.demobrowser.demo.data.FormAndListController",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.FormAndListController", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create some dummy data
       var data = {
         firstname: "Martin",
         lastname: "Wittemann",
         gender: [
-          {label: "male", data: "M"},
-          {label: "female", data: "F"},
-          {label: "dont know!", data: "?"},
-          {label: "Alien", data: "A"}
+          { label: "male", data: "M" },
+          { label: "female", data: "F" },
+          { label: "dont know!", data: "?" },
+          { label: "Alien", data: "A" },
         ],
-        sendByEmail : "mail"
+
+        sendByEmail: "mail",
       };
+
       var model = qx.data.marshal.Json.createModel(data);
 
       // create the form
@@ -58,10 +58,12 @@ qx.Class.define("qxl.demobrowser.demo.data.FormAndListController",
       // gender
       var gender = new qx.ui.form.SelectBox();
       var genderController = new qx.data.controller.List(null, gender);
-      genderController.setDelegate({bindItem: function(controller, item, index) {
-        controller.bindProperty("label", "label", null, item, index);
-        controller.bindProperty("data", "model", null, item, index);
-      }});
+      genderController.setDelegate({
+        bindItem(controller, item, index) {
+          controller.bindProperty("label", "label", null, item, index);
+          controller.bindProperty("data", "model", null, item, index);
+        },
+      });
       genderController.setModel(model.getGender());
       form.add(gender, "Gender");
 
@@ -78,18 +80,24 @@ qx.Class.define("qxl.demobrowser.demo.data.FormAndListController",
       form.add(radioGroup, "", null, "sendByEmail");
 
       // create the form and add it to the root
-      this.getRoot().add(new qx.ui.form.renderer.Single(form), {left: 30, top: 20});
+      this.getRoot().add(new qx.ui.form.renderer.Single(form), {
+        left: 30,
+        top: 20,
+      });
 
       // create a form controller!
       new qx.data.controller.Form(model, form);
 
-
       // A button to log the models content
       var logButton = new qx.ui.form.Button("Show model data in the log");
-      this.getRoot().add(logButton, {left: 240, top: 20});
-      logButton.addListener("execute", function() {
-        this.debug(qx.dev.Debug.debugProperties(model));
-      }, this);
-    }
-  }
+      this.getRoot().add(logButton, { left: 240, top: 20 });
+      logButton.addListener(
+        "execute",
+        function () {
+          this.debug(qx.dev.Debug.debugProperties(model));
+        },
+        this
+      );
+    },
+  },
 });

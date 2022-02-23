@@ -30,17 +30,17 @@
  * @asset(qx/icon/${qx.icontheme}/48/actions/*)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.ToolBar", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create a container for the main layout and set the main layout
-      var mainContainer = new qx.ui.container.Composite(new qx.ui.layout.VBox(20));
+      var mainContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(20)
+      );
       mainContainer.setPadding(20);
 
       // add the scroll container to the root
@@ -57,10 +57,22 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
 
       // create and add Part 1 to the toolbar
       var part1 = new qx.ui.toolbar.Part();
-      var newButton = new qx.ui.toolbar.Button("New", "icon/22/actions/document-new.png");
-      var copyButton = new qx.ui.toolbar.Button("Copy", "icon/22/actions/edit-copy.png");
-      var cutButton = new qx.ui.toolbar.Button("Cut", "icon/22/actions/edit-cut.png");
-      var pasteButton = new qx.ui.toolbar.Button("Paste", "icon/22/actions/edit-paste.png");
+      var newButton = new qx.ui.toolbar.Button(
+        "New",
+        "icon/22/actions/document-new.png"
+      );
+      var copyButton = new qx.ui.toolbar.Button(
+        "Copy",
+        "icon/22/actions/edit-copy.png"
+      );
+      var cutButton = new qx.ui.toolbar.Button(
+        "Cut",
+        "icon/22/actions/edit-cut.png"
+      );
+      var pasteButton = new qx.ui.toolbar.Button(
+        "Paste",
+        "icon/22/actions/edit-paste.png"
+      );
       part1.add(newButton);
       part1.add(new qx.ui.toolbar.Separator());
       part1.add(copyButton);
@@ -70,22 +82,38 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
 
       // create and add Part 2 to the toolbar
       var part2 = new qx.ui.toolbar.Part();
-      var checkBtn = new qx.ui.toolbar.CheckBox("Toggle", "icon/22/actions/format-text-underline.png");
+      var checkBtn = new qx.ui.toolbar.CheckBox(
+        "Toggle",
+        "icon/22/actions/format-text-underline.png"
+      );
       part2.add(checkBtn);
       toolbar.add(part2);
 
       // create and add Part 3 to the toolbar
       var part3 = new qx.ui.toolbar.Part();
-      var radioButton1 = new qx.ui.toolbar.RadioButton("Left", "icon/22/actions/format-justify-left.png");
-      var radioButton2 = new qx.ui.toolbar.RadioButton("Center", "icon/22/actions/format-justify-center.png");
-      var radioButton3 = new qx.ui.toolbar.RadioButton("Right", "icon/22/actions/format-justify-right.png");
+      var radioButton1 = new qx.ui.toolbar.RadioButton(
+        "Left",
+        "icon/22/actions/format-justify-left.png"
+      );
+      var radioButton2 = new qx.ui.toolbar.RadioButton(
+        "Center",
+        "icon/22/actions/format-justify-center.png"
+      );
+      var radioButton3 = new qx.ui.toolbar.RadioButton(
+        "Right",
+        "icon/22/actions/format-justify-right.png"
+      );
       part3.add(radioButton1);
       part3.add(radioButton2);
       part3.add(radioButton3);
       toolbar.add(part3);
 
       // Manager for part 3 (Radio example)
-      var radioGroup = new qx.ui.form.RadioGroup(radioButton1, radioButton2, radioButton3);
+      var radioGroup = new qx.ui.form.RadioGroup(
+        radioButton1,
+        radioButton2,
+        radioButton3
+      );
       radioGroup.setAllowEmptySelection(true);
 
       toolbar.addSpacer();
@@ -96,10 +124,23 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       toolbar.setOverflowIndicator(overflow);
 
       // create Help Button and add it to the toolbar
-      var helpButton = new qx.ui.toolbar.Button("Help", "icon/22/actions/help-contents.png");
+      var helpButton = new qx.ui.toolbar.Button(
+        "Help",
+        "icon/22/actions/help-contents.png"
+      );
       toolbar.add(helpButton);
 
-      var buttons = [ newButton, copyButton, cutButton, pasteButton, checkBtn, radioButton1, radioButton2, radioButton3, helpButton ];
+      var buttons = [
+        newButton,
+        copyButton,
+        cutButton,
+        pasteButton,
+        checkBtn,
+        radioButton1,
+        radioButton2,
+        radioButton3,
+        helpButton,
+      ];
 
       // set priorities for overflow handling
       toolbar.setRemovePriority(part1, 4);
@@ -109,11 +150,23 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       // create overflow menu
       var overflowMenu = new qx.ui.menu.Menu();
       overflow.setMenu(overflowMenu);
-      var newButton = new qx.ui.menu.Button("New", "icon/16/actions/document-new.png");
+      var newButton = new qx.ui.menu.Button(
+        "New",
+        "icon/16/actions/document-new.png"
+      );
       var sep1 = new qx.ui.menu.Separator();
-      var copyButton = new qx.ui.menu.Button("Copy", "icon/16/actions/edit-copy.png");
-      var cutButton = new qx.ui.menu.Button("Cut", "icon/16/actions/edit-cut.png");
-      var pasteButton = new qx.ui.menu.Button("Paste", "icon/16/actions/edit-paste.png");
+      var copyButton = new qx.ui.menu.Button(
+        "Copy",
+        "icon/16/actions/edit-copy.png"
+      );
+      var cutButton = new qx.ui.menu.Button(
+        "Cut",
+        "icon/16/actions/edit-cut.png"
+      );
+      var pasteButton = new qx.ui.menu.Button(
+        "Paste",
+        "icon/16/actions/edit-paste.png"
+      );
       overflowMenu.add(newButton);
       overflowMenu.add(sep1);
       overflowMenu.add(copyButton);
@@ -138,7 +191,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
         menuItem[i].setVisibility("excluded");
       }
 
-      var showHideHandler = function(item, visibility) {
+      var showHideHandler = function (item, visibility) {
         var items = [];
         if (item == part1) {
           items.push(newButton, sep1, copyButton, cutButton, pasteButton);
@@ -152,14 +205,21 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       };
 
       // handler for showind and hiding toobar items
-      toolbar.addListener("showItem", function(e) {
-        showHideHandler(e.getData(), "excluded");
-      }, this);
+      toolbar.addListener(
+        "showItem",
+        function (e) {
+          showHideHandler(e.getData(), "excluded");
+        },
+        this
+      );
 
-      toolbar.addListener("hideItem", function(e) {
-        showHideHandler(e.getData(), "visible");
-      }, this);
-
+      toolbar.addListener(
+        "hideItem",
+        function (e) {
+          showHideHandler(e.getData(), "visible");
+        },
+        this
+      );
 
       ///////////////////////////////////////////////////////////////
       // Control stuff
@@ -169,7 +229,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       controlGrid.setSpacing(10);
       var controlContainer = new qx.ui.container.Composite(controlGrid);
       mainContainer.add(controlContainer);
-
 
       //////////////////////// icon size stuff
       // create the buttons
@@ -183,32 +242,40 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       sizeManager.add(size22Button, size32Button, size48Button);
 
       // add the buttons to the grid
-      controlContainer.add(new qx.ui.basic.Label("Icon Size:"), {row:0, column:0});
-      controlContainer.add(size22Button, {row:0, column:1});
-      controlContainer.add(size32Button, {row:0, column:2});
-      controlContainer.add(size48Button, {row:0, column:3});
+      controlContainer.add(new qx.ui.basic.Label("Icon Size:"), {
+        row: 0,
+        column: 0,
+      });
+      controlContainer.add(size22Button, { row: 0, column: 1 });
+      controlContainer.add(size32Button, { row: 0, column: 2 });
+      controlContainer.add(size48Button, { row: 0, column: 3 });
 
       // register the handler
-      sizeManager.addListener("changeSelection", function(e) {
-        var value = e.getData()[0];
-        var button; var size; var url;
-        for (var i=0; i<buttons.length; i++) {
-          button = buttons[i];
-          url = button.getIcon();
+      sizeManager.addListener(
+        "changeSelection",
+        function (e) {
+          var value = e.getData()[0];
+          var button;
+          var size;
+          var url;
+          for (var i = 0; i < buttons.length; i++) {
+            button = buttons[i];
+            url = button.getIcon();
 
-          if (value == size22Button) {
-            size = 22;
-          } else if (value == size32Button) {
-            size = 32;
-          } else if (value == size48Button) {
-            size = 48;
+            if (value == size22Button) {
+              size = 22;
+            } else if (value == size32Button) {
+              size = 32;
+            } else if (value == size48Button) {
+              size = 48;
+            }
+
+            url = url.replace(/22|32|48/g, size);
+            button.setIcon(url);
           }
-
-          url = url.replace(/22|32|48/g, size);
-          button.setIcon(url);
-        }
-      }, this);
-
+        },
+        this
+      );
 
       //////////////////////// Show stuff
       // create the buttons
@@ -222,36 +289,46 @@ qx.Class.define("qxl.demobrowser.demo.widget.ToolBar",
       showManager.add(showBothButton, showIconButton, showLabelButton);
 
       // add the buttons to the grid
-      controlContainer.add(new qx.ui.basic.Label("Show:"), {row:1, column:0});
-      controlContainer.add(showBothButton, {row:1, column:1});
-      controlContainer.add(showIconButton, {row:1, column:2});
-      controlContainer.add(showLabelButton, {row:1, column:3});
+      controlContainer.add(new qx.ui.basic.Label("Show:"), {
+        row: 1,
+        column: 0,
+      });
+      controlContainer.add(showBothButton, { row: 1, column: 1 });
+      controlContainer.add(showIconButton, { row: 1, column: 2 });
+      controlContainer.add(showLabelButton, { row: 1, column: 3 });
 
       // register the handler
-      showManager.addListener("changeSelection", function(e) {
-        if (e.getData()[0] == showBothButton) {
-          toolbar.setShow("both");
-        } else if (e.getData()[0] == showIconButton) {
-          toolbar.setShow("icon");
-        } else if (e.getData()[0] == showLabelButton) {
-          toolbar.setShow("label");
-        }
-      }, this);
+      showManager.addListener(
+        "changeSelection",
+        function (e) {
+          if (e.getData()[0] == showBothButton) {
+            toolbar.setShow("both");
+          } else if (e.getData()[0] == showIconButton) {
+            toolbar.setShow("icon");
+          } else if (e.getData()[0] == showLabelButton) {
+            toolbar.setShow("label");
+          }
+        },
+        this
+      );
 
       //////////////////////// Overflow handling stuff
       // create the checkbox
       var enabledOverflowBox = new qx.ui.form.CheckBox("on");
 
       // add the buttons to the grid
-      controlContainer.add(new qx.ui.basic.Label("Overflow handling:"), {row:2, column:0});
-      controlContainer.add(enabledOverflowBox, {row:2, column:1});
+      controlContainer.add(new qx.ui.basic.Label("Overflow handling:"), {
+        row: 2,
+        column: 0,
+      });
+      controlContainer.add(enabledOverflowBox, { row: 2, column: 1 });
 
       enabledOverflowBox.bind("value", toolbar, "overflowHandling");
-      enabledOverflowBox.bind("value", showManager, "enabled", {converter:
-        function(data) {
- return !data; 
-}
+      enabledOverflowBox.bind("value", showManager, "enabled", {
+        converter(data) {
+          return !data;
+        },
       });
-    }
-  }
+    },
+  },
 });

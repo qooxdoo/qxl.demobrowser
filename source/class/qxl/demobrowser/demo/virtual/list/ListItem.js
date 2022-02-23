@@ -17,17 +17,16 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
-{
-  extend : qx.core.Object,
+qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem", {
+  extend: qx.core.Object,
 
   /**
    * @param label {String} Label to use
    * @param icon {String?null} Icon to use
    * @param value {String?null} The items string value
    */
-  construct : function(label, icon, value) {
-    this.base(arguments);
+  construct(label, icon, value) {
+    super();
 
     if (label != null) {
       this.setLabel(label);
@@ -48,13 +47,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
   *****************************************************************************
   */
 
-  events:
-  {
+  events: {
     /** (Fired by {@link qx.ui.form.List}) */
-    "action" : "qx.event.type.Event"
+    action: "qx.event.type.Event",
   },
-
-
 
   /*
   *****************************************************************************
@@ -62,60 +58,52 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
   *****************************************************************************
   */
 
-  properties :
-  {
+  properties: {
     /** The label/caption/text of the qx.ui.basic.Atom instance */
-    label :
-    {
-      nullable : true,
-      dereference : true,
-      check : "String"
+    label: {
+      nullable: true,
+      dereference: true,
+      check: "String",
     },
 
     /** Any URI String supported by qx.ui.basic.Image to display a icon */
-    icon :
-    {
-      check : "String",
-      nullable : true
+    icon: {
+      check: "String",
+      nullable: true,
     },
 
     /** The assigned qx.ui.form.RadioGroup which handles the switching between registered buttons */
-    manager :
-    {
-      check  : "qx.ui.form.RadioGroup",
-      nullable : true,
-      apply : "_applyManager"
+    manager: {
+      check: "qx.ui.form.RadioGroup",
+      nullable: true,
+      apply: "_applyManager",
     },
 
     /** Fires a "changeValue" (qx.event.type.Data) event */
-    value :
-    {
-      check : "String",
-      nullable : true,
-      event : "changeValue"
+    value: {
+      check: "String",
+      nullable: true,
+      event: "changeValue",
     },
 
     /** The item's width. */
-    width :
-    {
-      check : "Integer",
-      nullable : true,
-      event : "changeWidth",
-      init : null
+    width: {
+      check: "Integer",
+      nullable: true,
+      event: "changeWidth",
+      init: null,
     },
 
     /** The item's height. */
-    height :
-    {
-      check : "Integer",
-      nullable : true,
-      event : "changeHeight",
-      init : null
-    }
+    height: {
+      check: "Integer",
+      nullable: true,
+      event: "changeHeight",
+      init: null,
+    },
   },
 
-  members :
-  {
+  members: {
     /*
     ---------------------------------------------------------------------------
       PROPERTY APPLY ROUTINES
@@ -123,7 +111,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
     */
 
     // property apply
-    _applyManager : function(value, old) {
+    _applyManager(value, old) {
       if (old) {
         old.remove(this);
       }
@@ -132,7 +120,6 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
         value.add(this);
       }
     },
-
 
     /*
     ---------------------------------------------------------------------------
@@ -146,14 +133,13 @@ qx.Class.define("qxl.demobrowser.demo.virtual.list.ListItem",
      * This is normally the real value with a fallback to the label like in HTML
      * select boxes.
      */
-    getFormValue : function() {
+    getFormValue() {
       var value = this.getValue();
       if (value == null) {
         value = this.getLabel();
       }
 
       return value;
-    }
-
-  }
+    },
+  },
 });

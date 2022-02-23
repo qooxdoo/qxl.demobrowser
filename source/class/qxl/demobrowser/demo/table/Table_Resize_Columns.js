@@ -27,44 +27,47 @@
  * @asset(qx/icon/${qx.icontheme}/22/actions/list-remove.png)
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table with automatic column sizes";
     },
 
-
-    createTable : function() {
+    createTable() {
       // Create the initial data
       var rowData = this.createRandomRows(50);
 
       // table model
-      var tableModel = this._tableModel = this._tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "A number", "A date", "Boolean test" ]);
+      var tableModel =
+        (this._tableModel =
+        this._tableModel =
+          new qx.ui.table.model.Simple());
+      tableModel.setColumns(["ID", "A number", "A date", "Boolean test"]);
       tableModel.setData(rowData);
 
       // Customize the table column model.  We want one that automatically
       // resizes columns.
-      var custom =
-      {
-        tableColumnModel : function(obj) {
+      var custom = {
+        tableColumnModel(obj) {
           return new qx.ui.table.columnmodel.Resize(obj);
-        }
+        },
       };
 
       // table
-      var table = this._table = new qx.ui.table.Table(tableModel, custom);
+      var table = (this._table = new qx.ui.table.Table(tableModel, custom));
 
       table.set({
         width: 600,
-        height: 400
+        height: 400,
       });
 
-      table.getSelectionModel().setSelectionMode(qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION);
+      table
+        .getSelectionModel()
+        .setSelectionMode(
+          qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION
+        );
 
       //
       // Specify the resize behavior...  First, get the table column model,
@@ -76,7 +79,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
       var resizeBehavior = tcm.getBehavior();
 
       // This uses the set() method to set all attriutes at once; uses flex
-      resizeBehavior.set(0, { width:"1*", minWidth:40, maxWidth:80 });
+      resizeBehavior.set(0, { width: "1*", minWidth: 40, maxWidth: 80 });
 
       // We could also set them individually:
       resizeBehavior.setWidth(1, "50%");
@@ -89,29 +92,44 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
       return table;
     },
 
-    createControls : function() {
+    createControls() {
       var bar = new qx.ui.toolbar.ToolBar();
-      var button; var part; var checkBox;
+      var button;
+      var part;
+      var checkBox;
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
 
-      button = new qx.ui.toolbar.Button("Add 10 rows", "icon/22/actions/list-add.png");
-      button.addListener("execute", function(evt) {
-        var rowData = this.createRandomRows(10);
-        this._tableModel.addRows(rowData);
-        this.info("10 rows added");
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Add 10 rows",
+        "icon/22/actions/list-add.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var rowData = this.createRandomRows(10);
+          this._tableModel.addRows(rowData);
+          this.info("10 rows added");
+        },
+        this
+      );
       part.add(button);
 
-      button = new qx.ui.toolbar.Button("Remove 10 rows", "icon/22/actions/list-remove.png");
-      button.addListener("execute", function(evt) {
-        var rowCount = this._tableModel.getRowCount();
-        this._tableModel.removeRows(rowCount-10, 10);
-        this.info("10 rows removed");
-      }, this);
+      button = new qx.ui.toolbar.Button(
+        "Remove 10 rows",
+        "icon/22/actions/list-remove.png"
+      );
+      button.addListener(
+        "execute",
+        function (evt) {
+          var rowCount = this._tableModel.getRowCount();
+          this._tableModel.removeRows(rowCount - 10, 10);
+          this.info("10 rows removed");
+        },
+        this
+      );
       part.add(button);
-
 
       part = new qx.ui.toolbar.Part();
       bar.add(part);
@@ -123,17 +141,21 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
         value: table.getKeepFirstVisibleRowComplete(),
         toolTip: new qx.ui.tooltip.ToolTip(
           "Whether the the first visible row should " +
-          "be rendered completely when scrolling."
-        )
+            "be rendered completely when scrolling."
+        ),
       });
-      checkBox.addListener("changeValue", function(evt) {
-        table.setKeepFirstVisibleRowComplete(this.getValue());
-      },
-      checkBox);
+
+      checkBox.addListener(
+        "changeValue",
+        function (evt) {
+          table.setKeepFirstVisibleRowComplete(this.getValue());
+        },
+        checkBox
+      );
       part.add(checkBox);
 
       return bar;
-    }
+    },
   },
 
   /*
@@ -142,8 +164,7 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Resize_Columns",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeObjects("_tableModel");
-  }
+  },
 });
-

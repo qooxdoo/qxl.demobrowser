@@ -29,20 +29,18 @@
  * @asset(qx/icon/${qx.icontheme}/16/categories/office.png)
  * @asset(qx/icon/${qx.icontheme}/16/emotes/face-laugh.png)
  */
-qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    __list : null,
+  members: {
+    __list: null,
 
-    __listGroupedByName : null,
+    __listGroupedByName: null,
 
-    __listGroupedByGroup : null,
+    __listGroupedByGroup: null,
 
-    main: function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       var firstExample = this.createFirstExample();
       var secondExample = this.createSecondExample();
@@ -54,7 +52,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
        * Layout and description
        * ********************************************* */
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(10));
-      this.getRoot().add(container, {edge : 20});
+      this.getRoot().add(container, { edge: 20 });
 
       var description = new qx.ui.basic.Label();
       description.setRich(true);
@@ -62,78 +60,91 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       description.setSelectable(true);
       description.setValue(
         "<b>Grouped List</b><br/>" +
-        "Loads the json file <a href='json/persons.json' target='_blank'>" +
-        "persons.json</a> and binds the created model to all list widgets. " +
-        "The first list shows only the row data and uses a converter for the " +
-        "label that concatenates the first and last name. " +
-        "The second list sorts the items by last name and groups the items " +
-        "by the first letter of the last name. The third list sorts the items " +
-        "by first name and groups it by the 'group' model property. The " +
-        "third list is configured  to use a customized group item for rendering."
+          "Loads the json file <a href='json/persons.json' target='_blank'>" +
+          "persons.json</a> and binds the created model to all list widgets. " +
+          "The first list shows only the row data and uses a converter for the " +
+          "label that concatenates the first and last name. " +
+          "The second list sorts the items by last name and groups the items " +
+          "by the first letter of the last name. The third list sorts the items " +
+          "by first name and groups it by the 'group' model property. The " +
+          "third list is configured  to use a customized group item for rendering."
       );
+
       container.add(description);
 
-      var listContainer = new qx.ui.container.Composite(new qx.ui.layout.HBox(20));
-      container.add(listContainer, {flex: 1});
+      var listContainer = new qx.ui.container.Composite(
+        new qx.ui.layout.HBox(20)
+      );
+      container.add(listContainer, { flex: 1 });
 
       listContainer.add(firstExample);
       listContainer.add(secondExample);
       listContainer.add(thirdExample);
     },
 
-    loadData : function() {
-      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/persons.json");
+    loadData() {
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/data/persons.json"
+      );
       var store = new qx.data.store.Json(url);
       store.bind("model.persons", this.__list, "model");
       store.bind("model.persons", this.__listGroupedByName, "model");
       store.bind("model.persons", this.__listGroupedByGroup, "model");
     },
 
-    createFirstExample : function() {
+    createFirstExample() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Raw List:").set({
-        font: "bold"
+        font: "bold",
       });
+
       container.add(title);
 
       // Creates the list and configure it
-      var list = this.__list = new qx.ui.list.List().set({
+      var list = (this.__list = new qx.ui.list.List().set({
         height: 280,
         width: 150,
         labelPath: "firstname",
-        labelOptions: {converter: function(data, model) {
-          return model ? data + " " + model.getLastname() : "no model...";
-        }}
-      });
-      container.add(list, {top: 20});
+        labelOptions: {
+          converter(data, model) {
+            return model ? data + " " + model.getLastname() : "no model...";
+          },
+        },
+      }));
+
+      container.add(list, { top: 20 });
 
       return container;
     },
 
-    createSecondExample : function() {
+    createSecondExample() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Grouped by last name:").set({
-        font: "bold"
+        font: "bold",
       });
+
       container.add(title);
 
       // Creates the list and configure it
-      var list = this.__listGroupedByName = new qx.ui.list.List().set({
+      var list = (this.__listGroupedByName = new qx.ui.list.List().set({
         height: 280,
         width: 150,
         labelPath: "firstname",
-        labelOptions: {converter: function(data, model) {
-          return model ? model.getLastname() + ", " + data : "no model...";
-        }}
-      });
-      container.add(list, {top: 20});
+        labelOptions: {
+          converter(data, model) {
+            return model ? model.getLastname() + ", " + data : "no model...";
+          },
+        },
+      }));
+
+      container.add(list, { top: 20 });
 
       // Creates the delegate for sorting and grouping
       var delegate = {
         // Sorts the model data by last name
-        sorter : function(a, b) {
+        sorter(a, b) {
           a = a.getLastname();
           b = b.getLastname();
 
@@ -141,10 +152,11 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
         },
 
         // Assign the group name for each item (fist char form last name)
-        group : function(model) {
+        group(model) {
           return model.getLastname().charAt(0).toUpperCase();
-        }
+        },
       };
+
       list.setDelegate(delegate);
 
       // Share the selection with the fist list
@@ -153,29 +165,33 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
       return container;
     },
 
-    createThirdExample : function() {
+    createThirdExample() {
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
 
       var title = new qx.ui.basic.Label("Grouped by group:").set({
-        font: "bold"
+        font: "bold",
       });
+
       container.add(title);
 
       // Creates the list and configure it
-      var list = this.__listGroupedByGroup = new qx.ui.list.List().set({
+      var list = (this.__listGroupedByGroup = new qx.ui.list.List().set({
         height: 280,
         width: 150,
         labelPath: "firstname",
-        labelOptions: {converter: function(data, model) {
-          return model ? data + " " + model.getLastname() : "no model...";
-        }}
-      });
-      container.add(list, {top: 20});
+        labelOptions: {
+          converter(data, model) {
+            return model ? data + " " + model.getLastname() : "no model...";
+          },
+        },
+      }));
+
+      container.add(list, { top: 20 });
 
       // Creates the delegate for sorting and grouping
       var delegate = {
         // Sorts the model data by last name
-        sorter : function(a, b) {
+        sorter(a, b) {
           a = a.getLastname();
           b = b.getLastname();
 
@@ -185,52 +201,59 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList",
         // Uses the defined group name form the model.
         // When the model doesn't define a group name,
         // The default group name from the list is used.
-        group : function(model) {
+        group(model) {
           return model.getGroup ? model.getGroup() : null;
         },
 
         // Uses a own group item
-        createGroupItem : function() {
+        createGroupItem() {
           return new qx.ui.form.ListItem();
         },
 
         // Configures each item
-        configureGroupItem : function(item) {
+        configureGroupItem(item) {
           item.setBackgroundColor("#005E00");
           item.setTextColor("white");
         },
 
         // Binds the group name to the label and
         // assign a icon dependent on the group name
-        bindGroupItem : function(controller, item, id) {
+        bindGroupItem(controller, item, id) {
           controller.bindProperty(null, "label", null, item, id);
-          controller.bindProperty(null, "icon", {
-            converter : function(data) {
-              switch (data) {
-                case "Friends":
-                  return "icon/16/emotes/face-laugh.png";
-                case "Colleagues":
-                  return "icon/16/categories/office.png";
-                default:
-                  return "icon/16/categories/system.png";
-              }
-            }
-          }, item, id);
-        }
+          controller.bindProperty(
+            null,
+            "icon",
+            {
+              converter(data) {
+                switch (data) {
+                  case "Friends":
+                    return "icon/16/emotes/face-laugh.png";
+                  case "Colleagues":
+                    return "icon/16/categories/office.png";
+                  default:
+                    return "icon/16/categories/system.png";
+                }
+              },
+            },
+            item,
+            id
+          );
+        },
       };
+
       list.setDelegate(delegate);
 
       // Share the selection with the first list
       list.setSelection(this.__list.getSelection());
 
       return container;
-    }
+    },
   },
 
-  destruct : function() {
+  destruct() {
     this.__list.dispose();
     this.__listGroupedByName.dispose();
     this.__listGroupedByGroup.dispose();
     this.__list = this.__listGroupedByName = this.__listGroupedByGroup = null;
-  }
+  },
 });

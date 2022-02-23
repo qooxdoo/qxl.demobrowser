@@ -1,22 +1,19 @@
-qx.Theme.define("qxl.demobrowser.Appearance",
-{
-  extend : qx.theme.indigo.Appearance,
-  title : "Demo browser",
+qx.Theme.define("qxl.demobrowser.Appearance", {
+  extend: qx.theme.indigo.Appearance,
+  title: "Demo browser",
 
-  appearances :
-  {
-    "demo-tree" :
-    {
-      alias : "tree",
-      include : "tree",
+  appearances: {
+    "demo-tree": {
+      alias: "tree",
+      include: "tree",
 
-      style : function() {
+      style() {
         return {
-          width : 270,
+          width: 270,
           padding: 0,
-          decorator: "main"
+          decorator: "main",
         };
-      }
-    }
-  }
+      },
+    },
+  },
 });

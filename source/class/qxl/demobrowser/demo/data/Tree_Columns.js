@@ -27,75 +27,79 @@
  * @asset(qx/icon/${qx.icontheme}/16/status/dialog-information.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroller = new qx.ui.container.Scroll();
       var container = new qx.ui.container.Composite(new qx.ui.layout.Basic());
       container.setAllowGrowX(false);
       container.setAllowStretchX(false);
       scroller.add(container);
-      this.getRoot().add(scroller, {edge : 0});
+      this.getRoot().add(scroller, { edge: 0 });
 
       var tree = new qx.ui.tree.Tree().set({
         width: 600,
-        height: 500
+        height: 500,
       });
 
-      container.add(tree, {left: 20, top: 48});
-
+      container.add(tree, { left: 20, top: 48 });
 
       // build the data
       var data = {
         label: "Root",
-        children : [
+        children: [
           {
             label: "Desktop",
             children: [
-              {label: "Files"},
+              { label: "Files" },
               {
                 label: "Workspace",
-                children : [
-                  {label: "Windows (C:)"},
-                  {label: "Documents (D:)"}
-                ]
+                children: [
+                  { label: "Windows (C:)" },
+                  { label: "Documents (D:)" },
+                ],
               },
-              {label: "Network"},
-              {label: "Trash"}
-            ]
+
+              { label: "Network" },
+              { label: "Trash" },
+            ],
           },
+
           {
             label: "Inbox",
             children: [
-              {label: "Presets"},
-              {label: "Sent"},
-              {label: "Trash"},
-              {label: "Data"},
-              {label: "Edit"},
-              {label: "Lists"},
-              {label: "Personal"},
-              {label: "Big", children: []},
-              {label: "Spam"}
-            ]
-          }
-        ]
+              { label: "Presets" },
+              { label: "Sent" },
+              { label: "Trash" },
+              { label: "Data" },
+              { label: "Edit" },
+              { label: "Lists" },
+              { label: "Personal" },
+              { label: "Big", children: [] },
+              { label: "Spam" },
+            ],
+          },
+        ],
       };
 
       for (var i = 0; i < 50; i++) {
-        data.children[1].children[7].children[i] = {label: "Item " + i};
+        data.children[1].children[7].children[i] = { label: "Item " + i };
       }
 
       this.extendData(data);
       var model = qx.data.marshal.Json.createModel(data);
 
       // data binding
-      var treeController = new qx.data.controller.Tree(null, tree, "children", "label");
+      var treeController = new qx.data.controller.Tree(
+        null,
+        tree,
+        "children",
+        "label"
+      );
       treeController.setDelegate(this);
       treeController.setModel(model);
 
@@ -103,8 +107,7 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
       tree.getRoot().setOpen(true);
     },
 
-
-    extendData : function(data) {
+    extendData(data) {
       data.date = "May " + Math.round(Math.random() * 30 + 1) + " 2010";
       data.size = Math.round(Math.random() * 100) + "kb";
       data.light = Math.floor(Math.random() * 4) == 0;
@@ -117,9 +120,8 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
       }
     },
 
-
     // delegate implementation
-    bindItem : function(controller, item, id) {
+    bindItem(controller, item, id) {
       controller.bindDefaultProperties(item, id);
       controller.bindProperty("size", "size", null, item, id);
       controller.bindProperty("checked", "checked", null, item, id);
@@ -129,10 +131,9 @@ qx.Class.define("qxl.demobrowser.demo.data.Tree_Columns",
       controller.bindProperty("light", "light", null, item, id);
     },
 
-
     // delegate implementation
-    createItem : function() {
+    createItem() {
       return new qxl.demobrowser.demo.data.TreeColumn();
-    }
-  }
+    },
+  },
 });

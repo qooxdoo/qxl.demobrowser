@@ -16,27 +16,25 @@
 
 ************************************************************************ */
 /* ************************************************************************
-************************************************************************ */
+ ************************************************************************ */
 /**
  * @tag noPlayground
  *
  * @require(qx.module.Traversing)
  * @require(qx.module.Animation)
  */
-qx.Class.define("qxl.demobrowser.demo.animation.Timing",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.animation.Timing", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var timings = ["ease", "linear", "ease-in", "ease-out", "ease-in-out"];
       var colors = ["#3399CC", "#67B8DE", "#91C9E8", "#B4DCED", "#E8F8FF"];
 
       // create the buttons
-      for (var i=0; i < timings.length; i++) {
+      for (var i = 0; i < timings.length; i++) {
         var timing = timings[i];
         var bar = document.createElement("div");
         bar.innerHTML = timing;
@@ -49,14 +47,19 @@ qx.Class.define("qxl.demobrowser.demo.animation.Timing",
       window.setInterval(this.start, 3000);
     },
 
-    start : function() {
-      q(".bar").forEach(function(item) {
+    start() {
+      q(".bar").forEach(function (item) {
         var timing = item.innerHTML;
-        q(item).animate({timing: timing, duration: 2000, keep: 100, keyFrames : {
-          0 : {width: "100px"},
-          100 : {width: "700px"}
-        }});
+        q(item).animate({
+          timing: timing,
+          duration: 2000,
+          keep: 100,
+          keyFrames: {
+            0: { width: "100px" },
+            100: { width: "700px" },
+          },
+        });
       });
-    }
-  }
+    },
+  },
 });

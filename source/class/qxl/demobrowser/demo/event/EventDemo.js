@@ -29,49 +29,40 @@
  *
  * @use(qx.event.handler.Input)
  */
-qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.event.EventDemo", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var btnClear = document.getElementById("btnClear");
 
       if (btnClear) {
-        qx.bom.Element.addListener(
-          btnClear,
-          "tap",
-          this._clearLog,
-          this
-        );
+        qx.bom.Element.addListener(btnClear, "tap", this._clearLog, this);
       }
     },
 
-
-    _initLogger : function(columns, el, maxLogSize) {
-      this.__tableHead = "<table><tr><th>" + columns.join("</th><th>") + "</th></tr>";
+    _initLogger(columns, el, maxLogSize) {
+      this.__tableHead =
+        "<table><tr><th>" + columns.join("</th><th>") + "</th></tr>";
       this.__maxLogSize = maxLogSize || 50;
       this.__logDiv = el;
 
       this._clearLog();
     },
 
-
-    _clearLog : function() {
+    _clearLog() {
       this.__logDiv.innerHTML = this.__tableHead + "</table>";
       this.__logs = [];
     },
 
-
-    _log : function(values) {
+    _log(values) {
       this.__logs.unshift(values);
       this.__logs = this.__logs.slice(0, this.__maxLogSize);
 
       var str = [this.__tableHead];
-      for (var i=0; i<this.__logs.length; i++) {
+      for (var i = 0; i < this.__logs.length; i++) {
         str.push("<tr><td>", this.__logs[i].join("</td><td>"), "</td></tr>");
       }
 
@@ -80,11 +71,10 @@ qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
       this.__logDiv.scrollTop = 0;
     },
 
-    __tableHead : null,
-    __maxLogSize : null,
-    __logDiv : null,
-    __logs : null
-
+    __tableHead: null,
+    __maxLogSize: null,
+    __logDiv: null,
+    __logs: null,
   },
 
   /*
@@ -93,7 +83,7 @@ qx.Class.define("qxl.demobrowser.demo.event.EventDemo",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this.__logDiv = this.__logs = null;
-  }
+  },
 });

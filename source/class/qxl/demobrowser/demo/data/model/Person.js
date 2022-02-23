@@ -15,34 +15,33 @@
      * Martin Wittemann (martinwittemann)
 
 ************************************************************************ */
-qx.Class.define("qxl.demobrowser.demo.data.model.Person",
-{
-  extend : qx.core.Object,
+qx.Class.define("qxl.demobrowser.demo.data.model.Person", {
+  extend: qx.core.Object,
 
-  properties : {
-    name : {
-      check : "String",
-      event : "changeName",
-      nullable : true
+  properties: {
+    name: {
+      check: "String",
+      event: "changeName",
+      nullable: true,
     },
 
-    emote : {
-      check : "String",
-      event : "changeEmote"
+    emote: {
+      check: "String",
+      event: "changeEmote",
     },
 
-    online : {
-      check : "Boolean",
-      event : "changeOnline",
-      init : true
-    }
+    online: {
+      check: "Boolean",
+      event: "changeOnline",
+      init: true,
+    },
   },
 
-
-  members : {
-    toString: function() {
-      return this.getName() + " is " + (this.getOnline() ? "online": "offline");
-    }
-  }
-
+  members: {
+    toString() {
+      return (
+        this.getName() + " is " + (this.getOnline() ? "online" : "offline")
+      );
+    },
+  },
 });

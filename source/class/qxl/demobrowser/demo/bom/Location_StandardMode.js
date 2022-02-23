@@ -21,25 +21,26 @@
  * @tag noPlayground
  * @require(qx.event.handler.Gesture)
  */
-qx.Class.define("qxl.demobrowser.demo.bom.Location_StandardMode",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.Location_StandardMode", {
+  extend: qx.application.Native,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var links = document.getElementById("list").getElementsByTagName("a");
-      for (var i=0, l=links.length; i<l; i++) {
-        qx.event.Registration.addListener(links[i], "tap", qxl.demobrowser.demo.bom.Location_StandardMode.jump);
+      for (var i = 0, l = links.length; i < l; i++) {
+        qx.event.Registration.addListener(
+          links[i],
+          "tap",
+          qxl.demobrowser.demo.bom.Location_StandardMode.jump
+        );
       }
-    }
+    },
   },
 
-  statics :
-  {
-    jump : function(event) {
+  statics: {
+    jump(event) {
       if (!event) {
         event = window.event;
       }
@@ -55,39 +56,60 @@ qx.Class.define("qxl.demobrowser.demo.bom.Location_StandardMode",
        * @param style
        */
       function num(elem, style) {
-        return parseInt(qx.bom.element.Style.get(elem, style, qx.bom.element.Style.COMPUTED_MODE, false), 10);
+        return parseInt(
+          qx.bom.element.Style.get(
+            elem,
+            style,
+            qx.bom.element.Style.COMPUTED_MODE,
+            false
+          ),
+          10
+        );
       }
 
       var href = this.href;
-      var id = href.substr(href.indexOf("#")+1);
+      var id = href.substr(href.indexOf("#") + 1);
 
       var elem = document.getElementById(id);
-      var location = qx.bom.element.Location.get(elem, document.getElementById("mode").value);
+      var location = qx.bom.element.Location.get(
+        elem,
+        document.getElementById("mode").value
+      );
 
       var moveable = document.getElementById("moveable");
       moveable.style.left = location.left + "px";
       moveable.style.top = location.top + "px";
 
       if (qx.core.Environment.get("css.boxmodel") == "border") {
-        moveable.style.width = (location.right - location.left) + "px";
-        moveable.style.height = (location.bottom - location.top) + "px";
+        moveable.style.width = location.right - location.left + "px";
+        moveable.style.height = location.bottom - location.top + "px";
       } else {
-        moveable.style.width = (location.right - location.left - num(moveable, "borderLeftWidth") - num(moveable, "borderRightWidth")) + "px";
-        moveable.style.height = (location.bottom - location.top - num(moveable, "borderTopWidth") - num(moveable, "borderBottomWidth")) + "px";
+        moveable.style.width =
+          location.right -
+          location.left -
+          num(moveable, "borderLeftWidth") -
+          num(moveable, "borderRightWidth") +
+          "px";
+        moveable.style.height =
+          location.bottom -
+          location.top -
+          num(moveable, "borderTopWidth") -
+          num(moveable, "borderBottomWidth") +
+          "px";
       }
 
       return false;
     },
 
-    randomize : function() {
+    randomize() {
       var divs = document.body.getElementsByTagName("div");
-      for (var i=0, l=divs.length; i<l; i++) {
+      for (var i = 0, l = divs.length; i < l; i++) {
         if (divs[i].id && divs[i].id != "moveable") {
-          divs[i].style.margin = Math.round(Math.random()*10) + "px";
-          divs[i].style.padding = Math.round(Math.random()*10) + "px";
-          divs[i].style.borderWidth = Math.round(Math.random()*10) + "px";
+          divs[i].style.margin = Math.round(Math.random() * 10) + "px";
+          divs[i].style.padding = Math.round(Math.random() * 10) + "px";
+          divs[i].style.borderWidth = Math.round(Math.random() * 10) + "px";
         }
       }
-    }
-  }
+    },
+  },
 });

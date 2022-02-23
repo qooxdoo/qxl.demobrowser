@@ -20,21 +20,22 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
-{
-  extend : qxl.demobrowser.demo.util.LayoutApplication,
+qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple", {
+  extend: qxl.demobrowser.demo.util.LayoutApplication,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
-      var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(20)).set({
-        padding: 20
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.VBox(20)
+      ).set({
+        padding: 20,
       });
+
       scroll.add(container);
 
       container.add(this.getGrid1());
@@ -42,41 +43,53 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
       container.add(this.getGrid3());
     },
 
-
-    getGrid1 : function() {
+    getGrid1() {
       // auto size
-      var container = new qx.ui.container.Composite(new qx.ui.layout.Grid(10, 20)).set({
+      var container = new qx.ui.container.Composite(
+        new qx.ui.layout.Grid(10, 20)
+      ).set({
         decorator: "main",
         backgroundColor: "yellow",
         allowGrowX: false,
-        allowGrowY: false
+        allowGrowY: false,
       });
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 0 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 1 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 1, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 1, column: 0 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 1, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 1, column: 1 }
+      );
 
       return container;
     },
 
-
-    getGrid2 : function() {
+    getGrid2() {
       var layout = new qx.ui.layout.Grid();
       layout.setColumnAlign(1, "center", "top");
       layout.setColumnAlign(0, "right", "middle");
@@ -85,48 +98,65 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
       var container = new qx.ui.container.Composite(layout).set({
         decorator: "main",
         backgroundColor: "yellow",
-        allowGrowX: false
+        allowGrowX: false,
       });
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        width:150
-      }), {row: 0, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          width: 150,
+        }),
+        { row: 0, column: 0 }
+      );
 
       var resizeWidget = new qx.ui.basic.Label("tap me").set({
         decorator: "main",
         backgroundColor: "green",
         allowGrowX: false,
-        width:50,
-        height: 50
+        width: 50,
+        height: 50,
       });
-      container.add(resizeWidget, {row: 0, column: 1});
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main", backgroundColor: "green",
-        maxHeight: 60,
-        allowGrowX: false
-      }), {row: 1, column: 0});
+      container.add(resizeWidget, { row: 0, column: 1 });
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green",
-        height: 80
-      }), {row: 1, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          maxHeight: 60,
+          allowGrowX: false,
+        }),
+        { row: 1, column: 0 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 2, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+          height: 80,
+        }),
+        { row: 1, column: 1 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 2, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 2, column: 0 }
+      );
+
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 2, column: 1 }
+      );
 
       var increment = 10;
-      resizeWidget.addListener("tap", function(e) {
+      resizeWidget.addListener("tap", function (e) {
         resizeWidget.setWidth(50 + increment);
         increment = -increment;
       });
@@ -134,16 +164,15 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
       return container;
     },
 
-
-    getGrid3 : function() {
+    getGrid3() {
       // flex columns
       var container = new qx.ui.container.Composite().set({
         decorator: "main",
         backgroundColor: "yellow",
-        width:400,
-        height : 300,
+        width: 400,
+        height: 300,
         allowShrinkX: false,
-        allowShrinkY: false
+        allowShrinkY: false,
       });
 
       var layout = new qx.ui.layout.Grid();
@@ -152,28 +181,39 @@ qx.Class.define("qxl.demobrowser.demo.layout.Grid_Simple",
       layout.setSpacing(5);
       container.setLayout(layout);
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 0 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 0, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 0, column: 1 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 1, column: 0});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 1, column: 0 }
+      );
 
-      container.add(new qx.ui.core.Widget().set({
-        decorator: "main",
-        backgroundColor: "green"
-      }), {row: 1, column: 1});
+      container.add(
+        new qx.ui.core.Widget().set({
+          decorator: "main",
+          backgroundColor: "green",
+        }),
+        { row: 1, column: 1 }
+      );
 
       return container;
-    }
-
-  }
+    },
+  },
 });

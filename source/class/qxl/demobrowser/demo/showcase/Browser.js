@@ -30,19 +30,16 @@
  * @asset(qx/icon/${qx.icontheme}/16/actions/media-playback-start.png)
  * @asset(qx/icon/${qx.icontheme}/16/categories/internet.png)
  */
-qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.showcase.Browser", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
-      this.getRoot().add(this._createBrowser(), {left: 40, top: 30});
+  members: {
+    main() {
+      super.main();
+      this.getRoot().add(this._createBrowser(), { left: 40, top: 30 });
     },
 
-
-    _createBrowser : function() {
+    _createBrowser() {
       var win = new qx.ui.window.Window(
         "Web Browser",
         "icon/16/categories/internet.png"
@@ -59,16 +56,30 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
       var toolbar = new qx.ui.toolbar.ToolBar();
       win.add(toolbar);
 
-      var btnBack = new qx.ui.toolbar.Button(null, "icon/16/actions/go-previous.png");
-      btnBack.addListener("execute", function(e) {
-        this.iframe.getWindow().history.back();
-      }, this);
+      var btnBack = new qx.ui.toolbar.Button(
+        null,
+        "icon/16/actions/go-previous.png"
+      );
+      btnBack.addListener(
+        "execute",
+        function (e) {
+          this.iframe.getWindow().history.back();
+        },
+        this
+      );
       toolbar.add(btnBack);
 
-      var btnForward = new qx.ui.toolbar.Button(null, "icon/16/actions/go-next.png");
-      btnForward.addListener("execute", function(e) {
-        this.iframe.getWindow().history.forward();
-      }, this);
+      var btnForward = new qx.ui.toolbar.Button(
+        null,
+        "icon/16/actions/go-next.png"
+      );
+      btnForward.addListener(
+        "execute",
+        function (e) {
+          this.iframe.getWindow().history.forward();
+        },
+        this
+      );
       toolbar.add(btnForward);
 
       // IE does not allow access to an iframes history object
@@ -85,21 +96,32 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
         marginLeft: 1,
         value: "http://qooxdoo.org",
         padding: 2,
-        alignY: "middle"
+        alignY: "middle",
       });
-      this.txtUrl.addListener("keypress", function(e) {
-        if (e.getKeyIdentifier() == "Enter") {
+
+      this.txtUrl.addListener(
+        "keypress",
+        function (e) {
+          if (e.getKeyIdentifier() == "Enter") {
+            this.surfTo(this.txtUrl.getValue());
+          }
+        },
+        this
+      );
+      toolbar.add(this.txtUrl, { flex: 1 });
+
+      var btnGo = new qx.ui.toolbar.Button(
+        null,
+        "icon/16/actions/media-playback-start.png"
+      );
+      btnGo.addListener(
+        "execute",
+        function (e) {
           this.surfTo(this.txtUrl.getValue());
-        }
-      }, this);
-      toolbar.add(this.txtUrl, {flex: 1});
-
-      var btnGo = new qx.ui.toolbar.Button(null, "icon/16/actions/media-playback-start.png");
-      btnGo.addListener("execute", function(e) {
-        this.surfTo(this.txtUrl.getValue());
-      }, this);
+        },
+        this
+      );
       toolbar.add(btnGo);
-
 
       this.iframe = new qx.ui.embed.Iframe().set({
         width: 400,
@@ -107,20 +129,21 @@ qx.Class.define("qxl.demobrowser.demo.showcase.Browser",
         minWidth: 200,
         minHeight: 150,
         source: this.txtUrl.getValue(),
-        decorator : null
+        decorator: null,
       });
-      win.add(this.iframe, {flex: 1});
+
+      win.add(this.iframe, { flex: 1 });
 
       return win;
     },
 
-    surfTo : function(url) {
+    surfTo(url) {
       if (url.indexOf("http://") !== 0) {
         url = "http://" + url;
         this.txtUrl.setValue(url);
       }
 
       this.iframe.setSource(url);
-    }
-  }
+    },
+  },
 });

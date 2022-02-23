@@ -20,116 +20,115 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
-{
-  extend : qxl.demobrowser.demo.util.PropertyGroup,
+qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup", {
+  extend: qxl.demobrowser.demo.util.PropertyGroup,
 
-  statics :
-  {
-    BOX_PROPERTIES :
-    {
-      "flex" : {type: "int", min:-1000, nullable: true}
+  statics: {
+    BOX_PROPERTIES: {
+      flex: { type: "int", min: -1000, nullable: true },
     },
 
-    BASIC_PROPERTIES :
-    {
-      "top" : {type: "int", min:-1000, nullable: true},
-      "left" : {type: "int", min:-1000, nullable: true}
+    BASIC_PROPERTIES: {
+      top: { type: "int", min: -1000, nullable: true },
+      left: { type: "int", min: -1000, nullable: true },
     },
 
-    CANVAS_PROPERTIES :
-    {
-      "top" : {
+    CANVAS_PROPERTIES: {
+      top: {
         type: "string",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
           return value || null;
-        }
+        },
       },
-      "right" : {
+
+      right: {
         type: "string",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
           return value || null;
-        }
+        },
       },
-      "bottom" : {
+
+      bottom: {
         type: "string",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
           return value || null;
-        }
+        },
       },
-      "left" : {
+
+      left: {
         type: "string",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           if (parseInt(value).toString() == value) {
             value = parseInt(value);
           }
           return value || null;
-        }
+        },
       },
-      "width" : {
+
+      width: {
         type: "int",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           return value == null ? null : value + "%";
-        }
+        },
       },
-      "height" : {
+
+      height: {
         type: "int",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           return value == null ? null : value + "%";
-        }
-      }
+        },
+      },
     },
 
-    DOCK_PROPERTIES : {
-      "width" : {
+    DOCK_PROPERTIES: {
+      width: {
         type: "int",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           return value == null ? null : value + "%";
-        }
+        },
       },
-      "height" : {
+
+      height: {
         type: "int",
         nullable: true,
-        convert: function(value) {
+        convert(value) {
           return value == null ? null : value + "%";
-        }
+        },
       },
-      "edge": {
+
+      edge: {
         type: "enum",
-        values: [ "north", "east", "south", "west", "center" ],
-        nullable: false
-      }
+        values: ["north", "east", "south", "west", "center"],
+        nullable: false,
+      },
     },
 
-    GRID_PROPERTIES : {
-      "row" : { type: "int", nullable: false},
-      "column" : { type: "int", nullable: false},
-      "rowSpan" : { type: "int", nullable: true},
-      "colSpan" : { type: "int", nullable: true}
-    }
-
+    GRID_PROPERTIES: {
+      row: { type: "int", nullable: false },
+      column: { type: "int", nullable: false },
+      rowSpan: { type: "int", nullable: true },
+      colSpan: { type: "int", nullable: true },
+    },
   },
 
-
-  members :
-  {
-    _setProperty : function(widget, name, value) {
+  members: {
+    _setProperty(widget, name, value) {
       var convert = this._properties[name].convert;
       if (convert) {
         value = convert(value);
@@ -140,15 +139,12 @@ qx.Class.define("qxl.demobrowser.demo.util.LayoutPropertyGroup",
       widget.setLayoutProperties(props);
     },
 
-
-    _getProperty : function(widget, name) {
+    _getProperty(widget, name) {
       return widget.getLayoutProperties()[name] || null;
     },
 
-
-    _hasProperty : function(widget, name) {
+    _hasProperty(widget, name) {
       return true;
-    }
-
-  }
+    },
+  },
 });

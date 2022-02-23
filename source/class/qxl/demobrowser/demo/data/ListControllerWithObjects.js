@@ -28,17 +28,24 @@
  * @tag databinding
  * @tag delegate
  */
-qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // names
-      var names = ["Max", "Jackob", "Tim", "Jack", "Dan", "Dustin", "Karl", "Jim"];
+      var names = [
+        "Max",
+        "Jackob",
+        "Tim",
+        "Jack",
+        "Dan",
+        "Dustin",
+        "Karl",
+        "Jim",
+      ];
       var emotes = ["embarrassed", "kiss", "plain", "sad", "surprise", "angel"];
 
       // create the data
@@ -57,13 +64,13 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
       list.setWidth(150);
 
       // add the widgets to the document
-      this.getRoot().add(list, {left: 10, top: 80});
+      this.getRoot().add(list, { left: 10, top: 80 });
 
       // create the options for the icon
       var iconOptions = {
-        converter: function(value) {
+        converter(value) {
           return "icon/16/emotes/face-" + value + ".png";
-        }
+        },
       };
 
       // create the controller
@@ -74,88 +81,97 @@ qx.Class.define("qxl.demobrowser.demo.data.ListControllerWithObjects",
       controller.setIconOptions(iconOptions);
       controller.setIconPath("emote");
 
-
       // create the options for the online binding
       var colorOptions = {
-        converter : function(data) {
+        converter(data) {
           if (data) {
             return "green";
-          } 
-            return "red";
-        }
+          }
+          return "red";
+        },
       };
 
       // create the delegate to change the bindings
       var delegate = {
-        bindItem : function(controller, item, id) {
+        bindItem(controller, item, id) {
           controller.bindDefaultProperties(item, id);
           // 1. Parameter: The property chain to the data source
           // 2. Parameter: the property name to in the target
           // 3. Parameter: the options for the binding
           // 4. Parameter: the current item (comming in as parameter)
           // 5. Parameter: the current id (comming in as parameter)
-          controller.bindProperty("online", "textColor", colorOptions, item, id);
-        }
+          controller.bindProperty(
+            "online",
+            "textColor",
+            colorOptions,
+            item,
+            id
+          );
+        },
       };
-      controller.setDelegate(delegate);
 
+      controller.setDelegate(delegate);
 
       /* ***********************************************
        * Controlls: Do only work on the data array
        * ********************************************* */
       var makeAllHappy = new qx.ui.form.Button("Make all happy");
       makeAllHappy.setWidth(120);
-      this.getRoot().add(makeAllHappy, {left: 180, top: 80});
-      makeAllHappy.addListener("execute", function() {
-        // go threw the data array
-        for (var i = 0; i < data.length; i++) {
-          var person = data.getItem(i);
-          person.setEmote("smile");
-        }
-      }, this);
+      this.getRoot().add(makeAllHappy, { left: 180, top: 80 });
+      makeAllHappy.addListener(
+        "execute",
+        function () {
+          // go threw the data array
+          for (var i = 0; i < data.length; i++) {
+            var person = data.getItem(i);
+            person.setEmote("smile");
+          }
+        },
+        this
+      );
 
       var statusButton = new qx.ui.form.Button("Online <> Offline");
       statusButton.setWidth(120);
-      this.getRoot().add(statusButton, {left: 180, top: 115});
-      statusButton.addListener("execute", function() {
-        for (var i = 0; i < data.length; i++) {
-          data.getItem(i).toggleOnline();
-        }
-      }, this);
+      this.getRoot().add(statusButton, { left: 180, top: 115 });
+      statusButton.addListener(
+        "execute",
+        function () {
+          for (var i = 0; i < data.length; i++) {
+            data.getItem(i).toggleOnline();
+          }
+        },
+        this
+      );
 
       var logDataButton = new qx.ui.form.Button("Write data to log");
       logDataButton.setWidth(120);
-      this.getRoot().add(logDataButton, {left: 180, top: 150});
-      logDataButton.addListener("execute", function() {
-        // open the console
-        qx.log.appender.Console.show();
-        // log the data
-        this.info(data.toString());
-      }, this);
+      this.getRoot().add(logDataButton, { left: 180, top: 150 });
+      logDataButton.addListener(
+        "execute",
+        function () {
+          // open the console
+          qx.log.appender.Console.show();
+          // log the data
+          this.info(data.toString());
+        },
+        this
+      );
 
+      /* ***********************************************
+       * DESCRIPTIONS
+       * ********************************************* */
+      // List Selection sync description
+      var syncListDescription = new qx.ui.basic.Label();
+      syncListDescription.setRich(true);
+      syncListDescription.setWidth(600);
+      syncListDescription.setValue(
+        "<b>Displaying objects in a list</b><br/>" +
+          "This list display a set of persons in a list. Every person does " +
+          "have a name and an emotion, which is displayed with the help of " +
+          " a converter by the icon. The font color shows the online status."
+      );
 
-
-
-
-
-
-
-
-
-       /* ***********************************************
-        * DESCRIPTIONS
-        * ********************************************* */
-       // List Selection sync description
-       var syncListDescription = new qx.ui.basic.Label();
-       syncListDescription.setRich(true);
-       syncListDescription.setWidth(600);
-       syncListDescription.setValue(
-         "<b>Displaying objects in a list</b><br/>" +
-         "This list display a set of persons in a list. Every person does " +
-         "have a name and an emotion, which is displayed with the help of " +
-         " a converter by the icon. The font color shows the online status."
-       );
-       this.getRoot().add(syncListDescription, {left: 10, top: 10});
-    }
-  }
+      this.getRoot().add(syncListDescription, { left: 10, top: 10 });
+    },
+  },
 });

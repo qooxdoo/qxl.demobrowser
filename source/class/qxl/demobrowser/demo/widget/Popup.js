@@ -26,67 +26,82 @@
  * @asset(qx/icon/${qx.icontheme}/32/apps/media-photo-album.png)
  */
 
-qx.Class.define("qxl.demobrowser.demo.widget.Popup",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Popup", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var box = new qx.ui.layout.HBox();
       box.setSpacing(20);
 
       var container = new qx.ui.container.Composite(box).set({
-        padding: 20
+        padding: 20,
       });
+
       this.getRoot().add(container);
 
       container.add(this._getPopupButton1());
       container.add(this._getPopupButton2());
     },
 
-
-    _getPopupButton1 : function() {
+    _getPopupButton1() {
       var button = new qx.ui.form.Button("Open Popup #1");
 
       var popup = new qx.ui.popup.Popup(new qx.ui.layout.Canvas()).set({
         backgroundColor: "#FFFAD3",
         padding: [2, 4],
-        offset : 3,
-        offsetBottom : 20
+        offset: 3,
+        offsetBottom: 20,
       });
 
-      popup.add(new qx.ui.basic.Atom("Hello World #1", "icon/32/apps/media-photo-album.png"));
+      popup.add(
+        new qx.ui.basic.Atom(
+          "Hello World #1",
+          "icon/32/apps/media-photo-album.png"
+        )
+      );
 
-      button.addListener("pointerdown", function(e) {
-        popup.placeToPointer(e);
-        popup.show();
-      }, this);
+      button.addListener(
+        "pointerdown",
+        function (e) {
+          popup.placeToPointer(e);
+          popup.show();
+        },
+        this
+      );
 
       return button;
     },
 
-
-    _getPopupButton2 : function() {
+    _getPopupButton2() {
       var button = new qx.ui.form.Button("Open Popup #2");
 
       var popup = new qx.ui.popup.Popup(new qx.ui.layout.Canvas()).set({
         backgroundColor: "#DFFAD3",
         padding: [2, 4],
-        offset : 3,
-        position : "top-right"
+        offset: 3,
+        position: "top-right",
       });
 
-      popup.add(new qx.ui.basic.Atom("Hello World #1", "icon/32/apps/media-photo-album.png"));
+      popup.add(
+        new qx.ui.basic.Atom(
+          "Hello World #1",
+          "icon/32/apps/media-photo-album.png"
+        )
+      );
 
-      button.addListener("pointerdown", function(e) {
-        popup.placeToPointer(e);
-        popup.show();
-      }, this);
+      button.addListener(
+        "pointerdown",
+        function (e) {
+          popup.placeToPointer(e);
+          popup.show();
+        },
+        this
+      );
 
       return button;
-    }
-  }
+    },
+  },
 });

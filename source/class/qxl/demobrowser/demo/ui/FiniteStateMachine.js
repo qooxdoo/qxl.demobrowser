@@ -31,25 +31,22 @@
  * @asset(qxl/demobrowser/demo/ui/mouse-west.gif)
  */
 
-qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine", {
+  extend: qx.application.Standalone,
 
-
-  construct : function() {
-    this.base(arguments);
+  construct() {
+    super();
   },
 
-  members :
-  {
+  members: {
     /**
      * TODOC
      */
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       // Enable logging in debug variant
-      if ((qx.core.Environment.get("qx.debug"))) {
+      if (qx.core.Environment.get("qx.debug")) {
         // support native logging capabilities, e.g. Firebug for Firefox
         qx.log.appender.Native;
         // support additional cross-browser console. Press F7 to toggle visibility
@@ -80,7 +77,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
         "<u>The finite state diagram is below the maze.</u>";
 
       var scroll = new qx.ui.container.Scroll();
-      this.getRoot().add(scroll, {edge: 0});
+      this.getRoot().add(scroll, { edge: 0 });
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.Canvas());
       scroll.add(container);
@@ -92,59 +89,56 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine",
       o = null; // image no longer needed
 
       o = new qx.ui.basic.Label(description);
-      o.set(
-        {
-          width : 700,
-          rich : true,
-          wrap : true
-        });
-      container.add(o, {left: 50});
+      o.set({
+        width: 700,
+        rich: true,
+        wrap: true,
+      });
+
+      container.add(o, { left: 50 });
       var maze = new qxl.demobrowser.demo.util.FSMMaze(10, 10, 50, 240);
-      container.add(maze, {left: 50, top: 240});
+      container.add(maze, { left: 50, top: 240 });
 
       o = new qx.ui.basic.Image("demobrowser/demo/ui/FsmMiceMaze.png", 800);
-      container.add(o, {left: 50, top: 800});
+      container.add(o, { left: 50, top: 800 });
 
       // Determine (randomly) the facing direction of the initial mouse
       var facing;
       var random = Math.floor(Math.random() * 4);
       switch (random) {
-      case 0:
-        facing = qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH;
-        break;
+        case 0:
+          facing = qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH;
+          break;
 
-      case 1:
-        facing = qxl.demobrowser.demo.util.FSMMaze.Direction.EAST;
-        break;
+        case 1:
+          facing = qxl.demobrowser.demo.util.FSMMaze.Direction.EAST;
+          break;
 
-      case 2:
-        facing = qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH;
-        break;
+        case 2:
+          facing = qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH;
+          break;
 
-      case 3:
-        facing = qxl.demobrowser.demo.util.FSMMaze.Direction.WEST;
-        break;
+        case 3:
+          facing = qxl.demobrowser.demo.util.FSMMaze.Direction.WEST;
+          break;
       }
 
       // Create the initial mouse
       new qxl.demobrowser.demo.util.FSMMouse(null, maze, facing, container);
     },
 
-
-
     /**
      * TODOC
      */
-    close : function() {
-      this.base(arguments);
+    close() {
+      super.close();
     },
 
-
     /**
      * TODOC
      */
-    terminate : function() {
-      this.base(arguments);
-    }
-  }
+    terminate() {
+      super.terminate();
+    },
+  },
 });

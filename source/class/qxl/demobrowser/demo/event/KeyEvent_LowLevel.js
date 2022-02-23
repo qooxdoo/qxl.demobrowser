@@ -17,31 +17,36 @@
 
 ************************************************************************ */
 
-
 /**
  * Keyhandler test converted to use the low level event API.
  *
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel",
-{
-  extend : qxl.demobrowser.demo.event.EventDemo,
+qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel", {
+  extend: qxl.demobrowser.demo.event.EventDemo,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       this.debug(qx.core.Environment.get("engine.version"));
 
       this._initLogger(
-          ["Event", "key code", "char code", "key identifier", "Shift", "Ctrl", "Alt"],
-          document.getElementById("logger"),
-          50
-        );
+        [
+          "Event",
+          "key code",
+          "char code",
+          "key identifier",
+          "Shift",
+          "Ctrl",
+          "Alt",
+        ],
+        document.getElementById("logger"),
+        50
+      );
 
       var events = ["keydown", "keypress", "keyup"];
-      for (var i=0; i<events.length; i++) {
+      for (var i = 0; i < events.length; i++) {
         qx.bom.Event.addNativeListener(
           document.documentElement,
           events[i],
@@ -50,7 +55,7 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel",
       }
     },
 
-    logKeyEvent: function(keyEvent) {
+    logKeyEvent(keyEvent) {
       var type = keyEvent.type;
       this._log([
         type,
@@ -59,10 +64,10 @@ qx.Class.define("qxl.demobrowser.demo.event.KeyEvent_LowLevel",
         keyEvent.keyIdentifier || "",
         keyEvent.shiftKey,
         keyEvent.ctrlKey,
-        keyEvent.altKey
+        keyEvent.altKey,
       ]);
 
       qx.bom.Event.preventDefault(keyEvent);
-    }
-  }
+    },
+  },
 });

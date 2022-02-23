@@ -21,19 +21,25 @@
  * @tag databinding
  * @tag filter
  */
-qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create some stuff for the list items
       var names = [
-        "Bart", "Lisa", "Homer", "Marge", "Moe",
-        "Smithers", "Nelson", "Flanders", "Maggy", "Skinner"
+        "Bart",
+        "Lisa",
+        "Homer",
+        "Marge",
+        "Moe",
+        "Smithers",
+        "Nelson",
+        "Flanders",
+        "Maggy",
+        "Skinner",
       ];
 
       // create the data
@@ -44,7 +50,7 @@ qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
       var data = new qx.data.Array(rawData);
 
       var container = new qx.ui.container.Composite(new qx.ui.layout.VBox(8));
-      this.getRoot().add(container, {top: 10, left: 10});
+      this.getRoot().add(container, { top: 10, left: 10 });
 
       // create the textfield
       var textfield = new qx.ui.form.TextField();
@@ -61,17 +67,14 @@ qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
       var controller = new qx.data.controller.List(data, list);
 
       // create the filter
-      var filterObj = new qxl.demobrowser.demo.data.filter.SearchAsYouTypeFilter(controller);
+      var filterObj =
+        new qxl.demobrowser.demo.data.filter.SearchAsYouTypeFilter(controller);
 
       // set the filter
       controller.setDelegate(filterObj);
 
       // make every input in the textfield update the controller
       textfield.bind("changeValue", filterObj, "searchString");
-
-
-
-
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -82,9 +85,10 @@ qx.Class.define("qxl.demobrowser.demo.data.SearchAsYouType",
       description.setWidth(200);
       description.setValue(
         "<b>Search As You Type List</b><br/>" +
-        "Type a name and the list will show only the matching results (case-sensitive)."
+          "Type a name and the list will show only the matching results (case-sensitive)."
       );
+
       container.addAt(description, 0);
-    }
-  }
+    },
+  },
 });

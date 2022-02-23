@@ -26,24 +26,26 @@
  * @asset(qxl/demobrowser/demo/webworker/webworker.js)
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.WebWorker",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.bom.WebWorker", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
       var doc = this.getRoot();
 
-      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/webworker/webworker.js");
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/webworker/webworker.js"
+      );
       var worker = new qx.bom.WebWorker(url);
 
-      var label1 = new qx.ui.basic.Label("Calculate Fibonacci Numbers in a Web Worker");
+      var label1 = new qx.ui.basic.Label(
+        "Calculate Fibonacci Numbers in a Web Worker"
+      );
       var info = new qx.ui.basic.Label("");
-      var calculate = new qx.ui.form.Button("Calculate").set({width: 100});
+      var calculate = new qx.ui.form.Button("Calculate").set({ width: 100 });
       var what = new qx.ui.form.TextField("30");
-      var result = new qx.ui.form.List().set({width: 200});
+      var result = new qx.ui.form.List().set({ width: 200 });
 
       if (qx.core.Environment.get("html.webworker")) {
         info.setValue("Your browser supports Web Workers");
@@ -51,16 +53,15 @@ qx.Class.define("qxl.demobrowser.demo.bom.WebWorker",
         info.setValue("Your browser doesn't support Web Workers");
       }
 
+      doc.add(info, { left: 20, top: 10 });
+      doc.add(label1, { left: 20, top: 40 });
+      doc.add(what, { left: 20, top: 60 });
+      doc.add(calculate, { left: 120, top: 58 });
+      doc.add(result, { left: 20, top: 90 });
 
-      doc.add(info, {left:20, top:10});
-      doc.add(label1, {left:20, top:40});
-      doc.add(what, {left:20, top:60});
-      doc.add(calculate, {left:120, top:58});
-      doc.add(result, {left:20, top:90});
-
-      worker.addListener("message", function(e) {
+      worker.addListener("message", function (e) {
         var data = e.getData();
-        result.addAt(new qx.ui.form.ListItem(""+data.result), 0);
+        result.addAt(new qx.ui.form.ListItem("" + data.result), 0);
         if (data.done) {
           calculate.setEnabled(true);
           what.setEnabled(true);
@@ -68,13 +69,17 @@ qx.Class.define("qxl.demobrowser.demo.bom.WebWorker",
         }
       });
 
-      calculate.addListener("execute", function(e) {
-        result.removeAll();
-        worker.postMessage(parseInt(what.getValue() || 0, 10));
-        calculate.setEnabled(false);
-        what.setEnabled(false);
-        calculate.setLabel("Calculating...");
-      }, this);
-    }
-  }
+      calculate.addListener(
+        "execute",
+        function (e) {
+          result.removeAll();
+          worker.postMessage(parseInt(what.getValue() || 0, 10));
+          calculate.setEnabled(false);
+          what.setEnabled(false);
+          calculate.setLabel("Calculating...");
+        },
+        this
+      );
+    },
+  },
 });

@@ -20,14 +20,12 @@
  * @tag databinding
  * @tag selection
  */
-qx.Class.define("qxl.demobrowser.demo.data.ListController",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.ListController", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create the data
       var rawData = [];
@@ -44,16 +42,16 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       var list3 = new qx.ui.form.List();
 
       // add the widgets to the document
-      this.getRoot().add(list1, {left: 10, top: 110});
-      this.getRoot().add(list2, {left: 130, top: 110});
-      this.getRoot().add(list3, {left: 250, top: 110});
-
+      this.getRoot().add(list1, { left: 10, top: 110 });
+      this.getRoot().add(list2, { left: 130, top: 110 });
+      this.getRoot().add(list3, { left: 250, top: 110 });
 
       // create the controller
       var controller1 = new qx.data.controller.List(data, list1);
       var controller2 = new qx.data.controller.List(data, list2);
       var controller3 = new qx.data.controller.List(
-        controller1.getSelection(), list3
+        controller1.getSelection(),
+        list3
       );
 
       // synchronize the selection
@@ -61,7 +59,7 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
 
       // create a label for the selection
       var selectedLabel = new qx.ui.basic.Label("");
-      this.getRoot().add(selectedLabel, {left: 370, top: 110});
+      this.getRoot().add(selectedLabel, { left: 370, top: 110 });
       // bind the label with single value binding to the current selection
       controller3.bind("selection[0]", selectedLabel, "value");
       // style the textfield
@@ -69,42 +67,44 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       selectedLabel.setDecorator("main");
       selectedLabel.setBackgroundColor("white");
 
-
       /* ***********************************************
        * Controlls: Do only work on the data array
        * ********************************************* */
       var addItemButton = new qx.ui.form.Button("Add an item");
       addItemButton.setWidth(120);
-      this.getRoot().add(addItemButton, {left: 370, top: 140});
-      addItemButton.addListener("execute", function() {
-        data.push("Item " + data.length);
-      }, this);
+      this.getRoot().add(addItemButton, { left: 370, top: 140 });
+      addItemButton.addListener(
+        "execute",
+        function () {
+          data.push("Item " + data.length);
+        },
+        this
+      );
 
       var removeItemButton = new qx.ui.form.Button("Remove an item");
       removeItemButton.setWidth(120);
-      this.getRoot().add(removeItemButton, {left: 370, top: 175});
-      removeItemButton.addListener("execute", function() {
-        data.pop();
-      }, this);
+      this.getRoot().add(removeItemButton, { left: 370, top: 175 });
+      removeItemButton.addListener(
+        "execute",
+        function () {
+          data.pop();
+        },
+        this
+      );
 
       var logDataButton = new qx.ui.form.Button("Write data to log");
       logDataButton.setWidth(120);
-      this.getRoot().add(logDataButton, {left: 370, top: 210});
-      logDataButton.addListener("execute", function() {
-        // open the console
-        qx.log.appender.Console.show();
-        // push the data in the console
-        this.info(data.toString());
-      }, this);
-
-
-
-
-
-
-
-
-
+      this.getRoot().add(logDataButton, { left: 370, top: 210 });
+      logDataButton.addListener(
+        "execute",
+        function () {
+          // open the console
+          qx.log.appender.Console.show();
+          // push the data in the console
+          this.info(data.toString());
+        },
+        this
+      );
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -115,9 +115,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       syncListDescription.setWidth(200);
       syncListDescription.setValue(
         "<b>Multi selection List</b><br/>" +
-        "Bound to the same data and share the selection."
+          "Bound to the same data and share the selection."
       );
-      this.getRoot().add(syncListDescription, {left: 20, top: 10});
+
+      this.getRoot().add(syncListDescription, { left: 20, top: 10 });
 
       // List Selection description
       var selectionListDescription = new qx.ui.basic.Label();
@@ -125,9 +126,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       selectionListDescription.setWidth(100);
       selectionListDescription.setValue(
         "<b>Selection List</b><br/>" +
-        "Bound to the selection of the list to the left."
+          "Bound to the selection of the list to the left."
       );
-      this.getRoot().add(selectionListDescription, {left: 260, top: 10});
+
+      this.getRoot().add(selectionListDescription, { left: 260, top: 10 });
 
       // Label Selection description
       var selectionLabelDescription = new qx.ui.basic.Label();
@@ -135,9 +137,10 @@ qx.Class.define("qxl.demobrowser.demo.data.ListController",
       selectionLabelDescription.setWidth(100);
       selectionLabelDescription.setValue(
         "<b>Selection Label</b><br/>" +
-        "Bound to the selection of the list to the left."
+          "Bound to the selection of the list to the left."
       );
-      this.getRoot().add(selectionLabelDescription, {left: 380, top: 10});
-    }
-  }
+
+      this.getRoot().add(selectionLabelDescription, { left: 380, top: 10 });
+    },
+  },
 });

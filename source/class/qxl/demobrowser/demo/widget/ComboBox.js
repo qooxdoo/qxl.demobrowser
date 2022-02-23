@@ -16,19 +16,17 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.ComboBox", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
+  members: {
     /**
      * TODOC
      *
      * @return {void}
      */
-    main : function() {
-      this.base(arguments);
+    main() {
+      super.main();
 
       // examlpe 1: default combo box with 30 text items
       this._createDefaultExample();
@@ -43,7 +41,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       this._createHtmlExample();
     },
 
-
     /**
      * Creates a default example.
      * This means that a regular combobox will be created and filled with
@@ -51,38 +48,37 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createDefaultExample : function() {
+    _createDefaultExample() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Default");
       label.setFont("bold");
 
-      this.getRoot().add(label,
-      {
-        left : 20,
-        top  : 20
+      this.getRoot().add(label, {
+        left: 20,
+        top: 20,
       });
 
       // create a combo box
       var comboBox = new qx.ui.form.ComboBox();
 
       // fill the combo box with some stuff
-      for (var i=1; i<31; i++) {
-        var tempItem = new qx.ui.form.ListItem("2^ " + i + " = " + Math.pow(2, i));
+      for (var i = 1; i < 31; i++) {
+        var tempItem = new qx.ui.form.ListItem(
+          "2^ " + i + " = " + Math.pow(2, i)
+        );
         comboBox.add(tempItem);
       }
 
-      comboBox.addListener("changeValue", function(e) {
+      comboBox.addListener("changeValue", function (e) {
         this.debug("ChangeValue: " + e.getData());
       });
 
       // add the combobox to the documents root
-      this.getRoot().add(comboBox,
-      {
-        left : 20,
-        top  : 40
+      this.getRoot().add(comboBox, {
+        left: 20,
+        top: 40,
       });
     },
-
 
     /**
      * Creates a icon example.
@@ -92,31 +88,32 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createIconExample : function() {
+    _createIconExample() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With icons");
       label.setFont("bold");
 
-      this.getRoot().add(label,
-      {
-        left : 160,
-        top  : 20
+      this.getRoot().add(label, {
+        left: 160,
+        top: 20,
       });
 
       // create a combo box
       var comboBox = new qx.ui.form.ComboBox();
 
       // fill the combo box with some stuff
-      for (var i=1; i<31; i++) {
-        var tempItem = new qx.ui.form.ListItem(i + "'s Icon", "icon/16/places/folder.png");
+      for (var i = 1; i < 31; i++) {
+        var tempItem = new qx.ui.form.ListItem(
+          i + "'s Icon",
+          "icon/16/places/folder.png"
+        );
         comboBox.add(tempItem);
       }
 
       // add the combobox to the documents root
-      this.getRoot().add(comboBox,
-      {
-        left : 160,
-        top  : 40
+      this.getRoot().add(comboBox, {
+        left: 160,
+        top: 40,
       });
     },
 
@@ -127,26 +124,27 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createHtmlExample : function() {
+    _createHtmlExample() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("With HTML (rich) text");
       label.setFont("bold");
 
-      this.getRoot().add(label,
-      {
-        left : 300,
-        top  : 20
+      this.getRoot().add(label, {
+        left: 300,
+        top: 20,
       });
 
       // create a combo box
-      var comboBox = new qx.ui.form.ComboBox().set({width: 200});
+      var comboBox = new qx.ui.form.ComboBox().set({ width: 200 });
 
-      var items = ["... &gt; (as literal HTML entity)",
-                   "... &gt; (as Richtext)",
-                   "<b>Bold Text</b>",
-                   "<u>Underlined Text</u>",
-                   "<i>Italic Text</i>",
-                   "HTML entities: &laquo; &lt; &amp; &gt; &raquo;"];
+      var items = [
+        "... &gt; (as literal HTML entity)",
+        "... &gt; (as Richtext)",
+        "<b>Bold Text</b>",
+        "<u>Underlined Text</u>",
+        "<i>Italic Text</i>",
+        "HTML entities: &laquo; &lt; &amp; &gt; &raquo;",
+      ];
 
       // fill the combo box with some stuff
       for (var i = 0; i < items.length; i++) {
@@ -160,10 +158,9 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       }
 
       // add the combobox to the documents root
-      this.getRoot().add(comboBox,
-      {
-        left : 300,
-        top  : 40
+      this.getRoot().add(comboBox, {
+        left: 300,
+        top: 40,
       });
     },
 
@@ -172,15 +169,14 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
      *
      * @return {void}
      */
-    _createWideExample : function() {
+    _createWideExample() {
       // create and add the describing label
       var label = new qx.ui.basic.Label("Wide, long list");
       label.setFont("bold");
 
-      this.getRoot().add(label,
-      {
-        left : 20,
-        top  : 280
+      this.getRoot().add(label, {
+        left: 20,
+        top: 280,
       });
 
       // create a combo box
@@ -188,20 +184,19 @@ qx.Class.define("qxl.demobrowser.demo.widget.ComboBox",
       comboBox.setWidth(300);
 
       // fill the combo box with some stuff
-      for (var i=1; i<101; i++) {
+      for (var i = 1; i < 101; i++) {
         var tempItem = new qx.ui.form.ListItem(i + "'s Item");
         comboBox.add(tempItem);
       }
-      comboBox.setValue(comboBox.getChildrenContainer().getSelectables()[0].getLabel());
+      comboBox.setValue(
+        comboBox.getChildrenContainer().getSelectables()[0].getLabel()
+      );
 
       // add the combobox to the documents root
-      this.getRoot().add(comboBox,
-      {
-        left : 20,
-        top  : 300
+      this.getRoot().add(comboBox, {
+        left: 20,
+        top: 300,
       });
-    }
-
-
-  }
+    },
+  },
 });

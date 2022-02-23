@@ -16,14 +16,12 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.CheckBox", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var label = new qx.ui.basic.Label("What do you need for the beach?");
 
@@ -35,7 +33,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
       var container = new qx.ui.container.Composite(mainLayout);
       container.setPadding(20);
 
-      this.getRoot().add(container, {left:0, top:0});
+      this.getRoot().add(container, { left: 0, top: 0 });
 
       container.add(label);
 
@@ -45,7 +43,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
       var cbBeer = new qx.ui.form.CheckBox("Beer");
       var cbBT = new qx.ui.form.CheckBox("Bathing togs");
 
-      this._checkBoxes = [ cbOil, cbTowel, cbBeer, cbBT ];
+      this._checkBoxes = [cbOil, cbTowel, cbBeer, cbBT];
 
       // Add them to the container
       container.add(cbOil);
@@ -66,25 +64,25 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
      * @param e {qx.event.type.Data} The incoming data event
      * @lint ignoreDeprecated(alert)
      */
-    _onExecute : function(e) {
+    _onExecute(e) {
       var cbs = this._checkBoxes;
       var count = 0;
       var str = "";
 
-      for (var i=0; i<cbs.length; i++) {
+      for (var i = 0; i < cbs.length; i++) {
         if (cbs[i].getValue()) {
           count++;
-          str += (cbs[i].getLabel() + ", ");
+          str += cbs[i].getLabel() + ", ";
         }
       }
 
       if (count > 0) {
-        str = str.substring(0, str.length-2);
+        str = str.substring(0, str.length - 2);
         alert("You need these things for the beach: " + str);
       } else {
         alert("Are you sure you need nothing for the beach?");
       }
-    }
+    },
   },
 
   /*
@@ -93,7 +91,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.CheckBox",
    *****************************************************************************
    */
 
-  destruct : function() {
+  destruct() {
     this._disposeArray("_checkBoxes");
-  }
+  },
 });

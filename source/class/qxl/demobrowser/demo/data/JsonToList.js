@@ -27,47 +27,45 @@
  * @asset(qx/icon/${qx.icontheme}/16/mimetypes/*)
  * @tag databinding
  */
-qx.Class.define("qxl.demobrowser.demo.data.JsonToList",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.data.JsonToList", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       // create and add the list
       var list = new qx.ui.form.List();
-      this.getRoot().add(list, {left: 10, top: 80});
+      this.getRoot().add(list, { left: 10, top: 80 });
 
       // create the controller
       var controller = new qx.data.controller.List(null, list);
       // set the name for the label property
       controller.setLabelPath("name");
       // set a converter for the icons
-      controller.setIconOptions({converter : function(data) {
-        return "icon/16/mimetypes/" + data + ".png";
-      }});
+      controller.setIconOptions({
+        converter(data) {
+          return "icon/16/mimetypes/" + data + ".png";
+        },
+      });
       // set the name of the icon property
       controller.setIconPath("type");
 
       // create the data store
-      var url = qx.util.ResourceManager.getInstance().toUri("qxl/demobrowser/demo/data/list.json");
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/data/list.json"
+      );
       var store = new qx.data.store.Json(url);
 
       // create the status label
       var status = new qx.ui.basic.Label("Loading...");
-      this.getRoot().add(status, {left: 120, top: 80});
+      this.getRoot().add(status, { left: 120, top: 80 });
 
       // connect the store and the controller
       store.bind("model.items", controller, "model");
 
       // bind the status label
       store.bind("state", status, "value");
-
-
-
-
 
       /* ***********************************************
        * DESCRIPTIONS
@@ -77,11 +75,14 @@ qx.Class.define("qxl.demobrowser.demo.data.JsonToList",
       description.setWidth(450);
       description.setValue(
         "<b>List bound to data in a json file</b><br/>" +
-        "Loading the json file <a href='" + url +"' target='_blank'>" +
-        "list.json</a> and bind the items to the list widget. The icons " +
-        " will be created by a converter which converts the type to an icon url."
+          "Loading the json file <a href='" +
+          url +
+          "' target='_blank'>" +
+          "list.json</a> and bind the items to the list widget. The icons " +
+          " will be created by a converter which converts the type to an icon url."
       );
-      this.getRoot().add(description, {left: 10, top: 10});
-    }
-  }
+
+      this.getRoot().add(description, { left: 10, top: 10 });
+    },
+  },
 });

@@ -17,22 +17,16 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.Iframe",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.Iframe", {
+  extend: qx.application.Standalone,
 
-
-  events :
-  {
-    "surfTo" : "qx.event.type.DataEvent"
+  events: {
+    surfTo: "qx.event.type.DataEvent",
   },
 
-  members :
-  {
-    main : function() {
-      this.base(arguments);
-
-
+  members: {
+    main() {
+      super.main();
 
       //----------
       // frame
@@ -40,7 +34,7 @@ qx.Class.define("qxl.demobrowser.demo.widget.Iframe",
 
       var frame = new qx.ui.embed.ThemedIframe();
       var d = this.getRoot();
-      frame.addListener("load", function(e) {
+      frame.addListener("load", function (e) {
         this.debug("Loaded: " + this.getSource());
       });
 
@@ -48,14 +42,11 @@ qx.Class.define("qxl.demobrowser.demo.widget.Iframe",
       frame.setSource("http://www.w3.org/");
 
       d.add(frame, {
-        top : 100,
-        right : 20,
-        bottom : 20,
-        left : 20
+        top: 100,
+        right: 20,
+        bottom: 20,
+        left: 20,
       });
-
-
-
 
       //-------------
       // radio group
@@ -69,19 +60,23 @@ qx.Class.define("qxl.demobrowser.demo.widget.Iframe",
       rd1.setValue(true);
 
       var rbm = new qx.ui.form.RadioGroup(rd1, rd2);
-      rbm.addListener("changeSelection", function(e) {
-        this.setSource(e.getData()[0].getUserData("url"));
-      }, frame);
+      rbm.addListener(
+        "changeSelection",
+        function (e) {
+          this.setSource(e.getData()[0].getUserData("url"));
+        },
+        frame
+      );
 
       d.add(rd1, {
-        left : 20,
-        top : 48
+        left: 20,
+        top: 48,
       });
 
       d.add(rd2, {
-        left : 120,
-        top : 48
+        left: 120,
+        top: 48,
       });
-    }
-  }
+    },
+  },
 });

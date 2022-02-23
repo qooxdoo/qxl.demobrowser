@@ -20,20 +20,36 @@
 /**
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.bom.ScrollIntoView",
-{
-  extend : qx.application.Native,
+qx.Class.define("qxl.demobrowser.demo.bom.ScrollIntoView", {
+  extend: qx.application.Native,
 
-  statics :
-  {
-    test : function() {
-      var ids = [ "z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8" ];
+  statics: {
+    test() {
+      var ids = ["z1", "z2", "z3", "z4", "z5", "z6", "z7", "z8"];
 
-      for (var i=0, l=ids.length; i<l; i++) {
+      for (var i = 0, l = ids.length; i < l; i++) {
         var el = document.getElementById(ids[i]);
-        qx.log.Logger.info("Width: " + ids[i] + ": offset=" + el.offsetWidth + ", scroll=" + el.scrollWidth + ", client=" + el.clientWidth);
-        qx.log.Logger.info("Height: " + ids[i] + ": offset=" + el.offsetHeight + ", scroll=" + el.scrollHeight + ", client=" + el.clientHeight);
+        qx.log.Logger.info(
+          "Width: " +
+            ids[i] +
+            ": offset=" +
+            el.offsetWidth +
+            ", scroll=" +
+            el.scrollWidth +
+            ", client=" +
+            el.clientWidth
+        );
+        qx.log.Logger.info(
+          "Height: " +
+            ids[i] +
+            ": offset=" +
+            el.offsetHeight +
+            ", scroll=" +
+            el.scrollHeight +
+            ", client=" +
+            el.clientHeight
+        );
       }
-    }
-  }
+    },
+  },
 });

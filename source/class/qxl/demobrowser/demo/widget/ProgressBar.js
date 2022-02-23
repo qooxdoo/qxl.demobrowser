@@ -16,24 +16,22 @@
 
 ************************************************************************ */
 
-qx.Class.define("qxl.demobrowser.demo.widget.ProgressBar",
-{
-  extend : qx.application.Standalone,
+qx.Class.define("qxl.demobrowser.demo.widget.ProgressBar", {
+  extend: qx.application.Standalone,
 
-  members :
-  {
-    main: function() {
-      this.base(arguments);
+  members: {
+    main() {
+      super.main();
 
       var root = this.getRoot();
       var box = new qx.ui.layout.VBox();
       var container = new qx.ui.container.Composite(box);
 
       var pb = new qx.ui.indicator.ProgressBar(0, 200);
-      var slider = new qx.ui.form.Slider().set({minimum:0, maximum: 200});
+      var slider = new qx.ui.form.Slider().set({ minimum: 0, maximum: 200 });
       var info = new qx.ui.basic.Label();
 
-      root.add(container, {left:0, top:0});
+      root.add(container, { left: 0, top: 0 });
       container.add(pb);
       container.add(slider);
       container.add(info);
@@ -43,20 +41,22 @@ qx.Class.define("qxl.demobrowser.demo.widget.ProgressBar",
       info.setValue("Completed: 0 (0%)");
 
       //set up the progressbar value with slider's value
-      slider.addListener("changeValue", function(e) {
+      slider.addListener("changeValue", function (e) {
         pb.setValue(e.getData());
       });
 
       //get real time change from the progressbar
-      pb.addListener("change", function(e) {
-        info.setValue("Completed: " + pb.getValue() + " (" + e.getData() + "%)");
+      pb.addListener("change", function (e) {
+        info.setValue(
+          "Completed: " + pb.getValue() + " (" + e.getData() + "%)"
+        );
         info.setTextColor("black");
       });
 
       //when complete make the info text green
-      pb.addListener("complete", function(e) {
+      pb.addListener("complete", function (e) {
         info.setTextColor("green");
       });
-    }
-  }
+    },
+  },
 });

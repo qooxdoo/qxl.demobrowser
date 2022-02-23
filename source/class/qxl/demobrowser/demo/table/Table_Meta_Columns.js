@@ -20,27 +20,24 @@
  * A Table with meta columns
  * @tag noPlayground
  */
-qx.Class.define("qxl.demobrowser.demo.table.Table_Meta_Columns",
-{
-  extend : qxl.demobrowser.demo.table.TableDemo,
+qx.Class.define("qxl.demobrowser.demo.table.Table_Meta_Columns", {
+  extend: qxl.demobrowser.demo.table.TableDemo,
 
-  members :
-  {
-    getCaption : function() {
+  members: {
+    getCaption() {
       return "Table with meta columns";
     },
 
-
-    createTable : function() {
+    createTable() {
       // table model
       var tableModel = new qx.ui.table.model.Simple();
-      tableModel.setColumns([ "ID", "A number", "A date", "Boolean test" ]);
+      tableModel.setColumns(["ID", "A number", "A date", "Boolean test"]);
       var rowData = [];
       var now = new Date().getTime();
       var dateRange = 400 * 24 * 60 * 60 * 1000; // 400 days
       for (var row = 0; row < 100; row++) {
         var date = new Date(now + Math.random() * dateRange - dateRange / 2);
-        rowData.push([ row, Math.random() * 10000, date, (Math.random() > 0.5) ]);
+        rowData.push([row, Math.random() * 10000, date, Math.random() > 0.5]);
       }
       tableModel.setData(rowData);
       tableModel.setColumnEditable(1, true);
@@ -49,12 +46,18 @@ qx.Class.define("qxl.demobrowser.demo.table.Table_Meta_Columns",
       // table
       var table = new qx.ui.table.Table(tableModel);
       table.setMetaColumnCounts([1, -1]);
-      table.getSelectionModel().setSelectionMode(qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION);
-      table.getTableColumnModel().setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
+      table
+        .getSelectionModel()
+        .setSelectionMode(
+          qx.ui.table.selection.Model.MULTIPLE_INTERVAL_SELECTION
+        );
+      table
+        .getTableColumnModel()
+        .setDataCellRenderer(3, new qx.ui.table.cellrenderer.Boolean());
       table.getTableColumnModel().setColumnWidth(1, 250);
       table.getTableColumnModel().setColumnWidth(2, 200);
 
       return table;
-    }
-  }
+    },
+  },
 });
