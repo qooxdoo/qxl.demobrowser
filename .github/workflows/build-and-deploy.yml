@@ -5,6 +5,11 @@ on:
     branches:
       - master
 
+  repository_dispatch:
+    types:
+      - push-tag
+      
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-18.04
