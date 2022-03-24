@@ -21,10 +21,10 @@ jobs:
           persist-credentials: false
 
       - name: Install
-        run: npm install @qooxdoo/framework --no-save
+        run: npm install -g @qooxdoo/framework 
 
       - name: Build
-        run:  npx qx deploy --out=./html  --clean --source-maps --verbose
+        run:  qx deploy --out=./html  --clean --source-maps --verbose
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
