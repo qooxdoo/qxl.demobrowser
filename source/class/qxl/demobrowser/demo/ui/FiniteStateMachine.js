@@ -85,7 +85,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine", {
       var o;
 
       // Ensure that the FSM diagram gets copied during build (and cached)
-      o = new qx.ui.basic.Image("demobrowser/demo/ui/FsmMiceMaze.png");
+      o = new qx.ui.basic.Image("qxl/demobrowser/demo/ui/FsmMiceMaze.png");
       o = null; // image no longer needed
 
       o = new qx.ui.basic.Label(description);
@@ -99,7 +99,7 @@ qx.Class.define("qxl.demobrowser.demo.ui.FiniteStateMachine", {
       var maze = new qxl.demobrowser.demo.util.FSMMaze(10, 10, 50, 240);
       container.add(maze, { left: 50, top: 240 });
 
-      o = new qx.ui.basic.Image("demobrowser/demo/ui/FsmMiceMaze.png", 800);
+      o = new qx.ui.basic.Image("qxl/demobrowser/demo/ui/FsmMiceMaze.png", 800);
       container.add(o, { left: 50, top: 800 });
 
       // Determine (randomly) the facing direction of the initial mouse
