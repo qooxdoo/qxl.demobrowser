@@ -88,25 +88,25 @@ qx.Class.define("qxl.demobrowser.demo.util.FSMMouse", {
     switch (facing) {
       case qxl.demobrowser.demo.util.FSMMaze.Direction.NORTH:
         this.mouseImage = new qx.ui.basic.Image(
-          "demobrowser/demo/ui/mouse-north.gif"
+          "qxl/demobrowser/demo/ui/mouse-north.gif"
         );
         break;
 
       case qxl.demobrowser.demo.util.FSMMaze.Direction.EAST:
         this.mouseImage = new qx.ui.basic.Image(
-          "demobrowser/demo/ui/mouse-east.gif"
+          "qxl/demobrowser/demo/ui/mouse-east.gif"
         );
         break;
 
       case qxl.demobrowser.demo.util.FSMMaze.Direction.SOUTH:
         this.mouseImage = new qx.ui.basic.Image(
-          "demobrowser/demo/ui/mouse-south.gif"
+          "qxl/demobrowser/demo/ui/mouse-south.gif"
         );
         break;
 
       case qxl.demobrowser.demo.util.FSMMaze.Direction.WEST:
         this.mouseImage = new qx.ui.basic.Image(
-          "demobrowser/demo/ui/mouse-west.gif"
+          "qxl/demobrowser/demo/ui/mouse-west.gif"
         );
         break;
     }
