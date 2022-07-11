@@ -2459,138 +2459,6 @@
         ]
     },
     {
-        "classname": "progressive",
-        "tests": [
-            {
-                "name": "ProgressiveLoader.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.FunctionCaller",
-                    "qx.ui.basic.Image",
-                    "qx.event.Timer.once",
-                    "qx.ui.tabview.TabView",
-                    "qx.ui.tabview.Page",
-                    "qx.ui.layout.VBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.layout.HBox",
-                    "qx.ui.basic.Atom"
-                ],
-                "title": "ProgressiveLoader",
-                "nr": 0
-            },
-            {
-                "name": "ProgressiveTable.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.basic.Atom",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row"
-                ],
-                "title": "ProgressiveTable",
-                "nr": 0
-            },
-            {
-                "name": "ProgressiveTable_Boolean.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row",
-                    "qx.ui.progressive.renderer.table.cell.Boolean",
-                    "qx.bom.element.Scroll.getScrollbarWidth",
-                    "qx.bom.element.Scroll.getScrollbarWidth"
-                ],
-                "title": "ProgressiveTable Boolean",
-                "nr": "Boolean"
-            },
-            {
-                "name": "ProgressiveTable_Conditional.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row",
-                    "qx.ui.progressive.renderer.table.cell.Conditional"
-                ],
-                "title": "ProgressiveTable Conditional",
-                "nr": "Conditional"
-            },
-            {
-                "name": "ProgressiveTable_Html.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row",
-                    "qx.ui.progressive.renderer.table.cell.String",
-                    "qx.ui.progressive.renderer.table.cell.Html"
-                ],
-                "title": "ProgressiveTable Html",
-                "nr": "Html"
-            },
-            {
-                "name": "ProgressiveTable_Mouseover.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.basic.Atom",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row",
-                    "qx.Class.define",
-                    "qx.bom.element.Style.get"
-                ],
-                "title": "ProgressiveTable Mouseover",
-                "nr": "Mouseover"
-            },
-            {
-                "name": "ProgressiveTable_VarRowHeight.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.util.AliasManager.getInstance",
-                    "qx.util.ResourceManager.getInstance",
-                    "qx.io.ImageLoader.load",
-                    "qx.ui.progressive.renderer.table.Widths",
-                    "qx.ui.progressive.headfoot.TableHeading",
-                    "qx.ui.progressive.headfoot.Progress",
-                    "qx.ui.progressive.structure.Default",
-                    "qx.ui.progressive.Progressive",
-                    "qx.ui.basic.Atom",
-                    "qx.ui.progressive.model.Default",
-                    "qx.ui.progressive.renderer.table.Row",
-                    "qx.ui.progressive.renderer.table.cell.Image"
-                ],
-                "title": "ProgressiveTable VarRowHeight",
-                "nr": "VarRowHeight"
-            }
-        ]
-    },
-    {
         "classname": "root",
         "tests": [
             {
@@ -2895,6 +2763,138 @@
                 ],
                 "title": "Translation",
                 "nr": 0
+            }
+        ]
+    },
+    {
+        "classname": "progressive",
+        "tests": [
+            {
+                "name": "ProgressiveLoader.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.FunctionCaller",
+                    "qx.ui.basic.Image",
+                    "qx.event.Timer.once",
+                    "qx.ui.tabview.TabView",
+                    "qx.ui.tabview.Page",
+                    "qx.ui.layout.VBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.layout.HBox",
+                    "qx.ui.basic.Atom"
+                ],
+                "title": "ProgressiveLoader",
+                "nr": 0
+            },
+            {
+                "name": "ProgressiveTable.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.basic.Atom",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row"
+                ],
+                "title": "ProgressiveTable",
+                "nr": 0
+            },
+            {
+                "name": "ProgressiveTable_Boolean.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row",
+                    "qx.ui.progressive.renderer.table.cell.Boolean",
+                    "qx.bom.element.Scroll.getScrollbarWidth",
+                    "qx.bom.element.Scroll.getScrollbarWidth"
+                ],
+                "title": "ProgressiveTable Boolean",
+                "nr": "Boolean"
+            },
+            {
+                "name": "ProgressiveTable_Conditional.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row",
+                    "qx.ui.progressive.renderer.table.cell.Conditional"
+                ],
+                "title": "ProgressiveTable Conditional",
+                "nr": "Conditional"
+            },
+            {
+                "name": "ProgressiveTable_Html.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row",
+                    "qx.ui.progressive.renderer.table.cell.String",
+                    "qx.ui.progressive.renderer.table.cell.Html"
+                ],
+                "title": "ProgressiveTable Html",
+                "nr": "Html"
+            },
+            {
+                "name": "ProgressiveTable_Mouseover.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.basic.Atom",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row",
+                    "qx.Class.define",
+                    "qx.bom.element.Style.get"
+                ],
+                "title": "ProgressiveTable Mouseover",
+                "nr": "Mouseover"
+            },
+            {
+                "name": "ProgressiveTable_VarRowHeight.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.util.AliasManager.getInstance",
+                    "qx.util.ResourceManager.getInstance",
+                    "qx.io.ImageLoader.load",
+                    "qx.ui.progressive.renderer.table.Widths",
+                    "qx.ui.progressive.headfoot.TableHeading",
+                    "qx.ui.progressive.headfoot.Progress",
+                    "qx.ui.progressive.structure.Default",
+                    "qx.ui.progressive.Progressive",
+                    "qx.ui.basic.Atom",
+                    "qx.ui.progressive.model.Default",
+                    "qx.ui.progressive.renderer.table.Row",
+                    "qx.ui.progressive.renderer.table.cell.Image"
+                ],
+                "title": "ProgressiveTable VarRowHeight",
+                "nr": "VarRowHeight"
             }
         ]
     },
