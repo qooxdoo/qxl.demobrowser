@@ -76,7 +76,7 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
       const outputDir = data.maker.getTarget().getOutputDir();
       const sourceDir = analyser.findLibrary("qxl.demobrowser").getRootDir();
       let targetClass = command.resolveTargetClass(
-        command._getConfig().targetType
+        command.getTargetType()
       );
       let app = "demobrowser";
 
