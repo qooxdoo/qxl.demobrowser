@@ -2928,6 +2928,19 @@
                 "nr": 0
             },
             {
+                "name": "Table_Conditional.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.ui.table.model.Simple",
+                    "qx.ui.table.Table",
+                    "qx.ui.table.cellrenderer.Conditional",
+                    "qx.ui.table.cellrenderer.Image"
+                ],
+                "title": "Table Conditional",
+                "nr": "Conditional"
+            },
+            {
                 "name": "Table_Cell_Editor.html",
                 "tags": [
                     "noPlayground",
@@ -2949,19 +2962,6 @@
                 ],
                 "title": "Table Cell_Editor",
                 "nr": 0
-            },
-            {
-                "name": "Table_Conditional.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.ui.table.model.Simple",
-                    "qx.ui.table.Table",
-                    "qx.ui.table.cellrenderer.Conditional",
-                    "qx.ui.table.cellrenderer.Image"
-                ],
-                "title": "Table Conditional",
-                "nr": "Conditional"
             },
             {
                 "name": "Table_Context_Menu.html",
