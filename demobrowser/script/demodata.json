@@ -1062,17 +1062,6 @@
                 "nr": 0
             },
             {
-                "name": "Service.html",
-                "tags": [
-                    "showcase",
-                    "databinding",
-                    "noPlayground",
-                    "qx.Class.define"
-                ],
-                "title": "Service",
-                "nr": 0
-            },
-            {
                 "name": "SingleValueBinding.html",
                 "tags": [
                     "noPlayground",
@@ -1106,6 +1095,17 @@
                     "qx.ui.basic.Label"
                 ],
                 "title": "SingleValueBinding",
+                "nr": 0
+            },
+            {
+                "name": "Service.html",
+                "tags": [
+                    "showcase",
+                    "databinding",
+                    "noPlayground",
+                    "qx.Class.define"
+                ],
+                "title": "Service",
                 "nr": 0
             },
             {
@@ -2728,23 +2728,6 @@
                 "nr": 0
             },
             {
-                "name": "IconFont.html",
-                "tags": [
-                    "showcase",
-                    "qx.Class.define",
-                    "qx.locale.Manager.getInstance",
-                    "qx.ui.window.Window",
-                    "qx.ui.layout.VBox",
-                    "qx.ui.table.model.Simple",
-                    "qx.ui.table.Table",
-                    "qx.ui.table.cellrenderer.Image",
-                    "qx.theme.manager.Font.getInstance",
-                    "qx.Theme.define"
-                ],
-                "title": "IconFont",
-                "nr": 0
-            },
-            {
                 "name": "Localization.html",
                 "tags": [
                     "showcase",
@@ -2824,6 +2807,23 @@
                     "qx.locale.Manager.getInstance"
                 ],
                 "title": "Localization",
+                "nr": 0
+            },
+            {
+                "name": "IconFont.html",
+                "tags": [
+                    "showcase",
+                    "qx.Class.define",
+                    "qx.locale.Manager.getInstance",
+                    "qx.ui.window.Window",
+                    "qx.ui.layout.VBox",
+                    "qx.ui.table.model.Simple",
+                    "qx.ui.table.Table",
+                    "qx.ui.table.cellrenderer.Image",
+                    "qx.theme.manager.Font.getInstance",
+                    "qx.Theme.define"
+                ],
+                "title": "IconFont",
                 "nr": 0
             },
             {
@@ -4003,6 +4003,61 @@
                 "nr": "Row"
             },
             {
+                "name": "SelectBox.html",
+                "tags": [
+                    "qx.Class.define",
+                    "qx.ui.container.Scroll",
+                    "qx.ui.container.Composite",
+                    "qx.ui.container.Composite",
+                    "qx.ui.container.Composite",
+                    "qx.ui.container.Composite",
+                    "qx.ui.layout.HBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.Array",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.Array",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.marshal.Json.createModel",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.Array",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.Array",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.Array",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.util.ResourceManager.getInstance",
+                    "qx.data.store.Json",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.marshal.Json.createModel",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.marshal.Json.createModel",
+                    "qx.ui.form.VirtualSelectBox",
+                    "qx.ui.container.Composite",
+                    "qx.ui.basic.Label",
+                    "qx.data.marshal.Json.createModel",
+                    "qx.ui.form.VirtualSelectBox"
+                ],
+                "title": "SelectBox",
+                "nr": 0
+            },
+            {
                 "name": "Selection.html",
                 "tags": [
                     "test",
@@ -4147,61 +4202,6 @@
                 ],
                 "title": "Tree Dynamic",
                 "nr": "Dynamic"
-            },
-            {
-                "name": "SelectBox.html",
-                "tags": [
-                    "qx.Class.define",
-                    "qx.ui.container.Scroll",
-                    "qx.ui.container.Composite",
-                    "qx.ui.container.Composite",
-                    "qx.ui.container.Composite",
-                    "qx.ui.container.Composite",
-                    "qx.ui.layout.HBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.Array",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.Array",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.marshal.Json.createModel",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.Array",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.Array",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.Array",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.util.ResourceManager.getInstance",
-                    "qx.data.store.Json",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.marshal.Json.createModel",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.marshal.Json.createModel",
-                    "qx.ui.form.VirtualSelectBox",
-                    "qx.ui.container.Composite",
-                    "qx.ui.basic.Label",
-                    "qx.data.marshal.Json.createModel",
-                    "qx.ui.form.VirtualSelectBox"
-                ],
-                "title": "SelectBox",
-                "nr": 0
             }
         ]
     },
