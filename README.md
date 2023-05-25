@@ -12,7 +12,7 @@ Clone this repo and compile it:
 ```bash
     git clone https://github.com/qooxdoo/qxl.demobrowser
     cd qxl.demobrowser
-    npm install --no-save --no-package-lock @qooxdoo/compiler
+    npm install --no-save --no-package-lock @qooxdoo/framework
     npx qx serve
 ```
 Then open [http://localhost:8080](http://localhost:8080)
