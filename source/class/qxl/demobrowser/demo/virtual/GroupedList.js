@@ -46,7 +46,10 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList", {
       var secondExample = this.createSecondExample();
       var thirdExample = this.createThirdExample();
 
-      this.loadData();
+      var url = qx.util.ResourceManager.getInstance().toUri(
+        "qxl/demobrowser/demo/data/persons.json"
+      );
+      this.loadData(url);
 
       /* ***********************************************
        * Layout and description
@@ -60,7 +63,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList", {
       description.setSelectable(true);
       description.setValue(
         "<b>Grouped List</b><br/>" +
-          "Loads the json file <a href='json/persons.json' target='_blank'>" +
+          "Loads the json file <a href='" + url + "' target='_blank'>" +
           "persons.json</a> and binds the created model to all list widgets. " +
           "The first list shows only the row data and uses a converter for the " +
           "label that concatenates the first and last name. " +
@@ -82,10 +85,7 @@ qx.Class.define("qxl.demobrowser.demo.virtual.GroupedList", {
       listContainer.add(thirdExample);
     },
 
-    loadData() {
-      var url = qx.util.ResourceManager.getInstance().toUri(
-        "qxl/demobrowser/demo/data/persons.json"
-      );
+    loadData(url) {
       var store = new qx.data.store.Json(url);
       store.bind("model.persons", this.__list, "model");
       store.bind("model.persons", this.__listGroupedByName, "model");
