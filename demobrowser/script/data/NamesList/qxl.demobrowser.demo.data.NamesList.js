@@ -23,7 +23,7 @@
 
 /**
  *
- * @asset(qxl/demobrowser/demo/data/persons.json)
+ * @asset(qxl/demobrowser/demo/data/family.json)
  * @tag databinding
  * @tag noPlayground
  */
@@ -51,7 +51,7 @@ qx.Class.define("qxl.demobrowser.demo.data.NamesList", {
 
       // create the data store
       var url = qx.util.ResourceManager.getInstance().toUri(
-        "qxl/demobrowser/demo/data/persons.json"
+        "qxl/demobrowser/demo/data/family.json"
       );
       var store = new qx.data.store.Json(url);
 
@@ -76,7 +76,7 @@ qx.Class.define("qxl.demobrowser.demo.data.NamesList", {
           "Loading the json file <a href='" +
           url +
           "' target='_blank'>" +
-          "persons.json</a> and bind the items to the list widget. In the " +
+          "family.json</a> and bind the items to the list widget. In the " +
           "converter for the label, the names will be set to both, the first " +
           "and last name."
       );
