@@ -18,6 +18,7 @@
          "include": [
             "qxl.demobrowser.*",
             "qx.theme.Indigo",
+            "qx.theme.IndigoDark",
             "qx.theme.Modern",
             "qx.theme.Simple",
             "qx.theme.Classic",
