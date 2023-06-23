@@ -145,6 +145,7 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
                   appInfos.push({
                     app: new qx.tool.compiler.app.Application(className, [
                       "qx.theme.Indigo",
+                      "qx.theme.IndigoDark",
                       "qx.theme.Modern",
                       "qx.theme.Simple",
                       "qx.theme.Classic",
@@ -161,6 +162,7 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
                       writeIndexHtmlToRoot: false,
                       include: [
                         "qx.theme.Indigo",
+                        "qx.theme.IndigoDark",
                         "qx.theme.Modern",
                         "qx.theme.Simple",
                         "qx.theme.Classic",
