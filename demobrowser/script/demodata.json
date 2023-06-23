@@ -656,184 +656,6 @@
         ]
     },
     {
-        "classname": "event",
-        "tests": [
-            {
-                "name": "ElementResize.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.bom.Element.addListener"
-                ],
-                "title": "ElementResize",
-                "nr": 0
-            },
-            {
-                "name": "Event.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.event.Registration.addListener",
-                    "qx.ui.command.Command",
-                    "qx.ui.command.Command",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.removeListener"
-                ],
-                "title": "Event",
-                "nr": 0
-            },
-            {
-                "name": "Event_Bubbling.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener"
-                ],
-                "title": "Event Bubbling",
-                "nr": "Bubbling"
-            },
-            {
-                "name": "Event_Bus.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.event.Timer.once",
-                    "qx.event.Timer.once",
-                    "qx.event.Timer.once",
-                    "qx.event.Timer.once"
-                ],
-                "title": "Event Bus",
-                "nr": "Bus"
-            },
-            {
-                "name": "Event_Iframe.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.bom.Iframe.create",
-                    "qx.event.Registration.addListener",
-                    "qx.bom.Iframe.getDocument",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.removeListener"
-                ],
-                "title": "Event Iframe",
-                "nr": "Iframe"
-            },
-            {
-                "name": "Focus.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.event.Registration.addListener",
-                    "qx.core.Environment.get",
-                    "qx.core.Environment.get"
-                ],
-                "title": "Focus",
-                "nr": 0
-            },
-            {
-                "name": "KeyEvent.html",
-                "tags": [
-                    "noPlayground",
-                    "showcase",
-                    "qx.Class.define",
-                    "qx.bom.Element.addListener"
-                ],
-                "title": "KeyEvent",
-                "nr": 0
-            },
-            {
-                "name": "KeyEvent_LowLevel.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.core.Environment.get",
-                    "qx.bom.Event.addNativeListener",
-                    "qx.lang.Function.bind",
-                    "qx.bom.Event.preventDefault"
-                ],
-                "title": "KeyEvent LowLevel",
-                "nr": "LowLevel"
-            },
-            {
-                "name": "MouseEvent.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.capture",
-                    "qx.bom.Element.releaseCapture",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.removeListener"
-                ],
-                "title": "MouseEvent",
-                "nr": 0
-            },
-            {
-                "name": "MouseEvent_LowLevel.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.lang.Function.bind",
-                    "qx.bom.Event.addNativeListener",
-                    "qx.bom.Event.addNativeListener",
-                    "qx.lang.Function.bind",
-                    "qx.bom.Event.getTarget",
-                    "qx.bom.Event.addNativeListener",
-                    "qx.bom.Event.removeNativeListener",
-                    "qx.bom.Event.preventDefault",
-                    "qx.bom.Event.getTarget",
-                    "qx.bom.Event.getRelatedTarget",
-                    "qx.bom.Event.getRelatedTarget"
-                ],
-                "title": "MouseEvent LowLevel",
-                "nr": "LowLevel"
-            },
-            {
-                "name": "PointerEvent.html",
-                "tags": [
-                    "noPlayground",
-                    "qx.Class.define",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.capture",
-                    "qx.bom.Element.releaseCapture",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.addListener",
-                    "qx.bom.Element.removeListener"
-                ],
-                "title": "PointerEvent",
-                "nr": 0
-            }
-        ]
-    },
-    {
         "classname": "data",
         "tests": [
             {
@@ -1317,6 +1139,184 @@
                 ],
                 "title": "Tree Columns",
                 "nr": "Columns"
+            }
+        ]
+    },
+    {
+        "classname": "event",
+        "tests": [
+            {
+                "name": "ElementResize.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.bom.Element.addListener"
+                ],
+                "title": "ElementResize",
+                "nr": 0
+            },
+            {
+                "name": "Event.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.event.Registration.addListener",
+                    "qx.ui.command.Command",
+                    "qx.ui.command.Command",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.removeListener"
+                ],
+                "title": "Event",
+                "nr": 0
+            },
+            {
+                "name": "Event_Bubbling.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener"
+                ],
+                "title": "Event Bubbling",
+                "nr": "Bubbling"
+            },
+            {
+                "name": "Event_Bus.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.event.Timer.once",
+                    "qx.event.Timer.once",
+                    "qx.event.Timer.once",
+                    "qx.event.Timer.once"
+                ],
+                "title": "Event Bus",
+                "nr": "Bus"
+            },
+            {
+                "name": "Event_Iframe.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.bom.Iframe.create",
+                    "qx.event.Registration.addListener",
+                    "qx.bom.Iframe.getDocument",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.removeListener"
+                ],
+                "title": "Event Iframe",
+                "nr": "Iframe"
+            },
+            {
+                "name": "Focus.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.event.Registration.addListener",
+                    "qx.core.Environment.get",
+                    "qx.core.Environment.get"
+                ],
+                "title": "Focus",
+                "nr": 0
+            },
+            {
+                "name": "KeyEvent.html",
+                "tags": [
+                    "noPlayground",
+                    "showcase",
+                    "qx.Class.define",
+                    "qx.bom.Element.addListener"
+                ],
+                "title": "KeyEvent",
+                "nr": 0
+            },
+            {
+                "name": "KeyEvent_LowLevel.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.core.Environment.get",
+                    "qx.bom.Event.addNativeListener",
+                    "qx.lang.Function.bind",
+                    "qx.bom.Event.preventDefault"
+                ],
+                "title": "KeyEvent LowLevel",
+                "nr": "LowLevel"
+            },
+            {
+                "name": "MouseEvent.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.capture",
+                    "qx.bom.Element.releaseCapture",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.removeListener"
+                ],
+                "title": "MouseEvent",
+                "nr": 0
+            },
+            {
+                "name": "MouseEvent_LowLevel.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.lang.Function.bind",
+                    "qx.bom.Event.addNativeListener",
+                    "qx.bom.Event.addNativeListener",
+                    "qx.lang.Function.bind",
+                    "qx.bom.Event.getTarget",
+                    "qx.bom.Event.addNativeListener",
+                    "qx.bom.Event.removeNativeListener",
+                    "qx.bom.Event.preventDefault",
+                    "qx.bom.Event.getTarget",
+                    "qx.bom.Event.getRelatedTarget",
+                    "qx.bom.Event.getRelatedTarget"
+                ],
+                "title": "MouseEvent LowLevel",
+                "nr": "LowLevel"
+            },
+            {
+                "name": "PointerEvent.html",
+                "tags": [
+                    "noPlayground",
+                    "qx.Class.define",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.capture",
+                    "qx.bom.Element.releaseCapture",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.addListener",
+                    "qx.bom.Element.removeListener"
+                ],
+                "title": "PointerEvent",
+                "nr": 0
             }
         ]
     },
