@@ -24,9 +24,10 @@
 /**
  *
  * @asset(qxl/demobrowser/demo/icons/multimedia-player.png)
- * @asset(qxl/demobrowser/demo/fonts/fontawesome-webfont*)
  * @asset(qx/icon/${qx.icontheme}/32/actions/format-*)
  * @asset(qx/icon/${qx.icontheme}/32/actions/go-home.png)
+ * @asset(qxl/demobrowser/demo/test/logo.gif)
+ * @usefont(MaterialIconsOutlined)
  */
 
 qx.Class.define("qxl.demobrowser.demo.widget.Image", {
@@ -35,8 +36,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image", {
   members: {
     main() {
       super.main();
-
-      this._initFont();
 
       var layout = new qx.ui.layout.HBox();
       layout.setSpacing(20);
@@ -76,19 +75,19 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image", {
       big.setHeight(64);
       container.add(big);
 
-      var font = new qx.ui.basic.Image("@FontAwesome/heart");
+      var font = new qx.ui.basic.Image("@MaterialIcons/favorite");
       font.setScale(true);
       font.setWidth(64);
       font.setHeight(64);
       container.add(font);
 
       var external = new qx.ui.basic.Image(
-        "http://resources.qooxdoo.org/images/logo.gif"
+        "qxl/demobrowser/demo/test/logo.gif"
       );
       container.add(external);
 
       var externalSmall = new qx.ui.basic.Image(
-        "http://resources.qooxdoo.org/images/logo.gif"
+        "qxl/demobrowser/demo/test/logo.gif"
       );
       externalSmall.setWidth(136);
       externalSmall.setHeight(40);
@@ -103,35 +102,6 @@ qx.Class.define("qxl.demobrowser.demo.widget.Image", {
       });
 
       this.getRoot().add(btn, { left: 20, top: 180 });
-    },
-
-    _initFont() {
-      var currentFont = qx.theme.manager.Font.getInstance().getTheme();
-
-      // Add font definitions
-      var config = {
-        fonts: {
-          FontAwesome: {
-            size: 40,
-            lineHeight: 1,
-            comparisonString: "\uf1e3\uf1f7\uf11b\uf19d",
-            family: ["FontAwesome"],
-            sources: [
-              {
-                family: "FontAwesome",
-                source: [
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot",
-                ],
-              },
-            ],
-          },
-        },
-      };
-
-      qx.Theme.define("qxl.demobrowser.theme.icon.Font", config);
-    },
+    }
   },
 });
