@@ -11,7 +11,7 @@
    },
    "applications": [{
          "class": "qxl.demobrowser.Application",
-         "theme": "qx.theme.Indigo",
+         "theme": "qxl.demobrowser.Theme",
          "name": "demobrowser",
          "title": "DemoBrowser",
          "bootPath": "source/boot",
