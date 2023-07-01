@@ -523,6 +523,9 @@ qx.Class.define("qxl.demobrowser.DemoBrowser", {
             item.setUserData("value", theme.name);
             themeMenu.add(item);
             group.add(item);
+            if (theme.title === "Indigo"){
+              group.setSelection([item]);
+            }
           }
         }
         group.addListener("changeSelection", this.__onChangeTheme, this);
