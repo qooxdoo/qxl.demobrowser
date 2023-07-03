@@ -2,6 +2,8 @@
  * Example of using the Image cell renderer with Progressive''s Table.
  * This also demonstrates how the minimum row height can be set by a
  * cell renderer.
+ * 
+ * @asset(qxl/demobrowser/demo/test/logo.gif)
  */
 qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader", {
   extend: qx.application.Standalone,
@@ -42,7 +44,7 @@ qx.Class.define("qxl.demobrowser.demo.progressive.ProgressiveLoader", {
       // Give Progressive the renderer, and assign a name
       progressive.addRenderer("func", functionCaller);
 
-      var qooxdooUrl = "http://resources.qooxdoo.org/images/logo.gif";
+      var qooxdooUrl = "qxl/demobrowser/demo/test/logo.gif";
       var qooxdoo = new qx.ui.basic.Image(qooxdooUrl, "100%", "100%");
       progressive.add(qooxdoo);
 
