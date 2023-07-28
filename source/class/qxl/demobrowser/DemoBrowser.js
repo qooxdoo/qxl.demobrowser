@@ -512,15 +512,20 @@ qx.Class.define("qxl.demobrowser.DemoBrowser", {
         var group = new qx.ui.form.RadioGroup();
 
         var themes = qx.Theme.getAll();
-        var currentThemeItem;
         var currentTheme = qx.theme.manager.Meta.getInstance().getTheme();
         for (var key in themes) {
           let theme = themes[key];
           if (theme.type === "meta") {
+            if (theme.name === currentTheme.name){
+              continue;
+            }
             var item = new qx.ui.menu.RadioButton(theme.title);
             item.setUserData("value", theme.name);
             themeMenu.add(item);
             group.add(item);
+            if (theme.title === "Indigo"){
+              group.setSelection([item]);
+            }
           }
         }
         group.addListener("changeSelection", this.__onChangeTheme, this);

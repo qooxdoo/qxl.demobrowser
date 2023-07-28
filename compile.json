@@ -11,13 +11,14 @@
    },
    "applications": [{
          "class": "qxl.demobrowser.Application",
-         "theme": "qx.theme.Indigo",
+         "theme": "qxl.demobrowser.Theme",
          "name": "demobrowser",
          "title": "DemoBrowser",
          "bootPath": "source/boot",
          "include": [
             "qxl.demobrowser.*",
             "qx.theme.Indigo",
+            "qx.theme.IndigoDark",
             "qx.theme.Modern",
             "qx.theme.Simple",
             "qx.theme.Classic",

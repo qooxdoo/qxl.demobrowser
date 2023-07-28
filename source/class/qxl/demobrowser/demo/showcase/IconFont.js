@@ -25,8 +25,8 @@
  *
  * @tag showcase
  *
- * @asset(qxl/demobrowser/demo/fonts/fontawesome-webfont*)
  * @asset(qx/icon/${qx.icontheme}/16/*)
+ * @usefont(MaterialIcons)
  */
 qx.Class.define("qxl.demobrowser.demo.showcase.IconFont", {
   extend: qx.application.Standalone,
@@ -49,14 +49,12 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont", {
       // Call super class
       super.main();
 
-      this._initFont();
-
       /* Set locale to english to avoid language mix if browser locale is
        * non-english. */
       qx.locale.Manager.getInstance().setLocale("en");
 
       this._container = new qx.ui.window.Window(
-        "Icon table for FontAwesome",
+        "Icon table for MaterialIcons",
         "icon/16/apps/office-spreadsheet.png"
       ).set({
         width: 600,
@@ -85,7 +83,8 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont", {
 
       var rowData = [];
       for (var key in res) {
-        if (res.hasOwnProperty(key) && key.startsWith("@FontAwesome/")) {
+        if (res.hasOwnProperty(key) && key.startsWith("@MaterialIcons/")) {
+          console.log("0x" + res[key][2].toString(16),key.split("/")[1], key);
           rowData.push([
             "0x" + res[key][2].toString(16),
             key.split("/")[1],
@@ -101,36 +100,7 @@ qx.Class.define("qxl.demobrowser.demo.showcase.IconFont", {
       table.getTableColumnModel().setDataCellRenderer(2, renderer);
 
       return table;
-    },
-
-    _initFont() {
-      var currentFont = qx.theme.manager.Font.getInstance().getTheme();
-
-      // Add font definitions
-      var config = {
-        fonts: {
-          FontAwesome: {
-            size: 40,
-            lineHeight: 1,
-            comparisonString: "\uf1e3\uf1f7\uf11b\uf19d",
-            family: ["FontAwesome"],
-            sources: [
-              {
-                family: "FontAwesome",
-                source: [
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.ttf",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.woff2",
-                  "qxl/demobrowser/demo/fonts/fontawesome-webfont.eot",
-                ],
-              },
-            ],
-          },
-        },
-      };
-
-      qx.Theme.define("qxl.demobrowser.theme.icon.Font", config);
-    },
+    }
   },
 
   destruct() {
