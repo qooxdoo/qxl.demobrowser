@@ -68,7 +68,7 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers", {
       var modernIe =
         engine == "mshtml" &&
         qx.core.Environment.get("browser.documentmode") > 10;
-      if (engine != "webkit" && !modernIe) {
+      if (engine != "webkit" && engine != "gecko" && !modernIe) {
         var warningLabelStyle = {
           color: "green",
           position: "absolute",
@@ -82,7 +82,7 @@ qx.Class.define("qxl.demobrowser.demo.mobile.Fingers", {
         root.add(label);
         label.setAttribute(
           "innerHTML",
-          "<b>This demo is intended for WebKit-based browsers and IE11+.</b>"
+          "<b>This demo is intended for WebKit-based, Gecko-based browsers and IE11+.</b>"
         );
         return;
       }
