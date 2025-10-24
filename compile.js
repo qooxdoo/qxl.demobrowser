@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
-  extend: qx.tool.cli.api.CompilerApi,
+  extend: qx.tool.compiler.cli.api.CompilerApi,
 
   members: {
     async load() {
@@ -9,12 +9,12 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
         "changeCommand",
         function () {
           let command = this.getCommand();
-          if (command instanceof qx.tool.cli.commands.Compile) {
+          if (command instanceof qx.tool.compiler.cli.commands.Compile) {
             command.addListener("writtenApplication", async (evt) => {
               await this.__build(evt.getData());
             });
           }
-          if (command instanceof qx.tool.cli.commands.Deploy) {
+          if (command instanceof qx.tool.compiler.cli.commands.Deploy) {
             command.addListener("afterDeploy", async (evt) => {
               await this.__deploy(evt.getData());
             });
@@ -268,5 +268,5 @@ qx.Class.define("qxl.demobrowser.compile.CompilerApi", {
 });
 
 module.exports = {
-  CompilerApi: qxl.demobrowser.compile.CompilerApi,
+  CompilerApi: qxl.demobrowser.compile.CompilerApi
 };
