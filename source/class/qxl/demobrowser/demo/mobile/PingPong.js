@@ -73,7 +73,7 @@ qx.Class.define("qxl.demobrowser.demo.mobile.PingPong", {
       };
 
       var root = new qx.html.Element("div", backgroundStyles);
-      root.useElement(document.body);
+      root.useNode(document.body);
       root.setRoot(true);
 
       var engine = qx.core.Environment.get("engine.name");
